@@ -1,0 +1,253 @@
+{
+ "updated": "2026-10-30T17:05+00:00",
+ "target": "EIA weekly net change in Lower 48 working gas, Bcf (positive = injection)",
+ "forecast": {
+  "week_ending": "2026-10-30",
+  "forecast_bcf": 79,
+  "low_bcf": 60,
+  "high_bcf": 101,
+  "baseline_bcf": 70,
+  "model": "ensemble",
+  "made": "2026-10-30T17:05+00:00",
+  "weather_days_observed": 6
+ },
+ "models": {
+  "ridge": 82,
+  "gbm": 76,
+  "ensemble": 79
+ },
+ "latest_report": {
+  "week_ending": "2026-10-23",
+  "working_gas_bcf": 3724,
+  "change_bcf": 80
+ },
+ "backtest": {
+  "method": "Walk-forward: refit every week on all earlier weeks, predict the next; observed weather.",
+  "from": "2022-01-07",
+  "to": "2026-10-23",
+  "weeks": 251,
+  "scores": {
+   "baseline": {
+    "mae": 31.4,
+    "rmse": 45.5,
+    "bias": 0.1
+   },
+   "ridge": {
+    "mae": 15.7,
+    "rmse": 20.8,
+    "bias": 0.1
+   },
+   "gbm": {
+    "mae": 14.9,
+    "rmse": 20.0,
+    "bias": -0.9
+   },
+   "ensemble": {
+    "mae": 13.7,
+    "rmse": 18.6,
+    "bias": -0.4
+   }
+  },
+  "chosen": "ensemble"
+ },
+ "recent": [
+  {
+   "week_ending": "2026-05-01",
+   "actual": 63,
+   "forecast": 72,
+   "baseline": 76
+  },
+  {
+   "week_ending": "2026-05-08",
+   "actual": 85,
+   "forecast": 89,
+   "baseline": 81
+  },
+  {
+   "week_ending": "2026-05-15",
+   "actual": 101,
+   "forecast": 101,
+   "baseline": 92
+  },
+  {
+   "week_ending": "2026-05-22",
+   "actual": 92,
+   "forecast": 96,
+   "baseline": 97
+  },
+  {
+   "week_ending": "2026-05-29",
+   "actual": 95,
+   "forecast": 107,
+   "baseline": 102
+  },
+  {
+   "week_ending": "2026-06-05",
+   "actual": 108,
+   "forecast": 99,
+   "baseline": 97
+  },
+  {
+   "week_ending": "2026-06-12",
+   "actual": 73,
+   "forecast": 67,
+   "baseline": 72
+  },
+  {
+   "week_ending": "2026-06-19",
+   "actual": 76,
+   "forecast": 75,
+   "baseline": 75
+  },
+  {
+   "week_ending": "2026-06-26",
+   "actual": 87,
+   "forecast": 77,
+   "baseline": 64
+  },
+  {
+   "week_ending": "2026-07-03",
+   "actual": 61,
+   "forecast": 39,
+   "baseline": 54
+  },
+  {
+   "week_ending": "2026-07-10",
+   "actual": 41,
+   "forecast": 37,
+   "baseline": 44
+  },
+  {
+   "week_ending": "2026-07-17",
+   "actual": 32,
+   "forecast": 18,
+   "baseline": 33
+  },
+  {
+   "week_ending": "2026-07-24",
+   "actual": 28,
+   "forecast": 34,
+   "baseline": 27
+  },
+  {
+   "week_ending": "2026-07-31",
+   "actual": 33,
+   "forecast": 25,
+   "baseline": 19
+  },
+  {
+   "week_ending": "2026-08-07",
+   "actual": 36,
+   "forecast": 23,
+   "baseline": 34
+  },
+  {
+   "week_ending": "2026-08-14",
+   "actual": 16,
+   "forecast": 15,
+   "baseline": 29
+  },
+  {
+   "week_ending": "2026-08-21",
+   "actual": 15,
+   "forecast": 23,
+   "baseline": 32
+  },
+  {
+   "week_ending": "2026-08-28",
+   "actual": 30,
+   "forecast": 29,
+   "baseline": 34
+  },
+  {
+   "week_ending": "2026-09-04",
+   "actual": 40,
+   "forecast": 37,
+   "baseline": 50
+  },
+  {
+   "week_ending": "2026-09-11",
+   "actual": 44,
+   "forecast": 52,
+   "baseline": 73
+  },
+  {
+   "week_ending": "2026-09-18",
+   "actual": 53,
+   "forecast": 61,
+   "baseline": 73
+  },
+  {
+   "week_ending": "2026-09-25",
+   "actual": 64,
+   "forecast": 75,
+   "baseline": 78
+  },
+  {
+   "week_ending": "2026-10-02",
+   "actual": 85,
+   "forecast": 83,
+   "baseline": 99
+  },
+  {
+   "week_ending": "2026-10-09",
+   "actual": 67,
+   "forecast": 82,
+   "baseline": 89
+  },
+  {
+   "week_ending": "2026-10-16",
+   "actual": 77,
+   "forecast": 84,
+   "baseline": 93
+  },
+  {
+   "week_ending": "2026-10-23",
+   "actual": 80,
+   "forecast": 64,
+   "baseline": 73
+  }
+ ],
+ "live_track_record": {
+  "weeks": 0,
+  "mae": null
+ },
+ "log": [
+  {
+   "week_ending": "2026-10-30",
+   "forecast_bcf": 79,
+   "low_bcf": 60,
+   "high_bcf": 101,
+   "baseline_bcf": 70,
+   "model": "ensemble",
+   "made": "2026-10-30T17:05+00:00",
+   "weather_days_observed": 6,
+   "actual_bcf": null
+  }
+ ],
+ "weather": {
+  "source": "Open-Meteo (ERA5 archive and forecast)",
+  "cities": [
+   "New York",
+   "Los Angeles",
+   "Chicago",
+   "Dallas",
+   "Houston",
+   "Philadelphia",
+   "Atlanta",
+   "Boston",
+   "Detroit",
+   "Minneapolis"
+  ],
+  "weighting": "metro population"
+ },
+ "features": [
+  "hdd",
+  "cdd",
+  "avg5",
+  "prev_change",
+  "surplus",
+  "season_sin",
+  "season_cos"
+ ]
+}
