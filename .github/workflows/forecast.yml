@@ -44,13 +44,13 @@ jobs:
           path: |
             forecast.json
             weather_daily.csv
-      - name: Publish to the forecast-data branch
-        if: github.ref == 'refs/heads/main'
+      - name: Publish to the forecast-data branch (forecast-dev for test runs)
         run: |
+          branch=forecast-data; [ "${{ github.ref }}" = "refs/heads/main" ] || branch=forecast-dev
           mkdir out && cp forecast.json weather_daily.csv out/ && cd out
-          git init -q -b forecast-data
+          git init -q -b $branch
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -q -m "Storage forecast $(date -u +%FT%RZ)"
-          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" forecast-data
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" $branch
