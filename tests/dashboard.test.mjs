@@ -24,7 +24,7 @@ before(async () => {
 });
 after(async () => { await browser?.close(); server?.close(); });
 
-async function openDashboard(relayUp, ships = 'live') {
+async function openDashboard(relayUp, ships = 'live', forecast = 'live') {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
@@ -32,6 +32,12 @@ async function openDashboard(relayUp, ships = 'live') {
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (route) => {
     const u = route.request().url();
     if (u.includes('d3.min.js')) return route.fulfill({ status: 200, contentType: 'application/javascript', body: d3 });
+    if (u.includes('forecast-data/forecast.json')) {
+      if (forecast === 'down') return route.abort();
+      const f = JSON.parse(fixture('forecast.json'));
+      f.updated = new Date(Date.now() - (forecast === 'stale' ? 72 : 2) * 3600e3).toISOString();
+      return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(f) });
+    }
     if (u.includes('ais-data/ships.json')) {
       if (ships === 'down') return route.abort();
       const when = new Date(Date.now() - (ships === 'stale' ? 8 * 3600e3 : 20 * 60e3)).toISOString();
@@ -113,4 +119,31 @@ test('LNG tab labels old ship data and still draws the map when the feed is down
   assert.ok(!(await page.$eval('#ais-empty', (n) => n.hidden)));
   assert.deepEqual(errors, []);
   await page.close();
+});
+
+test('Storage tab shows the machine-learning forecast with its backtest', async () => {
+  const { page, errors } = await openDashboard(true);
+  await page.click('#tab-storage');
+  await page.waitForTimeout(300);
+  assert.match(await page.textContent('#ml-pill'), /^Updated /);
+  const k = await page.textContent('#ml-kpis');
+  assert.match(k, /Forecast, week ending Oct 30\+79 Bcf/);
+  assert.match(k, /80% range \+60 to \+101/);
+  assert.match(k, /13\.7 Bcf.*31\.4 Bcf for the five-year average/s);
+  assert.equal(await page.$$eval('#ml-chart svg path', (n) => n.filter((p) => p.getAttribute('d') && p.getAttribute('d').length > 50).length) >= 3, true);
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('Storage tab says when the forecast is old or missing', async () => {
+  let { page } = await openDashboard(true, 'live', 'stale');
+  await page.click('#tab-storage');
+  assert.match(await page.textContent('#ml-pill'), /^Not live · last updated /);
+  await page.close();
+  const r = await openDashboard(true, 'live', 'down');
+  await r.page.click('#tab-storage');
+  assert.equal(await r.page.textContent('#ml-pill'), 'Not available');
+  assert.match(await r.page.textContent('#ml-chart'), /could not be loaded/);
+  assert.deepEqual(r.errors, []);
+  await r.page.close();
 });

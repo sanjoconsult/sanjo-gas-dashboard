@@ -17,10 +17,13 @@ flowchart LR
     OPA[OilPriceAPI JKM]
     GIE[GIE AGSI+ EU storage]
     AIS[aisstream.io ship positions]
+    OM[Open-Meteo weather]
   end
   subgraph GitHub
     A[Actions job every 30 min<br/>LNG ship classifier]
     B[ais-data branch<br/>ships.json]
+    F[Actions job daily<br/>ML storage forecast]
+    G[forecast-data branch<br/>forecast.json]
   end
   subgraph Cloudflare
     R[Price relay Worker<br/>caching, fallbacks, CORS]
@@ -39,6 +42,8 @@ flowchart LR
   R -->|JSON| D
   M --> D
   AIS -->|WebSocket| A --> B -->|JSON| D
+  EIA --> F
+  OM --> F --> G -->|JSON| D
 ```
 
 | Part | What it does |
@@ -47,6 +52,7 @@ flowchart LR
 | `site/index.html` | Home page with the live Markets section. |
 | `site/gas_dashboard.html` | Dashboard. Ships with a built-in data snapshot, then replaces it with live data when the relay answers. |
 | `scripts/ais/` | LNG ship tracker. `collect.mjs` listens to aisstream.io for 7 minutes; `classify.mjs` picks out LNG carriers and labels each one at a berth, anchored, inbound or outbound. Run every 30 minutes by `.github/workflows/ais.yml`, which publishes `ships.json` to the `ais-data` branch. |
+| `ml/` | Weekly storage forecast in Python (scikit-learn): weather-driven gradient boosting and ridge regression, checked against the five-year average in a walk-forward backtest. Run daily by `.github/workflows/forecast.yml`. See [`ml/README.md`](ml/README.md). |
 | `site/manual-data.json` | Figures with no free feed (rig counts, AGA indicators, regional basis, LNG feedgas, events, terminals, weekly JKM). Updated every Friday by a scheduled AI agent. |
 
 ### Design decisions
@@ -69,6 +75,7 @@ flowchart LR
 | JKM | OilPriceAPI | Daily |
 | EU storage | GIE AGSI+ | Daily |
 | LNG carrier positions near Gulf Coast terminals | aisstream.io (free, terrestrial AIS receivers) | Every 30 minutes |
+| ML storage forecast | EIA weekly storage and Open-Meteo temperatures | Daily |
 | Rig counts, AGA indicators, basis, feedgas, events | Weekly AI research update | Fridays |
 
 ## Running the tests
@@ -77,11 +84,13 @@ flowchart LR
 npm install
 npx playwright install chromium
 npm test
+pip install -r ml/requirements.txt && python -m pytest -q ml
 ```
 
 - `tests/worker.test.mjs` tests the relay with mocked sources: contract-month selection, TTF conversion, storage report parsing, history aggregation and failure fallbacks.
 - `tests/ais.test.mjs` tests the LNG ship classifier: message parsing, LNG identification, berth/anchored/inbound/outbound status, and how stale or distant ships are dropped.
-- `tests/dashboard.test.mjs` loads the dashboard in a headless browser with sample relay data and checks that every tab renders without errors, including a week with a zero storage change, and the LNG ship map with live, old and missing ship data.
+- `ml/test_storage_forecast.py` (pytest) checks the forecast on synthetic data: degree-day sums, no look-ahead in the features, models beating the baseline, and the published file.
+- `tests/dashboard.test.mjs` loads the dashboard in a headless browser with sample relay data and checks that every tab renders without errors, including a week with a zero storage change, the LNG ship map with live, old and missing ship data, and the forecast card.
 
 Tests run on every pull request through GitHub Actions (`.github/workflows/ci.yml`).
 
