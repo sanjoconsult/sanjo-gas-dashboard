@@ -12,8 +12,15 @@ export const TERMINALS = [
   { name: 'Plaquemines', lat: 29.6004, lon: -89.8864 },
 ];
 
-// aisstream bounding box: [[lat, lon], [lat, lon]] covering Corpus Christi to the Mississippi delta.
+// US LNG export terminals outside the Gulf Coast map, used only to tell whether a ship is at or leaving the US.
+export const US_TERMINALS = [...TERMINALS, { name: 'Cove Point', lat: 38.4040, lon: -76.3850 }, { name: 'Elba Island', lat: 32.0880, lon: -81.0130 }];
+
+// aisstream bounding boxes: [[lat, lon], [lat, lon]]. GULF covers Corpus Christi to the Mississippi delta;
+// WORLD lets the global fleet map find ships from the reference list anywhere receivers can hear them.
 export const BOX = [[26.2, -98.2], [31.2, -88.3]];
+export const WORLD = [[-90, -180], [90, 180]];
+export const US_KM = 30; // within this distance of a US terminal counts as at the US terminal
+export const FLEET_MAX_AGE_DAYS = 7; // last known positions older than this are dropped
 
 export const BERTH_KM = 3; // a stopped ship this close to a terminal is treated as at the berth
 export const AREA_KM = 60; // ships further than this from every terminal are not shown
@@ -79,9 +86,37 @@ export function applyMessage(ships, msg, now = new Date().toISOString()) {
   return ships;
 }
 
-// Is this ship an LNG carrier? Name, a previously confirmed MMSI, or a large tanker stopped at an LNG berth.
-export function isLng(s, knownLng = new Set()) {
+// Reference fleet (site/lng-fleet.json): look ships up by IMO number or by name.
+export const normName = (n) => String(n || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
+export function fleetIndex(list = []) {
+  const byImo = new Map(), byName = new Map();
+  for (const f of list) { byImo.set(String(f.imo), f); byName.set(normName(f.name), f); }
+  return { byImo, byName, size: list.length };
+}
+export function fleetMatch(s, idx) {
+  if (!idx) return null;
+  return (s.imo && idx.byImo.get(String(s.imo))) || idx.byName.get(normName(s.name)) || null;
+}
+
+// AIS destinations are typed by the crew: "USSAB", "KRYOS>USSAB", "SABINE PASS", "CORPUS CHRISTI US"...
+const US_PLACES = /SABINE|CORPUS|FREEPORT|CAMERON|CALCASIEU|PLAQUEMINES|GOLDEN ?PASS|COVE ?POINT|ELBA|HACKBERRY|LAKE ?CHARLES|PORT ?ARTHUR|GALVESTON|HOUSTON|BROWNSVILLE|NEW ?ORLEANS|SAVANNAH/;
+export function usBound(dest) {
+  const d = String(dest || '').toUpperCase();
+  if (!d) return false;
+  const last = d.split(/>|=>|->/).pop().trim(); // "FROM>TO": only the part after the arrow is the destination
+  return /(^|[^A-Z])US ?[A-Z]{3}([^A-Z]|$)/.test(last) || /(^|[^A-Z])USA?$/.test(last) || US_PLACES.test(last);
+}
+export function nearestUsTerminal(p) {
+  let best = null;
+  for (const t of US_TERMINALS) { const km = distanceKm(p, t); if (!best || km < best.km) best = { name: t.name, km }; }
+  return best;
+}
+
+// Is this ship an LNG carrier? On the reference fleet list, a previously confirmed MMSI, a name with "LNG",
+// or a large tanker stopped at an LNG berth.
+export function isLng(s, knownLng = new Set(), idx = null) {
   if (knownLng.has(s.mmsi)) return true;
+  if (fleetMatch(s, idx)) return true;
   if (/\bLNG\b/i.test(s.name || '')) return true;
   const tanker = s.ship_type >= 80 && s.ship_type <= 89;
   if (tanker && s.length_m >= MIN_LNG_LENGTH_M && typeof s.lat === 'number') {
@@ -103,7 +138,7 @@ export function describe(s) {
 }
 
 // Merge the fresh window into the previous snapshot and build the published file.
-export function buildSnapshot(prev, fresh, now = new Date().toISOString(), maxAgeHours = 3) {
+export function buildSnapshot(prev, fresh, now = new Date().toISOString(), maxAgeHours = 3, idx = null) {
   const all = {};
   for (const s of (prev && prev.ships) || []) all[s.mmsi] = { ...s };
   for (const [id, s] of Object.entries(fresh)) all[id] = { ...(all[id] || {}), ...s };
@@ -112,11 +147,12 @@ export function buildSnapshot(prev, fresh, now = new Date().toISOString(), maxAg
   const ships = [];
   for (const s of Object.values(all)) {
     if (typeof s.lat !== 'number' || !s.seen || Date.parse(s.seen) < cutoff) continue;
-    if (!isLng(s, known)) continue;
-    known.add(s.mmsi);
+    if (!isLng(s, known, idx)) continue;
     const d = describe(s);
     if (d.km > AREA_KM) continue;
-    ships.push({ ...s, status: d.status, terminal: d.terminal, terminal_km: +d.km.toFixed(1) });
+    known.add(s.mmsi);
+    const f = fleetMatch(s, idx);
+    ships.push({ ...s, ...(f ? { name: f.name, imo: f.imo, capacity_m3: f.capacity_m3 } : {}), status: d.status, terminal: d.terminal, terminal_km: +d.km.toFixed(1) });
   }
   ships.sort((a, b) => a.terminal.localeCompare(b.terminal) || a.terminal_km - b.terminal_km);
   const by = (st) => ships.filter((s) => s.status === st).length;
@@ -128,4 +164,36 @@ export function buildSnapshot(prev, fresh, now = new Date().toISOString(), maxAg
     ships,
     known_lng_mmsi: [...known].sort().slice(-2000),
   };
+}
+
+// Where each reference-fleet ship was last heard, and how it relates to the US:
+// at a US terminal, bound for the US (by its AIS destination), left the US (was at a US terminal in the last
+// 30 days and has since sailed for somewhere else), or elsewhere.
+// `fresh` is the ships heard this run (object or array); include the Gulf snapshot's ships so a carrier heard
+// on an earlier run while at a berth is not missed.
+export function buildFleet(prevFleet, fresh, idx, now = new Date().toISOString(), maxAgeDays = FLEET_MAX_AGE_DAYS) {
+  const byImo = {};
+  for (const s of prevFleet || []) byImo[s.imo] = { ...s };
+  for (const s of Array.isArray(fresh) ? fresh : Object.values(fresh)) {
+    if (typeof s.lat !== 'number' || !s.seen) continue;
+    const f = fleetMatch(s, idx);
+    if (!f) continue;
+    const old = byImo[f.imo] || {};
+    if (old.seen && Date.parse(old.seen) > Date.parse(s.seen)) continue;
+    byImo[f.imo] = { ...old, imo: f.imo, name: f.name, capacity_m3: f.capacity_m3, mmsi: s.mmsi, lat: s.lat, lon: s.lon, sog: s.sog ?? null, cog: s.cog ?? null, nav_status: s.nav_status ?? null, destination: s.destination || old.destination || '', seen: s.seen };
+  }
+  const t = Date.parse(now), cutoff = t - maxAgeDays * 864e5, out = [];
+  for (const s of Object.values(byImo)) {
+    if (!s.seen || Date.parse(s.seen) < cutoff) continue;
+    const u = nearestUsTerminal(s);
+    if (u.km <= US_KM) { s.last_us_terminal = u.name; s.last_us_seen = s.seen; }
+    const recentUs = s.last_us_seen && t - Date.parse(s.last_us_seen) < 30 * 864e5;
+    s.us_status = u.km <= US_KM ? 'At US terminal' : usBound(s.destination) ? 'Bound for US' : recentUs ? 'Left US' : 'Elsewhere';
+    s.us_terminal_km = +u.km.toFixed(0);
+    out.push(s);
+  }
+  const order = { 'At US terminal': 0, 'Bound for US': 1, 'Left US': 2, Elsewhere: 3 };
+  out.sort((a, b) => order[a.us_status] - order[b.us_status] || a.name.localeCompare(b.name));
+  const n = (st) => out.filter((s) => s.us_status === st).length;
+  return { fleet: out, fleet_counts: { reference: idx ? idx.size : 0, tracked: out.length, at_us: n('At US terminal'), bound_us: n('Bound for US'), left_us: n('Left US'), elsewhere: n('Elsewhere') } };
 }

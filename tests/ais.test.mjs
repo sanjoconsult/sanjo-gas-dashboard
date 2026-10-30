@@ -62,3 +62,43 @@ test('snapshot keeps known LNG ships, drops stale and far-away ones, and remembe
   assert.ok(snap.known_lng_mmsi.includes('10'), 'ship seen at a berth is remembered');
   assert.equal(snap.updated, NOW);
 });
+
+import { fleetIndex, fleetMatch, usBound, buildFleet } from '../scripts/ais/classify.mjs';
+const FLEET = fleetIndex([{ name: 'Hyundai Peacepia', imo: '9761853', capacity_m3: 174000 }, { name: 'Al Bidda', imo: '9132741', capacity_m3: 137300 }, { name: 'Maran Gas Apollonia', imo: '9633422', capacity_m3: 161870 }]);
+
+test('reference fleet matches ships by IMO or by name, ignoring case and punctuation', () => {
+  assert.equal(fleetMatch({ imo: '9132741', name: 'WHATEVER' }, FLEET).name, 'Al Bidda');
+  assert.equal(fleetMatch({ name: 'HYUNDAI  PEACEPIA' }, FLEET).imo, '9761853');
+  assert.equal(fleetMatch({ name: 'MARAN-GAS APOLLONIA' }, FLEET).imo, '9633422');
+  assert.equal(fleetMatch({ name: 'SOME TUG' }, FLEET), null);
+  assert.ok(isLng({ mmsi: '9', name: 'AL BIDDA', lat: 25, lon: 51 }, new Set(), FLEET), 'fleet ships count as LNG without LNG in the name');
+});
+
+test('reads US destinations the way crews type them', () => {
+  for (const d of ['USSAB', 'KRYOS>USSAB', 'SABINE PASS', 'CORPUS CHRISTI US', 'US CRP', 'FOR ORDERS > COVE POINT', 'USA']) assert.ok(usBound(d), d);
+  for (const d of ['', 'BUSAN', 'USSAB>KRBUS', 'ROTTERDAM', 'FOR ORDERS', 'JPFUK']) assert.ok(!usBound(d), d);
+});
+
+test('fleet snapshot labels ships at, bound for and leaving the US, and keeps last positions for 7 days', () => {
+  const ships = {};
+  applyMessage(ships, pos(1, 'HYUNDAI PEACEPIA', 29.7545, -93.8745, 0, 0, 5), NOW); // at Sabine Pass
+  applyMessage(ships, pos(2, 'AL BIDDA', 36.1, -6.0, 15, 270), NOW);
+  applyMessage(ships, { MessageType: 'ShipStaticData', MetaData: { MMSI: 2, ShipName: 'AL BIDDA' }, Message: { ShipStaticData: { Name: 'AL BIDDA', ImoNumber: 9132741, Destination: 'USCAM', Type: 84, Dimension: { A: 200, B: 90 } } } }, NOW);
+  applyMessage(ships, pos(3, 'NOT A CARRIER', 30, -40, 10, 90), NOW);
+  const prev = [{ imo: '9633422', name: 'Maran Gas Apollonia', lat: 27.0, lon: -85.0, destination: 'ROTTERDAM', seen: '2026-10-29T00:00:00Z', last_us_terminal: 'Corpus Christi', last_us_seen: '2026-10-27T00:00:00Z' },
+    { imo: '1111111', name: 'Gone', lat: 0, lon: 0, seen: '2026-10-01T00:00:00Z' }];
+  const { fleet, fleet_counts: c } = buildFleet(prev, ships, FLEET, NOW);
+  const by = Object.fromEntries(fleet.map((s) => [s.name, s]));
+  assert.equal(by['Hyundai Peacepia'].us_status, 'At US terminal');
+  assert.equal(by['Hyundai Peacepia'].last_us_terminal, 'Sabine Pass');
+  assert.equal(by['Al Bidda'].us_status, 'Bound for US');
+  assert.equal(by['Maran Gas Apollonia'].us_status, 'Left US');
+  assert.ok(!by.Gone, 'positions older than 7 days are dropped');
+  assert.deepEqual(c, { reference: 3, tracked: 3, at_us: 1, bound_us: 1, left_us: 1, elsewhere: 0 });
+});
+
+test('a carrier still at a berth from an earlier run counts as at the US terminal', () => {
+  const gulf = [{ mmsi: '1', name: 'Hyundai Peacepia', imo: '9761853', lat: 29.7545, lon: -93.8745, sog: 0, seen: '2026-10-30T17:00:00Z' }];
+  const { fleet } = buildFleet([], [...gulf, ...Object.values({})], FLEET, NOW);
+  assert.equal(fleet[0].us_status, 'At US terminal');
+});
