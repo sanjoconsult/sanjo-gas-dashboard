@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US Natural Gas Market Dashboard by Sanjo Consult</title>
+<style>html{scrollbar-gutter:stable}</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="US natural gas storage, supply, demand, infrastructure, market intelligence and LNG dashboard, designed by Sanjo Consult.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --color-bg: #f6f8fa; --color-fg: #14202e; --color-fg-muted: #5a6878; --color-panel: #ffffff; --color-border-line: #dde3ea;
+  --color-ok: #1a8a5a; --color-warn: #b7791f; --color-bad: #c43d3d;
+  --cds-chart-axis: #b7c2ce; --cds-chart-grid: #edf1f5; --cds-chart-muted: #b8c3cf; --cds-chart-reference: #9aa7b5;
+  --cds-surface-popover: #ffffff; --cds-border: #d3dbe4; --cds-text-secondary: #5a6878; --cds-shadow-popover: 0 6px 20px rgba(15,29,46,.14);
+  --font-anthropic-sans: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-anthropic-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --cds-font-size-caption: 12.5px; --cds-font-size-body: 14.5px; --cds-font-size-heading: 16px; --cds-font-size-title: 26px; --cds-font-weight-medium: 600;
+  --cds-gap-xs: 6px; --cds-gap-sm: 10px; --cds-gap-md: 16px; --cds-gap-lg: 28px;
+  --cds-pad-xs: 6px; --cds-pad-sm: 10px; --cds-pad-md: 16px; --cds-pad-lg: 20px;
+  --cds-radius: 10px; --cds-dur-slow: .3s;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-bg: #0d1520; --color-fg: #e6edf4; --color-fg-muted: #9aaaba; --color-panel: #142030; --color-border-line: #243447;
+    --color-ok: #4cc38a; --color-warn: #e3a84a; --color-bad: #ef6b6b;
+    --cds-chart-axis: #3a4c61; --cds-chart-grid: #1c2a3b; --cds-chart-muted: #4b5d72; --cds-chart-reference: #6e8095;
+    --cds-surface-popover: #1a2839; --cds-border: #2c3e53; --cds-text-secondary: #9aaaba; --cds-shadow-popover: 0 6px 20px rgba(0,0,0,.4);
+  }
+}
+[hidden] { display: none !important; }
+html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans); font-size: 14.5px; line-height: 1.5; }
+.sa-bar { max-width: 1160px; box-sizing: border-box; margin: 0 auto; padding: 14px 20px 0; font-size: 13px; }
+.sa-bar a { color: var(--color-fg-muted); text-decoration: none; }
+.sa-bar a:hover { color: var(--color-fg); }
+#dash-root { max-width: 1160px; box-sizing: border-box; margin: 0 auto; padding: 18px 20px 48px; }
+@media (max-width: 600px) { #dash-root, .sa-bar { padding-left: 20px; padding-right: 20px; } }
+#dash-root b, #dash-root strong { font-weight: 700; }
+.dash-skeleton { color: transparent !important; background: var(--cds-chart-grid); border-radius: 6px; }
+</style>
+<script>
+window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":2024,"working_gas_bcf":3336},{"week_ending":"2024-01-12","year":2024,"working_gas_bcf":3182},{"week_ending":"2024-01-19","year":2024,"working_gas_bcf":2856},{"week_ending":"2024-01-26","year":2024,"working_gas_bcf":2659},{"week_ending":"2024-02-02","year":2024,"working_gas_bcf":2584},{"week_ending":"2024-02-09","year":2024,"working_gas_bcf":2530},{"week_ending":"2024-02-16","year":2024,"working_gas_bcf":2470},{"week_ending":"2024-02-23","year":2024,"working_gas_bcf":2374},{"week_ending":"2024-03-01","year":2024,"working_gas_bcf":2334},{"week_ending":"2024-03-08","year":2024,"working_gas_bcf":2325},{"week_ending":"2024-03-15","year":2024,"working_gas_bcf":2332},{"week_ending":"2024-03-22","year":2024,"working_gas_bcf":2296},{"week_ending":"2024-03-29","year":2024,"working_gas_bcf":2259},{"week_ending":"2024-04-05","year":2024,"working_gas_bcf":2283},{"week_ending":"2024-04-12","year":2024,"working_gas_bcf":2333},{"week_ending":"2024-04-19","year":2024,"working_gas_bcf":2425},{"week_ending":"2024-04-26","year":2024,"working_gas_bcf":2484},{"week_ending":"2024-05-03","year":2024,"working_gas_bcf":2569},{"week_ending":"2024-05-10","year":2024,"working_gas_bcf":2640},{"week_ending":"2024-05-17","year":2024,"working_gas_bcf":2719},{"week_ending":"2024-05-24","year":2024,"working_gas_bcf":2804},{"week_ending":"2024-05-31","year":2024,"working_gas_bcf":2900},{"week_ending":"2024-06-07","year":2024,"working_gas_bcf":2974},{"week_ending":"2024-06-14","year":2024,"working_gas_bcf":3045},{"week_ending":"2024-06-21","year":2024,"working_gas_bcf":3102},{"week_ending":"2024-06-28","year":2024,"working_gas_bcf":3134},{"week_ending":"2024-07-05","year":2024,"working_gas_bcf":3199},{"week_ending":"2024-07-12","year":2024,"working_gas_bcf":3209},{"week_ending":"2024-07-19","year":2024,"working_gas_bcf":3231},{"week_ending":"2024-07-26","year":2024,"working_gas_bcf":3249},{"week_ending":"2024-08-02","year":2024,"working_gas_bcf":3270},{"week_ending":"2024-08-09","year":2024,"working_gas_bcf":3264},{"week_ending":"2024-08-16","year":2024,"working_gas_bcf":3299},{"week_ending":"2024-08-23","year":2024,"working_gas_bcf":3334},{"week_ending":"2024-08-30","year":2024,"working_gas_bcf":3347},{"week_ending":"2024-09-06","year":2024,"working_gas_bcf":3387},{"week_ending":"2024-09-13","year":2024,"working_gas_bcf":3445},{"week_ending":"2024-09-20","year":2024,"working_gas_bcf":3493},{"week_ending":"2024-09-27","year":2024,"working_gas_bcf":3548},{"week_ending":"2024-10-04","year":2024,"working_gas_bcf":3630},{"week_ending":"2024-10-11","year":2024,"working_gas_bcf":3706},{"week_ending":"2024-10-18","year":2024,"working_gas_bcf":3785},{"week_ending":"2024-10-25","year":2024,"working_gas_bcf":3864},{"week_ending":"2024-11-01","year":2024,"working_gas_bcf":3931},{"week_ending":"2024-11-08","year":2024,"working_gas_bcf":3972},{"week_ending":"2024-11-15","year":2024,"working_gas_bcf":3969},{"week_ending":"2024-11-22","year":2024,"working_gas_bcf":3967},{"week_ending":"2024-11-29","year":2024,"working_gas_bcf":3937},{"week_ending":"2024-12-06","year":2024,"working_gas_bcf":3747},{"week_ending":"2024-12-13","year":2024,"working_gas_bcf":3622},{"week_ending":"2024-12-20","year":2024,"working_gas_bcf":3529},{"week_ending":"2024-12-27","year":2024,"working_gas_bcf":3413},{"week_ending":"2025-01-03","year":2025,"working_gas_bcf":3373},{"week_ending":"2025-01-10","year":2025,"working_gas_bcf":3115},{"week_ending":"2025-01-17","year":2025,"working_gas_bcf":2892},{"week_ending":"2025-01-24","year":2025,"working_gas_bcf":2571},{"week_ending":"2025-01-31","year":2025,"working_gas_bcf":2397},{"week_ending":"2025-02-07","year":2025,"working_gas_bcf":2297},{"week_ending":"2025-02-14","year":2025,"working_gas_bcf":2101},{"week_ending":"2025-02-21","year":2025,"working_gas_bcf":1840},{"week_ending":"2025-02-28","year":2025,"working_gas_bcf":1760},{"week_ending":"2025-03-07","year":2025,"working_gas_bcf":1698},{"week_ending":"2025-03-14","year":2025,"working_gas_bcf":1707},{"week_ending":"2025-03-21","year":2025,"working_gas_bcf":1744},{"week_ending":"2025-03-28","year":2025,"working_gas_bcf":1773},{"week_ending":"2025-04-04","year":2025,"working_gas_bcf":1830},{"week_ending":"2025-04-11","year":2025,"working_gas_bcf":1846},{"week_ending":"2025-04-18","year":2025,"working_gas_bcf":1934},{"week_ending":"2025-04-25","year":2025,"working_gas_bcf":2041},{"week_ending":"2025-05-02","year":2025,"working_gas_bcf":2145},{"week_ending":"2025-05-09","year":2025,"working_gas_bcf":2255},{"week_ending":"2025-05-16","year":2025,"working_gas_bcf":2375},{"week_ending":"2025-05-23","year":2025,"working_gas_bcf":2476},{"week_ending":"2025-05-30","year":2025,"working_gas_bcf":2598},{"week_ending":"2025-06-06","year":2025,"working_gas_bcf":2707},{"week_ending":"2025-06-13","year":2025,"working_gas_bcf":2802},{"week_ending":"2025-06-20","year":2025,"working_gas_bcf":2898},{"week_ending":"2025-06-27","year":2025,"working_gas_bcf":2953},{"week_ending":"2025-07-04","year":2025,"working_gas_bcf":3006},{"week_ending":"2025-07-11","year":2025,"working_gas_bcf":3052},{"week_ending":"2025-07-18","year":2025,"working_gas_bcf":3075},{"week_ending":"2025-07-25","year":2025,"working_gas_bcf":3123},{"week_ending":"2025-08-01","year":2025,"working_gas_bcf":3130},{"week_ending":"2025-08-08","year":2025,"working_gas_bcf":3186},{"week_ending":"2025-08-15","year":2025,"working_gas_bcf":3199},{"week_ending":"2025-08-22","year":2025,"working_gas_bcf":3217},{"week_ending":"2025-08-29","year":2025,"working_gas_bcf":3262},{"week_ending":"2025-09-05","year":2025,"working_gas_bcf":3333},{"week_ending":"2025-09-12","year":2025,"working_gas_bcf":3423},{"week_ending":"2025-09-19","year":2025,"working_gas_bcf":3499},{"week_ending":"2025-09-26","year":2025,"working_gas_bcf":3551},{"week_ending":"2025-10-03","year":2025,"working_gas_bcf":3631},{"week_ending":"2025-10-10","year":2025,"working_gas_bcf":3712},{"week_ending":"2025-10-17","year":2025,"working_gas_bcf":3798},{"week_ending":"2025-10-24","year":2025,"working_gas_bcf":3872},{"week_ending":"2025-10-31","year":2025,"working_gas_bcf":3905},{"week_ending":"2025-11-07","year":2025,"working_gas_bcf":3950},{"week_ending":"2025-11-14","year":2025,"working_gas_bcf":3936},{"week_ending":"2025-11-21","year":2025,"working_gas_bcf":3924},{"week_ending":"2025-11-28","year":2025,"working_gas_bcf":3913},{"week_ending":"2025-12-05","year":2025,"working_gas_bcf":3735},{"week_ending":"2025-12-12","year":2025,"working_gas_bcf":3569},{"week_ending":"2025-12-19","year":2025,"working_gas_bcf":3401},{"week_ending":"2025-12-26","year":2025,"working_gas_bcf":3364},{"week_ending":"2026-01-02","year":2026,"working_gas_bcf":3244},{"week_ending":"2026-01-09","year":2026,"working_gas_bcf":3174},{"week_ending":"2026-01-16","year":2026,"working_gas_bcf":3054},{"week_ending":"2026-01-23","year":2026,"working_gas_bcf":2813},{"week_ending":"2026-01-30","year":2026,"working_gas_bcf":2454},{"week_ending":"2026-02-06","year":2026,"working_gas_bcf":2202},{"week_ending":"2026-02-13","year":2026,"working_gas_bcf":2059},{"week_ending":"2026-02-20","year":2026,"working_gas_bcf":2007},{"week_ending":"2026-02-27","year":2026,"working_gas_bcf":1876},{"week_ending":"2026-03-06","year":2026,"working_gas_bcf":1838},{"week_ending":"2026-03-13","year":2026,"working_gas_bcf":1872},{"week_ending":"2026-03-20","year":2026,"working_gas_bcf":1818},{"week_ending":"2026-03-27","year":2026,"working_gas_bcf":1851},{"week_ending":"2026-04-03","year":2026,"working_gas_bcf":1900},{"week_ending":"2026-04-10","year":2026,"working_gas_bcf":1960},{"week_ending":"2026-04-17","year":2026,"working_gas_bcf":2063},{"week_ending":"2026-04-24","year":2026,"working_gas_bcf":2142},{"week_ending":"2026-05-01","year":2026,"working_gas_bcf":2205},{"week_ending":"2026-05-08","year":2026,"working_gas_bcf":2290},{"week_ending":"2026-05-15","year":2026,"working_gas_bcf":2391},{"week_ending":"2026-05-22","year":2026,"working_gas_bcf":2483},{"week_ending":"2026-05-29","year":2026,"working_gas_bcf":2578},{"week_ending":"2026-06-05","year":2026,"working_gas_bcf":2686},{"week_ending":"2026-06-12","year":2026,"working_gas_bcf":2759},{"week_ending":"2026-06-19","year":2026,"working_gas_bcf":2835},{"week_ending":"2026-06-26","year":2026,"working_gas_bcf":2922},{"week_ending":"2026-07-03","year":2026,"working_gas_bcf":2983},{"week_ending":"2026-07-10","year":2026,"working_gas_bcf":3024},{"week_ending":"2026-07-17","year":2026,"working_gas_bcf":3056},{"week_ending":"2026-07-24","year":2026,"working_gas_bcf":3084},{"week_ending":"2026-07-31","year":2026,"working_gas_bcf":3117},{"week_ending":"2026-08-07","year":2026,"working_gas_bcf":3153},{"week_ending":"2026-08-14","year":2026,"working_gas_bcf":3169},{"week_ending":"2026-08-21","year":2026,"working_gas_bcf":3184},{"week_ending":"2026-08-28","year":2026,"working_gas_bcf":3214},{"week_ending":"2026-09-04","year":2026,"working_gas_bcf":3254},{"week_ending":"2026-09-11","year":2026,"working_gas_bcf":3298},{"week_ending":"2026-09-18","year":2026,"working_gas_bcf":3351},{"week_ending":"2026-09-25","year":2026,"working_gas_bcf":3415},{"week_ending":"2026-10-02","year":2026,"working_gas_bcf":3500},{"week_ending":"2026-10-09","year":2026,"working_gas_bcf":3567},{"week_ending":"2026-10-16","year":2026,"working_gas_bcf":3644}],"storage_regions":[{"region":"East","week_ending":"2026-10-16","working_gas_bcf":900,"prior_week_bcf":884,"net_change_bcf":16,"year_ago_bcf":897,"vs_year_ago_pct":0.3,"five_year_avg_bcf":876,"vs_five_year_pct":2.7},{"region":"Midwest","week_ending":"2026-10-16","working_gas_bcf":1065,"prior_week_bcf":1037,"net_change_bcf":28,"year_ago_bcf":1056,"vs_year_ago_pct":0.9,"five_year_avg_bcf":1044,"vs_five_year_pct":2.0},{"region":"Mountain","week_ending":"2026-10-16","working_gas_bcf":257,"prior_week_bcf":255,"net_change_bcf":2,"year_ago_bcf":282,"vs_year_ago_pct":-8.9,"five_year_avg_bcf":246,"vs_five_year_pct":4.5},{"region":"Pacific","week_ending":"2026-10-16","working_gas_bcf":297,"prior_week_bcf":294,"net_change_bcf":3,"year_ago_bcf":310,"vs_year_ago_pct":-4.2,"five_year_avg_bcf":279,"vs_five_year_pct":6.5},{"region":"South Central","week_ending":"2026-10-16","working_gas_bcf":1125,"prior_week_bcf":1097,"net_change_bcf":28,"year_ago_bcf":1250,"vs_year_ago_pct":-10.0,"five_year_avg_bcf":1165,"vs_five_year_pct":-3.4},{"region":"Salt","week_ending":"2026-10-16","working_gas_bcf":251,"prior_week_bcf":236,"net_change_bcf":15,"year_ago_bcf":318,"vs_year_ago_pct":-21.1,"five_year_avg_bcf":295,"vs_five_year_pct":-14.9},{"region":"Nonsalt","week_ending":"2026-10-16","working_gas_bcf":875,"prior_week_bcf":861,"net_change_bcf":14,"year_ago_bcf":933,"vs_year_ago_pct":-6.2,"five_year_avg_bcf":871,"vs_five_year_pct":0.5},{"region":"Total Lower 48","week_ending":"2026-10-16","working_gas_bcf":3644,"prior_week_bcf":3567,"net_change_bcf":77,"year_ago_bcf":3796,"vs_year_ago_pct":-4.0,"five_year_avg_bcf":3609,"vs_five_year_pct":1.0}],"steo_balance":[{"period":"2026 Q1","dry_production":110.0,"pipeline_imports":9.3,"residential":24.2,"commercial":15.3,"industrial":25.1,"electric_power":32.9,"lease_plant_fuel":5.7,"pipeline_distribution":4.2,"vehicle":0.2,"total_consumption":107.6,"pipeline_exports":10.0,"lng_exports":17.8,"end_inventories_bcf":1906},{"period":"2026 Q2","dry_production":111.3,"pipeline_imports":7.3,"residential":6.6,"commercial":6.4,"industrial":22.9,"electric_power":34.1,"lease_plant_fuel":5.8,"pipeline_distribution":3.1,"vehicle":0.2,"total_consumption":79.0,"pipeline_exports":9.7,"lng_exports":17.2,"end_inventories_bcf":2995},{"period":"2026 Q3","dry_production":113.6,"pipeline_imports":7.6,"residential":3.4,"commercial":4.9,"industrial":22.5,"electric_power":47.4,"lease_plant_fuel":5.9,"pipeline_distribution":3.4,"vehicle":0.2,"total_consumption":87.6,"pipeline_exports":10.1,"lng_exports":17.0,"end_inventories_bcf":3523},{"period":"2026 Q4 (forecast)","dry_production":113.8,"pipeline_imports":8.0,"residential":15.8,"commercial":11.4,"industrial":24.8,"electric_power":33.6,"lease_plant_fuel":5.9,"pipeline_distribution":3.7,"vehicle":0.2,"total_consumption":95.4,"pipeline_exports":10.4,"lng_exports":18.2,"end_inventories_bcf":3240},{"period":"2025","dry_production":107.6,"pipeline_imports":8.6,"residential":13.3,"commercial":9.9,"industrial":23.6,"electric_power":35.8,"lease_plant_fuel":5.6,"pipeline_distribution":3.5,"vehicle":0.2,"total_consumption":91.9,"pipeline_exports":9.5,"lng_exports":15.1,"end_inventories_bcf":3306},{"period":"2026","dry_production":112.2,"pipeline_imports":8.1,"residential":12.5,"commercial":9.5,"industrial":23.8,"electric_power":37.0,"lease_plant_fuel":5.8,"pipeline_distribution":3.6,"vehicle":0.2,"total_consumption":92.4,"pipeline_exports":10.0,"lng_exports":17.6,"end_inventories_bcf":3240},{"period":"2027 (forecast)","dry_production":116.1,"pipeline_imports":8.0,"residential":12.6,"commercial":9.8,"industrial":24.5,"electric_power":37.1,"lease_plant_fuel":6.0,"pipeline_distribution":3.6,"vehicle":0.2,"total_consumption":93.8,"pipeline_exports":10.5,"lng_exports":18.6,"end_inventories_bcf":3231}],"henry_hub_weekly":[{"week_ending":"2025-01-03","price_usd_mmbtu":3.46},{"week_ending":"2025-01-10","price_usd_mmbtu":3.93},{"week_ending":"2025-01-17","price_usd_mmbtu":5.47},{"week_ending":"2025-01-24","price_usd_mmbtu":4.02},{"week_ending":"2025-01-31","price_usd_mmbtu":3.31},{"week_ending":"2025-02-07","price_usd_mmbtu":3.28},{"week_ending":"2025-02-14","price_usd_mmbtu":4.03},{"week_ending":"2025-02-21","price_usd_mmbtu":5.9},{"week_ending":"2025-02-28","price_usd_mmbtu":3.89},{"week_ending":"2025-03-07","price_usd_mmbtu":4.27},{"week_ending":"2025-03-14","price_usd_mmbtu":4.15},{"week_ending":"2025-03-21","price_usd_mmbtu":4.14},{"week_ending":"2025-03-28","price_usd_mmbtu":3.92},{"week_ending":"2025-04-04","price_usd_mmbtu":4.07},{"week_ending":"2025-04-11","price_usd_mmbtu":3.67},{"week_ending":"2025-04-18","price_usd_mmbtu":3.26},{"week_ending":"2025-04-25","price_usd_mmbtu":3.0},{"week_ending":"2025-05-02","price_usd_mmbtu":3.09},{"week_ending":"2025-05-09","price_usd_mmbtu":3.19},{"week_ending":"2025-05-16","price_usd_mmbtu":3.2},{"week_ending":"2025-05-23","price_usd_mmbtu":3.05},{"week_ending":"2025-05-30","price_usd_mmbtu":3.03},{"week_ending":"2025-06-06","price_usd_mmbtu":2.84},{"week_ending":"2025-06-13","price_usd_mmbtu":2.84},{"week_ending":"2025-06-20","price_usd_mmbtu":3.08},{"week_ending":"2025-06-27","price_usd_mmbtu":3.3},{"week_ending":"2025-07-04","price_usd_mmbtu":3.19},{"week_ending":"2025-07-11","price_usd_mmbtu":3.17},{"week_ending":"2025-07-18","price_usd_mmbtu":3.39},{"week_ending":"2025-07-25","price_usd_mmbtu":3.19},{"week_ending":"2025-08-01","price_usd_mmbtu":3.03},{"week_ending":"2025-08-08","price_usd_mmbtu":2.99},{"week_ending":"2025-08-15","price_usd_mmbtu":2.94},{"week_ending":"2025-08-22","price_usd_mmbtu":2.85},{"week_ending":"2025-08-29","price_usd_mmbtu":2.85},{"week_ending":"2025-09-05","price_usd_mmbtu":2.97},{"week_ending":"2025-09-12","price_usd_mmbtu":2.96},{"week_ending":"2025-09-19","price_usd_mmbtu":3.05},{"week_ending":"2025-09-26","price_usd_mmbtu":2.91},{"week_ending":"2025-10-03","price_usd_mmbtu":3.16},{"week_ending":"2025-10-10","price_usd_mmbtu":3.23},{"week_ending":"2025-10-17","price_usd_mmbtu":2.8},{"week_ending":"2025-10-24","price_usd_mmbtu":3.25},{"week_ending":"2025-10-31","price_usd_mmbtu":3.42},{"week_ending":"2025-11-07","price_usd_mmbtu":3.54},{"week_ending":"2025-11-14","price_usd_mmbtu":3.62},{"week_ending":"2025-11-21","price_usd_mmbtu":3.89},{"week_ending":"2025-11-28","price_usd_mmbtu":4.29},{"week_ending":"2025-12-05","price_usd_mmbtu":4.97},{"week_ending":"2025-12-12","price_usd_mmbtu":4.6},{"week_ending":"2025-12-19","price_usd_mmbtu":3.71},{"week_ending":"2025-12-26","price_usd_mmbtu":3.45},{"week_ending":"2026-01-02","price_usd_mmbtu":4.25},{"week_ending":"2026-01-09","price_usd_mmbtu":2.91},{"week_ending":"2026-01-16","price_usd_mmbtu":3.0},{"week_ending":"2026-01-23","price_usd_mmbtu":12.02},{"week_ending":"2026-01-30","price_usd_mmbtu":13.8},{"week_ending":"2026-02-06","price_usd_mmbtu":5.01},{"week_ending":"2026-02-13","price_usd_mmbtu":3.27},{"week_ending":"2026-02-20","price_usd_mmbtu":3.08},{"week_ending":"2026-02-27","price_usd_mmbtu":3.01},{"week_ending":"2026-03-06","price_usd_mmbtu":2.99},{"week_ending":"2026-03-13","price_usd_mmbtu":3.19},{"week_ending":"2026-03-20","price_usd_mmbtu":3.11},{"week_ending":"2026-03-27","price_usd_mmbtu":2.95},{"week_ending":"2026-04-03","price_usd_mmbtu":2.9},{"week_ending":"2026-04-10","price_usd_mmbtu":2.85},{"week_ending":"2026-04-17","price_usd_mmbtu":2.77},{"week_ending":"2026-04-24","price_usd_mmbtu":2.7},{"week_ending":"2026-05-01","price_usd_mmbtu":2.66},{"week_ending":"2026-05-08","price_usd_mmbtu":2.74},{"week_ending":"2026-05-15","price_usd_mmbtu":2.86},{"week_ending":"2026-05-22","price_usd_mmbtu":3.11},{"week_ending":"2026-05-29","price_usd_mmbtu":3.16},{"week_ending":"2026-06-05","price_usd_mmbtu":3.03},{"week_ending":"2026-06-12","price_usd_mmbtu":3.16},{"week_ending":"2026-06-19","price_usd_mmbtu":3.12},{"week_ending":"2026-06-26","price_usd_mmbtu":3.2},{"week_ending":"2026-07-03","price_usd_mmbtu":3.34},{"week_ending":"2026-07-10","price_usd_mmbtu":3.09},{"week_ending":"2026-07-17","price_usd_mmbtu":2.79},{"week_ending":"2026-07-24","price_usd_mmbtu":2.86},{"week_ending":"2026-07-31","price_usd_mmbtu":2.62},{"week_ending":"2026-08-07","price_usd_mmbtu":2.66},{"week_ending":"2026-08-14","price_usd_mmbtu":2.79},{"week_ending":"2026-08-21","price_usd_mmbtu":2.86},{"week_ending":"2026-08-28","price_usd_mmbtu":2.81},{"week_ending":"2026-09-04","price_usd_mmbtu":2.91},{"week_ending":"2026-09-11","price_usd_mmbtu":2.79},{"week_ending":"2026-09-18","price_usd_mmbtu":2.94},{"week_ending":"2026-09-25","price_usd_mmbtu":3.02},{"week_ending":"2026-10-02","price_usd_mmbtu":3.05},{"week_ending":"2026-10-09","price_usd_mmbtu":3.1},{"week_ending":"2026-10-16","price_usd_mmbtu":3.2}],"indicators":[{"tab":"storage","metric":"Net injection","value":77,"unit":"Bcf","as_of":"Week ending 2026-10-16","note":"10 Bcf below the five-year average build of 87 Bcf; the 10th straight below-average injection","source":"EIA WNGSR, Oct 22 2026; NGI"},{"tab":"storage","metric":"EIA end-of-month storage forecast","value":3850,"unit":"Bcf","as_of":"STEO Oct 2026","note":"","source":"EIA STEO Oct 2026"},{"tab":"supply","metric":"Dry gas production YTD vs last year","value":4.1,"unit":"%","as_of":"YTD through 2026-10-16","note":"S&P Global Energy","source":"AGA, Oct 16 2026","label":"Production, year to date vs 2025","kpi_note":"Through Oct 16, 2026"},{"tab":"supply","metric":"Canada pipeline imports YTD vs last year","value":-12,"unit":"%","as_of":"Year to date (AGA report of Oct 16)","note":"Reported as down more than 12%","source":"AGA, Oct 16 2026","label":"Canada imports, YTD vs 2025","kpi_note":"Down more than 12%, year to date (AGA, Oct 16)"},{"tab":"supply","metric":"Total rigs","value":603,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Unchanged on the week; up 53 year over year","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Total US rigs","kpi_note":"Unchanged on the week; up 53 year over year"},{"tab":"supply","metric":"Oil-directed rigs","value":460,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Up 1 on the week; up 40 year over year","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Oil-directed rigs","kpi_note":"Up 1 on the week; up 40 year over year"},{"tab":"supply","metric":"Gas-directed rigs","value":132,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Down 1 on the week; up 11 year over year","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Gas-directed rigs","kpi_note":"Down 1 on the week; up 11 year over year"},{"tab":"supply","metric":"Miscellaneous rigs","value":11,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Unchanged on the week","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Miscellaneous rigs","kpi_note":"Unchanged on the week"},{"tab":"supply","metric":"Permian rigs","value":272,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Unchanged on the week; up 22 year over year","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Permian rigs","kpi_note":"Unchanged on the week; up 22 year over year"},{"tab":"supply","metric":"Haynesville rigs","value":56,"unit":"rigs","as_of":"Week ending 2026-10-23","note":"Up 15 year over year","source":"Baker Hughes via EnergyNow, Oct 23 2026","label":"Haynesville rigs","kpi_note":"Up 15 year over year"},{"tab":"demand","metric":"Total demand incl. exports YTD vs last year","value":3,"unit":"%","as_of":"YTD through 2026-10-16","note":"Reported as more than 3% higher","source":"AGA, Oct 16 2026","label":"Total demand incl. exports, YTD","kpi_note":"More than 3% higher, year to date through Oct 16"},{"tab":"demand","metric":"Domestic consumption YTD vs last year","value":0.4,"unit":"%","as_of":"Year to date (AGA report of Oct 16)","note":"","source":"AGA, Oct 16 2026","label":"Domestic consumption, YTD","kpi_note":"vs 2025, year to date (AGA, Oct 16)"},{"tab":"demand","metric":"Power burn, latest month vs year ago","value":4.7,"unit":"%","as_of":"September 2026","note":"S&P Global, preliminary","source":"AGA, Oct 1 2026","label":"Power burn, September","kpi_note":"vs September 2025 (AGA, Oct 1)"},{"tab":"demand","metric":"Industrial demand, latest month vs year ago","value":0.6,"unit":"%","as_of":"September 2026","note":"S&P Global, preliminary","source":"AGA, Oct 1 2026","label":"Industrial demand, September","kpi_note":"vs September 2025"},{"tab":"demand","metric":"Mexico pipeline exports YTD vs last year","value":4.5,"unit":"%","as_of":"Year to date (AGA report of Oct 16)","note":"","source":"AGA, Oct 16 2026","label":"Mexico pipeline exports, YTD","kpi_note":"vs 2025, year to date (AGA, Oct 16)"},{"tab":"market","metric":"Henry Hub front-month futures","value":2.64,"unit":"$/MMBtu","as_of":"Settled 2026-10-23","note":"November 2026 contract, settled Oct 23; December traded near $2.99","source":"CME via Energy News Beat, Oct 26 2026"},{"tab":"market","metric":"Henry Hub spot, month to date","value":3.11,"unit":"$/MMBtu","as_of":"Oct 1-15 2026 average","note":"Up 8.4% from the same period in September (Argus)","source":"AGA, Oct 16 2026"},{"tab":"market","metric":"STEO Henry Hub, current year","value":3.48,"unit":"$/MMBtu","as_of":"STEO Oct 2026","note":"","source":"EIA STEO Oct 2026"},{"tab":"market","metric":"STEO Henry Hub, next year","value":3.16,"unit":"$/MMBtu","as_of":"STEO Oct 2026","note":"","source":"EIA STEO Oct 2026"},{"tab":"market","metric":"Appalachia discount to Henry Hub","value":-2.05,"unit":"$/MMBtu","as_of":"Oct 1\u201315, 2026","note":"Appalachia spot fell 33.4%","source":"AGA, Oct 16 2026","label":"Appalachia basis to Henry Hub","kpi_note":"Oct 1\u201315 average (AGA, Oct 16); takeaway-constrained"},{"tab":"market","metric":"Northeast discount to Henry Hub","value":-1.21,"unit":"$/MMBtu","as_of":"Oct 1\u201315, 2026","note":"Northeast spot fell 27.4%","source":"AGA, Oct 16 2026","label":"Northeast basis to Henry Hub","kpi_note":"Oct 1\u201315 average (AGA, Oct 16)"},{"tab":"market","metric":"JKM (Asia), front month","value":30.6,"unit":"$/MMBtu","as_of":"2026-10-26","note":"Asia spot LNG, December delivery","source":"Cbonds, Oct 26 2026"},{"tab":"market","metric":"EU gas storage","value":74.6,"unit":"% full","as_of":"2026-10-21","note":"About 15 points below the five-year average; lowest for the date since 2011","source":"GIE AGSI+ via Global Energy Flow, Oct 22 2026"},{"tab":"lng","metric":"LNG feedgas, month to date","value":18.3,"unit":"Bcf/d","as_of":"October 2026 to date (through Oct 28)","note":"Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17\u201319.","source":"LSEG via Reuters, Oct 29 2026; NGI, Oct 20 and Oct 28 2026","label":"LNG feedgas, October to date","kpi_note":"Oct 1\u201328 average. Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17\u201319."},{"tab":"lng","metric":"LNG feedgas YTD increase vs last year","value":2.4,"unit":"Bcf/d","as_of":"YTD through 2026-10-14","note":"A 15.7% increase","source":"AGA, Oct 16 2026","label":"Feedgas gain, YTD vs 2025","kpi_note":"Up 15.7%, year to date through Oct 14"},{"tab":"lng","metric":"LNG exports, latest period","value":17.4,"unit":"Bcf/d","as_of":"1H 2026","note":"Up 23% from 1H 2025","source":"EIA Today in Energy, Sep 1 2026","label":"LNG exports, first half 2026","kpi_note":"Up 23% from 1H 2025"},{"tab":"lng","metric":"LNG exports to Asia vs year ago","value":108,"unit":"%","as_of":"1H 2026","note":"Up 2.3 Bcf/d","source":"EIA Today in Energy, Sep 1 2026","label":"Exports to Asia, 1H26 vs 1H25","kpi_note":"Up 2.3 Bcf/d"},{"tab":"market","metric":"TTF (Europe), front month","value":31.5,"unit":"$/MMBtu","as_of":"2026-10-26","note":"\u20ac95.73/MWh, November contract","source":"Mansfield Energy, Oct 26 2026"}],"lng_terminals":[{"terminal":"Sabine Pass","state":"Louisiana","nominal_bcfd":3.6,"peak_bcfd":null,"status":"Operating","note":""},{"terminal":"Corpus Christi (incl. Stage 3)","state":"Texas","nominal_bcfd":null,"peak_bcfd":3.9,"status":"Operating","note":"Stage 3 completed Aug 28 2026, adding 1.5 Bcf/d"},{"terminal":"Plaquemines","state":"Louisiana","nominal_bcfd":2.6,"peak_bcfd":null,"status":"Operating","note":"FERC cleared Phase 1 to enter service Oct 16 2026; commercial operations targeted Oct 31; Phase 2 mid-2027"},{"terminal":"Golden Pass Train 1","state":"Texas","nominal_bcfd":0.7,"peak_bcfd":0.8,"status":"Operating","note":"First cargo Apr 22 2026; feedgas averaged about 0.57 Bcf/d in October, high of about 0.8 Bcf/d on Oct 22"},{"terminal":"Golden Pass Train 2","state":"Texas","nominal_bcfd":0.7,"peak_bcfd":0.8,"status":"Under construction","note":"Expected late 2026"},{"terminal":"Golden Pass Train 3","state":"Texas","nominal_bcfd":0.7,"peak_bcfd":0.8,"status":"Under construction","note":"Expected 1H 2027"},{"terminal":"Cameron","state":"Louisiana","nominal_bcfd":null,"peak_bcfd":null,"status":"Operating","note":"Capacity not in sources used"},{"terminal":"Freeport","state":"Texas","nominal_bcfd":null,"peak_bcfd":null,"status":"Operating","note":"Power disruption tripped all three trains the week of Oct 26; recovering"},{"terminal":"Calcasieu Pass","state":"Louisiana","nominal_bcfd":null,"peak_bcfd":null,"status":"Operating","note":"Capacity not in sources used"},{"terminal":"Cove Point","state":"Maryland","nominal_bcfd":null,"peak_bcfd":null,"status":"Operating","note":"Capacity not in sources used"}],"lng_destinations":[{"country":"Egypt","bcfd":1.7},{"country":"Netherlands","bcfd":1.7},{"country":"Italy","bcfd":1.4},{"country":"France","bcfd":1.2},{"country":"United Kingdom","bcfd":1.1}],"infra_events":[{"date":"2026-04-22","event":"Golden Pass LNG ships first cargo","type":"LNG","detail":"Train 1, 0.7 Bcf/d nominal; ninth U.S. LNG export terminal","when":"Apr 22, 2026"},{"date":"2026-06-01","event":"Hugh Brinson pipeline enters service","type":"Pipeline","detail":"Energy Transfer intrastate line from the Permian near Waha to Maypearl, Texas; ramping into early 2027 (in service June 2026)","when":"Jun 2026"},{"date":"2026-08-28","event":"Corpus Christi Stage 3 completed","type":"LNG","detail":"Adds 1.5 Bcf/d; peak liquefaction 3.9 Bcf/d","when":"Aug 28, 2026"},{"date":"2026-10-09","event":"Hurricane Isaias Gulf shut-ins peak","type":"Disruption","detail":"1.26 Bcf/d shut in (58.8% of Gulf gas output); 0.24 Bcf/d by Oct 14","when":"Oct 9, 2026"},{"date":"2026-10-16","event":"FERC clears Plaquemines Phase 1 to enter service","type":"LNG","detail":"Venture Global's Louisiana plant; commercial operations targeted Oct 31","when":"Oct 16, 2026"},{"date":"2026-10-19","event":"US LNG feedgas tops 20 Bcf/d for the first time","type":"LNG","detail":"About 20.7 Bcf/d on Oct 19 per NGI; back above 20 Bcf/d on Oct 28 as Golden Pass and Plaquemines ramp up","when":"Oct 19, 2026"},{"date":"2026-10-26","event":"Freeport LNG power disruption","type":"Disruption","detail":"All three trains tripped early in the week; feedgas back to about 1.5 Bcf/d by Oct 28","when":"Week of Oct 26, 2026"},{"date":"2026-10-31","event":"Plaquemines Phase 1 commercial operations (target)","type":"LNG","detail":"Phase 2 targeted mid-2027","when":"Oct 31, 2026 (target)"},{"date":"2026-12-31","event":"Golden Pass Train 2 (expected late 2026)","type":"LNG","detail":"0.7 Bcf/d nominal","when":"Late 2026 (expected)"}],"sample_vessels":[{"kind":"Terminal","vessel":"Sabine Pass","status":"Terminal","lat":29.73,"lon":-93.87,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Golden Pass","status":"Terminal","lat":29.76,"lon":-93.93,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Cameron","status":"Terminal","lat":29.8,"lon":-93.33,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Calcasieu Pass","status":"Terminal","lat":29.77,"lon":-93.34,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Plaquemines","status":"Terminal","lat":29.55,"lon":-89.69,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Freeport","status":"Terminal","lat":28.94,"lon":-95.31,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Corpus Christi","status":"Terminal","lat":27.88,"lon":-97.25,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Cove Point","status":"Terminal","lat":38.4,"lon":-76.39,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Terminal","vessel":"Elba Island","status":"Terminal","lat":32.08,"lon":-81.03,"origin":"","destination":"","cargo_bcf":null,"speed_knots":null,"eta":""},{"kind":"Vessel","vessel":"Sample Carrier 01","status":"Loading","lat":29.7,"lon":-93.85,"origin":"Sabine Pass","destination":"Netherlands","cargo_bcf":3.5,"speed_knots":0,"eta":"2026-11-03"},{"kind":"Vessel","vessel":"Sample Carrier 02","status":"Loading","lat":29.52,"lon":-89.71,"origin":"Plaquemines","destination":"Germany","cargo_bcf":3.5,"speed_knots":0,"eta":"2026-11-05"},{"kind":"Vessel","vessel":"Sample Carrier 03","status":"Loading","lat":38.37,"lon":-76.36,"origin":"Cove Point","destination":"Germany","cargo_bcf":3.4,"speed_knots":0,"eta":"2026-11-02"},{"kind":"Vessel","vessel":"Sample Carrier 04","status":"Waiting to load","lat":27.62,"lon":-96.7,"origin":"Corpus Christi","destination":"Japan","cargo_bcf":0,"speed_knots":0,"eta":"2026-11-24"},{"kind":"Vessel","vessel":"Sample Carrier 05","status":"Laden","lat":28.3,"lon":-94.1,"origin":"Freeport","destination":"United Kingdom","cargo_bcf":3.6,"speed_knots":17,"eta":"2026-11-04"},{"kind":"Vessel","vessel":"Sample Carrier 06","status":"Laden","lat":25.4,"lon":-86.2,"origin":"Cameron","destination":"France","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-11-03"},{"kind":"Vessel","vessel":"Sample Carrier 07","status":"Laden","lat":24.3,"lon":-81.4,"origin":"Calcasieu Pass","destination":"Italy","cargo_bcf":3.4,"speed_knots":18,"eta":"2026-11-06"},{"kind":"Vessel","vessel":"Sample Carrier 08","status":"Laden","lat":33.8,"lon":-55.0,"origin":"Sabine Pass","destination":"Netherlands","cargo_bcf":3.5,"speed_knots":19,"eta":"2026-10-28"},{"kind":"Vessel","vessel":"Sample Carrier 09","status":"Laden","lat":38.2,"lon":-28.5,"origin":"Corpus Christi","destination":"France","cargo_bcf":3.6,"speed_knots":18,"eta":"2026-10-25"},{"kind":"Vessel","vessel":"Sample Carrier 10","status":"Laden","lat":48.6,"lon":-7.8,"origin":"Plaquemines","destination":"United Kingdom","cargo_bcf":3.5,"speed_knots":15,"eta":"2026-10-21"},{"kind":"Vessel","vessel":"Sample Carrier 11","status":"Laden","lat":35.7,"lon":-8.5,"origin":"Golden Pass","destination":"Egypt","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-10-27"},{"kind":"Vessel","vessel":"Sample Carrier 12","status":"Laden","lat":33.6,"lon":25.0,"origin":"Sabine Pass","destination":"Egypt","cargo_bcf":3.4,"speed_knots":16,"eta":"2026-10-22"},{"kind":"Vessel","vessel":"Sample Carrier 13","status":"Laden","lat":13.2,"lon":-77.0,"origin":"Corpus Christi","destination":"South Korea","cargo_bcf":3.6,"speed_knots":17,"eta":"2026-11-15"},{"kind":"Vessel","vessel":"Sample Carrier 14","status":"Laden","lat":9.6,"lon":-79.9,"origin":"Freeport","destination":"Japan","cargo_bcf":3.5,"speed_knots":8,"eta":"2026-11-12"},{"kind":"Vessel","vessel":"Sample Carrier 15","status":"Laden","lat":2.0,"lon":-21.0,"origin":"Sabine Pass","destination":"China","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-11-18"},{"kind":"Vessel","vessel":"Sample Carrier 16","status":"Ballast","lat":30.5,"lon":-68.0,"origin":"Netherlands","destination":"Sabine Pass","cargo_bcf":0,"speed_knots":18,"eta":"2026-10-25"},{"kind":"Vessel","vessel":"Sample Carrier 17","status":"Ballast","lat":26.8,"lon":-90.8,"origin":"Italy","destination":"Plaquemines","cargo_bcf":0,"speed_knots":17,"eta":"2026-10-22"},{"kind":"Vessel","vessel":"Sample Carrier 18","status":"Laden","lat":21.0,"lon":-150.0,"origin":"Sabine Pass","destination":"Japan","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-11-08"},{"kind":"Vessel","vessel":"Sample Carrier 19","status":"Laden","lat":34.3,"lon":140.6,"origin":"Corpus Christi","destination":"Japan","cargo_bcf":3.6,"speed_knots":12,"eta":"2026-10-21"},{"kind":"Vessel","vessel":"Sample Carrier 20","status":"Laden","lat":-35.6,"lon":19.5,"origin":"Plaquemines","destination":"China","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-11-14"},{"kind":"Vessel","vessel":"Sample Carrier 21","status":"Laden","lat":-4.0,"lon":74.0,"origin":"Cameron","destination":"China","cargo_bcf":3.5,"speed_knots":18,"eta":"2026-11-04"},{"kind":"Vessel","vessel":"Sample Carrier 22","status":"Laden","lat":16.0,"lon":116.0,"origin":"Freeport","destination":"China","cargo_bcf":3.4,"speed_knots":17,"eta":"2026-10-24"},{"kind":"Vessel","vessel":"Sample Carrier 23","status":"Ballast","lat":27.0,"lon":-170.0,"origin":"South Korea","destination":"Corpus Christi","cargo_bcf":0,"speed_knots":18,"eta":"2026-11-06"}],"steo_hh_quarterly":[{"quarter":"2026 Q1","mid_date":"2026-02-15","price_usd_mmbtu":4.79,"kind":"Estimate"},{"quarter":"2026 Q2","mid_date":"2026-05-15","price_usd_mmbtu":2.95,"kind":"Estimate"},{"quarter":"2026 Q3","mid_date":"2026-08-15","price_usd_mmbtu":2.87,"kind":"Estimate"},{"quarter":"2026 Q4","mid_date":"2026-11-15","price_usd_mmbtu":3.3,"kind":"Forecast"},{"quarter":"2027 Q1","mid_date":"2027-02-15","price_usd_mmbtu":3.47,"kind":"Forecast"},{"quarter":"2027 Q2","mid_date":"2027-05-15","price_usd_mmbtu":2.64,"kind":"Forecast"},{"quarter":"2027 Q3","mid_date":"2027-08-15","price_usd_mmbtu":3.04,"kind":"Forecast"},{"quarter":"2027 Q4","mid_date":"2027-11-15","price_usd_mmbtu":3.49,"kind":"Forecast"}]};
+(function () {
+  const store = window.__SANJO_DATA__, calcs = {}, subs = [];
+  let loaded = false;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const colorsLight = ['#2f6fd6', '#d9822b', '#12877a', '#8f5bd6', '#c2417a', '#3f9fd0', '#6b8e23', '#b8860b'];
+  const colorsDark = ['#6aa6ec', '#f0a35a', '#4cc3b2', '#b08cf0', '#e57aa8', '#7cc4ea', '#9cc25a', '#e0b84f'];
+  const mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  const dash = {
+    get colors() { return mq && mq.matches ? colorsDark : colorsLight; },
+    data(id) {
+      if (store[id]) { const rows = store[id]; return { status: 'ok', data: rows, rows, columns: rows.length ? Object.keys(rows[0]) : [], meta: [], refreshing: false }; }
+      if (calcs[id]) {
+        try { const c = calcs[id]; const out = c.fn(...c.inputs.map((i) => dash.data(i).data)); return { status: 'ok', data: out, rows: out, columns: Array.isArray(out) && out.length ? Object.keys(out[0]) : [], meta: [], refreshing: false }; }
+        catch (e) { console.error(e); return { status: 'error', data: [], message: String(e) }; }
+      }
+      return { status: 'missing', data: [] };
+    },
+    calc(id, def) { calcs[id] = def; },
+    loader() {},
+    onData(fn) { subs.push(fn); if (document.readyState !== 'loading') try { fn(); } catch (e) { console.error(e); } },
+    setLink(id) { if (!loaded) return; try { history.replaceState(null, '', '#' + id); } catch (e) {} },
+    params() { return {}; }, setParams() {}, resetParams() {}, refresh() {},
+  };
+  window.dash = dash;
+  dash.meta = { Y: '2026', Y0: '2025', Y1: '2027', dest_period: 'first half 2026', jkm_live: false };
+  const fillLive = () => document.querySelectorAll('[data-live]').forEach((el) => { const v = dash.meta[el.dataset.live]; if (v !== undefined && v !== null && v !== '') el.textContent = v; });
+  const fillTpl = () => document.querySelectorAll('[data-tpl]').forEach((el) => { el.textContent = el.dataset.tpl.replace(/\{(\w+)\}/g, (m, k) => (dash.meta[k] != null && dash.meta[k] !== '' ? dash.meta[k] : m)); });
+  const projMeta = () => { try { const p = dash.data('storage_projection').data; const last = p[p.length - 1]; if (last) { dash.meta.PROJ = last.week_ending; dash.meta.proj_label = new Date(last.week_ending + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }); } } catch (e) {} };
+  const run = () => { projMeta(); fillLive(); fillTpl(); subs.forEach((f) => { try { f(); } catch (e) { console.error(e); } }); };
+  dash.update = (patch, meta) => { Object.assign(store, patch || {}); Object.assign(dash.meta, meta || {}); if (document.readyState !== 'loading') run(); };
+  document.addEventListener('DOMContentLoaded', run);
+  window.addEventListener('load', () => { loaded = true; window.scrollTo(0, 0); });
+  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(run, 150); });
+  if (mq && mq.addEventListener) mq.addEventListener('change', run);
+})();
+</script>
+</head>
+<style>
+/* Shared site header */
+:root{--sc-paper:#f4f7f9;--sc-ink:#0f1d2e;--sc-ink-soft:#4a5a6c;--sc-rule:#d6dee6;--sc-blue:#1d5fa8;--sc-max:1160px;--sc-display:"Archivo","Arial Narrow",Arial,sans-serif;--sc-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media(prefers-color-scheme:dark){:root{--sc-paper:#0c1724;--sc-ink:#e8eef4;--sc-ink-soft:#a3b3c4;--sc-rule:#23384f;--sc-blue:#6aa6ec}}
+.sc-top{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--sc-paper,#f4f7f9) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--sc-rule,#d6dee6)}
+.sc-top .sc-wrap{max-width:1160px;box-sizing:border-box;margin-inline:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sc-top .sc-logo{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-logo svg{width:38px;height:38px;flex:none}
+.sc-top .sc-logo-word{display:flex;flex-direction:column;line-height:1;gap:4px}
+.sc-top .sc-logo-name{font-family:var(--sc-display);font-weight:800;font-stretch:118%;font-size:19px;letter-spacing:.2em;color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-logo-sub{font-family:var(--sc-mono);font-size:9.5px;letter-spacing:.42em;color:var(--sc-blue,#1d5fa8)}
+.sc-top .sc-nav{display:flex;align-items:center;gap:26px;font-size:15px;font-family:"IBM Plex Sans",sans-serif}
+.sc-top .sc-nav a{text-decoration:none;color:var(--sc-ink-soft,#4a5a6c)}
+.sc-top .sc-nav a:hover{color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-nav .sc-btn{display:inline-flex;align-items:center;padding:13px 20px;border:1px solid transparent;border-radius:999px;background:var(--sc-blue,#1d5fa8);color:#fff;font:600 15px/1 "IBM Plex Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.sc-top .sc-cta-short{display:none}
+@media(max-width:560px){.sc-top .sc-cta-long{display:none}.sc-top .sc-cta-short{display:inline}.sc-top .sc-nav .sc-btn{padding:11px 16px}}
+.sc-top .sc-nav .sc-btn:hover{color:#fff}
+@media(max-width:820px){.sc-top .sc-nav a:not(.sc-btn){display:none}}
+</style>
+<header class="sc-top">
+  <div class="sc-wrap">
+    <a class="sc-logo" href="index.html">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="scHdrGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d5fa8"/><stop offset="1" stop-color="#12877a"/></linearGradient></defs><path d="M20 2.2 L35 7.4 V19.2 C35 28.4 28.6 34.8 20 37.8 C11.4 34.8 5 28.4 5 19.2 V7.4 Z" fill="url(#scHdrGrad)"/><path d="M20 5.4 L32 9.6 V19.2 C32 26.6 27 31.9 20 34.6 C13 31.9 8 26.6 8 19.2 V9.6 Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/><text x="20" y="27.6" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="800" font-size="22" fill="#fff">S</text></svg>
+      <span class="sc-logo-word"><span class="sc-logo-name">SANJO</span><span class="sc-logo-sub">CONSULT</span></span>
+    </a>
+    <nav class="sc-nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#about">About</a>
+      <a class="sc-btn" href="index.html#contact"><span class="sc-cta-long">Start a conversation</span><span class="sc-cta-short">Contact</span></a>
+    </nav>
+  </div>
+</header>
+<div id="dash-root">
+<style>
+#dash-root { --dash-gutter: var(--cds-pad-lg); }
+.ng { font-family: var(--font-anthropic-sans); color: var(--color-fg); display: flex; flex-direction: column; gap: var(--cds-gap-lg); }
+.ng-head { display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; gap: var(--cds-gap-sm) var(--cds-gap-lg); }
+.ng-head-main { display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.ng-eyebrow { font-size: var(--cds-font-size-caption); letter-spacing: .08em; text-transform: uppercase; color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); }
+.ng-chips { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); justify-content: flex-start; }
+.ng-chip { display: inline-flex; align-items: center; gap: .4em; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); border: 1px solid var(--color-border-line); border-radius: 999px; padding: 2px 10px; background: var(--color-panel); white-space: nowrap; }
+.ng-chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-ok); display: inline-block; }
+@media (max-width: 720px) { .ng-head { grid-template-columns: minmax(0, 1fr); } .ng-chips { justify-content: flex-start; } }
+.ng-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.25); line-height: 1.15; margin: 0; text-wrap: balance; }
+.ng-take { color: var(--color-fg-muted); font-size: var(--cds-font-size-body); margin: 0; max-width: 78ch; }
+.ng-take b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+.ng-asof { display: none; }
+.ng-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 5px; background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: calc(var(--cds-radius) + 4px); }
+.ng-tabs::-webkit-scrollbar { display: none; }
+.ng-tab { --tab-color: var(--color-fg); font: inherit; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); display: inline-flex; align-items: center; gap: .5em; flex: 1 0 auto; justify-content: center; color: var(--color-fg); background: color-mix(in srgb, var(--tab-color) 12%, transparent); border: 1px solid color-mix(in srgb, var(--tab-color) 40%, transparent); border-radius: var(--cds-radius); padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; white-space: nowrap; transition: background var(--cds-dur-slow), color var(--cds-dur-slow), box-shadow var(--cds-dur-slow); }
+.ng-tab svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--tab-color); }
+.ng-tab:hover { background: color-mix(in srgb, var(--tab-color) 24%, transparent); }
+.ng-tab:focus-visible { outline: 2px solid var(--tab-color); outline-offset: 2px; }
+.ng-tab[aria-selected="true"] { background: var(--tab-color); border-color: var(--tab-color); color: var(--color-bg); box-shadow: 0 2px 8px color-mix(in srgb, var(--tab-color) 40%, transparent); }
+.ng-tab[aria-selected="true"] svg { color: var(--color-bg); }
+.ng-pagehead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-xs) var(--cds-gap-md); }
+.ng-subhead { margin-top: var(--cds-gap-lg); padding-top: var(--cds-pad-md); border-top: 1px solid var(--color-border-line); }
+.ng-pagehead h2 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); }
+.ng-pagehead p { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 70ch; }
+.ng-page { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+.ng-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
+.ng-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ng-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; font-weight: var(--cds-font-weight-medium); }
+.ng-kpi-val { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.ng-kpi-unit { font-family: var(--font-anthropic-sans); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-left: .25em; }
+.ng-kpi-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ng-up { color: var(--color-ok); } .ng-down { color: var(--color-bad); }
+.ng-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-md); }
+.ng-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+.ng-card h3 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); display: flex; align-items: center; gap: .5em; flex-wrap: wrap; }
+.ng-card > .ng-note:first-of-type { margin-top: -4px; padding-bottom: var(--cds-pad-xs); border-bottom: 1px solid var(--color-border-line); }
+.ng-note { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ng-chart { position: relative; min-height: 260px; }
+.ng-chart.short { min-height: 200px; }
+.ng-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ng-legend span { display: inline-flex; align-items: center; gap: .35em; }
+.ng-legend i { width: .7em; height: .7em; border-radius: 2px; display: inline-block; }
+.ng-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+.ng-tip .d { color: var(--cds-text-secondary); }
+.ng-tip i { width: .6em; height: .6em; border-radius: 2px; display: inline-block; margin-right: .35em; }
+.ng-tablewrap { overflow-x: auto; }
+.ng-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.ng-table th { text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .04em; font-size: calc(var(--cds-font-size-caption) * .92); border-bottom: 1px solid var(--color-border-line); padding: var(--cds-pad-xs) var(--cds-pad-sm); white-space: nowrap; }
+.ng-table td { border-bottom: 1px solid var(--color-border-line); padding: 7px var(--cds-pad-sm); vertical-align: top; }
+.ng-table tbody tr:hover td { background: var(--cds-chart-grid); }
+.ng-table tbody tr:last-child td { border-bottom: 0; }
+.ng-embed { border-radius: 10px; overflow: hidden; min-height: 460px; background: var(--cds-chart-grid); }
+.ng-embed iframe { display: block; width: 100%; border: 0; }
+.ng-embed-link { margin: 12px 0 0; }
+.ng-embed-link a { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; background: var(--sc-blue, #1d5fa8); color: #fff; font-weight: 600; font-size: 14px; text-decoration: none; }
+.ng-embed-link a:hover { filter: brightness(1.08); }
+.ng-table th.n, .ng-table td.n { text-align: right; }
+.ng-table tr.total td { font-weight: var(--cds-font-weight-medium); }
+.ng-table tr.sub td:first-child { padding-left: var(--cds-pad-lg); color: var(--color-fg-muted); }
+.ng-pill { display: inline-block; border-radius: 999px; padding: 0 .55em; font-size: var(--cds-font-size-caption); border: 1px solid var(--color-border-line); white-space: nowrap; }
+.ng-pill.ok { color: var(--color-ok); } .ng-pill.warn { color: var(--color-warn); } .ng-pill.bad { color: var(--color-bad); }
+.ng-by { color: var(--ng-accent, var(--color-fg)); font-style: italic; }
+.ng-logo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: var(--cds-gap-sm); }
+.ng-logo-mark { width: 40px; height: 40px; flex: none; filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--ng-accent, var(--color-fg)) 35%, transparent)); }
+.ng-logo-stop1 { stop-color: var(--ng-accent, var(--color-fg)); }
+.ng-logo-stop2 { stop-color: var(--ng-accent2, var(--color-fg-muted)); }
+.ng-logo-ring { fill: none; stroke: var(--color-bg); stroke-opacity: .35; stroke-width: 1; }
+.ng-logo-t { font-family: var(--font-anthropic-sans); font-weight: 800; font-size: 22px; fill: var(--color-bg); }
+.ng-logo-dot { fill: var(--color-bg); }
+.ng-logo-word { display: flex; flex-direction: column; line-height: 1; gap: 4px; }
+.ng-logo-name { font-family: var(--font-anthropic-sans); font-weight: 800; font-size: calc(var(--cds-font-size-heading) * 1.15); letter-spacing: .22em; color: var(--color-fg); }
+.ng-logo-sub { font-family: var(--font-anthropic-sans); font-weight: 600; font-size: calc(var(--cds-font-size-caption) * .85); letter-spacing: .42em; color: var(--ng-accent, var(--color-fg-muted)); }
+.ng-logo-sm { margin: 0; gap: 7px; }
+.ng-logo-sm .ng-logo-mark { width: 26px; height: 26px; }
+.ng-logo-sm .ng-logo-name { font-size: var(--cds-font-size-body); }
+.ng-logo-sm .ng-logo-sub { font-size: calc(var(--cds-font-size-caption) * .7); letter-spacing: .36em; }
+.ng-foot-left { display: inline-flex; align-items: center; gap: 10px; }
+.ng-foot { align-items: center; }
+.ng-brand { color: var(--ng-accent, var(--color-fg)); font-weight: 700; letter-spacing: .1em; }
+.ng-foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-xs) var(--cds-gap-md); padding-top: var(--cds-pad-md); border-top: 1px solid var(--color-border-line); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ng-foot-brand { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-body); color: var(--color-fg); }
+.ng-src { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+@media (max-width: 520px) { .ng-hide-sm { display: none; } }
+.ng-chip-live[data-live-state=off] i { background: var(--color-fg-muted); }
+</style>
+
+<div class="ng">
+  <header class="ng-head">
+    <div class="ng-head-main">
+      <span class="ng-eyebrow">Lower 48 · Henry Hub · LNG</span>
+      <h1 class="ng-title" id="top">US Natural Gas Market Dashboard</h1>
+      <p class="ng-take">Storage stands at <b class="dash-skeleton" data-source="storage_regions" data-field="working_gas_bcf" data-where="region=Total Lower 48" data-fmt="int">—</b> Bcf, <b class="dash-skeleton" data-source="storage_regions" data-field="vs_five_year_pct" data-where="region=Total Lower 48" data-fmt="pct">—</b>% versus the five-year average and <b class="dash-skeleton" data-source="storage_regions" data-field="vs_year_ago_pct" data-where="region=Total Lower 48" data-fmt="pct">—</b>% versus a year ago, while front-month Henry Hub futures are at $<b class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Henry Hub front-month futures" data-fmt="usd">—</b>/MMBtu.</p>
+    </div>
+    <div class="ng-chips" aria-label="Data as of">
+      <span class="ng-chip ng-chip-live" data-live-state="off"><i></i><span data-live="chip_live">Snapshot · Oct 26, 2026</span></span>
+      <span class="ng-chip">EIA storage · week ending <span data-live="wk">Oct 16, 2026</span></span>
+      <span class="ng-chip">Henry Hub futures · <span data-live="chip_fut">Oct 23, 2026</span></span>
+      <span class="ng-chip">Rigs · week ending <span data-live="rigs_wk">Oct 23, 2026</span></span>
+      <span class="ng-chip">EIA STEO · <span data-live="chip_steo">October 2026</span></span>
+    </div>
+  </header>
+
+  <nav class="ng-tabs" role="tablist" aria-label="Dashboard sections">
+    <button class="ng-tab" role="tab" id="tab-storage" data-page="storage" aria-controls="storage"><svg viewBox="0 0 16 16" aria-hidden="true"><ellipse cx="8" cy="3.5" rx="5" ry="1.8"/><path d="M3 3.5v9c0 1 2.2 1.8 5 1.8s5-.8 5-1.8v-9"/><path d="M3 8c0 1 2.2 1.8 5 1.8s5-.8 5-1.8"/></svg><span>Storage</span></button>
+    <button class="ng-tab" role="tab" id="tab-supply" data-page="supply" aria-controls="supply"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3"/><path d="M5 6l3-3 3 3"/><path d="M2 14h12"/><path d="M4.5 14l1.5-4h4l1.5 4"/></svg><span>Supply</span></button>
+    <button class="ng-tab" role="tab" id="tab-demand" data-page="demand" aria-controls="demand"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 1.5L4 9h4.5l-1 5.5L13 7H8.5z"/></svg><span>Demand</span></button>
+    <button class="ng-tab" role="tab" id="tab-infrastructure" data-page="infrastructure" aria-controls="infrastructure"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="3" cy="8" r="1.6"/><circle cx="13" cy="3.5" r="1.6"/><circle cx="13" cy="12.5" r="1.6"/><path d="M4.6 8h3.2l3.6-3.6"/><path d="M7.8 8l3.6 3.6"/></svg><span>Infrastructure</span></button>
+    <button class="ng-tab" role="tab" id="tab-market" data-page="market" aria-controls="market"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2v12h12"/><path d="M4.5 10.5l3-3 2.2 1.8L13.5 5"/></svg><span>Market intelligence</span></button>
+    <button class="ng-tab" role="tab" id="tab-lng" data-page="lng" aria-controls="lng"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 10.5h13l-2 3.5h-9z"/><path d="M4.5 10.5V7h7v3.5"/><path d="M8 7V3.5"/><path d="M1 15.2c1.2 0 1.2-.6 2.4-.6s1.2.6 2.4.6 1.2-.6 2.4-.6 1.2.6 2.4.6 1.2-.6 2.4-.6"/></svg><span>LNG waterborne</span></button>
+  </nav>
+
+  <!-- STORAGE -->
+  <section class="ng-page" id="storage" data-page="storage">
+    <div class="ng-pagehead"><h2 id="storage-title">Storage</h2><p>Working gas in underground storage across the Lower 48, from the EIA weekly report.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label">Working gas, Lower 48</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="working_gas_bcf" data-where="region=Total Lower 48" data-fmt="int">—</span><span class="ng-kpi-unit">Bcf</span></span><span class="ng-kpi-note">Week ending <span data-live="wk">Oct 16, 2026</span></span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Net injection</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="net_change_bcf" data-where="region=Total Lower 48" data-fmt="signed">—</span><span class="ng-kpi-unit">Bcf</span></span><span class="ng-kpi-note" data-source="indicators" data-field="note" data-where="metric=Net injection">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Versus five-year average</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="vs_five_year_pct" data-where="region=Total Lower 48" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note"><span data-live="five_yr">2021–2025</span> average</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Versus a year ago</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="vs_year_ago_pct" data-where="region=Total Lower 48" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note">Week ending <span data-live="wk_ya">Oct 16, 2025</span></span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">EIA end-of-<span data-live="eom">October</span> forecast</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=EIA end-of-month storage forecast" data-fmt="int">—</span><span class="ng-kpi-unit">Bcf</span></span><span class="ng-kpi-note">STEO, <span data-live="chip_steo">October 2026</span></span></div>
+    </div>
+    <div class="ng-card" id="storage-season">
+      <h3 data-tpl="Working gas by week, {Y} against the two prior years">Working gas by week, 2026 against the two prior years</h3>
+      <p class="ng-note">Lower 48 working gas in underground storage, Bcf.</p>
+      <div class="ng-legend" id="storage-legend"></div>
+      <div class="ng-chart" id="storage-chart" data-source="storage_weekly"></div>
+    </div>
+    <div class="ng-card" id="storage-regions">
+      <h3>Storage by region</h3>
+      <p class="ng-note">Week ending <span data-live="wk">Oct 16, 2026</span>, Bcf. Salt and nonsalt are parts of South Central.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="region-table" data-source="storage_regions" data-row-key="region">
+          <thead><tr><th data-field="region">Region</th><th class="n" data-field="working_gas_bcf"><span data-live="wk_short">Oct 16</span></th><th class="n" data-field="net_change_bcf">Net change</th><th class="n ng-hide-sm" data-field="year_ago_bcf">Year ago</th><th class="n" data-field="vs_year_ago_pct">vs year ago %</th><th class="n ng-hide-sm" data-field="five_year_avg_bcf">5-yr avg</th><th class="n" data-field="vs_five_year_pct">vs 5-yr %</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPLY -->
+  <section class="ng-page" id="supply" data-page="supply" hidden>
+    <div class="ng-pagehead"><h2 id="supply-title">Supply</h2><p>Dry gas production, drilling activity and pipeline trade.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label">Dry gas production, <span data-live="Y">2026</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="steo_balance" data-field="dry_production" data-where="period={Y}" data-fmt="d1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note">STEO annual estimate</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Dry gas production YTD vs last year">Production, year to date vs 2025</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Dry gas production YTD vs last year" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Dry gas production YTD vs last year">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Gas-directed rigs">Gas-directed rigs</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Gas-directed rigs" data-fmt="int">—</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Gas-directed rigs">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Total rigs">Total US rigs</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Total rigs" data-fmt="int">—</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Total rigs">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Canada pipeline imports YTD vs last year">Canada imports, YTD vs 2025</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Canada pipeline imports YTD vs last year" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Canada pipeline imports YTD vs last year">—</span></div>
+    </div>
+    <div class="ng-grid">
+      <div class="ng-card" id="supply-production">
+        <h3>Dry gas production by year</h3>
+        <p class="ng-note">Bcf/d, annual average. <span data-live="Y1">2027</span> is an EIA forecast.</p>
+        <div class="ng-legend" id="production-legend"></div>
+        <div class="ng-chart" id="production-chart" data-source="steo_balance"></div>
+      </div>
+      <div class="ng-card" id="supply-production-quarterly">
+        <h3 data-tpl="Dry gas production in {Y} by quarter">Dry gas production in 2026 by quarter</h3>
+        <p class="ng-note">Bcf/d, quarterly average. Lighter bars are EIA forecasts.</p>
+        <div class="ng-chart" id="production-q-chart" data-source="steo_balance"></div>
+      </div>
+      <div class="ng-card" id="supply-rigs">
+        <h3>Rig count by type and basin</h3>
+        <p class="ng-note">Baker Hughes, week ending <span data-live="rigs_wk">Oct 23, 2026</span>.</p>
+        <div class="ng-chart short" id="rig-chart" data-source="indicators"></div>
+      </div>
+    </div>
+    <div class="ng-card" id="supply-balance">
+      <h3>Supply and trade balance</h3>
+      <p class="ng-note">EIA STEO Table 5a, Bcf/d. End inventories in Bcf.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="balance-table" data-source="steo_balance" data-row-key="period">
+          <thead><tr><th data-field="period">Period</th><th class="n" data-field="dry_production">Dry production</th><th class="n" data-field="pipeline_imports">Pipeline imports</th><th class="n" data-field="total_consumption">Consumption</th><th class="n" data-field="pipeline_exports">Pipeline exports</th><th class="n" data-field="lng_exports">LNG exports</th><th class="n ng-hide-sm" data-field="end_inventories_bcf">End inventories</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMAND -->
+  <section class="ng-page" id="demand" data-page="demand" hidden>
+    <div class="ng-pagehead"><h2 id="demand-title">Demand</h2><p>Consumption by sector and recent demand growth.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label">US consumption, <span data-live="Y">2026</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="steo_balance" data-field="total_consumption" data-where="period={Y}" data-fmt="d1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note">STEO annual estimate</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Total demand incl. exports YTD vs last year">Total demand incl. exports, YTD</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Total demand incl. exports YTD vs last year" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Total demand incl. exports YTD vs last year">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Domestic consumption YTD vs last year">Domestic consumption, YTD</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Domestic consumption YTD vs last year" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Domestic consumption YTD vs last year">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Power burn, latest month vs year ago">Power burn, September</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Power burn, latest month vs year ago" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Power burn, latest month vs year ago">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Mexico pipeline exports YTD vs last year">Mexico pipeline exports, YTD</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Mexico pipeline exports YTD vs last year" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Mexico pipeline exports YTD vs last year">—</span></div>
+    </div>
+    <div class="ng-card" id="demand-sectors">
+      <h3>Consumption by sector</h3>
+      <p class="ng-note">Bcf/d. Power burn peaks in summer (Q3); residential and commercial heating peak in winter. Lighter bars and labels marked forecast are EIA forecasts.</p>
+      <div class="ng-legend" id="demand-legend"></div>
+      <div class="ng-chart" id="demand-chart" data-source="steo_balance"></div>
+    </div>
+    <div class="ng-card" id="demand-table-card">
+      <h3>Sector detail</h3>
+      <p class="ng-note">EIA STEO, <span data-live="chip_steo">October 2026</span>, Bcf/d.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="sector-table" data-source="steo_balance" data-row-key="period">
+          <thead><tr><th data-field="period">Period</th><th class="n" data-field="residential">Residential</th><th class="n" data-field="commercial">Commercial</th><th class="n" data-field="industrial">Industrial</th><th class="n" data-field="electric_power">Power</th><th class="n ng-hide-sm" data-field="lease_plant_fuel">Lease &amp; plant</th><th class="n ng-hide-sm" data-field="pipeline_distribution">Pipeline &amp; dist.</th><th class="n" data-field="total_consumption">Total</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFRASTRUCTURE -->
+  <section class="ng-page" id="infrastructure" data-page="infrastructure" hidden>
+    <div class="ng-pagehead"><h2 id="infrastructure-title">Infrastructure</h2><p>Regional price spreads, Gulf Coast storage and recent project and disruption events.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Appalachia discount to Henry Hub">Appalachia basis to Henry Hub</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Appalachia discount to Henry Hub" data-fmt="usd" data-tone="up">—</span><span class="ng-kpi-unit">$/MMBtu</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Appalachia discount to Henry Hub">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=Northeast discount to Henry Hub">Northeast basis to Henry Hub</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Northeast discount to Henry Hub" data-fmt="usd" data-tone="up">—</span><span class="ng-kpi-unit">$/MMBtu</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=Northeast discount to Henry Hub">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">South Central storage vs 5-yr</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="vs_five_year_pct" data-where="region=South Central" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note">Gulf Coast storage hub; week ending <span data-live="wk">Oct 16, 2026</span></span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Salt caverns vs 5-yr</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_regions" data-field="vs_five_year_pct" data-where="region=Salt" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note">Fast-cycle storage for LNG and power; week ending <span data-live="wk">Oct 16, 2026</span></span></div>
+    </div>
+    <div class="ng-card" id="infra-events">
+      <h3>Pipeline, LNG and disruption watch</h3>
+      <p class="ng-note">Projects entering service and supply disruptions over the past year, oldest first.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="event-table" data-source="infra_events" data-row-key="event">
+          <thead><tr><th data-field="when">When</th><th data-field="event">Event</th><th data-field="type">Type</th><th data-field="detail">Detail</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section class="ng-page" id="market" data-page="market" hidden>
+    <div class="ng-pagehead"><h2 id="market-title">Market intelligence</h2><p>Henry Hub spot and futures, EIA price outlook and global benchmarks.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label">Henry Hub futures, <span data-live="fut_label">Nov 2026</span></span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Henry Hub front-month futures" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note" data-source="indicators" data-field="note" data-where="metric=Henry Hub front-month futures">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Henry Hub spot, <span data-live="mtd_label">October to date</span></span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=Henry Hub spot, month to date" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note" data-source="indicators" data-field="note" data-where="metric=Henry Hub spot, month to date">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">STEO <span data-live="Y">2026</span> average</span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=STEO Henry Hub, current year" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note">EIA forecast</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">STEO <span data-live="Y1">2027</span> average</span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=STEO Henry Hub, next year" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note">EIA forecast</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">EU gas storage</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=EU gas storage" data-fmt="d1">—</span><span class="ng-kpi-unit">% full</span></span><span class="ng-kpi-note" data-source="indicators" data-field="note" data-where="metric=EU gas storage">—</span></div>
+    </div>
+    <div class="ng-card" id="market-hh">
+      <h3>Henry Hub, TTF and JKM, weekly</h3>
+      <p class="ng-note">$/MMBtu, weekly. Henry Hub spot (EIA); TTF front-month futures converted from €/MWh (ICE via Yahoo Finance); JKM front month (OilPriceAPI), with history building week by week from October 2026. The late-January 2026 Henry Hub spike came from a winter storm.</p>
+      <div class="ng-legend" id="hh-legend"></div>
+      <div class="ng-chart" id="hh-chart" data-source="henry_hub_weekly"></div>
+    </div>
+    <div class="ng-card" id="market-global">
+      <h3>Global gas prices, front month</h3>
+      <p class="ng-note"><span data-live="global_note">$/MMBtu. Henry Hub is the November settle on Oct 23, 2026; TTF (November) and JKM (December) are Oct 26, 2026. The spread to Asia and Europe is what pulls US LNG cargoes.</span></p>
+      <div class="ng-chart short" id="global-chart" data-source="indicators"></div>
+    </div>
+
+    <div class="ng-pagehead ng-subhead" id="outlook"><h2>Outlook and signals</h2><p>Predictive: where storage, balances and prices are heading. Prescriptive: rule-based actions for a gas buyer, recalculated from the data above.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label">Projected storage, <span data-live="proj_label">Nov 13</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="storage_projection" data-field="bcf" data-where="week_ending={PROJ}" data-fmt="int">—</span><span class="ng-kpi-unit">Bcf</span></span><span class="ng-kpi-note">At the last four weeks' average change</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">EIA Henry Hub, Q4 <span data-live="Y">2026</span></span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="steo_hh_quarterly" data-field="price_usd_mmbtu" data-where="quarter={Y} Q4" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note">STEO forecast, <span data-live="chip_steo">October 2026</span></span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">EIA Henry Hub, Q1 <span data-live="Y1">2027</span></span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="steo_hh_quarterly" data-field="price_usd_mmbtu" data-where="quarter={Y1} Q1" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note">Peak winter quarter</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">Implied balance, Q4 <span data-live="Y">2026</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="sd_balance" data-field="implied_bcfd" data-where="period={Y} Q4" data-fmt="signed1" data-tone="up">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note">Negative means a net storage draw</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">JKM over Henry Hub</span><span class="ng-kpi-val">$<span class="dash-skeleton" data-source="arb" data-field="spread" data-where="benchmark=JKM" data-fmt="usd">—</span><span class="ng-kpi-unit">/MMBtu</span></span><span class="ng-kpi-note">Export margin to Asia before shipping and fees</span></div>
+    </div>
+    <div class="ng-card" id="outlook-signals">
+      <h3>Prescriptive signals</h3>
+      <p class="ng-note">Each signal compares a reading above with a fixed threshold and suggests an action from a gas buyer's point of view. Illustrative guidance, not financial or trading advice.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="signal-table" data-source="signals" data-row-key="signal">
+          <thead><tr><th data-field="signal">Signal</th><th data-field="reading">Reading</th><th data-field="outlook">Outlook</th><th data-field="action">Suggested action</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ng-grid">
+      <div class="ng-card" id="outlook-price">
+        <h3>Henry Hub: history and EIA forecast</h3>
+        <p class="ng-note">$/MMBtu. Weekly spot since July <span data-live="Y0">2025</span> (solid), then EIA's quarterly forecast through <span data-live="Y1">2027</span> (dashed).</p>
+        <div class="ng-legend" id="outlook-price-legend"></div>
+        <div class="ng-chart" id="outlook-price-chart" data-source="henry_hub_weekly steo_hh_quarterly"></div>
+      </div>
+      <div class="ng-card" id="outlook-storage">
+        <h3>Storage: four-week projection</h3>
+        <p class="ng-note">Bcf. Last ten reported weeks (solid), then four weeks projected at the average weekly change of the last four weeks (dashed). A simple trend, not a weather-based forecast.</p>
+        <div class="ng-legend" id="outlook-storage-legend"></div>
+        <div class="ng-chart" id="outlook-storage-chart" data-source="storage_projection"></div>
+      </div>
+      <div class="ng-card" id="outlook-balance">
+        <h3>Implied supply and demand balance</h3>
+        <p class="ng-note">Bcf/d: production plus pipeline imports, minus consumption and exports, from EIA's balance. Positive fills storage; negative draws it.</p>
+        <div class="ng-legend" id="outlook-balance-legend"></div>
+        <div class="ng-chart" id="outlook-balance-chart" data-source="sd_balance"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LNG -->
+  <section class="ng-page" id="lng" data-page="lng" hidden>
+    <div class="ng-pagehead"><h2 id="lng-title">LNG waterborne</h2><p>Feedgas, exports, destinations, terminals and tanker movements.</p></div>
+    <div class="ng-kpis">
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=LNG feedgas, month to date">LNG feedgas, October to date</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=LNG feedgas, month to date" data-fmt="d1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=LNG feedgas, month to date">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=LNG feedgas YTD increase vs last year">Feedgas gain, YTD vs 2025</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=LNG feedgas YTD increase vs last year" data-fmt="signed1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=LNG feedgas YTD increase vs last year">—</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">LNG exports, <span data-live="Y">2026</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="steo_balance" data-field="lng_exports" data-where="period={Y}" data-fmt="d1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note">STEO estimate; <span data-source="steo_balance" data-field="lng_exports" data-where="period={Y0}" data-fmt="d1">—</span> in <span data-live="Y0">2025</span></span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label">LNG exports, <span data-live="Y1">2027</span></span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="steo_balance" data-field="lng_exports" data-where="period={Y1}" data-fmt="d1">—</span><span class="ng-kpi-unit">Bcf/d</span></span><span class="ng-kpi-note">STEO forecast</span></div>
+      <div class="ng-kpi"><span class="ng-kpi-label" data-source="indicators" data-field="label" data-where="metric=LNG exports to Asia vs year ago">Exports to Asia, 1H26 vs 1H25</span><span class="ng-kpi-val"><span class="dash-skeleton" data-source="indicators" data-field="value" data-where="metric=LNG exports to Asia vs year ago" data-fmt="pct" data-tone="up">—</span><span class="ng-kpi-unit">%</span></span><span class="ng-kpi-note" data-source="indicators" data-field="kpi_note" data-where="metric=LNG exports to Asia vs year ago">—</span></div>
+    </div>
+    <div class="ng-grid">
+      <div class="ng-card" id="lng-exports">
+        <h3>LNG gross exports by year</h3>
+        <p class="ng-note">Bcf/d, annual average. <span data-live="Y1">2027</span> is an EIA forecast.</p>
+        <div class="ng-legend" id="lng-legend"></div>
+        <div class="ng-chart" id="lng-chart" data-source="steo_balance"></div>
+      </div>
+      <div class="ng-card" id="lng-exports-quarterly">
+        <h3 data-tpl="LNG gross exports in {Y} by quarter">LNG gross exports in 2026 by quarter</h3>
+        <p class="ng-note">Bcf/d, quarterly average. Lighter bars are EIA forecasts.</p>
+        <div class="ng-chart" id="lng-q-chart" data-source="steo_balance"></div>
+      </div>
+      <div class="ng-card" id="lng-dest">
+        <h3 data-tpl="Top destinations, {dest_period}">Top destinations, first half 2026</h3>
+        <p class="ng-note">Bcf/d of US LNG received<span data-live="dest_src"></span>.</p>
+        <div class="ng-chart short" id="dest-chart" data-source="lng_destinations"></div>
+      </div>
+    </div>
+    <div class="ng-card" id="lng-ships">
+      <h3>LNG tanker positions <span class="ng-pill warn">Sample data</span></h3>
+      <p class="ng-note">Illustration only: the ships, positions, cargoes and ETAs are invented to show how a live vessel-tracking feed would look here. Terminal locations are real. Live positions need a ship-tracking data connector such as Kpler.</p>
+      <div class="ng-legend" id="ship-legend"></div>
+      <div class="ng-chart" id="ship-map" data-source="sample_vessels"></div>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="ship-table" data-source="sample_vessels" data-row-key="vessel">
+          <thead><tr><th data-field="vessel">Vessel</th><th data-field="status">Status</th><th data-field="origin">From</th><th data-field="destination">To</th><th class="n ng-hide-sm" data-field="cargo_bcf">Cargo (Bcf)</th><th class="n ng-hide-sm" data-field="speed_knots">Speed (kn)</th><th data-field="eta">ETA</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ng-card" id="lng-live">
+      <h3>Live ship traffic near US Gulf Coast LNG terminals <span class="ng-pill ok">Live</span></h3>
+      <p class="ng-note">Live AIS ship positions from VesselFinder, centered on the Gulf Coast export terminals from Corpus Christi to Plaquemines, with ship names shown. The map shows every vessel type in VesselFinder's own color scheme, so LNG carriers appear with the tankers. Zoom in to read names, or click a ship for its type, speed and destination.</p>
+      <div class="ng-embed">
+        <script type="text/javascript">var width="100%";var height="460";var latitude="28.90";var longitude="-93.60";var zoom="6";var names=true;</script>
+        <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
+      </div>
+      <p class="ng-embed-link"><a href="https://www.vesselfinder.com/vessels?type=604" target="_blank" rel="noopener">View LNG tankers on VesselFinder ↗</a></p>
+    </div>
+    <div class="ng-card" id="lng-terminals">
+      <h3>Export terminals</h3>
+      <p class="ng-note">Liquefaction capacity, Bcf/d. Blank where the sources used do not give a figure.</p>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="terminal-table" data-source="lng_terminals" data-row-key="terminal">
+          <thead><tr><th data-field="terminal">Terminal</th><th class="ng-hide-sm" data-field="state">State</th><th class="n" data-field="nominal_bcfd">Nominal</th><th class="n" data-field="peak_bcfd">Peak</th><th data-field="status">Status</th><th class="ng-hide-sm" data-field="note">Note</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ng-foot"><span class="ng-foot-left"><span class="ng-foot-by">Designed by</span><span class="ng-logo ng-logo-sm" role="img" aria-label="Sanjo Consult">
+        <svg class="ng-logo-mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="ngLogoGradFoot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="ng-logo-stop1"/><stop offset="1" class="ng-logo-stop2"/></linearGradient></defs><path d="M20 2.2 L35 7.4 V19.2 C35 28.4 28.6 34.8 20 37.8 C11.4 34.8 5 28.4 5 19.2 V7.4 Z" fill="url(#ngLogoGradFoot)"/><path class="ng-logo-ring" d="M20 5.4 L32 9.6 V19.2 C32 26.6 27 31.9 20 34.6 C13 31.9 8 26.6 8 19.2 V9.6 Z"/><text class="ng-logo-t" x="20" y="27.6" text-anchor="middle">S</text></svg>
+        <span class="ng-logo-word"><span class="ng-logo-name">SANJO</span><span class="ng-logo-sub">CONSULT</span></span>
+      </span></span><span>Joseph S. George, Managing Director</span></footer>
+  <p class="ng-src" id="ng-live-src"><span data-live="live_src"></span></p>
+  <p class="ng-src">Sources: Live: EIA Weekly Natural Gas Storage Report, EIA natural gas prices, LNG exports by country and Short-Term Energy Outlook (EIA API); NYMEX Henry Hub and ICE TTF futures via Yahoo Finance; JKM via OilPriceAPI; EU storage from GIE AGSI+. Weekly: Baker Hughes rig count; AGA Natural Gas Market Indicators; LSEG LNG feedgas data via Reuters; NGI, LNG Prime and other industry news for infrastructure events. Reference: EIA Today in Energy; Global LNG Hub. Live ship positions from VesselFinder. Each figure shows its own date.</p>
+</div>
+
+<script>
+// Live data: pulled from the Sanjo Consult relay each time the page opens.
+// If the relay or any one source is down, the page keeps the built-in snapshot for that part.
+(function () {
+  const RELAY = 'https://sanjo-prices.joseph-george-2cb.workers.dev/?dashboard=1';
+  const PRICES = 'https://sanjo-prices.joseph-george-2cb.workers.dev/';
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const d0 = (s) => new Date(String(s).slice(0, 10) + 'T00:00:00Z');
+  const fmtDate = (s, opt) => d0(s).toLocaleDateString('en-US', Object.assign({ timeZone: 'UTC' }, opt));
+  const long = (s) => fmtDate(s, { month: 'short', day: 'numeric', year: 'numeric' });
+  const short = (s) => fmtDate(s, { month: 'short', day: 'numeric' });
+  const base = (p) => String(p).replace(' (forecast)', '');
+  const num = (v) => (typeof v === 'number' && isFinite(v) ? v : null);
+  const sign = (v, dp) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(dp);
+
+  function setInd(list, metric, fields) {
+    const i = list.findIndex((r) => r.metric === metric);
+    const row = Object.assign({ tab: '', metric, value: null, unit: '', as_of: '', note: '', source: '' }, i >= 0 ? list[i] : {}, fields);
+    if (i >= 0) list[i] = row; else list.push(row);
+  }
+  // Use live rows, filling any blank field from the snapshot row for the same period.
+  function mergeRows(live, old, key) {
+    const byKey = {}; (old || []).forEach((r) => { byKey[base(r[key])] = r; });
+    return live.map((r) => { const o = byKey[base(r[key])] || {}; const out = Object.assign({}, o, r); Object.keys(out).forEach((k) => { if (out[k] === null && o[k] != null) out[k] = o[k]; }); return out; });
+  }
+
+  // Hand-updated figures (rigs, AGA, basis, feedgas, events, terminals) live in manual-data.json
+  async function loadManual() {
+    const store = window.__SANJO_DATA__;
+    try {
+      const r = await fetch('manual-data.json', { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const m = await r.json();
+      const ind = store.indicators.map((x) => Object.assign({}, x));
+      (m.indicators || []).forEach((row) => { if (row && row.metric) setInd(ind, row.metric, row); });
+      const patch = { indicators: ind };
+      if (Array.isArray(m.infra_events) && m.infra_events.length) patch.infra_events = m.infra_events;
+      if (Array.isArray(m.lng_terminals) && m.lng_terminals.length) patch.lng_terminals = m.lng_terminals;
+      if (Array.isArray(m.jkm_weekly)) { patch.jkm_weekly_manual = m.jkm_weekly; patch.jkm_weekly = m.jkm_weekly; }
+      const meta = {};
+      if (m.rigs_week_ending) meta.rigs_wk = long(m.rigs_week_ending);
+      if (m.updated) meta.manual_date = long(m.updated);
+      dash.update(patch, meta);
+    } catch (e) { console.warn('manual-data.json not loaded; using built-in values', e); }
+  }
+
+  async function load() {
+    await loadManual();
+    const store = window.__SANJO_DATA__;
+    const patch = {}, meta = {}, auto = [];
+    let j;
+    try {
+      const ctl = new AbortController(); setTimeout(() => ctl.abort(), 15000);
+      const r = await fetch(RELAY, { cache: 'no-store', signal: ctl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      j = await r.json();
+    } catch (e) {
+      console.warn('Live data unavailable, showing snapshot', e);
+      dash.update({}, { chip_live: 'Snapshot · Oct 26, 2026', live_src: 'Live data could not be loaded just now; showing the Oct 26, 2026 snapshot.' });
+      return;
+    }
+    const ind = store.indicators.map((r) => Object.assign({}, r));
+
+    // Storage report (EIA weekly table)
+    const sr = j.storage_report;
+    if (sr && sr.rows && sr.rows.length) {
+      patch.storage_regions = mergeRows(sr.rows, store.storage_regions, 'region');
+      const wk = sr.week_ending;
+      meta.wk = long(wk); meta.wk_short = short(wk);
+      const wy = Number(wk.slice(0, 4)); meta.five_yr = (wy - 5) + '–' + (wy - 1);
+      const ya = d0(wk); ya.setUTCFullYear(ya.getUTCFullYear() - 1); meta.wk_ya = long(ya.toISOString());
+      auto.push('EIA weekly storage');
+    }
+    // Storage history; add the latest reported week if the history is behind
+    let hist = (j.storage_history && j.storage_history.length > 50) ? j.storage_history.slice() : store.storage_weekly.slice();
+    if (sr && sr.rows) {
+      const tot = sr.rows.find((r) => r.region === 'Total Lower 48');
+      if (tot && !hist.some((r) => r.week_ending === tot.week_ending)) hist.push({ week_ending: tot.week_ending, year: Number(tot.week_ending.slice(0, 4)), working_gas_bcf: tot.working_gas_bcf });
+    }
+    hist.sort((a, b) => (a.week_ending < b.week_ending ? -1 : 1));
+    patch.storage_weekly = hist;
+    if (sr && sr.rows) {
+      const tot = sr.rows.find((r) => r.region === 'Total Lower 48');
+      const i = hist.findIndex((r) => r.week_ending === tot.week_ending);
+      const prevChange = i >= 2 ? hist[i - 1].working_gas_bcf - hist[i - 2].working_gas_bcf : null;
+      const parts = [];
+      if (prevChange !== null) parts.push('Previous week: ' + sign(prevChange, 0) + ' Bcf');
+      if (tot.five_year_avg_bcf != null) parts.push('five-year average level ' + tot.five_year_avg_bcf.toLocaleString('en-US') + ' Bcf');
+      setInd(ind, 'Net injection', { tab: 'storage', value: tot.net_change_bcf, unit: 'Bcf', as_of: 'Week ending ' + tot.week_ending, note: parts.join('; '), source: 'EIA WNGSR, ' + (sr.release_date || '') });
+    }
+
+    // Henry Hub spot
+    const hh = j.henry_hub;
+    if (hh && hh.weekly && hh.weekly.length > 20) { patch.henry_hub_weekly = hh.weekly; auto.push('Henry Hub spot'); }
+    if (hh && hh.month_to_date) {
+      const m = hh.month_to_date, mi = Number(m.month.slice(5, 7)) - 1, pi = Number(m.prev_month.slice(5, 7)) - 1;
+      meta.mtd_label = MONTHS[mi] + ' to date';
+      const note = short(m.from) + '–' + fmtDate(m.through, { day: 'numeric' }) + ' average' + (m.pct_vs_prev_month != null ? '; ' + (m.pct_vs_prev_month >= 0 ? 'up ' : 'down ') + Math.abs(m.pct_vs_prev_month).toFixed(1) + '% from ' + MONTHS[pi] + "'s average" : '');
+      setInd(ind, 'Henry Hub spot, month to date', { tab: 'market', value: m.value, unit: '$/MMBtu', as_of: m.through, note, source: 'EIA' });
+    }
+
+    // Futures (NYMEX front month)
+    const f = j.futures;
+    if (f && num(f.price) !== null) {
+      const parts = (f.contract || '').split(' '); const mon = parts[0] || '', yy = parts[1] ? '20' + parts[1] : '';
+      const full = MONTHS.find((x) => x.startsWith(mon)) || mon;
+      meta.fut_label = full + ' ' + yy; meta.fut_short = mon;
+      const when = f.time ? new Date(f.time) : new Date();
+      meta.fut_asof = 'delayed quote, ' + when.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' }) + ' CT';
+      meta.chip_fut = 'live (' + (f.code || mon) + ')';
+      const chg = num(f.change);
+      setInd(ind, 'Henry Hub front-month futures', { tab: 'market', value: Math.round(f.price * 1000) / 1000, unit: '$/MMBtu', as_of: when.toISOString(), note: full + ' ' + yy + ' contract (' + (f.code || '') + ')' + (chg !== null ? ', ' + sign(chg, 3) + ' today' : '') + '; delayed quote', source: 'NYMEX via Yahoo Finance' });
+      auto.push('Henry Hub futures');
+    }
+
+    // EIA STEO
+    const st = j.steo;
+    if (st && st.balance && st.balance.length) {
+      const Y = st.year; meta.Y = String(Y); meta.Y0 = String(Y - 1); meta.Y1 = String(Y + 1);
+      const liveQ = st.balance.filter((r) => /Q\d/.test(r.period) && r.dry_production != null);
+      if (liveQ.length >= 4) patch.steo_balance = mergeRows(st.balance, store.steo_balance, 'period');
+      else {
+        const byP = {}; st.balance.forEach((r) => { byP[base(r.period)] = r; });
+        patch.steo_balance = store.steo_balance.map((r) => { const l = byP[base(r.period)]; if (!l) return r; const o = Object.assign({}, r); Object.keys(l).forEach((k) => { if (k !== 'period' && l[k] != null) o[k] = l[k]; }); return o; });
+      }
+      if (st.hh_quarterly && st.hh_quarterly.length >= 4) patch.steo_hh_quarterly = st.hh_quarterly;
+      if (st.hh_annual) {
+        if (num(st.hh_annual[Y]) !== null) setInd(ind, 'STEO Henry Hub, current year', { tab: 'market', value: st.hh_annual[Y], unit: '$/MMBtu', source: 'EIA STEO' });
+        if (num(st.hh_annual[Y + 1]) !== null) setInd(ind, 'STEO Henry Hub, next year', { tab: 'market', value: st.hh_annual[Y + 1], unit: '$/MMBtu', source: 'EIA STEO' });
+      }
+      if (st.storage_end_of_month) {
+        meta.eom = MONTHS[Number(st.storage_end_of_month.month.slice(5, 7)) - 1];
+        setInd(ind, 'EIA end-of-month storage forecast', { tab: 'storage', value: st.storage_end_of_month.bcf, unit: 'Bcf', source: 'EIA STEO' });
+      }
+      meta.chip_steo = 'latest release';
+      auto.push('EIA STEO forecasts');
+    }
+
+    // LNG exports by destination
+    const ld = j.lng_destinations;
+    if (ld && ld.rows && ld.rows.length >= 3) {
+      patch.lng_destinations = ld.rows;
+      meta.dest_period = MONTHS[Number(ld.month.slice(5, 7)) - 1] + ' ' + ld.month.slice(0, 4);
+      meta.dest_src = ' (EIA monthly data, published with about a two-month lag)';
+      auto.push('LNG exports by country');
+    }
+
+    // EU storage
+    const eu = j.eu_storage;
+    if (eu && num(eu.full) !== null) {
+      const diff = num(eu.vs_five_year_pts);
+      const note = 'As of ' + long(eu.date) + (diff !== null ? '; ' + Math.abs(diff).toFixed(1) + ' points ' + (diff < 0 ? 'below' : 'above') + ' the five-year average for the date' : '');
+      setInd(ind, 'EU gas storage', { tab: 'market', value: eu.full, unit: '% full', as_of: eu.date, note, source: 'GIE AGSI+' });
+      auto.push('EU storage');
+    }
+
+    // Global gas prices: TTF and JKM from the price relay (Henry Hub is set above)
+    try {
+      const pr = await (await fetch(PRICES, { cache: 'no-store' })).json();
+      const Qs = pr.quotes || {}, okq = (x) => x && !x.error && typeof x.price === 'number';
+      const whenCT = (t) => new Date(t).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' }) + ' CT';
+      const parts = [];
+      const hhRow = ind.find((r) => r.metric === 'Henry Hub front-month futures');
+      if (f && num(f.price) !== null) parts.push('Henry Hub is the ' + meta.fut_label + ' NYMEX contract (' + whenCT(f.time || Date.now()) + ')');
+      else if (hhRow) parts.push('Henry Hub is the November settle on Oct 23, 2026');
+      if (okq(Qs.ttf) && okq(Qs.eurusd)) {
+        const usd = Qs.ttf.price * Qs.eurusd.price / 3.412;
+        setInd(ind, 'TTF (Europe), front month', { tab: 'market', value: Math.round(usd * 100) / 100, unit: '$/MMBtu', as_of: new Date(Qs.ttf.time || Date.now()).toISOString(), note: '€' + Qs.ttf.price.toFixed(2) + '/MWh', source: 'ICE via Yahoo Finance' });
+        parts.push('TTF is €' + Qs.ttf.price.toFixed(2) + '/MWh converted at the live euro rate (' + whenCT(Qs.ttf.time || Date.now()) + ')');
+        auto.push('TTF');
+      } else parts.push('TTF is the November contract as of Oct 26, 2026');
+      if (okq(Qs.jkm) && !Qs.jkm.stale) {
+        setInd(ind, 'JKM (Asia), front month', { tab: 'market', value: Qs.jkm.price, unit: '$/MMBtu', as_of: new Date(Qs.jkm.time || Date.now()).toISOString(), note: 'Front month', source: Qs.jkm.source || 'Yahoo Finance' });
+        parts.push('JKM is the front month, last updated ' + whenCT(Qs.jkm.time || Date.now()));
+        meta.jkm_live = true; auto.push('JKM');
+      } else parts.push('JKM is the December contract as of Oct 26, 2026');
+      meta.global_note = '$/MMBtu. ' + parts.join('; ') + '. The spread to Asia and Europe is what pulls US LNG cargoes.';
+    } catch (e) { console.warn('Price relay unavailable', e); }
+
+    // Weekly TTF and JKM history for the Henry Hub chart
+    try {
+      const h = await (await fetch(PRICES + '?history=1', { cache: 'no-store' })).json();
+      if (Array.isArray(h.ttf) && h.ttf.length) patch.ttf_weekly = h.ttf;
+      const by = {};
+      (store.jkm_weekly_manual || []).forEach((r) => { if (r && r.week_ending) by[r.week_ending] = r; });
+      (Array.isArray(h.jkm) ? h.jkm : []).forEach((r) => { by[r.week_ending] = r; });
+      const jk = ind.find((r) => r.metric === 'JKM (Asia), front month');
+      if (meta.jkm_live && jk && jk.as_of) { const d = new Date(jk.as_of), add = (5 - d.getUTCDay() + 7) % 7; const w = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + add)).toISOString().slice(0, 10); by[w] = { week_ending: w, usd_mmbtu: jk.value }; }
+      const jl = Object.values(by).sort((a, b) => (a.week_ending < b.week_ending ? -1 : 1));
+      if (jl.length) patch.jkm_weekly = jl;
+    } catch (e) { console.warn('Price history unavailable', e); }
+
+    patch.indicators = ind;
+    const t = new Date(j.fetched || Date.now()).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' });
+    meta.chip_live = auto.length ? 'Live · updated ' + t + ' CT' : 'Snapshot · Oct 26, 2026';
+    meta.live_src = auto.length ? 'Updated automatically: ' + auto.join(', ') + '. Updated every Friday afternoon (last updated ' + (dash.meta.manual_date || 'Oct 26, 2026') + '): rig counts, AGA year-to-date indicators, regional basis, LNG feedgas and infrastructure events. The LNG tanker map uses sample data.' : '';
+    const chip = document.querySelector('.ng-chip-live'); if (chip) chip.dataset.liveState = auto.length ? 'on' : 'off';
+    dash.update(patch, meta);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+})();
+</script>
+<script>
+dash.calc('storage_projection', {
+  inputs: ['storage_weekly'],
+  title: 'Storage projection to Nov 13',
+  description: 'The last ten reported 2026 weeks, then four weeks projected at the average of the last four weekly injections.',
+  fn: (storage_weekly) => {
+    const r = storage_weekly.map((x) => ({ week_ending: String(x.week_ending).slice(0, 10), bcf: Number(x.working_gas_bcf) })).sort((a, b) => (a.week_ending < b.week_ending ? -1 : 1));
+    const last = r.slice(-5);
+    const pace = (last[4].bcf - last[0].bcf) / 4;
+    const out = r.slice(-10).map((x) => ({ week_ending: x.week_ending, bcf: x.bcf, kind: 'Reported' }));
+    let t = new Date(last[4].week_ending + 'T00:00:00Z').getTime(), v = last[4].bcf;
+    for (let i = 0; i < 4; i++) { t += 7 * 86400000; v = Math.round(v + pace); out.push({ week_ending: new Date(t).toISOString().slice(0, 10), bcf: v, kind: 'Projected' }); }
+    return out;
+  },
+});
+dash.calc('sd_balance', {
+  inputs: ['steo_balance'],
+  title: 'Implied supply and demand balance',
+  description: 'Dry production plus pipeline imports, minus total consumption, pipeline exports and LNG exports, in Bcf/d.',
+  fn: (steo_balance) => steo_balance.map((r) => ({ period: r.period, implied_bcfd: Math.round((Number(r.dry_production) + Number(r.pipeline_imports) - Number(r.total_consumption) - Number(r.pipeline_exports) - Number(r.lng_exports)) * 10) / 10 })),
+});
+dash.calc('arb', {
+  inputs: ['indicators'],
+  title: 'Export spread to Europe and Asia',
+  description: 'JKM front-month price minus Henry Hub front month, $/MMBtu.',
+  fn: (indicators) => {
+    const v = (m) => Number((indicators.find((r) => r.metric === m) || {}).value);
+    const hh = v('Henry Hub front-month futures');
+    return [
+      { benchmark: 'JKM', spread: Math.round((v('JKM (Asia), front month') - hh) * 100) / 100 },
+    ];
+  },
+});
+dash.calc('signals', {
+  inputs: ['indicators', 'storage_regions', 'steo_hh_quarterly'],
+  title: 'Prescriptive signals',
+  description: 'Fixed thresholds applied to storage, basis, spreads, production and EIA prices, each with a suggested action for a gas buyer.',
+  fn: (indicators, storage_regions, steo_hh_quarterly) => {
+    const ind = (m) => Number((indicators.find((r) => r.metric === m) || {}).value);
+    const reg = (n, f) => Number((storage_regions.find((r) => r.region === n) || {})[f]);
+    const q = (p) => Number((steo_hh_quarterly.find((r) => r.quarter === p) || {}).price_usd_mmbtu);
+    const pc = (x) => (x > 0 ? '+' : '') + x.toFixed(1) + '%';
+    const usd = (x) => (x < 0 ? '-$' : '$') + Math.abs(x).toFixed(2);
+    const tot = reg('Total Lower 48', 'vs_five_year_pct'), salt = reg('Salt', 'vs_five_year_pct');
+    const Y = Number((window.dash && dash.meta.Y) || 2026);
+    const hh = ind('Henry Hub front-month futures'), jkm = ind('JKM (Asia), front month'), app = ind('Appalachia discount to Henry Hub');
+    const prod = ind('Dry gas production YTD vs last year'), fut = hh, futLabel = (window.dash && dash.meta.fut_short) || 'Front-month';
+    const y26 = ind('STEO Henry Hub, current year'), y27 = ind('STEO Henry Hub, next year'), q4 = q(Y + ' Q4'), q1 = q((Y + 1) + ' Q1');
+    return [
+      { signal: 'Winter storage cushion', reading: 'Storage ' + pc(tot) + ' vs five-year average', outlook: tot < 2 ? 'Upside price risk' : tot > 5 ? 'Downside price risk' : 'Neutral',
+        action: tot < 2 ? 'Layer in December to February supply or hedges in steps now, rather than waiting for a cold snap.' : 'Keep winter purchases on their normal schedule.' },
+      { signal: 'Gulf Coast deliverability', reading: 'Salt caverns ' + pc(salt) + ' vs five-year average', outlook: salt < -10 ? 'Upside price risk' : 'Neutral',
+        action: salt < -10 ? 'Secure firm storage or peaking supply for Gulf Coast demand; expect sharper prompt spikes in cold or high-LNG weeks.' : 'No change needed.' },
+      { signal: 'LNG export pull', reading: 'JKM ' + usd(jkm - hh) + ' over Henry Hub', outlook: jkm - hh > 8 ? 'Upside price risk' : 'Neutral',
+        action: jkm - hh > 8 ? 'Plan for LNG feedgas at or near capacity as Plaquemines and Golden Pass ramp up; budget for firmer Gulf Coast prices.' : 'A narrower spread could cut cargoes; watch feedgas for a drop.' },
+      { signal: 'Appalachia takeaway', reading: 'Appalachia basis ' + usd(app) + ' to Henry Hub', outlook: app < -1 ? 'Regional discount' : 'Neutral',
+        action: app < -1 ? 'Northeast and Appalachia buyers: favor local index purchases. Producers: firm up transport or defer flexible volumes.' : 'Basis is normal; no change.' },
+      { signal: 'Production momentum', reading: 'Dry gas output ' + pc(prod) + ' year to date', outlook: prod > 2 ? 'Downside price risk' : 'Neutral',
+        action: prod > 2 ? 'Rising supply caps prices after winter; avoid over-hedging spring and summer volumes.' : 'Watch rig additions for a supply response.' },
+      { signal: 'Winter price path', reading: futLabel + ' futures ' + usd(fut) + '; EIA Q4 ' + usd(q4) + ', Q1 ' + (Y + 1) + ' ' + usd(q1), outlook: q1 > fut ? 'Upside price risk' : 'Neutral',
+        action: q1 > fut ? 'EIA expects winter prices above today\'s prompt contract; buying January to March volumes ahead of the season may lower cost.' : 'Prompt prices already reflect EIA\'s winter view.' },
+      { signal: (Y + 1) + ' outlook', reading: 'EIA ' + (Y + 1) + ' average ' + usd(y27) + ' vs ' + usd(y26) + ' in ' + Y, outlook: y27 < y26 ? 'Downside price risk' : 'Upside price risk',
+        action: y27 < y26 ? 'Keep ' + (Y + 1) + ' hedges partial and staggered, since EIA expects prices to ease after this winter.' : 'Consider extending hedges into ' + (Y + 1) + '.' },
+    ];
+  },
+});
+</script>
+<script>
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const fmt = {
+    int: d3.format(','), d1: d3.format('.1f'), usd: d3.format('.2f'),
+    pct: (v) => d3.format('+.1f')(v), signed: d3.format('+,'), signed1: d3.format('+.1f'),
+  };
+  window.ngFmt = fmt;
+
+  // ---------- tabs ----------
+  try { const ngEl = document.querySelector('.ng'); ngEl.style.setProperty('--ng-accent', dash.colors[0]); ngEl.style.setProperty('--ng-accent2', dash.colors[2]); } catch (e) {}
+  const tabs = $$('.ng-tab');
+  tabs.forEach((t, i) => { try { t.style.setProperty('--tab-color', dash.colors[i % dash.colors.length]); } catch (e) {} });
+  let active = 'storage';
+  function show(id) {
+    if (!document.getElementById(id)) id = 'market';
+    active = id;
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.page === id)));
+    $$('.ng-page').forEach((p) => { p.hidden = p.dataset.page !== id; });
+    dash.setLink(id);
+    draw();
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.page)));
+
+  // ---------- fill marked single values ----------
+  function fillValues() {
+    $$('[data-source][data-field][data-where]').forEach((el) => {
+      if (el.tagName === 'TH' || el.closest('table')) return;
+      const d = dash.data(el.dataset.source);
+      if (d.status !== 'ok') { el.textContent = '—'; if (d.status !== 'loading') el.classList.remove('dash-skeleton'); return; }
+      const [k, ...rest] = el.dataset.where.split('=');
+      const want = rest.join('=').replace(/\{(\w+)\}/g, (m, t) => (dash.meta[t] !== undefined ? dash.meta[t] : m));
+      const base = (x) => String(x).replace(' (forecast)', '');
+      const row = d.data.find((r) => String(r[k]) === want) || d.data.find((r) => base(r[k]) === base(want));
+      el.classList.remove('dash-skeleton');
+      if (!row) { el.textContent = '—'; return; }
+      const v = row[el.dataset.field];
+      const f = fmt[el.dataset.fmt];
+      el.textContent = (v == null) ? '—' : (f ? f(v) : (typeof v === 'number' ? fmt.int(v) : String(v)));
+      if (el.dataset.tone) { el.classList.toggle('ng-up', v > 0); el.classList.toggle('ng-down', v < 0); }
+    });
+  }
+
+  // ---------- tables ----------
+  function fillTable(id, source, cols, opts = {}) {
+    const table = document.getElementById(id);
+    if (!table) return;
+    const tbody = table.tBodies[0];
+    const d = dash.data(source);
+    if (d.status !== 'ok') { tbody.replaceChildren(); return; }
+    let rows = d.data.slice();
+    if (opts.filter) rows = rows.filter(opts.filter);
+    tbody.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr');
+      if (opts.rowClass) { const c = opts.rowClass(r); if (c) tr.className = c; }
+      cols.forEach((c) => {
+        const td = document.createElement('td');
+        const v = r[c.f];
+        if (c.n) td.className = 'n';
+        if (c.hideSm) td.classList.add('ng-hide-sm');
+        if (c.pill) {
+          const s = document.createElement('span');
+          s.className = 'ng-pill ' + c.pill(v);
+          s.textContent = v;
+          td.appendChild(s);
+        } else {
+          td.textContent = v == null ? '' : (c.fmt ? c.fmt(v) : String(v));
+          if (c.tone && typeof v === 'number' && v !== 0) td.classList.add(v > 0 ? 'ng-up' : 'ng-down');
+        }
+        tr.appendChild(td);
+      });
+      return tr;
+    }));
+  }
+
+  // ---------- chart helpers ----------
+  const css = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+  function tipFor(box) {
+    let t = box.querySelector('.ng-tip');
+    if (!t) { t = document.createElement('div'); t.className = 'ng-tip'; t.hidden = true; box.appendChild(t); }
+    return t;
+  }
+  function placeTip(box, tip, x, y) {
+    tip.hidden = false;
+    const bw = box.clientWidth, tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = x + 12; if (left + tw > bw) left = x - tw - 12; if (left < 0) left = 0;
+    let top = y - th - 8; if (top < 0) top = y + 12;
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+  }
+  function tipRow(tip, color, name, val) {
+    const line = document.createElement('div');
+    if (color) { const i = document.createElement('i'); i.style.background = color; line.appendChild(i); }
+    line.appendChild(document.createTextNode((name ? name + ': ' : '') + val));
+    tip.appendChild(line);
+  }
+  function axisStyle(g) {
+    g.attr('font-size', null).attr('font-family', null);
+    g.selectAll('text').style('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)');
+    g.selectAll('.domain').style('stroke', 'var(--cds-chart-axis)');
+    g.selectAll('.tick line').style('stroke', 'var(--cds-chart-grid)');
+  }
+  function measure(svg, texts) {
+    const t = svg.append('text').style('font-size', 'var(--cds-font-size-caption)');
+    let w = 0; texts.forEach((s) => { t.text(s); w = Math.max(w, t.node().getComputedTextLength()); });
+    t.remove(); return w;
+  }
+  function frame(box, h) {
+    d3.select(box).selectAll('svg').remove();
+    const W = box.clientWidth;
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${h}`).attr('height', h).style('display', 'block').style('overflow', 'visible');
+    return { svg, W, H: h };
+  }
+
+  // multi-series time line chart
+  function lineChart(box, series, o) {
+    const tip = tipFor(box); tip.hidden = true;
+    const H = o.height || 260;
+    const { svg, W } = frame(box, H);
+    if (W < 50) return;
+    const all = series.flatMap((s) => s.points);
+    const y = d3.scaleLinear([o.yMin ?? 0, d3.max(all, (p) => p.y) * 1.05], [H - 24, 8]).nice();
+    const yTicks = o.yStep ? d3.range(y.domain()[0], y.domain()[1] + o.yStep / 2, o.yStep) : y.ticks(5);
+    const ml = measure(svg, yTicks.map(o.yFmt)) + 10;
+    const mr = o.endLabels ? measure(svg, series.map((s) => s.name + '  ' + o.yFmt(s.points[s.points.length - 1].y))) + 12 : 8;
+    const x = d3.scaleUtc(o.xDomain || d3.extent(all, (p) => p.x), [ml, W - mr]);
+    svg.append('g').attr('transform', `translate(${ml},0)`).call(d3.axisLeft(y).tickValues(yTicks).tickFormat(o.yFmt).tickSize(-(W - ml - mr))).call(axisStyle).call((g) => g.select('.domain').remove());
+    const nx = Math.max(2, Math.min(o.xTicks || 12, Math.floor((W - ml - mr) / 60)));
+    const xAll = x.ticks(nx), xGap = measure(svg, xAll.map(o.xFmt)) + 14; let xPrev = -Infinity;
+    const xKeep = xAll.filter((t) => { const px = x(t); if (px - xPrev < xGap) return false; xPrev = px; return true; });
+    svg.append('g').attr('transform', `translate(0,${H - 24})`).call(d3.axisBottom(x).tickValues(xKeep).tickFormat(o.xFmt).tickSizeOuter(0)).call(axisStyle);
+    (o.refLines || []).forEach((r) => {
+      svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(r.value)).attr('y2', y(r.value)).style('stroke', r.color).attr('stroke-width', 2).attr('stroke-dasharray', r.dash || null);
+      svg.append('text').attr('x', W - mr - 4).attr('y', y(r.value) - 5).attr('text-anchor', 'end').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).style('fill', r.color).text(r.label);
+    });
+    const line = d3.line().x((p) => x(p.x)).y((p) => y(p.y));
+    series.forEach((s, i) => {
+      svg.append('path').datum(s.points).attr('fill', 'none').style('stroke', s.color).attr('stroke-width', s.width || 2).attr('stroke-dasharray', s.dash || null).attr('stroke-linecap', s.dash ? 'butt' : 'round').attr('stroke-linejoin', 'round').attr('d', line);
+      const last = s.points[s.points.length - 1];
+      svg.append('circle').attr('cx', x(last.x)).attr('cy', y(last.y)).attr('r', 3.5).style('fill', s.color);
+    });
+    if (o.endLabels) {
+      const ends = series.map((s) => { const l = s.points[s.points.length - 1]; return { s, x: x(l.x), y: y(l.y), v: l.y }; }).sort((a, b) => a.y - b.y);
+      for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
+      ends.forEach((e) => svg.append('text').attr('x', e.x + 8).attr('y', e.y + 4).style('font-size', 'var(--cds-font-size-caption)').style('fill', e.s.color).text(e.s.name + '  ' + o.yFmt(e.v)));
+    }
+    const hover = svg.append('g').style('pointer-events', 'none');
+    svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(0, W - ml - mr)).attr('height', H - 24).style('fill', 'transparent')
+      .on('mousemove', (ev) => {
+        const [mx, my] = d3.pointer(ev);
+        const xv = x.invert(mx);
+        hover.selectAll('*').remove();
+        tip.replaceChildren();
+        const head = document.createElement('div'); head.className = 'd'; tip.appendChild(head);
+        let first = true;
+        series.forEach((s) => {
+          const idx = d3.bisector((p) => p.x).center(s.points, xv);
+          const p = s.points[idx]; if (!p) return;
+          if (Math.abs(x(p.x) - mx) > 30) return;
+          if (first) { head.textContent = (o.tipDate || o.xFmt)(p.date || p.x); first = false; hover.append('line').attr('x1', x(p.x)).attr('x2', x(p.x)).attr('y1', 8).attr('y2', H - 24).style('stroke', 'var(--cds-chart-reference)'); }
+          hover.append('circle').attr('cx', x(p.x)).attr('cy', y(p.y)).attr('r', 4).style('fill', s.color);
+          tipRow(tip, series.length > 1 ? s.color : null, series.length > 1 ? s.name : '', o.yFmt(p.y) + (o.unit || ''));
+        });
+        if (first) { tip.hidden = true; return; }
+        placeTip(box, tip, mx, my);
+      })
+      .on('mouseleave', () => { hover.selectAll('*').remove(); tip.hidden = true; });
+  }
+
+  // vertical bars, optionally stacked
+  function barChart(box, cats, stacks, o) {
+    const tip = tipFor(box); tip.hidden = true;
+    const H = o.height || 260;
+    const { svg, W } = frame(box, H);
+    if (W < 50) return;
+    const totals = cats.map((c, i) => d3.sum(stacks, (s) => s.values[i] || 0));
+    const y = d3.scaleLinear([0, d3.max(totals) * 1.12], [H - 28, 8]).nice();
+    const yTicks = y.ticks(5);
+    const ml = measure(svg, yTicks.map(o.yFmt)) + 10;
+    const x = d3.scaleBand(cats, [ml, W - 4]).padding(0.3);
+    svg.append('g').attr('transform', `translate(${ml},0)`).call(d3.axisLeft(y).tickValues(yTicks).tickFormat(o.yFmt).tickSize(-(W - ml - 4))).call(axisStyle).call((g) => g.select('.domain').remove());
+    const xa = svg.append('g').attr('transform', `translate(0,${H - 28})`).call(d3.axisBottom(x).tickSizeOuter(0).tickFormat(o.xLabel || ((c) => c))).call(axisStyle);
+    const bw = Math.min(x.bandwidth(), 44), off = (x.bandwidth() - bw) / 2;
+    cats.forEach((c, i) => {
+      let base = 0;
+      stacks.forEach((s) => {
+        const v = s.values[i] || 0;
+        const color = s.colorFor ? s.colorFor(c, i) : s.color;
+        svg.append('rect').attr('x', x(c) + off).attr('width', bw).attr('y', y(base + v)).attr('height', Math.max(0, y(base) - y(base + v))).attr('rx', stacks.length === 1 ? 4 : 0).style('fill', color).style('fill-opacity', s.opacityFor ? s.opacityFor(c, i) : 1)
+          .on('mousemove', (ev) => {
+            const [mx, my] = d3.pointer(ev, box);
+            tip.replaceChildren();
+            const head = document.createElement('div'); head.className = 'd'; head.textContent = c; tip.appendChild(head);
+            if (stacks.length > 1) stacks.slice().reverse().forEach((t) => tipRow(tip, t.color, t.name, o.yFmt(t.values[i]) + (o.unit || '')));
+            else tipRow(tip, null, '', o.yFmt(v) + (o.unit || ''));
+            placeTip(box, tip, mx, my);
+          })
+          .on('mouseleave', () => { tip.hidden = true; });
+        base += v;
+      });
+      if (o.totalLabels) svg.append('text').attr('x', x(c) + x.bandwidth() / 2).attr('y', y(totals[i]) - 5).attr('text-anchor', 'middle').style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--color-fg)').text(o.yFmt(totals[i]));
+    });
+    // thin the category labels if they collide
+    const labels = xa.selectAll('.tick text').nodes();
+    const maxW = d3.max(labels, (n) => n.getComputedTextLength()) || 0;
+    if (maxW > x.step() - 4) labels.forEach((n, i) => { if (i % Math.ceil((maxW + 6) / x.step()) !== 0) n.style.display = 'none'; });
+  }
+
+  // horizontal bars
+  function hBarChart(box, rows, o) {
+    const tip = tipFor(box); tip.hidden = true;
+    const rowH = 30, H = rows.length * rowH + 8;
+    const { svg, W } = frame(box, H);
+    if (W < 50) return;
+    const ml = measure(svg, rows.map((r) => r.label)) + 12;
+    const mr = measure(svg, rows.map((r) => o.fmt(r.value) + (r.suffix || ''))) + 12;
+    const x = d3.scaleLinear([0, d3.max(rows, (r) => r.value)], [ml, W - mr]);
+    rows.forEach((r, i) => {
+      const yy = i * rowH + 4;
+      svg.append('text').attr('x', ml - 8).attr('y', yy + rowH / 2).attr('dy', '0.32em').attr('text-anchor', 'end').style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--color-fg)').text(r.label);
+      svg.append('rect').attr('x', ml).attr('y', yy + 5).attr('height', rowH - 12).attr('width', Math.max(2, x(r.value) - ml)).attr('rx', 4).style('fill', r.color)
+        .on('mousemove', (ev) => { const [mx, my] = d3.pointer(ev, box); tip.replaceChildren(); const h = document.createElement('div'); h.className = 'd'; h.textContent = r.label; tip.appendChild(h); tipRow(tip, null, '', o.fmt(r.value) + (o.unit || '') + (r.suffix || '')); placeTip(box, tip, mx, my); })
+        .on('mouseleave', () => { tip.hidden = true; });
+      svg.append('text').attr('x', x(r.value) + 6).attr('y', yy + rowH / 2).attr('dy', '0.32em').style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--color-fg-muted)').text(o.fmt(r.value) + (r.suffix || ''));
+    });
+  }
+
+  function failed(box, status) {
+    d3.select(box).selectAll('svg').remove();
+    if (status === 'loading') { box.classList.add('dash-skeleton'); return; }
+    box.classList.remove('dash-skeleton');
+    let m = box.querySelector('.ng-fail');
+    if (status === 'error' || status === 'connect') {
+      if (!m) { m = document.createElement('div'); m.className = 'ng-fail'; m.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.4em;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)'; m.innerHTML = '<span style="width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad);display:inline-block"></span><span>Failed to load</span>'; box.appendChild(m); }
+    }
+  }
+  function ready(box, status) {
+    if (status !== 'ok') { failed(box, status); return false; }
+    box.classList.remove('dash-skeleton');
+    const m = box.querySelector('.ng-fail'); if (m) m.remove();
+    return true;
+  }
+  function legend(el, items) {
+    el.replaceChildren(...items.map((it) => { const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = it.color; s.append(i, document.createTextNode(it.name)); return s; }));
+  }
+
+  // ---------- page drawings ----------
+  const isForecast = (p) => /forecast/.test(p);
+  const shortPeriod = (p) => p.replace(' (forecast)', '');
+
+  function drawStorage() {
+    const box = $('#storage-chart'), d = dash.data('storage_weekly');
+    if (!ready(box, d.status)) return;
+    const muted = 'var(--cds-chart-muted)';
+    const yMax = d3.max(d.data, (r) => Number(r.year)) || 2026;
+    const years = [yMax - 2, yMax - 1, yMax];
+    const colors = { [yMax - 2]: css(box, '--cds-chart-muted') || muted, [yMax - 1]: dash.colors[1], [yMax]: dash.colors[0] };
+    const series = years.map((yr) => ({
+      name: String(yr), color: colors[yr], width: yr === yMax ? 2.5 : 1.5,
+      points: d.data.filter((r) => Number(r.year) === yr).map((r) => { const dt = new Date(r.week_ending + 'T00:00:00Z'); return { x: new Date(Date.UTC(2026, dt.getUTCMonth(), dt.getUTCDate())), date: dt, y: r.working_gas_bcf }; }).sort((a, b) => a.x - b.x),
+    }));
+    legend($('#storage-legend'), series.slice().reverse().map((s) => ({ name: s.name, color: s.color })));
+    lineChart(box, series, { yFmt: d3.format(','), xFmt: d3.utcFormat('%b'), tipDate: d3.utcFormat('Week ending %b %-d, %Y'), unit: ' Bcf', xDomain: [new Date(Date.UTC(2026, 0, 1)), new Date(Date.UTC(2026, 11, 31))], yMin: 1500, endLabels: false });
+  }
+
+  function steoRows() { const d = dash.data('steo_balance'); return d.status === 'ok' ? d.data : null; }
+
+  // annual bars in year colors plus a 2026 quarterly chart, shared by Supply and LNG
+  function yearAndQuarterCharts(field, boxA, boxQ, legendEl, rows) {
+    const Y = Number(dash.meta.Y || 2026);
+    const yearColor = { [Y - 1]: dash.colors[1], [Y]: dash.colors[0], [Y + 1]: dash.colors[3] };
+    const yearOf = (c) => (c.match(/20\d\d/) || [''])[0];
+    const annual = rows.filter((r) => !/Q\d/.test(r.period));
+    const quarters = rows.filter((r) => /Q\d/.test(r.period));
+    legend(legendEl, [{ name: String(Y - 1), color: yearColor[Y - 1] }, { name: String(Y), color: yearColor[Y] }, { name: (Y + 1) + ' (forecast)', color: yearColor[Y + 1] }]);
+    barChart(boxA, annual.map((r) => r.period), [{ name: field, values: annual.map((r) => r[field]), colorFor: (c) => yearColor[yearOf(c)] || dash.colors[0] }], { yFmt: d3.format('.0f'), unit: ' Bcf/d', totalLabels: true, xLabel: shortPeriod });
+    if (boxQ) { boxQ.classList.remove('dash-skeleton'); barChart(boxQ, quarters.map((r) => r.period), [{ name: field, values: quarters.map((r) => r[field]), colorFor: () => yearColor[Y], opacityFor: (c) => isForecast(c) ? 0.45 : 1 }], { yFmt: d3.format('.0f'), unit: ' Bcf/d', totalLabels: true, xLabel: (c) => c.replace(/^20\d\d /, '').replace(' (forecast)', '') }); }
+  }
+
+  function drawSupply() {
+    const box = $('#production-chart'), qbox = $('#production-q-chart'), d = dash.data('steo_balance');
+    if (ready(box, d.status) && ready(qbox, d.status)) yearAndQuarterCharts('dry_production', box, qbox, $('#production-legend'), d.data);
+    const rbox = $('#rig-chart'), g = dash.data('indicators');
+    if (ready(rbox, g.status)) {
+      const order = ['Oil-directed rigs', 'Gas-directed rigs', 'Miscellaneous rigs', 'Permian rigs', 'Haynesville rigs'];
+      const label = { 'Oil-directed rigs': 'Oil-directed', 'Gas-directed rigs': 'Gas-directed', 'Miscellaneous rigs': 'Miscellaneous', 'Permian rigs': 'Permian basin', 'Haynesville rigs': 'Haynesville basin' };
+      const rows = order.map((m, i) => { const r = g.data.find((x) => x.metric === m); return r ? { label: label[m], value: r.value, color: dash.colors[(i + 2) % dash.colors.length] } : null; }).filter(Boolean);
+      hBarChart(rbox, rows, { fmt: d3.format(','), unit: ' rigs' });
+    }
+  }
+
+  function drawDemand() {
+    const box = $('#demand-chart'), d = dash.data('steo_balance');
+    if (!ready(box, d.status)) return;
+    const rows = d.data;
+    const parts = [['residential', 'Residential'], ['commercial', 'Commercial'], ['industrial', 'Industrial'], ['electric_power', 'Electric power'], ['lease_plant_fuel', 'Lease & plant fuel'], ['pipeline_distribution', 'Pipeline & distribution'], ['vehicle', 'Vehicle']];
+    const stacks = parts.map(([f, n], i) => ({ name: n, color: dash.colors[i % dash.colors.length], values: rows.map((r) => r[f]) }));
+    legend($('#demand-legend'), stacks.map((s) => ({ name: s.name, color: s.color })));
+    barChart(box, rows.map((r) => r.period), stacks, { yFmt: d3.format('.0f'), unit: ' Bcf/d', totalLabels: true, xLabel: shortPeriod });
+  }
+
+  function drawMarket() {
+    safe('global prices chart', drawGlobal);
+    safe('Henry Hub chart', drawHH);
+  }
+  function drawHH() {
+    const box = $('#hh-chart'), d = dash.data('henry_hub_weekly');
+    if (ready(box, d.status)) {
+      const toPts = (rows, f) => (rows || []).map((r) => ({ x: new Date(r.week_ending + 'T00:00:00Z'), y: Number(r[f]) })).filter((p) => isFinite(p.y)).sort((a, b) => a.x - b.x);
+      const pts = toPts(d.data, 'price_usd_mmbtu');
+      const start = pts.length ? pts[0].x : null;
+      const clip = (a) => a.filter((p) => !start || p.x >= start);
+      const series = [{ name: 'Henry Hub', color: dash.colors[0], points: pts }];
+      const ttf = clip(toPts(dash.data('ttf_weekly').data, 'usd_mmbtu')), jkm = clip(toPts(dash.data('jkm_weekly').data, 'usd_mmbtu'));
+      if (ttf.length) series.push({ name: 'TTF (Europe)', color: dash.colors[4], points: ttf });
+      if (jkm.length) series.push({ name: 'JKM (Asia)', color: dash.colors[1], points: jkm });
+      legend($('#hh-legend'), series.map((s) => ({ name: s.name, color: s.color })));
+      lineChart(box, series, { yFmt: (v) => '$' + d3.format('.2f')(v), xFmt: d3.utcFormat('%b %Y'), tipDate: d3.utcFormat('Week ending %b %-d, %Y'), unit: '/MMBtu', xTicks: 8, yStep: series.length > 1 ? 5 : 1, height: 320, refLines: [{ value: 3, color: 'var(--color-ok)', label: '$3.00' }] });
+    }
+  }
+  function drawGlobal() {
+    const gbox = $('#global-chart'), g = dash.data('indicators');
+    if (gbox && ready(gbox, g.status)) {
+      const pick = (m) => g.data.find((r) => r.metric === m);
+      const rows = [['Henry Hub front-month futures', 'Henry Hub (US)', ''], ['TTF (Europe), front month', 'TTF (Europe)', ''], ['JKM (Asia), front month', 'JKM (Asia)', dash.meta.jkm_live ? '' : ' approx.']]
+        .map(([m, label, suf], i) => { const r = pick(m); return r ? { label, value: r.value, suffix: suf, color: [dash.colors[0], dash.colors[4], dash.colors[1]][i] } : null; }).filter(Boolean);
+      hBarChart(gbox, rows, { fmt: (v) => '$' + d3.format('.2f')(v), unit: '/MMBtu' });
+    }
+  }
+
+  function drawLng() {
+    drawShips();
+    const box = $('#lng-chart'), d = dash.data('steo_balance');
+    if (ready(box, d.status)) {
+      const rows = d.data;
+      yearAndQuarterCharts('lng_exports', box, $('#lng-q-chart'), $('#lng-legend'), d.data);
+    }
+    const dbox = $('#dest-chart'), dd = dash.data('lng_destinations');
+    if (ready(dbox, dd.status)) {
+      hBarChart(dbox, dd.data.map((r, i) => ({ label: r.country, value: r.bcfd, color: dash.colors[(i + 2) % dash.colors.length] })), { fmt: d3.format('.1f'), unit: ' Bcf/d' });
+    }
+  }
+
+  function fillTables() {
+    const n1 = d3.format('.1f'), n0 = d3.format(','), pc = (v) => d3.format('+.1f')(v);
+    fillTable('region-table', 'storage_regions', [
+      { f: 'region' }, { f: 'working_gas_bcf', n: 1, fmt: n0 }, { f: 'net_change_bcf', n: 1, fmt: d3.format('+,'), tone: 1 },
+      { f: 'year_ago_bcf', n: 1, fmt: n0, hideSm: 1 }, { f: 'vs_year_ago_pct', n: 1, fmt: pc, tone: 1 },
+      { f: 'five_year_avg_bcf', n: 1, fmt: n0, hideSm: 1 }, { f: 'vs_five_year_pct', n: 1, fmt: pc, tone: 1 },
+    ], { rowClass: (r) => r.region === 'Total Lower 48' ? 'total' : (r.region === 'Salt' || r.region === 'Nonsalt') ? 'sub' : '' });
+    fillTable('balance-table', 'steo_balance', [
+      { f: 'period' }, { f: 'dry_production', n: 1, fmt: n1 }, { f: 'pipeline_imports', n: 1, fmt: n1 }, { f: 'total_consumption', n: 1, fmt: n1 },
+      { f: 'pipeline_exports', n: 1, fmt: n1 }, { f: 'lng_exports', n: 1, fmt: n1 }, { f: 'end_inventories_bcf', n: 1, fmt: n0, hideSm: 1 },
+    ]);
+    fillTable('sector-table', 'steo_balance', [
+      { f: 'period' }, { f: 'residential', n: 1, fmt: n1 }, { f: 'commercial', n: 1, fmt: n1 }, { f: 'industrial', n: 1, fmt: n1 }, { f: 'electric_power', n: 1, fmt: n1 },
+      { f: 'lease_plant_fuel', n: 1, fmt: n1, hideSm: 1 }, { f: 'pipeline_distribution', n: 1, fmt: n1, hideSm: 1 }, { f: 'total_consumption', n: 1, fmt: n1 },
+    ]);
+    fillTable('event-table', 'infra_events', [{ f: 'when' }, { f: 'event' }, { f: 'type', pill: (v) => v === 'Disruption' ? 'bad' : v === 'LNG' ? 'ok' : 'warn' }, { f: 'detail' }]);
+    fillTable('ship-table', 'sample_vessels', [
+      { f: 'vessel' }, { f: 'status', pill: (v) => v === 'Laden' ? 'ok' : v === 'Ballast' ? '' : 'warn' }, { f: 'origin' }, { f: 'destination' },
+      { f: 'cargo_bcf', n: 1, fmt: n1, hideSm: 1 }, { f: 'speed_knots', n: 1, fmt: n0, hideSm: 1 }, { f: 'eta', fmt: (v) => d3.utcFormat('%b %-d')(new Date(v + 'T00:00:00Z')) },
+    ], { filter: (r) => r.kind === 'Vessel' });
+    fillTable('signal-table', 'signals', [{ f: 'signal' }, { f: 'reading' }, { f: 'outlook', pill: (v) => /Upside/.test(v) ? 'bad' : /Downside/.test(v) ? 'ok' : /Regional/.test(v) ? 'warn' : '' }, { f: 'action' }]);
+    fillTable('terminal-table', 'lng_terminals', [
+      { f: 'terminal' }, { f: 'state', hideSm: 1 }, { f: 'nominal_bcfd', n: 1, fmt: n1 }, { f: 'peak_bcfd', n: 1, fmt: n1 },
+      { f: 'status', pill: (v) => v === 'Operating' ? 'ok' : 'warn' }, { f: 'note', hideSm: 1 },
+    ]);
+  }
+
+
+  // ---------- sample ship map ----------
+  // Coarse land shapes (lon, lat), used only as a backdrop for the sample positions.
+  const LAND = [
+    { name: 'North America', color: '#4caf7a', label: [-102, 47], pts: [[-168,66],[-165,62],[-158,58],[-152,60],[-146,60.5],[-140,59.8],[-135,57.5],[-131,54],[-128,50.5],[-124.5,48.4],[-124,46],[-124.2,42],[-123.7,39],[-122.5,37.5],[-120.6,34.6],[-117.2,32.7],[-114.7,30],[-112.5,27],[-110,23],[-112,29],[-109,26],[-105.7,22.5],[-105.3,20],[-102,18],[-100,16.8],[-96,15.7],[-94,16.1],[-92.2,14.5],[-88,13.2],[-86,11.5],[-85.7,10],[-84,9.5],[-82.5,8.2],[-80,7.4],[-78.4,8.3],[-77.9,7.2],[-77.3,8.7],[-79.5,9.5],[-81.5,9],[-83.7,11],[-83.4,14.5],[-84,15.8],[-88.3,16],[-88,18.5],[-87,21],[-90.5,21],[-91,18.5],[-94.5,18.2],[-97.4,21.5],[-97.5,25.8],[-97.2,27.8],[-95,29.2],[-93.8,29.7],[-91,29.2],[-89.4,29],[-89,30.3],[-85.3,29.7],[-84,30],[-82.7,28],[-81.8,26],[-80.9,25.1],[-80.1,25.8],[-80.6,28.4],[-81.4,30.7],[-79.2,33.2],[-75.5,35.2],[-76,37],[-75,38.5],[-74,40.5],[-70,41.5],[-70.5,43],[-66.5,44.5],[-63.5,44.7],[-60,46],[-55,47],[-53,48],[-56,51.5],[-60,55],[-62,58],[-64.5,60],[-70,59],[-77,62],[-78,58],[-76.5,56],[-79.5,54.5],[-82,52.5],[-87,55.5],[-93,59],[-94.5,61],[-90,64],[-87,66.5],[-82,66.5],[-75,72],[-90,74],[-120,74],[-140,70],[-156,71.3],[-163,69],[-166,68.5],[-163,66.5]] },
+    { name: '', color: '#4caf7a', pts: [[-45,60],[-42,61.5],[-38,65.5],[-22,70],[-20,76],[-60,76],[-55,72],[-53,68],[-51,64]] },
+    { name: '', color: '#4caf7a', pts: [[-84.9,21.9],[-82,23.2],[-77,22],[-74.2,20.2],[-77.7,19.9],[-80,21.7]] },
+    { name: '', color: '#4caf7a', pts: [[-74.4,18.4],[-72,19.9],[-68.4,18.6],[-71,17.6]] },
+    { name: '', color: '#4caf7a', pts: [[-78.4,18.5],[-76.2,18],[-77,17.7]] },
+    { name: 'South America', color: '#a3b84a', label: [-60, -14], pts: [[-77.3,8.7],[-75.5,10.5],[-71.5,12.3],[-68,10.5],[-62,10.7],[-60,8.5],[-57,6],[-52,5],[-50,1],[-48,-1],[-44,-2.5],[-40,-3],[-35,-5.5],[-35,-9],[-39,-13.5],[-39,-17.5],[-41,-22],[-44.5,-23.2],[-48.5,-26],[-48.7,-28.5],[-51,-31],[-53,-33.8],[-58,-34.5],[-57,-36.5],[-58,-38.7],[-62,-39],[-65,-41],[-64,-42.5],[-65.5,-45],[-67.5,-46.5],[-66,-48],[-69,-51],[-68.5,-52.5],[-72,-53.5],[-74.5,-52],[-75.5,-47],[-74,-43],[-73.5,-38],[-71.5,-33],[-71.4,-28],[-70.3,-23],[-70.2,-18.3],[-75,-15.5],[-77,-12],[-79,-8],[-81.2,-5],[-80.3,-3],[-80,-0.5],[-78.8,1.5],[-77.3,4],[-77.5,7],[-77.9,7.2]] },
+    { name: 'Europe', color: '#8f7fd8', label: [22, 56], pts: [[-9.5,37],[-8.9,38.7],[-9.3,42.9],[-8,43.7],[-1.8,43.4],[-1.2,46],[-4.7,48.4],[-1.6,48.7],[1.6,50.9],[4,51.9],[4.8,53],[8.6,53.9],[8.5,57.1],[10.5,57.7],[11.8,57.8],[11.2,59.2],[10,59],[8,58.1],[6,58.1],[5,59],[5,60],[5.5,62],[10,64],[14,67.5],[18,69.5],[24,71],[31,70.3],[40,67.5],[40,46],[30,46.5],[28.7,44],[28,41.7],[26.5,40.9],[24,40.9],[23.5,38.2],[22,37],[20,39.5],[19.5,41.8],[13.6,45.6],[12.3,45.4],[18.5,40.2],[16,40],[15.6,38],[12.3,41.7],[10.5,43],[8.7,44.4],[6.5,43.1],[3,43.3],[3.2,41.9],[0.3,40.2],[0,38.7],[-2,36.7],[-5.6,36],[-6.3,36.6]] },
+    { name: '', color: '#8f7fd8', pts: [[-5.7,50],[1.4,51.3],[1.7,52.7],[0,53.5],[-1.6,55.6],[-2,57.6],[-5,58.6],[-5.7,56.5],[-4.8,55],[-3.1,53.3],[-5.3,51.8]] },
+    { name: '', color: '#8f7fd8', pts: [[-6,52],[-6.3,54.2],[-8.2,55.2],[-10,54],[-10.3,51.6]] },
+    { name: '', color: '#8f7fd8', pts: [[12.4,38.1],[15.6,38.3],[15.1,36.7]] },
+    { name: '', color: '#8f7fd8', pts: [[8.2,41],[9.8,41],[9.6,39.1],[8.4,39]] },
+    { name: '', color: '#8f7fd8', pts: [[-24,65.5],[-14,65.3],[-14.8,64.3],[-18.7,63.4],[-22.7,63.9]] },
+    { name: 'Africa', color: '#d9a441', label: [20, 4], pts: [[32.3,31.3],[29.9,31.2],[25,31.7],[23,32.6],[20.1,32],[19,30.3],[15.2,32.3],[11.5,33],[10,34],[11,35.5],[10,37.2],[3,36.8],[-2,35.1],[-5.9,35.8],[-6.8,34],[-9.6,32],[-9.8,29.5],[-14.5,26],[-17,21],[-16.5,19.5],[-17,14.7],[-15,11],[-13,9],[-11,7],[-7.5,4.4],[-2,4.8],[2,6.3],[5,5.5],[8.8,4],[9.8,2],[9,-1],[11.8,-4],[12.3,-6],[13.4,-9],[13.6,-12.5],[12,-17],[11.8,-19],[14.5,-22.8],[15.2,-27],[16.5,-28.6],[18.4,-34],[20,-34.8],[22.5,-34],[25.6,-34],[27.5,-33.2],[30.5,-30.8],[32.5,-28.5],[32.9,-26],[35.5,-24],[35.4,-21.3],[34.7,-19.8],[36.8,-17.9],[40.5,-15.2],[40.5,-10.5],[39.3,-6.5],[39.7,-4.2],[41,-2],[43.5,0.5],[46,2.5],[49,6],[51.2,10.5],[49.5,11.4],[44,10.4],[43.3,11.7],[42.5,12.5],[41,14.5],[39,16],[37.3,19],[37,21.7],[35.5,23.9],[33.5,27],[32.5,29.9]] },
+    { name: '', color: '#d9a441', pts: [[49.3,-12],[50.5,-15.5],[49.5,-17],[47.1,-25],[45,-25.4],[43.6,-23],[44.2,-20],[44,-17],[46.3,-15.8],[48,-13.6]] },
+    { name: 'Asia', color: '#d9785b', label: [95, 50], pts: [[40,46],[40,67.5],[44,68],[55,68.5],[60,69.5],[70,73],[100,76],[130,73],[160,70],[175,69],[180,67],[180,65],[178,62],[170,60],[163,58],[162,55],[156,51],[156,57],[160,61.5],[151,59.3],[143,59.3],[137,54],[141,52],[140,48],[135,43],[130,42.5],[129.5,40],[129.4,35.5],[126.5,34.5],[126.3,37.5],[124.8,39.7],[121.5,39],[122,40.9],[118,39],[119.5,37.3],[122.5,37],[120.5,36],[119.2,34.5],[121.8,31.5],[121.8,30],[120,26.5],[117.5,23.5],[113.5,22.2],[110.5,21],[109.8,21.5],[108,21.5],[106.5,20],[105.8,18.8],[108.8,15],[109.2,11.7],[106.8,10.4],[104.8,8.7],[104.6,10.4],[102.5,12.2],[100.9,13.5],[100,12.5],[99.2,10],[100.3,8.3],[101.3,6.9],[103.4,4],[104.2,1.4],[103.4,1.3],[101.3,2.8],[100.3,5.4],[98.3,8],[98.5,13],[97.6,16.5],[94.5,16],[94.3,18.8],[92.3,20.7],[91.8,22.4],[90,21.9],[88,21.6],[86.9,20.5],[85,19.2],[82.3,16.6],[80.3,15.4],[80.2,13],[79.8,10.3],[78.2,8.9],[77.5,8.1],[76.3,9.8],[74.8,12.8],[73.4,16],[72.8,19],[72.7,21.2],[70.4,20.9],[68.9,22.8],[67.3,24.7],[66.5,25.4],[62,25.1],[57.3,25.8],[56.4,27.1],[54.7,26.5],[51.5,27.9],[50.2,30],[48.9,30.3],[48,29.5],[50,26.5],[51.6,25.2],[51.5,24.2],[54,24.1],[56.4,26.3],[56.4,24.9],[58.6,23.6],[59.8,22.4],[57.8,19],[55,17],[52.2,15.6],[49,14.1],[45,12.9],[43.3,12.7],[42.7,15.7],[41.3,19.3],[39.1,21.8],[37,25],[35,28],[34.9,29.5],[32.5,29.9],[32.3,31.3],[34.5,31.5],[35.5,33],[35.9,35.5],[36,36.2],[30,36.2],[27,38],[26.5,40.9],[29,41.2],[41.6,41.6],[39.5,44],[37.5,45]] },
+    { name: '', color: '#d9785b', pts: [[130,31.2],[131.4,31.4],[132,33.8],[135,33.5],[136.9,34.3],[139.9,35],[140.9,36.9],[141.5,38.3],[142,39.6],[141.4,41.4],[140,40.5],[139.8,38.5],[138.5,37.4],[136.7,37.1],[135.9,35.7],[133,35.5],[131,34.4],[129.6,33.3]] },
+    { name: '', color: '#d9785b', pts: [[140,41.5],[141.5,42.6],[143.3,42],[145.6,43.3],[144,44.1],[141.7,45.4],[141.4,43.4],[140.4,43.3]] },
+    { name: '', color: '#d9785b', pts: [[120.1,23],[121,21.9],[121.9,24.6],[121.5,25.3],[120.7,24.6]] },
+    { name: '', color: '#d9785b', pts: [[120.6,18.5],[122.3,18.4],[122,16.2],[124,13.8],[121.8,13.9],[120,14.7],[119.8,16.3]] },
+    { name: '', color: '#d9785b', pts: [[122,7],[125.4,9.8],[126.6,7.3],[125.4,5.6],[124,6.4]] },
+    { name: '', color: '#d9785b', pts: [[109.6,1.9],[111,1.6],[113,3.2],[115.5,5.4],[117.2,7],[119.3,5.2],[118,1],[117.8,-1],[116.4,-3.8],[114.6,-4],[111,-3],[110.2,-1.7]] },
+    { name: '', color: '#d9785b', pts: [[95.3,5.6],[97.5,5.2],[100.3,2.2],[103.7,-1],[106,-3],[105.8,-5.8],[102.3,-4],[100.3,-1],[98.6,1.7]] },
+    { name: '', color: '#d9785b', pts: [[105.2,-6.8],[108.3,-6.2],[111,-6.4],[114.6,-7.7],[114.4,-8.7],[110.5,-8.2],[106.5,-7.3]] },
+    { name: '', color: '#d9785b', pts: [[79.9,9.8],[81.8,7.5],[81.2,6.2],[80,6.2]] },
+    { name: '', color: '#d9785b', pts: [[119.5,0.8],[124.5,1.3],[121,-1],[123.3,-5.3],[120.4,-5.6],[119.4,-3.5]] },
+    { name: 'Australia', color: '#c96fa8', label: [134, -25], pts: [[113.4,-22],[114.2,-26.3],[115,-29.5],[115.7,-33.3],[115,-34.3],[117.9,-35.1],[121.8,-33.9],[124,-33],[126,-32.3],[129,-31.7],[131.2,-31.5],[134.2,-32.6],[135.6,-34.9],[137.8,-33],[137.5,-35.6],[139.6,-36.5],[140.6,-38],[143.5,-38.8],[146.3,-39.1],[148,-37.8],[150,-37.4],[150.1,-35.7],[151.3,-33.8],[153.1,-30.3],[153.6,-28.2],[153,-25.3],[150.8,-22.6],[149.1,-21],[146.2,-18.9],[145.4,-16.4],[145.3,-14.9],[143.5,-14],[142.5,-10.7],[141.6,-12.6],[141.6,-15.9],[140.5,-17.6],[139.2,-17.3],[136.6,-15.9],[135.4,-15],[136.7,-12.3],[135.8,-11.9],[132.6,-11.5],[131,-12.2],[129.5,-14.9],[128.1,-15],[126.1,-14.1],[124.4,-16.3],[122.2,-17.9],[121,-19.6],[119,-20],[116.7,-20.6],[114.6,-21.8]] },
+    { name: '', color: '#c96fa8', pts: [[144.6,-40.7],[148.3,-40.9],[148,-43.2],[146,-43.6],[145.2,-42.2]] },
+    { name: '', color: '#c96fa8', pts: [[172.7,-34.4],[174.8,-36.9],[178.5,-37.7],[176.9,-39.6],[174.6,-41.3],[172.6,-40.5],[174,-41.6],[171.2,-44.2],[169.3,-46.6],[166.5,-46],[168.4,-44],[172.4,-41]] },
+    { name: '', color: '#c96fa8', pts: [[131,-1.4],[134,-0.9],[138,-1.6],[141,-2.6],[145.7,-4.8],[147.5,-6],[147.5,-8],[146,-8.1],[143.5,-9],[141,-9.1],[139,-8.1],[137.6,-5],[134,-3.8],[132,-2.8]] },
+  ];
+  const OCEANS = [['Pacific Ocean',-140,8],['Pacific Ocean',165,22],['Atlantic Ocean',-38,28],['Atlantic Ocean',-18,-25],['Indian Ocean',78,-22],['Gulf of Mexico',-90,24.3]];
+  function drawShips() {
+    const box = $('#ship-map'), d = dash.data('sample_vessels');
+    if (!box) return;
+    if (!ready(box, d.status)) return;
+    const tip = tipFor(box); tip.hidden = true;
+    const W0 = box.clientWidth; if (W0 < 50) return;
+    const lon = [-180, 180], lat = [-50, 74], k = 1;
+    const H = Math.round(Math.max(220, Math.min(W0 * ((lat[1] - lat[0]) / ((lon[1] - lon[0]) * k)), 560)));
+    const { svg, W } = frame(box, H);
+    const s = Math.min(W / ((lon[1] - lon[0]) * k), H / (lat[1] - lat[0]));
+    const ox = (W - (lon[1] - lon[0]) * k * s) / 2;
+    const px = (L) => ox + (L - lon[0]) * k * s, py = (A) => H - (A - lat[0]) * s;
+    const g = svg.append('g');
+    const clipId = 'ng-map-clip';
+    svg.append('clipPath').attr('id', clipId).append('rect').attr('x', ox).attr('y', 0).attr('width', (lon[1] - lon[0]) * k * s).attr('height', H).attr('rx', 6);
+    g.attr('clip-path', `url(#${clipId})`);
+    g.append('rect').attr('x', ox).attr('y', 0).attr('width', (lon[1] - lon[0]) * k * s).attr('height', H).style('fill', '#2f86c8').style('fill-opacity', 0.16);
+    for (let L = -150; L <= 150; L += 30) g.append('line').attr('x1', px(L)).attr('x2', px(L)).attr('y1', 0).attr('y2', H).style('stroke', '#2f86c8').style('stroke-opacity', 0.18);
+    for (let A = -45; A <= 60; A += 15) g.append('line').attr('y1', py(A)).attr('y2', py(A)).attr('x1', 0).attr('x2', W).style('stroke', '#2f86c8').style('stroke-opacity', 0.18);
+    const area = d3.line().x((q) => px(q[0])).y((q) => py(q[1])).curve(d3.curveLinearClosed);
+    LAND.forEach((c) => g.append('path').attr('d', area(c.pts)).style('fill', c.color).style('fill-opacity', 0.42).style('stroke', c.color).style('stroke-width', 1).style('stroke-linejoin', 'round'));
+    const big = W > 600;
+    LAND.filter((c) => c.name && c.label).forEach((c) => g.append('text').attr('x', px(c.label[0])).attr('y', py(c.label[1])).attr('text-anchor', 'middle').style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).style('letter-spacing', '0.06em').style('fill', 'var(--color-fg)').style('opacity', 0.75).text(big ? c.name.toUpperCase() : c.name));
+    OCEANS.filter((o, i) => big || i < 5).forEach(([n, L, A]) => g.append('text').attr('x', px(L)).attr('y', py(A)).attr('text-anchor', 'middle').style('font-size', 'var(--cds-font-size-caption)').style('font-style', 'italic').style('fill', '#2f86c8').text(n));
+    const statusColor = { 'Loading': dash.colors[2], 'Waiting to load': dash.colors[3], 'Laden': dash.colors[0], 'Ballast': 'var(--cds-chart-muted)' };
+    legend($('#ship-legend'), [{ name: 'Terminal', color: 'var(--color-fg)' }, ...Object.entries(statusColor).map(([n, c]) => ({ name: n === 'Laden' ? 'Laden, en route' : n === 'Ballast' ? 'Ballast, returning' : n, color: c }))]);
+    const rows = d.data;
+    rows.filter((r) => r.kind === 'Terminal').forEach((r) => {
+      g.append('rect').attr('x', px(r.lon) - 2.5).attr('y', py(r.lat) - 2.5).attr('width', 5).attr('height', 5).style('fill', 'var(--color-fg)');
+    });
+    const show = (ev, r) => {
+      const [mx, my] = d3.pointer(ev, box);
+      tip.replaceChildren();
+      const h = document.createElement('div'); h.className = 'd'; h.textContent = r.vessel + (r.kind === 'Terminal' ? ' (terminal)' : ' (sample)'); tip.appendChild(h);
+      if (r.kind !== 'Terminal') {
+        tipRow(tip, null, '', r.status + ': ' + r.origin + ' to ' + r.destination);
+        tipRow(tip, null, 'Cargo', r.cargo_bcf ? d3.format('.1f')(r.cargo_bcf) + ' Bcf' : 'none');
+        tipRow(tip, null, 'Speed', r.speed_knots + ' kn');
+        tipRow(tip, null, 'ETA', d3.utcFormat('%b %-d')(new Date(r.eta + 'T00:00:00Z')));
+      }
+      placeTip(box, tip, mx, my);
+    };
+    rows.filter((r) => r.kind === 'Vessel').forEach((r) => {
+      g.append('circle').attr('cx', px(r.lon)).attr('cy', py(r.lat)).attr('r', big ? 4.5 : 3.5).style('fill', statusColor[r.status] || dash.colors[0]).style('stroke', 'var(--color-panel)').style('stroke-width', 1.5).style('cursor', 'default')
+        .on('mousemove', (ev) => show(ev, r)).on('mouseleave', () => { tip.hidden = true; });
+    });
+    rows.filter((r) => r.kind === 'Terminal').forEach((r) => {
+      g.append('rect').attr('x', px(r.lon) - 6).attr('y', py(r.lat) - 6).attr('width', 12).attr('height', 12).style('fill', 'transparent')
+        .on('mousemove', (ev) => show(ev, r)).on('mouseleave', () => { tip.hidden = true; });
+    });
+  }
+
+  function divergingBars(box, cats, values, o) {
+    const tip = tipFor(box); tip.hidden = true;
+    const B = o.vertical ? 66 : 28;
+    const H = (o.height || 260) + B - 28;
+    const { svg, W } = frame(box, H);
+    if (W < 50) return;
+    const ext = d3.max(values, (v) => Math.abs(v)) * 1.25 || 1;
+    const y = d3.scaleLinear([-ext, ext], [H - B, 8]).nice();
+    const yTicks = y.ticks(5);
+    const ml = measure(svg, yTicks.map(o.yFmt)) + 10;
+    const x = d3.scaleBand(cats, [ml, W - 4]).padding(0.3);
+    svg.append('g').attr('transform', `translate(${ml},0)`).call(d3.axisLeft(y).tickValues(yTicks).tickFormat(o.yFmt).tickSize(-(W - ml - 4))).call(axisStyle).call((g) => g.select('.domain').remove());
+    svg.append('line').attr('x1', ml).attr('x2', W - 4).attr('y1', y(0)).attr('y2', y(0)).style('stroke', 'var(--cds-chart-axis)');
+    const xa = svg.append('g').attr('transform', `translate(0,${H - B})`).call(d3.axisBottom(x).tickSize(0).tickFormat(o.xLabel || ((c) => c))).call(axisStyle);
+    xa.select('.domain').remove();
+    // Vertical labels: read bottom to top, so every bar keeps its full label
+    if (o.vertical) xa.selectAll('.tick text').attr('transform', 'rotate(-90)').attr('text-anchor', 'end').attr('dx', '-0.4em').attr('dy', '0.32em').attr('y', 0).attr('x', 0);
+    const bw = Math.min(x.bandwidth(), 44), off = (x.bandwidth() - bw) / 2;
+    cats.forEach((c, i) => {
+      const v = values[i];
+      svg.append('rect').attr('x', x(c) + off).attr('width', bw).attr('y', Math.min(y(v), y(0))).attr('height', Math.abs(y(v) - y(0))).attr('rx', 3)
+        .style('fill', o.colorFor(c, v)).style('fill-opacity', o.opacityFor ? o.opacityFor(c) : 1)
+        .on('mousemove', (ev) => { const [mx, my] = d3.pointer(ev, box); tip.replaceChildren(); const h = document.createElement('div'); h.className = 'd'; h.textContent = c; tip.appendChild(h); tipRow(tip, null, '', o.yFmt(v) + (o.unit || '') + (v >= 0 ? ' (storage fill)' : ' (storage draw)')); placeTip(box, tip, mx, my); })
+        .on('mouseleave', () => { tip.hidden = true; });
+      svg.append('text').attr('x', x(c) + x.bandwidth() / 2).attr('y', v >= 0 ? y(v) - 5 : y(v) + 13).attr('text-anchor', 'middle').style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--color-fg)').text(o.yFmt(v));
+    });
+    // Two-line labels: "Q1|2026" shows the quarter above its year
+    if (!o.vertical) xa.selectAll('.tick text').each(function () { const t = d3.select(this), parts = t.text().split('|'); if (parts.length < 2) return; t.text(null); parts.forEach((p, k) => t.append('tspan').attr('x', 0).attr('dy', k ? '1.15em' : null).text(p)); });
+    const labels = xa.selectAll('.tick text').nodes();
+    const maxW = d3.max(labels, (n) => d3.max(n.querySelectorAll('tspan').length ? Array.from(n.querySelectorAll('tspan')) : [n], (t) => t.getComputedTextLength())) || 0;
+    if (!o.vertical && maxW > x.step() - 4) labels.forEach((n, i) => { if (i % Math.ceil((maxW + 6) / x.step()) !== 0) n.style.display = 'none'; });
+  }
+
+  function drawOutlook() {
+    const pbox = $('#outlook-price-chart'), h = dash.data('henry_hub_weekly'), f = dash.data('steo_hh_quarterly');
+    const pst = h.status !== 'ok' ? h.status : f.status;
+    if (ready(pbox, pst)) {
+      const hist = h.data.map((r) => ({ x: new Date(r.week_ending + 'T00:00:00Z'), y: Number(r.price_usd_mmbtu) })).filter((p) => p.x >= new Date(Date.UTC(Number(dash.meta.Y || 2026) - 1, 6, 1))).sort((a, b) => a.x - b.x);
+      const fc = f.data.filter((r) => r.kind === 'Forecast').map((r) => ({ x: new Date(r.mid_date + 'T00:00:00Z'), y: Number(r.price_usd_mmbtu), date: r.quarter })).sort((a, b) => a.x - b.x);
+      const lastH = hist[hist.length - 1];
+      const fcs = [{ x: lastH.x, y: lastH.y, date: 'Latest weekly spot' }, ...fc];
+      legend($('#outlook-price-legend'), [{ name: 'Weekly spot', color: dash.colors[0] }, { name: 'EIA forecast (quarterly)', color: dash.colors[3] }]);
+      lineChart(pbox, [{ name: 'Weekly spot', color: dash.colors[0], points: hist }, { name: 'EIA forecast', color: dash.colors[3], points: fcs, dash: '6 4', width: 2.5 }],
+        { yFmt: (v) => '$' + d3.format('.2f')(v), xFmt: d3.utcFormat('%b %Y'), tipDate: (d) => (typeof d === 'string' ? d : d3.utcFormat('Week ending %b %-d, %Y')(d)), unit: '/MMBtu', xTicks: 6 });
+    }
+    const sbox = $('#outlook-storage-chart'), sp = dash.data('storage_projection');
+    if (ready(sbox, sp.status)) {
+      const pts = sp.data.map((r) => ({ x: new Date(r.week_ending + 'T00:00:00Z'), y: Number(r.bcf), kind: r.kind }));
+      const rep = pts.filter((p) => p.kind === 'Reported');
+      const proj = [rep[rep.length - 1], ...pts.filter((p) => p.kind === 'Projected')];
+      legend($('#outlook-storage-legend'), [{ name: 'Reported', color: dash.colors[0] }, { name: 'Projected', color: dash.colors[3] }]);
+      lineChart(sbox, [{ name: 'Reported', color: dash.colors[0], points: rep }, { name: 'Projected', color: dash.colors[3], points: proj, dash: '6 4', width: 2.5 }],
+        { yFmt: d3.format(','), xFmt: d3.utcFormat('%b %-d'), tipDate: d3.utcFormat('Week ending %b %-d'), unit: ' Bcf', yMin: Math.floor((d3.min(pts, (p) => p.y) - 100) / 100) * 100, xTicks: 6 });
+    }
+    const bbox = $('#outlook-balance-chart'), sb = dash.data('sd_balance');
+    if (ready(bbox, sb.status)) {
+      const rows = sb.data;
+      legend($('#outlook-balance-legend'), [{ name: 'Storage fill', color: 'var(--color-ok)' }, { name: 'Storage draw', color: 'var(--color-bad)' }, { name: 'Lighter: EIA forecast', color: 'var(--cds-chart-muted)' }]);
+      divergingBars(bbox, rows.map((r) => r.period), rows.map((r) => Number(r.implied_bcfd)), { yFmt: d3.format('+.1f'), unit: ' Bcf/d', vertical: true, xLabel: (c) => { const m = c.match(/^(20\d\d) (Q\d)/); return m ? m[2] + ' ' + m[1] : c.replace(' (forecast)', '') + ' avg'; }, colorFor: (c, v) => (v >= 0 ? 'var(--color-ok)' : 'var(--color-bad)'), opacityFor: (c) => (isForecast(c) ? 0.5 : 0.9) });
+    }
+  }
+  const drawers = { storage: drawStorage, supply: drawSupply, demand: drawDemand, infrastructure: () => {}, market: () => { safe('market', drawMarket); safe('outlook', drawOutlook); }, lng: drawLng };
+  const safe = (name, fn) => { try { fn(); } catch (e) { console.error('Dashboard: ' + name + ' failed', e); } };
+  function draw() {
+    safe('values', fillValues);
+    safe('tables', fillTables);
+    safe(active, drawers[active] || (() => {}));
+  }
+
+  dash.onData(draw);
+  const start = location.hash.slice(1);
+  show(drawers[start] ? start : 'market');
+})();
+</script>
+
+</div>
+</body>
+</html>

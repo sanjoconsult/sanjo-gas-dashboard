@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sanjo Consult is a Houston-based AI and data transformation consultancy serving energy and public-sector clients.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Sanjo Consult</title>
+<style>html{scrollbar-gutter:stable;scroll-padding-top:96px}@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a schematic-led site. Hero pairs the thesis with a natural-gas value-chain line; sections alternate paper and ink bands; data labels set in mono like an engineering drawing. */
+:root {
+  --paper: #f4f7f9;
+  --surface: #ffffff;
+  --ink: #0f1d2e;
+  --ink-soft: #4a5a6c;
+  --rule: #d6dee6;
+  --blue: #1d5fa8;
+  --teal: #12877a;
+  --band: #0f1d2e;
+  --band-fg: #e8eef4;
+  --band-soft: #9fb1c4;
+  --band-rule: #24384f;
+  --on-accent: #ffffff;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --max: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c1724; --surface: #122236; --ink: #e8eef4; --ink-soft: #a3b3c4; --rule: #23384f;
+    --blue: #6aa6ec; --teal: #4cc3b2; --band: #07111c; --band-fg: #e8eef4; --band-soft: #9fb1c4; --band-rule: #1d3047; --on-accent: #07111c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c1724; --surface: #122236; --ink: #e8eef4; --ink-soft: #a3b3c4; --rule: #23384f;
+  --blue: #6aa6ec; --teal: #4cc3b2; --band: #07111c; --band-fg: #e8eef4; --band-soft: #9fb1c4; --band-rule: #1d3047; --on-accent: #07111c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+a { color: inherit; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-stretch: 112%; letter-spacing: -0.01em; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+.logo svg { width: 38px; height: 38px; flex: none; }
+.logo-word { display: flex; flex-direction: column; line-height: 1; gap: 4px; }
+.logo-name { font-family: var(--display); font-weight: 800; font-stretch: 118%; font-size: 19px; letter-spacing: .2em; }
+.logo-sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: .42em; color: var(--blue); }
+.nav { display: flex; align-items: center; gap: 26px; font-size: 15px; }
+.nav a { text-decoration: none; color: var(--ink-soft); }
+.nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px/1 var(--body); text-decoration: none; padding: 13px 20px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.btn-primary, .nav a.btn-primary { background: var(--blue); color: var(--on-accent); }
+.nav a.btn-primary:hover { color: var(--on-accent); }
+.cta-short { display: none; }
+@media (max-width: 560px) { .cta-long { display: none; } .cta-short { display: inline; } .nav .btn { padding: 11px 16px; } }
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-ghost { border-color: var(--rule); color: var(--ink); background: transparent; }
+.btn-ghost:hover { border-color: var(--ink-soft); }
+@media (max-width: 820px) { .nav a:not(.btn) { display: none; } }
+
+/* hero */
+.hero { padding-block: 72px 56px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1.02; font-weight: 750; margin-top: 16px; }
+.hero h1 em { font-style: normal; color: var(--blue); }
+.hero .lede { font-size: 19px; color: var(--ink-soft); max-width: 34em; margin-top: 22px; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.chain { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 22px 22px 16px; }
+.chain-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); letter-spacing: .04em; }
+.chain svg { width: 100%; height: auto; display: block; margin-top: 10px; }
+.chain .pipe { stroke: var(--rule); stroke-width: 6; fill: none; stroke-linecap: round; }
+.chain .flow { stroke: var(--teal); stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 10 14; }
+.chain .node { fill: var(--surface); stroke: var(--blue); stroke-width: 2.5; }
+.chain .node-core { fill: var(--blue); }
+.chain .lbl { font-family: var(--display); font-weight: 650; font-size: 15px; fill: var(--ink); }
+.chain .sub { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); }
+.chain .tag { font-family: var(--mono); font-size: 11px; fill: var(--teal); }
+@media (prefers-reduced-motion: no-preference) { .chain .flow { animation: flow 1.6s linear infinite; } }
+@keyframes flow { to { stroke-dashoffset: -24; } }
+.chain .chain-v { display: none; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .chain .chain-h { display: none; } .chain .chain-v { display: block; } .hero { padding-block: 44px 40px; } }
+
+/* readout */
+.readout { background: var(--band); color: var(--band-fg); }
+.readout .wrap { padding-block: 26px; display: grid; grid-template-columns: auto repeat(4, minmax(0, 1fr)); gap: 14px 32px; align-items: center; }
+.readout .r-title { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--band-soft); max-width: 15em; line-height: 1.45; }
+.readout .r-title a { color: var(--band-fg); }
+.r-item { border-left: 1px solid var(--band-rule); padding-left: 18px; min-width: 0; }
+.r-val { font-family: var(--display); font-stretch: 110%; font-weight: 700; font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.r-unit { font-family: var(--mono); font-size: 13px; color: var(--band-soft); margin-left: 4px; font-weight: 400; }
+.r-lbl { font-size: 13px; color: var(--band-soft); margin-top: 4px; }
+@media (max-width: 900px) { .readout .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .readout .r-title { grid-column: 1 / -1; max-width: none; } }
+
+/* sections */
+section.block { padding-block: 88px; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: end; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; font-weight: 720; margin-top: 12px; }
+.sec-head p { color: var(--ink-soft); max-width: 36em; }
+@media (max-width: 820px) { .sec-head { grid-template-columns: minmax(0, 1fr); } section.block { padding-block: 64px; } }
+
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.svc { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 30px 28px 32px; display: flex; flex-direction: column; gap: 12px; min-width: 0; transition: background .25s ease; }
+.svc:hover { background: var(--surface); }
+.svc svg { width: 30px; height: 30px; stroke: var(--blue); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.svc h3 { font-size: 21px; font-weight: 680; line-height: 1.2; }
+.svc p { color: var(--ink-soft); font-size: 16px; }
+@media (max-width: 900px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .services { grid-template-columns: minmax(0, 1fr); } }
+
+.work { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; }
+.case { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.case .sector { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); }
+.case h3 { font-size: 26px; line-height: 1.15; font-weight: 700; }
+.case p { color: var(--ink-soft); }
+.case ul { margin: 0; padding-left: 18px; color: var(--ink-soft); display: grid; gap: 6px; font-size: 16px; }
+.case .tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.case .tabs span { font-family: var(--mono); font-size: 12px; border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; color: var(--ink-soft); }
+.case .stat-row { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 4px; }
+.case .stat b { display: block; font-family: var(--display); font-stretch: 110%; font-size: 34px; line-height: 1; color: var(--blue); }
+.case .stat span { font-size: 14px; color: var(--ink-soft); }
+.case .more { margin-top: auto; padding-top: 8px; }
+@media (max-width: 900px) { .work { grid-template-columns: minmax(0, 1fr); } }
+
+.lineage { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 30px; border-top: 1px solid var(--rule); padding-top: 22px; }
+.lineage .eyebrow { color: var(--ink-soft); }
+.lineage span.co { font-family: var(--display); font-stretch: 118%; font-weight: 650; font-size: 20px; color: var(--ink-soft); letter-spacing: .02em; }
+
+/* approach (dark band) */
+.ink { background: var(--band); color: var(--band-fg); }
+.ink .sec-head p { color: var(--band-soft); }
+.ink .eyebrow { color: var(--teal); }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; }
+.step { padding: 0 26px 0 0; position: relative; min-width: 0; }
+.step-mark { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.step-mark i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--teal); background: var(--band); flex: none; position: relative; z-index: 1; }
+.step-mark::after { content: ""; flex: 1; height: 2px; background: var(--band-rule); }
+.step:last-child .step-mark::after { background: transparent; }
+.step-no { font-family: var(--mono); font-size: 12px; color: var(--band-soft); letter-spacing: .08em; }
+.step h3 { font-size: 23px; font-weight: 700; margin-top: 4px; }
+.step p { color: var(--band-soft); margin-top: 10px; font-size: 16px; }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; } }
+@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } .step { padding-right: 0; } }
+
+/* record */
+.record { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.rec { padding: 22px 18px 0 0; min-width: 0; }
+.rec b { display: block; font-family: var(--display); font-stretch: 112%; font-weight: 760; font-size: clamp(34px, 4vw, 50px); line-height: 1; font-variant-numeric: tabular-nums; }
+.rec span { display: block; margin-top: 10px; font-size: 15px; color: var(--ink-soft); }
+@media (max-width: 900px) { .record { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 26px; } }
+.record-note { margin-top: 22px; font-size: 14px; color: var(--ink-soft); }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
+.profile { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
+.monogram { width: 76px; height: 76px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(135deg, var(--blue), var(--teal)); color: #fff; font-family: var(--display); font-weight: 760; font-stretch: 112%; font-size: 30px; }
+.profile h3 { font-size: 24px; }
+.profile .role { color: var(--ink-soft); margin-top: -10px; }
+.creds { display: flex; flex-wrap: wrap; gap: 6px; }
+.creds span { font-family: var(--mono); font-size: 12px; border: 1px solid var(--rule); border-radius: 6px; padding: 3px 8px; color: var(--ink-soft); }
+.about-copy { display: grid; gap: 18px; max-width: 40em; }
+.about-copy p { color: var(--ink-soft); }
+.about-copy p:first-child { color: var(--ink); font-size: 21px; line-height: 1.5; font-family: var(--display); font-stretch: 104%; font-weight: 500; }
+@media (max-width: 900px) { .about { grid-template-columns: minmax(0, 1fr); } }
+
+/* testimonials */
+.voices { margin-top: 64px; border-top: 1px solid var(--rule); padding-top: 44px; }
+.voices .sec-head { margin-bottom: 32px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.quote { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 34px 28px 26px; display: flex; flex-direction: column; gap: 22px; min-width: 0; position: relative; }
+.quote blockquote { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.65; }
+.quote blockquote::before, .quote blockquote::after { font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 0; color: var(--teal); vertical-align: -12px; }
+.quote blockquote::before { content: "\201C"; margin-right: 4px; }
+.quote blockquote::after { content: "\201D"; margin-left: 4px; }
+.quote figcaption { margin-top: auto; border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 3px; }
+.quote .who { font-family: var(--display); font-stretch: 108%; font-weight: 700; font-size: 18px; color: var(--ink); }
+.quote .ctx { font-family: var(--mono); font-size: 12px; letter-spacing: .03em; color: var(--ink-soft); }
+@media (max-width: 900px) { .quotes { grid-template-columns: minmax(0, 1fr); } }
+
+/* contact */
+.contact { background: linear-gradient(135deg, var(--blue), var(--teal)); color: #fff; border-radius: 24px; padding: 52px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.contact h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; }
+.contact p { color: rgba(255,255,255,.86); margin-top: 14px; max-width: 30em; }
+.lines { display: grid; gap: 12px; }
+.line { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 14px; padding: 14px 16px; min-width: 0; }
+.line .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+.line .v { font-weight: 600; font-size: 17px; user-select: all; overflow-wrap: anywhere; }
+.copy { font: 600 13px/1 var(--body); color: #0f1d2e; background: #fff; border: 0; border-radius: 999px; padding: 9px 14px; cursor: pointer; flex: none; }
+@media (max-width: 820px) { .contact { grid-template-columns: minmax(0, 1fr); padding: 34px 24px; } }
+
+/* market snapshot */
+.mkt { background: var(--band); color: var(--band-fg); padding-block: 56px 60px; }
+.mkt-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 32px; margin-bottom: 30px; }
+.mkt-head h2 { font-size: clamp(26px, 3vw, 36px); line-height: 1.1; font-weight: 720; margin-top: 10px; }
+.mkt-asof { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--band-soft); display: flex; align-items: center; gap: 8px; }
+.mkt-asof i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex: none; }
+.mkt-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--band-rule); border-bottom: 1px solid var(--band-rule); margin-bottom: 0; }
+.mkt-key > div { padding: 20px 20px 20px 0; min-width: 0; }
+.mkt-key > div + div { border-left: 1px solid var(--band-rule); padding-left: 20px; }
+.mk-lbl { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--band-soft); }
+.mk-val { font-family: var(--display); font-stretch: 110%; font-weight: 720; font-size: clamp(26px, 3vw, 36px); line-height: 1.1; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.tv { min-height: 72px; }
+.mk-val .chg { font-size: 13px; margin-left: 8px; font-family: var(--mono); font-weight: 500; }
+.mk-sub { font-family: var(--mono); font-size: 11.5px; color: var(--band-soft); margin-top: 6px; }
+.mkt-asof i { background: var(--band-soft); }
+.mkt-asof.live i { background: var(--teal); box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 60%, transparent); }
+@media (prefers-reduced-motion: no-preference) { .mkt-asof.live i { animation: pulse 2s ease-out infinite; } }
+@keyframes pulse { to { box-shadow: 0 0 0 8px transparent; } }
+.q-p { transition: color .6s ease; }
+.q-p.tick-up { color: #4cc3b2; } .q-p.tick-dn { color: #f08a7e; }
+.mk-val small { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--band-soft); margin-left: 4px; }
+.chg { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chg.up { color: #4cc3b2; } .chg.dn { color: #f08a7e; } .chg.na { color: var(--band-soft); }
+.mkt-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 28px; }
+.mkt-tbl { min-width: 0; }
+.mkt-tbl h3 { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 8px; }
+.mkt-tbl table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.mkt-tbl td { padding: 11px 0; border-bottom: 1px solid var(--band-rule); vertical-align: baseline; }
+.mkt-tbl td + td { padding-left: 14px; }
+.mkt-tbl .g { font-weight: 600; }
+.mkt-tbl .loc { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--band-soft); font-weight: 400; margin-top: 2px; }
+.mkt-tbl .p { text-align: right; font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mkt-tbl .p small { color: var(--band-soft); font-size: 11px; margin-left: 3px; }
+.mkt-tbl .c { text-align: right; width: 1%; }
+.mkt-spreads { display: grid; gap: 10px; margin-top: 22px; }
+.spread { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border: 1px solid var(--band-rule); border-radius: 12px; padding: 12px 14px; }
+.spread span { font-size: 14px; color: var(--band-soft); }
+.spread b { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mkt-news { margin-top: 22px; border: 1px solid var(--band-rule); border-radius: 12px; padding: 14px 16px; }
+.news-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.news-list li { display: flex; gap: 4px 14px; flex-wrap: wrap; align-items: baseline; font-size: 15px; }
+.news-date { font-family: var(--mono); font-size: 12.5px; color: var(--band-soft); min-width: 11em; }
+.news-list b { font-weight: 650; }
+.mkt-note { margin-top: 18px; font-size: 13px; color: var(--band-soft); max-width: 60em; }
+.mkt-note a { color: var(--band-fg); }
+.mkt-group + .mkt-group { margin-top: 34px; }
+.mkt-gh { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 10px; }
+.mkt-key.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .mkt-key.two { grid-template-columns: minmax(0, 1fr); } }
+.mkt-gnote { margin-top: 12px; font-size: 13px; color: var(--band-soft); max-width: 60em; }
+@media (max-width: 760px) { .mkt-key { grid-template-columns: minmax(0, 1fr); } .mkt-key > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--band-rule); } }
+
+footer { border-top: 1px solid var(--rule); margin-top: 88px; }
+.foot-verse { font-style: italic; color: var(--teal); }
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; font-size: 14px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Sanjo Consult home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d5fa8"/><stop offset="1" stop-color="#12877a"/></linearGradient></defs><path d="M20 2.2 L35 7.4 V19.2 C35 28.4 28.6 34.8 20 37.8 C11.4 34.8 5 28.4 5 19.2 V7.4 Z" fill="url(#lg)"/><path d="M20 5.4 L32 9.6 V19.2 C32 26.6 27 31.9 20 34.6 C13 31.9 8 26.6 8 19.2 V9.6 Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/><text x="20" y="27.6" text-anchor="middle" font-family="Archivo, Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="#fff">S</text></svg>
+      <span class="logo-word"><span class="logo-name">SANJO</span><span class="logo-sub">CONSULT</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#markets">Markets</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a class="btn btn-primary" href="#contact"><span class="cta-long">Start a conversation</span><span class="cta-short">Contact</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">AI &amp; data transformation · Houston, Texas</span>
+        <h1>Technology that moves at the speed of <em>energy</em>.</h1>
+        <p class="lede">Sanjo Consult helps energy and public-sector leaders turn data, AI and enterprise systems into better decisions and measurable value, from strategy and roadmap through delivery and adoption.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#work">See our work</a>
+          <a class="btn btn-ghost" href="#contact">Talk to us</a>
+        </div>
+      </div>
+      <figure class="chain" aria-label="Natural gas value chain and the data at each step">
+        <div class="chain-head"><span>NATURAL GAS VALUE CHAIN</span><span>DATA → DECISION</span></div>
+        <svg class="chain-h" viewBox="-14 40 548 200" aria-hidden="true">
+          <path class="pipe" d="M30 110 H490"/>
+          <path class="flow" d="M30 110 H490"/>
+          <g>
+            <circle class="node" cx="30" cy="110" r="13"/><circle class="node-core" cx="30" cy="110" r="5"/>
+            <text class="lbl" x="30" y="78" text-anchor="middle">Wellhead</text>
+            <text class="sub" x="30" y="148" text-anchor="middle">production</text>
+          </g>
+          <g>
+            <circle class="node" cx="122" cy="110" r="13"/><circle class="node-core" cx="122" cy="110" r="5"/>
+            <text class="lbl" x="122" y="78" text-anchor="middle">Pipeline</text>
+            <text class="sub" x="122" y="148" text-anchor="middle">flows · basis</text>
+          </g>
+          <g>
+            <circle class="node" cx="214" cy="110" r="13"/><circle class="node-core" cx="214" cy="110" r="5"/>
+            <text class="lbl" x="214" y="78" text-anchor="middle">Storage</text>
+            <text class="sub" x="214" y="148" text-anchor="middle">Bcf · 5-yr avg</text>
+          </g>
+          <g>
+            <circle class="node" cx="306" cy="110" r="13"/><circle class="node-core" cx="306" cy="110" r="5"/>
+            <text class="lbl" x="306" y="78" text-anchor="middle">Trading</text>
+            <text class="sub" x="306" y="148" text-anchor="middle">ETRM · risk</text>
+          </g>
+          <g>
+            <circle class="node" cx="398" cy="110" r="13"/><circle class="node-core" cx="398" cy="110" r="5"/>
+            <text class="lbl" x="398" y="78" text-anchor="middle">LNG</text>
+            <text class="sub" x="398" y="148" text-anchor="middle">feedgas Bcf/d</text>
+          </g>
+          <g>
+            <circle class="node" cx="490" cy="110" r="13"/><circle class="node-core" cx="490" cy="110" r="5"/>
+            <text class="lbl" x="490" y="78" text-anchor="middle">Cargo</text>
+            <text class="sub" x="490" y="148" text-anchor="middle">JKM · TTF</text>
+          </g>
+          <path d="M30 190 H490" stroke="var(--rule)" stroke-width="1" stroke-dasharray="3 5"/>
+          <text class="tag" x="30" y="222">master data</text>
+          <text class="tag" x="160" y="222">analytics</text>
+          <text class="tag" x="268" y="222">AI forecasts</text>
+          <text class="tag" x="388" y="222">decisions</text>
+        </svg>
+        <svg class="chain-v" viewBox="0 0 300 420" aria-hidden="true">
+          <path class="pipe" d="M40 24 V396"/>
+          <path class="flow" d="M40 24 V396"/>
+          <g><circle class="node" cx="40" cy="24" r="12"/><circle class="node-core" cx="40" cy="24" r="4.5"/><text class="lbl" x="68" y="22">Wellhead</text><text class="sub" x="68" y="40">production</text></g>
+          <g><circle class="node" cx="40" cy="98" r="12"/><circle class="node-core" cx="40" cy="98" r="4.5"/><text class="lbl" x="68" y="96">Pipeline</text><text class="sub" x="68" y="114">flows · basis</text></g>
+          <g><circle class="node" cx="40" cy="172" r="12"/><circle class="node-core" cx="40" cy="172" r="4.5"/><text class="lbl" x="68" y="170">Storage</text><text class="sub" x="68" y="188">Bcf · 5-yr avg</text></g>
+          <g><circle class="node" cx="40" cy="246" r="12"/><circle class="node-core" cx="40" cy="246" r="4.5"/><text class="lbl" x="68" y="244">Trading</text><text class="sub" x="68" y="262">ETRM · risk</text></g>
+          <g><circle class="node" cx="40" cy="320" r="12"/><circle class="node-core" cx="40" cy="320" r="4.5"/><text class="lbl" x="68" y="318">LNG</text><text class="sub" x="68" y="336">feedgas Bcf/d</text></g>
+          <g><circle class="node" cx="40" cy="396" r="12"/><circle class="node-core" cx="40" cy="396" r="4.5"/><text class="lbl" x="68" y="394">Cargo</text><text class="sub" x="68" y="412">JKM · TTF</text></g>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mkt" id="markets" aria-labelledby="mkt-title">
+    <div class="wrap">
+      <div class="mkt-head">
+        <div><span class="eyebrow">Energy markets</span><h2 id="mkt-title">Crude and natural gas, live.</h2></div>
+      </div>
+      <div class="mkt-group">
+        <h3 class="mkt-gh">Crude oil</h3>
+        <div class="mkt-key two">
+          <div><div class="mk-lbl">WTI · Cushing</div><div class="tv" data-symbol="TVC:USOIL"><div class="mk-val tv-fb">101.79<small>$/bbl</small><span class="chg dn">−1.43%</span></div></div></div>
+          <div><div class="mk-lbl">Brent · North Sea</div><div class="tv" data-symbol="TVC:UKOIL"><div class="mk-val tv-fb">110.79<small>$/bbl</small><span class="chg dn">−0.81%</span></div></div></div>
+        </div>
+      </div>
+      <div class="mkt-group">
+        <h3 class="mkt-gh">Natural gas</h3>
+        <div class="mkt-key">
+          <div data-q="ng1"><div class="mk-lbl">Henry Hub · NYMEX NG1!</div><div class="mk-val"><span class="q-p">3.079</span><small>$/MMBtu</small><span class="chg up q-c">+0.075 +2.50%</span></div><div class="mk-sub q-n">Not live · last known quote</div></div>
+          <div data-q="ttf"><div class="mk-lbl">TTF · Europe</div><div class="mk-val"><span class="q-p">31.50</span><small>$/MMBtu</small><span class="chg na q-c"></span></div><div class="mk-sub q-n">Not live · last updated Oct 26 · Nov contract</div></div>
+          <div data-q="jkm"><div class="mk-lbl">JKM · Asia LNG</div><div class="mk-val"><span class="q-p">30.60</span><small>$/MMBtu</small><span class="chg na q-c">approx.</span></div><div class="mk-sub q-n">Not live · last updated Oct 26 · Dec contract</div></div>
+        </div>
+        <p class="mkt-gnote" id="gg-note">Front month, $/MMBtu. Henry Hub and TTF update every minute (TTF is converted from €/MWh at the live euro rate); JKM updates once a day. The spread to Asia and Europe is what pulls US LNG cargoes.</p>
+      </div>
+      <div class="mkt-news" id="eia-news" hidden>
+        <div class="mk-lbl">Weekly inventory reports · U.S. EIA</div>
+        <ul class="news-list" id="eia-list"></ul>
+      </div>
+      <p class="mkt-note">Crude quotes from TradingView. Henry Hub (NYMEX) and TTF (ICE) front-month futures via Yahoo Finance, refreshed every minute; JKM front month via OilPriceAPI, updated daily. If a live quote is unavailable, the most recent price is shown with the time it was last updated. Exchange data may be delayed. Indicative only, not trading advice.</p>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">What we do</span><h2>From roadmap to results, with AI built in responsibly.</h2></div>
+        <p>We work alongside executives and their teams to find where technology creates value, prove it quickly, and make it stick. Every engagement ties investment to outcomes you can measure.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="11"/><path d="M15 8v7l5 3"/></svg>
+          <h3>AI strategy and governance</h3>
+          <p>Find high-value AI and automation use cases, build the business case, set guardrails for security and privacy, and move pilots into production.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 26V4"/><path d="M4 26h22"/><path d="M8 20l5-6 4 3 7-9"/></svg>
+          <h3>Data products and analytics</h3>
+          <p>Turn public and enterprise data into decision-ready dashboards, forecasts and prescriptive signals that leaders actually use.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 22h6l4-14 4 14h8"/><circle cx="14" cy="8" r="2"/></svg>
+          <h3>Technology roadmaps</h3>
+          <p>Translate business strategy, process gaps and data challenges into a multi-year roadmap with clear owners, timing and investment.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="5" width="9" height="8" rx="1.5"/><rect x="18" y="5" width="9" height="8" rx="1.5"/><rect x="10.5" y="18" width="9" height="8" rx="1.5"/><path d="M7.5 13v3h15v-3M15 16v2"/></svg>
+          <h3>ERP, ETRM and integration</h3>
+          <p>Plan and deliver SAP, trading and enterprise system programs, master data and integrations that hold up under real operating pressure.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="4" width="22" height="22" rx="3"/><path d="M4 11h22M11 11v15"/></svg>
+          <h3>Portfolio and PMO governance</h3>
+          <p>Stand up demand intake, prioritization, performance tracking and risk management so every initiative earns its place.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="10" cy="10" r="4"/><circle cx="21" cy="12" r="3"/><path d="M3 25c1-5 4-7 7-7s6 2 7 7M17 24c.7-3 2.3-5 4-5s3.5 1.5 4 5"/></svg>
+          <h3>Change and adoption</h3>
+          <p>Lead workshops, training and communications so new tools improve the experience of customers and employees, not just the system.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Selected work</span><h2>Built for the decisions that matter.</h2></div>
+        <p>See our approach in action: a live natural gas market dashboard and an end-to-end ETRM trade workflow.</p>
+      </div>
+      <div class="work">
+        <article class="case">
+          <span class="sector">Energy · Market intelligence</span>
+          <h3>US Natural Gas Market Dashboard</h3>
+          <p>A six-tab market intelligence dashboard built from EIA storage, price and Short-Term Energy Outlook data and industry sources, prototyped with generative AI.</p>
+          <div class="tabs"><span>Storage</span><span>Supply</span><span>Demand</span><span>Infrastructure</span><span>Market intelligence</span><span>LNG waterborne</span></div>
+          <ul>
+            <li>Predictive storage and Henry Hub price outlooks</li>
+            <li>Supply and demand balance by quarter</li>
+            <li>Rule-based prescriptive signals for gas buyers</li>
+            <li>Prototype LNG tanker-tracking map</li>
+          </ul>
+          <p class="more"><a class="btn btn-primary" href="gas_dashboard.html">Open the dashboard →</a></p>
+        </article>
+        <article class="case">
+          <span class="sector">Energy trading · ETRM prototype</span>
+          <h3>End-to-End ETRM Workflow</h3>
+          <p>An interactive deal-to-settlement workflow covering the full ETRM trade lifecycle — built to demonstrate deep domain expertise across physical and financial energy trading.</p>
+          <div class="tabs"><span>Deal entry</span><span>Risk &amp; MTM</span><span>P&amp;L explain</span><span>Scheduling</span><span>Settlement</span><span>ERP / Audit</span></div>
+          <ul>
+            <li>Physical gas, crude, swaps, options (Black-Scholes + Greeks) and FTR/CRR deal capture</li>
+            <li>Real-time MTM, VaR and ETRM system forward-curve simulation</li>
+            <li>P&amp;L attribution waterfall — price delta, theta, vega, residual</li>
+            <li>Pipeline nominations, FERC/CFTC compliance and SAP sub-ledger postings</li>
+          </ul>
+          <p class="more"><a class="btn btn-primary" href="etrm_mockup.html">Open the ETRM workflow →</a></p>
+        </article>
+      </div>
+      <div class="lineage">
+        <span class="eyebrow">Leadership experience with</span>
+        <span class="co">Shell</span><span class="co">Chevron</span><span class="co">BP</span><span class="co">Enbridge</span><span class="co">General Motors</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block ink" id="approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">How we work</span><h2>Four steps from question to lasting value.</h2></div>
+        <p>Each engagement follows the same sequence, sized to the problem. We move fast where the path is clear and slow down where the risk is real.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-mark"><i></i></div><span class="step-no">STEP 1</span><h3>Frame</h3><p>Interview leaders, map the current state and agree on what must be true when we finish.</p></div>
+        <div class="step"><div class="step-mark"><i></i></div><span class="step-no">STEP 2</span><h3>Prove</h3><p>Build a working prototype or model on real data within weeks, and test it with the people who will use it.</p></div>
+        <div class="step"><div class="step-mark"><i></i></div><span class="step-no">STEP 3</span><h3>Scale</h3><p>Turn what works into a governed roadmap with owners, budgets, controls and a delivery plan.</p></div>
+        <div class="step"><div class="step-mark"><i></i></div><span class="step-no">STEP 4</span><h3>Sustain</h3><p>Train teams, track value against the business case and hand over a capability your people can run.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="record">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Track record</span><h2>Two decades of results across energy and enterprise.</h2></div>
+        <p>Outcomes our leadership has delivered on programs at Shell, at Wipro for Fortune 500 clients, and for Sanjo Consult clients.</p>
+      </div>
+      <div class="record">
+        <div class="rec"><b>20+</b><span>years leading technology programs</span></div>
+        <div class="rec"><b>30%+</b><span>cost reductions on transformation programs</span></div>
+        <div class="rec"><b>40%+</b><span>efficiency gains for Fortune 500 clients</span></div>
+        <div class="rec"><b>40+</b><span>applications integrated on one trading platform</span></div>
+        <div class="rec"><b>80%</b><span>fewer interface issues after embedding IT controls</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about" style="padding-top: 0;">
+    <div class="wrap about">
+      <aside class="profile">
+        <div class="monogram" aria-hidden="true">JG</div>
+        <h3>Joseph S. George, MBA, PMP</h3>
+        <p class="role">Managing Director</p>
+        <div class="creds"><span>PMP</span><span>ITIL</span><span>SAFe Scrum Master</span><span>Certified Product Owner</span><span>AI/ML, UT Austin</span><span>MBA, UH Clear Lake</span></div>
+      </aside>
+      <div class="about-copy">
+        <span class="eyebrow">About Sanjo Consult</span>
+        <p>Sanjo Consult is a Houston-based AI and data transformation consultancy led by Joseph S. George, a technology leader with more than 20 years in energy and enterprise IT.</p>
+        <p>Joseph spent a decade at Shell Trading, where he led the Trading and Shipping platform implementation that integrated more than 40 applications with SAP, and enterprise master data management across geographies. As a Principal Consultant at Wipro, he led transformation programs for Chevron, BP, Enbridge, General Motors and Argo Insurance.</p>
+        <p>Today he brings that operator's view of the business, together with post-graduate training in AI and machine learning from the University of Texas at Austin, to clients who need technology to deliver results they can measure.</p>
+      </div>
+    </div>
+
+    <div class="wrap voices">
+      <div class="sec-head">
+        <div><span class="eyebrow">In their words</span><h2>What business partners say.</h2></div>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote>Professional behavior and a positive attitude. Understands the issue quickly and seeks to resolve it, engages with individuals to understand business needs, and builds positive relationships. I have enjoyed working with Joseph and look forward to future collaborations.</blockquote>
+          <figcaption><span class="who">Peggy Wallace</span><span class="ctx">Business partner, Blending application &middot; Shell Trading</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>You are extremely responsive to our IT needs. In fact, I would say you are one of the &ldquo;go-to&rdquo; folks in IT for operations. You understand what is going on and communicate well with the business. If there are issues, I know you will give me updates.</blockquote>
+          <figcaption><span class="who">Mike Walt</span><span class="ctx">Team Lead, Marine Operations &middot; Shell Trading</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Let's talk about your next decision.</h2>
+          <p>Tell us what you're trying to solve. We'll respond with a short point of view on where to start and what it could be worth.</p>
+        </div>
+        <div class="lines">
+          <div class="line"><div><div class="k">Email</div><div class="v" id="email">joseph.george@sanjoconsult.com</div></div><button class="copy" type="button" data-copy="email">Copy</button></div>
+          <div class="line"><div><div class="k">Phone</div><div class="v" id="phone">832-655-9500</div></div><button class="copy" type="button" data-copy="phone">Copy</button></div>
+          <div class="line"><div><div class="k">Office</div><div class="v">Houston, Texas</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Back to top">
+      <svg viewBox="0 0 40 40" aria-hidden="true" style="width:28px;height:28px"><path d="M20 2.2 L35 7.4 V19.2 C35 28.4 28.6 34.8 20 37.8 C11.4 34.8 5 28.4 5 19.2 V7.4 Z" fill="url(#lg)"/><path d="M20 5.4 L32 9.6 V19.2 C32 26.6 27 31.9 20 34.6 C13 31.9 8 26.6 8 19.2 V9.6 Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/><text x="20" y="27.6" text-anchor="middle" font-family="Archivo, Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="#fff">S</text></svg>
+      <span class="logo-word"><span class="logo-name" style="font-size:15px">SANJO</span><span class="logo-sub" style="font-size:8px">CONSULT</span></span>
+    </a>
+    <span class="foot-verse">Strengthened, upheld, moving forward · inspired by Isaiah 41:10</span>
+    <span>© 2026 Sanjo Consult · Houston, Texas</span>
+  </div>
+</footer>
+
+<script>
+// Live quotes: TradingView single-quote widgets (free, no API key).
+// Each tile shows a reference value until its widget loads.
+document.querySelectorAll('.tv').forEach((box) => {
+  const c = document.createElement('div');
+  c.className = 'tradingview-widget-container';
+  const w = document.createElement('div');
+  w.className = 'tradingview-widget-container__widget';
+  c.appendChild(w);
+  const s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js';
+  s.async = true;
+  s.text = JSON.stringify({ symbol: box.dataset.symbol, width: '100%', isTransparent: true, colorTheme: 'dark', locale: 'en' });
+  c.appendChild(s);
+  c.style.display = 'none';
+  box.appendChild(c);
+  const fb = box.querySelector('.tv-fb');
+  const t = setInterval(() => {
+    const f = c.querySelector('iframe');
+    if (f) { clearInterval(t); setTimeout(() => { c.style.display = ''; if (fb) fb.remove(); }, 1200); }
+  }, 300);
+  setTimeout(() => clearInterval(t), 15000);
+});
+
+// ===== Global gas: backup values =====
+// TTF and JKM update live from the price relay. When a live quote isn't available,
+// each tile shows the most recent price it has seen, with that price's date and time.
+// These values are only the last resort (first visit with no live quote); update them
+// monthly if you like, then upload the site again.
+const GAS_BACKUP = {
+  ttf: { price: 31.50, time: '2026-10-26T12:00:00-05:00', label: 'Nov contract' },
+  jkm: { price: 30.60, time: '2026-10-26T12:00:00-05:00', label: 'Dec contract', tag: 'approx.' },
+};
+
+// Natural gas NG1! from the Sanjo price relay on Cloudflare (Yahoo Finance data, delayed)
+const PRICE_API = 'https://sanjo-prices.joseph-george-2cb.workers.dev/';
+(function () {
+  const tiles = { ng1: document.querySelector('[data-q="ng1"]'), ttf: document.querySelector('[data-q="ttf"]'), jkm: document.querySelector('[data-q="jkm"]') };
+  if (!tiles.ng1 || !PRICE_API) return;
+  const last = {};
+  const CT = (t) => (t ? new Date(t).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' }) + ' CT' : '');
+  const dayCT = (t) => new Date(t).toLocaleDateString('en-US', { timeZone: 'America/Chicago' });
+  // Date and time; the date is left out when it is today
+  const WHEN = (t) => (t ? (dayCT(t) === dayCT(Date.now()) ? '' : new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/Chicago' }) + ', ') + CT(t) : '');
+  // Remember the last live quote in this browser so it can be shown if the next one fails
+  const save = (k, v) => { try { localStorage.setItem('sanjo-q-' + k, JSON.stringify(v)); } catch (e) {} };
+  const load = (k) => { try { return JSON.parse(localStorage.getItem('sanjo-q-' + k) || 'null'); } catch (e) { return null; } };
+  const DP = { ng1: 3, ttf: 2, jkm: 2 };
+  // Show the most recent price available when there is no live quote
+  function showLast(k, relayLast) {
+    const b = GAS_BACKUP[k];
+    const opts = [relayLast, load(k), b ? { price: b.price, time: Date.parse(b.time), label: b.label, tag: b.tag } : null]
+      .filter((o) => o && typeof o.price === 'number' && o.time);
+    if (!opts.length) return false;
+    const o = opts.sort((a, c) => c.time - a.time)[0];
+    if (o === relayLast) save(k, { price: o.price, time: o.time, label: o.label });
+    show(k, o.price, null, null, 'Not live · last updated ' + WHEN(o.time) + (o.label ? ' · ' + o.label : ''), DP[k]);
+    if (o.tag) tiles[k].querySelector('.q-c').textContent = o.tag;
+    return true;
+  }
+  function show(key, price, change, changePct, sub, dp) {
+    const tile = tiles[key]; if (!tile) return;
+    const p = tile.querySelector('.q-p');
+    p.textContent = price.toFixed(dp);
+    if (last[key] !== undefined && last[key] !== price) {
+      p.classList.add(price > last[key] ? 'tick-up' : 'tick-dn');
+      setTimeout(() => p.classList.remove('tick-up', 'tick-dn'), 1500);
+    }
+    last[key] = price;
+    const c = tile.querySelector('.q-c');
+    if (typeof change === 'number' && typeof changePct === 'number') {
+      const sign = change >= 0 ? '+' : '−';
+      c.textContent = sign + Math.abs(change).toFixed(dp) + ' ' + sign + Math.abs(changePct).toFixed(2) + '%';
+      c.className = 'chg q-c ' + (change > 0 ? 'up' : change < 0 ? 'dn' : 'na');
+    } else { c.textContent = ''; c.className = 'chg q-c na'; }
+    tile.querySelector('.q-n').textContent = sub;
+  }
+  const ok = (q) => q && !q.error && typeof q.price === 'number';
+  const live = {};
+  function markStale(k, relayLast) {
+    live[k] = false;
+    if (showLast(k, relayLast)) return;
+    const n = tiles[k] && tiles[k].querySelector('.q-n');
+    if (n && !/^Not live/.test(n.textContent)) n.textContent = 'Not live · ' + n.textContent;
+    if (k === 'ng1' && last.ng1 === undefined) { const c = tiles.ng1.querySelector('.q-c'); c.textContent = ''; c.className = 'chg q-c na'; }
+  }
+  const SHOW_EIA_HEADLINES = false; // set to true to show EIA inventory headlines on the home page
+  function renderReports(rep) {
+    const box = document.getElementById('eia-news'), list = document.getElementById('eia-list');
+    const items = rep && Array.isArray(rep.items) ? rep.items.filter((i) => !i.error && i.headline) : [];
+    if (!box || !items.length) return;
+    list.textContent = '';
+    items.forEach((i) => {
+      const li = document.createElement('li');
+      const d = document.createElement('span'); d.className = 'news-date';
+      const p = String(i.weekEnding || '').split('-');
+      d.textContent = p.length === 3 ? 'Week ending ' + new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+      const m = i.headline.match(/^(.*?)(\s[\d.,]+M? (?:Barrel|Bcf) (?:Build|Draw|Injection|Withdrawal))$/);
+      const t = document.createElement('span');
+      if (m) { t.append(m[1]); const b = document.createElement('b'); b.textContent = m[2]; t.append(b); } else t.textContent = i.headline;
+      li.append(d, t); list.append(li);
+    });
+    box.hidden = false;
+  }
+  async function refresh() {
+    try {
+      const r = await fetch(PRICE_API, { cache: 'no-store' });
+      const data = await r.json();
+      if (SHOW_EIA_HEADLINES) renderReports(data.reports);
+      const Q = data.quotes || {};
+      const q = Q.ng1;
+      ['ng1', 'ttf', 'jkm'].forEach((k) => { live[k] = false; });
+      const fresh = (x) => ok(x) && !x.stale;
+      const relayLast = {};
+      if (fresh(q)) {
+        live.ng1 = true;
+        show('ng1', q.price, q.change, q.changePct, (q.contract ? q.contract + ' contract' : 'Front month') + (q.time ? ' · ' + WHEN(q.time) : ''), 3);
+        save('ng1', { price: q.price, time: q.time || Date.now(), label: q.contract ? q.contract + ' contract' : '' });
+      }
+      // TTF trades in €/MWh: convert to $/MMBtu with the live euro rate (1 MWh = 3.412 MMBtu)
+      const t = Q.ttf, fx = Q.eurusd;
+      if (fresh(t) && ok(fx)) {
+        live.ttf = true;
+        const k = fx.price / 3.412, prev = t.prevClose && fx.prevClose ? t.prevClose * fx.prevClose / 3.412 : null;
+        const usd = t.price * k, chg = prev ? usd - prev : null;
+        show('ttf', usd, chg, prev ? chg / prev * 100 : null, '€' + t.price.toFixed(2) + '/MWh' + (t.time ? ' · ' + WHEN(t.time) : ''), 2);
+        save('ttf', { price: usd, time: t.time || Date.now(), label: '€' + t.price.toFixed(2) + '/MWh' });
+      } else if (ok(t) && ok(fx)) relayLast.ttf = { price: t.price * fx.price / 3.412, time: t.time, label: '€' + t.price.toFixed(2) + '/MWh' };
+      const j = Q.jkm;
+      if (fresh(j)) {
+        live.jkm = true;
+        show('jkm', j.price, j.change, j.changePct, (j.contract || 'Front month') + (j.time ? ' · ' + WHEN(j.time) : ''), 2);
+        save('jkm', { price: j.price, time: j.time || Date.now(), label: j.contract || '' });
+      } else if (ok(j)) relayLast.jkm = { price: j.price, time: j.time, label: j.contract || '' };
+      if (ok(q) && q.stale) relayLast.ng1 = { price: q.price, time: q.time, label: q.contract ? q.contract + ' contract' : '' };
+      ['ng1', 'ttf', 'jkm'].forEach((k) => { if (!live[k]) markStale(k, relayLast[k]); });
+    } catch (e) { ['ng1', 'ttf', 'jkm'].forEach(markStale); }
+  }
+  ['ttf', 'jkm'].forEach((k) => { showLast(k); delete last[k]; });
+  refresh();
+  setInterval(() => { if (!document.hidden) refresh(); }, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+})();
+
+document.querySelectorAll('.copy').forEach((b) => {
+  b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.copy);
+    const text = el.textContent.trim();
+    const done = () => { b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy'; }, 1600); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected'; setTimeout(() => { b.textContent = 'Copy'; }, 1600); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>

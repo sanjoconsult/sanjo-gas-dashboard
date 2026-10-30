@@ -1,0 +1,374 @@
+{
+  "updated": "2026-10-29",
+  "rigs_week_ending": "2026-10-23",
+  "indicators": [
+    {
+      "tab": "supply",
+      "metric": "Dry gas production YTD vs last year",
+      "value": 4.1,
+      "unit": "%",
+      "as_of": "YTD through 2026-10-16",
+      "note": "S&P Global Energy",
+      "source": "AGA, Oct 16 2026",
+      "label": "Production, year to date vs 2025",
+      "kpi_note": "Through Oct 16, 2026"
+    },
+    {
+      "tab": "supply",
+      "metric": "Canada pipeline imports YTD vs last year",
+      "value": -12,
+      "unit": "%",
+      "as_of": "Year to date (AGA report of Oct 16)",
+      "note": "Reported as down more than 12%",
+      "source": "AGA, Oct 16 2026",
+      "label": "Canada imports, YTD vs 2025",
+      "kpi_note": "Down more than 12%, year to date (AGA, Oct 16)"
+    },
+    {
+      "tab": "supply",
+      "metric": "Total rigs",
+      "value": 603,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Unchanged on the week; up 53 year over year",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Total US rigs",
+      "kpi_note": "Unchanged on the week; up 53 year over year"
+    },
+    {
+      "tab": "supply",
+      "metric": "Oil-directed rigs",
+      "value": 460,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Up 1 on the week; up 40 year over year",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Oil-directed rigs",
+      "kpi_note": "Up 1 on the week; up 40 year over year"
+    },
+    {
+      "tab": "supply",
+      "metric": "Gas-directed rigs",
+      "value": 132,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Down 1 on the week; up 11 year over year",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Gas-directed rigs",
+      "kpi_note": "Down 1 on the week; up 11 year over year"
+    },
+    {
+      "tab": "supply",
+      "metric": "Miscellaneous rigs",
+      "value": 11,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Unchanged on the week",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Miscellaneous rigs",
+      "kpi_note": "Unchanged on the week"
+    },
+    {
+      "tab": "supply",
+      "metric": "Permian rigs",
+      "value": 272,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Unchanged on the week; up 22 year over year",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Permian rigs",
+      "kpi_note": "Unchanged on the week; up 22 year over year"
+    },
+    {
+      "tab": "supply",
+      "metric": "Haynesville rigs",
+      "value": 56,
+      "unit": "rigs",
+      "as_of": "Week ending 2026-10-23",
+      "note": "Up 15 year over year",
+      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "label": "Haynesville rigs",
+      "kpi_note": "Up 15 year over year"
+    },
+    {
+      "tab": "demand",
+      "metric": "Total demand incl. exports YTD vs last year",
+      "value": 3,
+      "unit": "%",
+      "as_of": "YTD through 2026-10-16",
+      "note": "Reported as more than 3% higher",
+      "source": "AGA, Oct 16 2026",
+      "label": "Total demand incl. exports, YTD",
+      "kpi_note": "More than 3% higher, year to date through Oct 16"
+    },
+    {
+      "tab": "demand",
+      "metric": "Domestic consumption YTD vs last year",
+      "value": 0.4,
+      "unit": "%",
+      "as_of": "Year to date (AGA report of Oct 16)",
+      "note": "",
+      "source": "AGA, Oct 16 2026",
+      "label": "Domestic consumption, YTD",
+      "kpi_note": "vs 2025, year to date (AGA, Oct 16)"
+    },
+    {
+      "tab": "demand",
+      "metric": "Power burn, latest month vs year ago",
+      "value": 4.7,
+      "unit": "%",
+      "as_of": "September 2026",
+      "note": "S&P Global, preliminary",
+      "source": "AGA, Oct 1 2026",
+      "label": "Power burn, September",
+      "kpi_note": "vs September 2025 (AGA, Oct 1)"
+    },
+    {
+      "tab": "demand",
+      "metric": "Industrial demand, latest month vs year ago",
+      "value": 0.6,
+      "unit": "%",
+      "as_of": "September 2026",
+      "note": "S&P Global, preliminary",
+      "source": "AGA, Oct 1 2026",
+      "label": "Industrial demand, September",
+      "kpi_note": "vs September 2025"
+    },
+    {
+      "tab": "demand",
+      "metric": "Mexico pipeline exports YTD vs last year",
+      "value": 4.5,
+      "unit": "%",
+      "as_of": "Year to date (AGA report of Oct 16)",
+      "note": "",
+      "source": "AGA, Oct 16 2026",
+      "label": "Mexico pipeline exports, YTD",
+      "kpi_note": "vs 2025, year to date (AGA, Oct 16)"
+    },
+    {
+      "tab": "market",
+      "metric": "Appalachia discount to Henry Hub",
+      "value": -2.05,
+      "unit": "$/MMBtu",
+      "as_of": "Oct 1–15, 2026",
+      "note": "Appalachia spot fell 33.4%",
+      "source": "AGA, Oct 16 2026",
+      "label": "Appalachia basis to Henry Hub",
+      "kpi_note": "Oct 1–15 average (AGA, Oct 16); takeaway-constrained"
+    },
+    {
+      "tab": "market",
+      "metric": "Northeast discount to Henry Hub",
+      "value": -1.21,
+      "unit": "$/MMBtu",
+      "as_of": "Oct 1–15, 2026",
+      "note": "Northeast spot fell 27.4%",
+      "source": "AGA, Oct 16 2026",
+      "label": "Northeast basis to Henry Hub",
+      "kpi_note": "Oct 1–15 average (AGA, Oct 16)"
+    },
+    {
+      "tab": "lng",
+      "metric": "LNG feedgas, month to date",
+      "value": 18.3,
+      "unit": "Bcf/d",
+      "as_of": "October 2026 to date (through Oct 28)",
+      "note": "Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17–19.",
+      "source": "LSEG via Reuters, Oct 29 2026; NGI, Oct 20 and Oct 28 2026",
+      "label": "LNG feedgas, October to date",
+      "kpi_note": "Oct 1–28 average. Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17–19."
+    },
+    {
+      "tab": "lng",
+      "metric": "LNG feedgas YTD increase vs last year",
+      "value": 2.4,
+      "unit": "Bcf/d",
+      "as_of": "YTD through 2026-10-14",
+      "note": "A 15.7% increase",
+      "source": "AGA, Oct 16 2026",
+      "label": "Feedgas gain, YTD vs 2025",
+      "kpi_note": "Up 15.7%, year to date through Oct 14"
+    },
+    {
+      "tab": "lng",
+      "metric": "LNG exports, latest period",
+      "value": 17.4,
+      "unit": "Bcf/d",
+      "as_of": "1H 2026",
+      "note": "Up 23% from 1H 2025",
+      "source": "EIA Today in Energy, Sep 1 2026",
+      "label": "LNG exports, first half 2026",
+      "kpi_note": "Up 23% from 1H 2025"
+    },
+    {
+      "tab": "lng",
+      "metric": "LNG exports to Asia vs year ago",
+      "value": 108,
+      "unit": "%",
+      "as_of": "1H 2026",
+      "note": "Up 2.3 Bcf/d",
+      "source": "EIA Today in Energy, Sep 1 2026",
+      "label": "Exports to Asia, 1H26 vs 1H25",
+      "kpi_note": "Up 2.3 Bcf/d"
+    }
+  ],
+  "infra_events": [
+    {
+      "date": "2026-04-22",
+      "event": "Golden Pass LNG ships first cargo",
+      "type": "LNG",
+      "detail": "Train 1, 0.7 Bcf/d nominal; ninth U.S. LNG export terminal",
+      "when": "Apr 22, 2026"
+    },
+    {
+      "date": "2026-06-01",
+      "event": "Hugh Brinson pipeline enters service",
+      "type": "Pipeline",
+      "detail": "Energy Transfer intrastate line from the Permian near Waha to Maypearl, Texas; ramping into early 2027 (in service June 2026)",
+      "when": "Jun 2026"
+    },
+    {
+      "date": "2026-08-28",
+      "event": "Corpus Christi Stage 3 completed",
+      "type": "LNG",
+      "detail": "Adds 1.5 Bcf/d; peak liquefaction 3.9 Bcf/d",
+      "when": "Aug 28, 2026"
+    },
+    {
+      "date": "2026-10-09",
+      "event": "Hurricane Isaias Gulf shut-ins peak",
+      "type": "Disruption",
+      "detail": "1.26 Bcf/d shut in (58.8% of Gulf gas output); 0.24 Bcf/d by Oct 14",
+      "when": "Oct 9, 2026"
+    },
+    {
+      "date": "2026-10-16",
+      "event": "FERC clears Plaquemines Phase 1 to enter service",
+      "type": "LNG",
+      "detail": "Venture Global's Louisiana plant; commercial operations targeted Oct 31",
+      "when": "Oct 16, 2026"
+    },
+    {
+      "date": "2026-10-19",
+      "event": "US LNG feedgas tops 20 Bcf/d for the first time",
+      "type": "LNG",
+      "detail": "About 20.7 Bcf/d on Oct 19 per NGI; back above 20 Bcf/d on Oct 28 as Golden Pass and Plaquemines ramp up",
+      "when": "Oct 19, 2026"
+    },
+    {
+      "date": "2026-10-26",
+      "event": "Freeport LNG power disruption",
+      "type": "Disruption",
+      "detail": "All three trains tripped early in the week; feedgas back to about 1.5 Bcf/d by Oct 28",
+      "when": "Week of Oct 26, 2026"
+    },
+    {
+      "date": "2026-10-31",
+      "event": "Plaquemines Phase 1 commercial operations (target)",
+      "type": "LNG",
+      "detail": "Phase 2 targeted mid-2027",
+      "when": "Oct 31, 2026 (target)"
+    },
+    {
+      "date": "2026-12-31",
+      "event": "Golden Pass Train 2 (expected late 2026)",
+      "type": "LNG",
+      "detail": "0.7 Bcf/d nominal",
+      "when": "Late 2026 (expected)"
+    }
+  ],
+  "lng_terminals": [
+    {
+      "terminal": "Sabine Pass",
+      "state": "Louisiana",
+      "nominal_bcfd": 3.6,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": ""
+    },
+    {
+      "terminal": "Corpus Christi (incl. Stage 3)",
+      "state": "Texas",
+      "nominal_bcfd": null,
+      "peak_bcfd": 3.9,
+      "status": "Operating",
+      "note": "Stage 3 completed Aug 28 2026, adding 1.5 Bcf/d"
+    },
+    {
+      "terminal": "Plaquemines",
+      "state": "Louisiana",
+      "nominal_bcfd": 2.6,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": "FERC cleared Phase 1 to enter service Oct 16 2026; commercial operations targeted Oct 31; Phase 2 mid-2027"
+    },
+    {
+      "terminal": "Golden Pass Train 1",
+      "state": "Texas",
+      "nominal_bcfd": 0.7,
+      "peak_bcfd": 0.8,
+      "status": "Operating",
+      "note": "First cargo Apr 22 2026; feedgas averaged about 0.57 Bcf/d in October, high of about 0.8 Bcf/d on Oct 22"
+    },
+    {
+      "terminal": "Golden Pass Train 2",
+      "state": "Texas",
+      "nominal_bcfd": 0.7,
+      "peak_bcfd": 0.8,
+      "status": "Under construction",
+      "note": "Expected late 2026"
+    },
+    {
+      "terminal": "Golden Pass Train 3",
+      "state": "Texas",
+      "nominal_bcfd": 0.7,
+      "peak_bcfd": 0.8,
+      "status": "Under construction",
+      "note": "Expected 1H 2027"
+    },
+    {
+      "terminal": "Cameron",
+      "state": "Louisiana",
+      "nominal_bcfd": null,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": "Capacity not in sources used"
+    },
+    {
+      "terminal": "Freeport",
+      "state": "Texas",
+      "nominal_bcfd": null,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": "Power disruption tripped all three trains the week of Oct 26; recovering"
+    },
+    {
+      "terminal": "Calcasieu Pass",
+      "state": "Louisiana",
+      "nominal_bcfd": null,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": "Capacity not in sources used"
+    },
+    {
+      "terminal": "Cove Point",
+      "state": "Maryland",
+      "nominal_bcfd": null,
+      "peak_bcfd": null,
+      "status": "Operating",
+      "note": "Capacity not in sources used"
+    }
+  ],
+  "jkm_weekly": [
+    {
+      "week_ending": "2026-10-16",
+      "usd_mmbtu": 25.98,
+      "source": "Reuters, Oct 12 2026"
+    },
+    {
+      "week_ending": "2026-10-30",
+      "usd_mmbtu": 30.6,
+      "source": "Cbonds, Oct 26 2026"
+    }
+  ]
+}

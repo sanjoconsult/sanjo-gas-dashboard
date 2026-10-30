@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>End-to-End ETRM Workflow — Sanjo Consult</title>
+<style>html{scrollbar-gutter:stable}</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f7fa;--bg3:#eef2f7;
+  --text:#1a1a1a;--text2:#444;--text3:#888;
+  --border:#dde3ed;--border2:#c0c8d8;
+  --navy:#1f3864;--blue:#1155cc;--green:#0f6e56;--red:#993c1d;--amber:#854f0b;
+  --radius:8px;--radius-lg:12px;
+  /* Sanjo brand accent */
+  --accent:#2f6fd6;--accent2:#12877a;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#0f172a;--bg2:#1e293b;--bg3:#1e293b;--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;--border:#334155;--border2:#475569;--navy:#6a8fd8;--blue:#60a5fa;--green:#34d399;--red:#f87171;--amber:#fbbf24;--accent:#6aa6ec;--accent2:#4cc3b2}
+}
+body{font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14.5px;line-height:1.5}
+
+
+
+/* ── Page content wrapper ── */
+.page-wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+/* ── Existing styles ── */
+.pipeline-wrap{background:var(--bg2);border-bottom:1px solid var(--border)}
+.pipeline{display:flex;align-items:center;padding:12px 0;overflow-x:auto;gap:0;max-width:1160px;margin:0 auto;padding-left:20px;padding-right:20px}
+.pipe-box{padding:5px 14px;font-size:12px;font-weight:500;border-radius:4px;white-space:nowrap;cursor:pointer;transition:background .15s}
+.pipe-arrow{font-size:15px;color:var(--text3);margin:0 3px}
+.pipe-todo{background:var(--bg3);color:var(--text2)}
+.pipe-active{background:var(--navy);color:#fff}
+.pipe-done{background:#d4edda;color:#0f6e56}
+@media(prefers-color-scheme:dark){.pipe-done{background:#1a3a2a;color:#3db896}}
+.section{display:none;padding:20px 0}.section.active{display:block}
+.sec-title{font-size:15px;font-weight:600;margin-bottom:14px;color:var(--navy)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px}
+.metric{background:var(--bg2);border-radius:var(--radius);padding:12px;text-align:center}
+.metric-label{font-size:11px;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.metric-value{font-size:20px;font-weight:600}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11px;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.field input,.field select{width:100%;padding:7px 10px;font-size:13px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text)}
+.btn{padding:8px 18px;font-size:13px;font-weight:500;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);cursor:pointer}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500}
+.b-green{background:#d4edda;color:#0f6e56}.b-amber{background:#fff3cd;color:#854f0b}
+.b-blue{background:#dce8fb;color:#185fa5}.b-red{background:#fde8e4;color:#993c1d}
+@media(prefers-color-scheme:dark){
+  .b-green{background:#1a3a2a;color:#3db896}.b-amber{background:#3a2a0a;color:#e0a040}
+  .b-blue{background:#1a2a3a;color:#6aabff}.b-red{background:#3a1a1a;color:#e07050}
+}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;font-weight:600;color:var(--text3);padding:6px 8px;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em}
+td{padding:8px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+.sub-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 6px}
+.divider{height:1px;background:var(--border);margin:12px 0}
+.info-box{background:var(--bg3);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:var(--text2);margin-bottom:14px}
+.explain-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px}
+.explain-row:last-child{border-bottom:none}
+.tag{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--bg3);color:var(--text3);margin-left:6px}
+.book-msg{margin-top:8px;font-size:12px;color:var(--green);display:none}
+@media(max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+</style>
+</head>
+<style>
+/* Shared site header */
+:root{--sc-paper:#f4f7f9;--sc-ink:#0f1d2e;--sc-ink-soft:#4a5a6c;--sc-rule:#d6dee6;--sc-blue:#1d5fa8;--sc-max:1160px;--sc-display:"Archivo","Arial Narrow",Arial,sans-serif;--sc-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media(prefers-color-scheme:dark){:root{--sc-paper:#0c1724;--sc-ink:#e8eef4;--sc-ink-soft:#a3b3c4;--sc-rule:#23384f;--sc-blue:#6aa6ec}}
+.sc-top{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--sc-paper,#f4f7f9) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--sc-rule,#d6dee6)}
+.sc-top .sc-wrap{max-width:1160px;box-sizing:border-box;margin-inline:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sc-top .sc-logo{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-logo svg{width:38px;height:38px;flex:none}
+.sc-top .sc-logo-word{display:flex;flex-direction:column;line-height:1;gap:4px}
+.sc-top .sc-logo-name{font-family:var(--sc-display);font-weight:800;font-stretch:118%;font-size:19px;letter-spacing:.2em;color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-logo-sub{font-family:var(--sc-mono);font-size:9.5px;letter-spacing:.42em;color:var(--sc-blue,#1d5fa8)}
+.sc-top .sc-nav{display:flex;align-items:center;gap:26px;font-size:15px;font-family:"IBM Plex Sans",sans-serif}
+.sc-top .sc-nav a{text-decoration:none;color:var(--sc-ink-soft,#4a5a6c)}
+.sc-top .sc-nav a:hover{color:var(--sc-ink,#0f1d2e)}
+.sc-top .sc-nav .sc-btn{display:inline-flex;align-items:center;padding:13px 20px;border:1px solid transparent;border-radius:999px;background:var(--sc-blue,#1d5fa8);color:#fff;font:600 15px/1 "IBM Plex Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.sc-top .sc-cta-short{display:none}
+@media(max-width:560px){.sc-top .sc-cta-long{display:none}.sc-top .sc-cta-short{display:inline}.sc-top .sc-nav .sc-btn{padding:11px 16px}}
+.sc-top .sc-nav .sc-btn:hover{color:#fff}
+@media(max-width:820px){.sc-top .sc-nav a:not(.sc-btn){display:none}}
+</style>
+<header class="sc-top">
+  <div class="sc-wrap">
+    <a class="sc-logo" href="index.html">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="scHdrGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d5fa8"/><stop offset="1" stop-color="#12877a"/></linearGradient></defs><path d="M20 2.2 L35 7.4 V19.2 C35 28.4 28.6 34.8 20 37.8 C11.4 34.8 5 28.4 5 19.2 V7.4 Z" fill="url(#scHdrGrad2)"/><path d="M20 5.4 L32 9.6 V19.2 C32 26.6 27 31.9 20 34.6 C13 31.9 8 26.6 8 19.2 V9.6 Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/><text x="20" y="27.6" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="800" font-size="22" fill="#fff">S</text></svg>
+      <span class="sc-logo-word"><span class="sc-logo-name">SANJO</span><span class="sc-logo-sub">CONSULT</span></span>
+    </a>
+    <nav class="sc-nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#about">About</a>
+      <a class="sc-btn" href="index.html#contact"><span class="sc-cta-long">Start a conversation</span><span class="sc-cta-short">Contact</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="pipeline-wrap"><div class="pipeline" id="pipeline">
+  <span class="pipe-box pipe-active" id="p0" onclick="showTab(0)">1 · Deal entry</span><span class="pipe-arrow">›</span>
+  <span class="pipe-box pipe-todo" id="p1" onclick="showTab(1)">2 · Risk & MTM</span><span class="pipe-arrow">›</span>
+  <span class="pipe-box pipe-todo" id="p2" onclick="showTab(2)">3 · P&L explain</span><span class="pipe-arrow">›</span>
+  <span class="pipe-box pipe-todo" id="p3" onclick="showTab(3)">4 · Scheduling</span><span class="pipe-arrow">›</span>
+  <span class="pipe-box pipe-todo" id="p4" onclick="showTab(4)">5 · Settlement</span><span class="pipe-arrow">›</span>
+  <span class="pipe-box pipe-todo" id="p5" onclick="showTab(5)">6 · ERP / Audit</span>
+</div></div><!-- /pipeline-wrap -->
+
+<div class="page-wrap">
+
+
+<!-- TAB 0 -->
+<div class="section active" id="tab0">
+  <p class="sec-title">Deal capture & validation</p>
+  <div class="grid2">
+    <div class="card">
+      <p class="sub-label">Instrument</p>
+      <div class="field"><label>Deal type</label>
+        <select id="dt" onchange="updateDeal()">
+          <option value="phys">Physical natural gas (fixed price)</option>
+          <option value="crude">Crude oil — dated Brent (fixed price)</option>
+          <option value="swap">Financial swap (fixed-for-float)</option>
+          <option value="call">Call option</option>
+          <option value="put">Put option</option>
+          <option value="ftr">Nodal FTR / CRR</option>
+        </select>
+      </div>
+      <div class="field"><label>Counterparty</label><input id="cpty" value="BP Energy Company"/></div>
+      <div class="field"><label>Trade date</label><input type="date" id="tdate" value="2026-06-15"/></div>
+      <div class="field"><label>Delivery start / end</label>
+        <div style="display:flex;gap:8px">
+          <input type="date" id="dstart" value="2026-07-01" style="flex:1;padding:7px 10px;font-size:13px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text)"/>
+          <input type="date" id="dend" value="2026-07-31" style="flex:1;padding:7px 10px;font-size:13px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text)"/>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="sub-label">Economics</p>
+      <div class="field"><label id="vol-label">Volume (MMBtu/d)</label><input type="number" id="vol" value="10000" onchange="updateDeal()"/></div>
+      <div class="field"><label id="price-label">Fixed price ($/MMBtu)</label><input type="number" id="fprice" value="3.25" step="0.01" onchange="updateDeal()"/></div>
+      <div id="option-fields" style="display:none">
+        <div class="field"><label>Strike ($/MMBtu)</label><input type="number" id="strike" value="3.50" step="0.01" onchange="updateDeal()"/></div>
+        <div class="field"><label>Volatility (%)</label><input type="number" id="vol-pct" value="35" step="1" onchange="updateDeal()"/></div>
+        <div class="field"><label>Risk-free rate (%)</label><input type="number" id="rfr" value="5.3" step="0.1" onchange="updateDeal()"/></div>
+      </div>
+      <div id="ftr-fields" style="display:none">
+        <div class="field"><label>Source node</label><input id="ftr-src" value="PJM.PENELEC"/></div>
+        <div class="field"><label>Sink node</label><input id="ftr-snk" value="PJM.PSEG"/></div>
+        <div class="field"><label>MW capacity</label><input type="number" id="ftr-mw" value="50" onchange="updateDeal()"/></div>
+      </div>
+      <div class="field"><label>Direction</label>
+        <select id="buysell"><option value="1">Buy</option><option value="-1">Sell</option></select>
+      </div>
+    </div>
+  </div>
+  <p class="sub-label">Deal summary</p>
+  <div class="card" id="deal-summary"></div>
+  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="bookDeal()">Book deal in ETRM</button>
+    <button class="btn" onclick="showTab(1)">Proceed to risk →</button>
+  </div>
+  <div class="book-msg" id="book-msg"><i class="ti ti-check"></i> Deal booked · ID: <span id="deal-id"></span> · Status: <span class="badge b-amber">Pending validation</span></div>
+</div>
+
+<!-- TAB 1 -->
+<div class="section" id="tab1">
+  <p class="sec-title">Market risk — mark-to-market & exposure</p>
+  <div class="info-box">Current market: Henry Hub spot <strong id="hh-spot">$3.42</strong>/MMBtu &nbsp;|&nbsp; 30-day forward curve avg <strong id="fwd-avg">$3.61</strong>/MMBtu &nbsp;|&nbsp; Implied vol <strong>34.8%</strong></div>
+  <div class="grid4" style="margin-bottom:14px">
+    <div class="metric"><div class="metric-label">MTM value</div><div class="metric-value pos" id="mtm-val">—</div></div>
+    <div class="metric"><div class="metric-label">Daily VaR (95%)</div><div class="metric-value neg" id="var-val">—</div></div>
+    <div class="metric"><div class="metric-label">Delta (MMBtu)</div><div class="metric-value" id="delta-val">—</div></div>
+    <div class="metric"><div class="metric-label">Open exposure</div><div class="metric-value" id="exp-val">—</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <p class="sub-label">ETRM system simulation — forward curve</p>
+      <table><thead><tr><th>Period</th><th>Fwd price</th><th>Fixed price</th><th>MTM (daily)</th></tr></thead>
+      <tbody id="sim-rows"></tbody></table>
+    </div>
+    <div class="card">
+      <p class="sub-label">Greeks (options only)</p>
+      <div id="greeks-section"><table><thead><tr><th>Greek</th><th>Value</th><th>Interpretation</th></tr></thead><tbody id="greeks-rows"></tbody></table></div>
+      <div id="no-greeks" style="color:var(--text3);font-size:13px">Greeks apply to option deals only.</div>
+      <div class="divider"></div>
+      <p class="sub-label">Stress scenarios</p>
+      <table><thead><tr><th>Price shock</th><th>MTM impact</th></tr></thead><tbody id="stress-rows"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2 -->
+<div class="section" id="tab2">
+  <p class="sec-title">P&L explain — daily attribution</p>
+  <div class="grid4" style="margin-bottom:14px">
+    <div class="metric"><div class="metric-label">Prior day MTM</div><div class="metric-value" id="pl-prior">—</div></div>
+    <div class="metric"><div class="metric-label">Today MTM</div><div class="metric-value pos" id="pl-today">—</div></div>
+    <div class="metric"><div class="metric-label">Daily P&L</div><div class="metric-value pos" id="pl-daily">—</div></div>
+    <div class="metric"><div class="metric-label">Realized P&L</div><div class="metric-value" id="pl-realized">$0</div></div>
+  </div>
+  <div class="card">
+    <p class="sub-label">P&L attribution waterfall</p>
+    <div id="explain-rows"></div>
+    <div class="divider"></div>
+    <div class="explain-row" style="font-weight:600"><span>Total daily P&L</span><span id="pl-total-explain" class="pos">—</span></div>
+  </div>
+  <div class="sub-label">Realized vs unrealized</div>
+  <div class="grid2">
+    <div class="card" style="font-size:13px">
+      <p style="font-weight:600;margin-bottom:6px">Unrealized (open position)</p>
+      <p style="color:var(--text2)">MTM gain/loss flows through trading P&L daily until physical delivery.</p>
+      <p style="margin-top:8px" id="unreal-val">—</p>
+    </div>
+    <div class="card" style="font-size:13px">
+      <p style="font-weight:600;margin-bottom:6px">Realized (settled volumes)</p>
+      <p style="color:var(--text2)">Locked-in P&L on volumes delivered and invoiced. No longer subject to price movement.</p>
+      <p style="margin-top:8px" id="realized-note">$0 (delivery starts Jul 1)</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3 -->
+<div class="section" id="tab3">
+  <p class="sec-title">Scheduling, nominations & logistics</p>
+  <div class="grid2">
+    <div class="card">
+      <p class="sub-label" id="nom-label">Nomination cycle (Jul 1)</p>
+      <table><thead><tr><th>Cycle</th><th>Deadline</th><th>Status</th></tr></thead><tbody>
+        <tr><td>Timely (T)</td><td id="nom-t">Jun 25 11:30 CT</td><td><span class="badge b-green">Nominated</span></td></tr>
+        <tr><td>Evening (E)</td><td id="nom-e">Jun 25 18:00 CT</td><td><span class="badge b-amber">Pending</span></td></tr>
+        <tr><td>Intraday 1</td><td id="nom-i1">Jul 1 07:00 CT</td><td><span class="badge b-blue">Scheduled</span></td></tr>
+        <tr><td>Intraday 2</td><td id="nom-i2">Jul 1 10:00 CT</td><td><span class="badge b-blue">—</span></td></tr>
+      </tbody></table>
+      <div class="divider"></div>
+      <p class="sub-label">Pipeline & delivery</p>
+      <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Pipeline</td><td>Transco Zone 4</td></tr>
+        <tr><td>Meter</td><td>TZ4-8821-A</td></tr>
+        <tr><td>Flow direction</td><td>Receipt</td></tr>
+        <tr><td>Nominated vol</td><td id="sched-vol">—</td></tr>
+        <tr><td>Confirmed vol</td><td id="conf-vol">—</td></tr>
+        <tr><td>Status</td><td><span class="badge b-green">Confirmed</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <p class="sub-label" id="alloc-label">Daily allocations (Jul 1–5)</p>
+      <table><thead><tr><th>Date</th><th>Scheduled</th><th>Actual</th><th>Imbalance</th></tr></thead>
+      <tbody id="alloc-rows"></tbody></table>
+      <div class="divider"></div>
+      <p class="sub-label">Imbalance management</p>
+      <div style="font-size:13px;color:var(--text2)">Cumulative imbalance: <strong id="cum-imbal" style="color:var(--text)">—</strong> MMBtu &nbsp;|&nbsp; Tolerance: ±2% &nbsp;|&nbsp; Status: <span class="badge b-green">Within tolerance</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4 -->
+<div class="section" id="tab4">
+  <p class="sec-title">Settlement, invoicing & accounting</p>
+  <div class="grid4" style="margin-bottom:14px">
+    <div class="metric"><div class="metric-label">Gross invoice</div><div class="metric-value" id="inv-amt">—</div></div>
+    <div class="metric"><div class="metric-label">Net payable</div><div class="metric-value pos" id="net-pay">—</div></div>
+    <div class="metric"><div class="metric-label">Settlement date</div><div class="metric-value" style="font-size:14px" id="settle-date">Aug 25, 2026</div></div>
+    <div class="metric"><div class="metric-label">Status</div><div class="metric-value" style="font-size:13px"><span class="badge b-amber">Pending</span></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <p class="sub-label">Invoice detail</p>
+      <table><thead><tr><th>Description</th><th style="text-align:right">Amount</th></tr></thead>
+      <tbody id="inv-rows"></tbody></table>
+      <div class="divider"></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span>Net invoice</span><span id="inv-net">—</span></div>
+    </div>
+    <div class="card">
+      <p class="sub-label">Sub-ledger journal entries</p>
+      <table><thead><tr><th>Account</th><th>Dr</th><th>Cr</th></tr></thead><tbody id="subledger-rows"></tbody></table>
+      <div class="divider"></div>
+      <p class="sub-label">Confirmation status</p>
+      <table><thead><tr><th>Step</th><th>Status</th></tr></thead><tbody>
+        <tr><td>Confirmation sent</td><td><span class="badge b-green" id="conf-sent">Sent Jun 15</span></td></tr>
+        <tr><td>Counterparty confirmed</td><td><span class="badge b-green" id="conf-ok">Confirmed Jun 16</span></td></tr>
+        <tr><td>Matching status</td><td><span class="badge b-green">Matched</span></td></tr>
+        <tr><td>Dispute flag</td><td><span class="badge b-green">None</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5 -->
+<div class="section" id="tab5">
+  <p class="sec-title">ERP interface, sub-ledgering & audit trail</p>
+  <div class="grid2">
+    <div class="card">
+      <p class="sub-label">SAP interface — journal entries</p>
+      <table><thead><tr><th>SAP doc</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead>
+      <tbody id="sap-rows"></tbody></table>
+      <div class="divider"></div>
+      <p class="sub-label">Regulatory compliance</p>
+      <table><thead><tr><th>Obligation</th><th>Status</th></tr></thead><tbody>
+        <tr><td>FERC EQR filing</td><td><span class="badge b-green">Filed</span></td></tr>
+        <tr><td>CFTC large trader</td><td><span class="badge b-amber">Threshold check</span></td></tr>
+        <tr><td>Dodd-Frank SDR report</td><td><span class="badge b-green">Reported</span></td></tr>
+        <tr><td>Credit limit check</td><td><span class="badge b-green">Approved</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <p class="sub-label">Audit trail</p>
+      <table><thead><tr><th>Timestamp</th><th>Event</th><th>User</th></tr></thead>
+      <tbody id="audit-rows"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<script>
+const tabs=document.querySelectorAll('.section');
+const navBtns=document.querySelectorAll('.nav-btn');
+const pipes=Array.from({length:6},(_,i)=>document.getElementById('p'+i));
+const HH=3.42;
+const fwdCurve=[3.38,3.45,3.52,3.61,3.58,3.64,3.70,3.67];
+
+function showTab(i){
+  tabs.forEach((t,j)=>t.classList.toggle('active',j===i));
+  navBtns.forEach((b,j)=>b.classList.toggle('active',j===i));
+  pipes.forEach((p,j)=>{
+    p.classList.remove('pipe-active','pipe-done','pipe-todo');
+    p.classList.add(j<i?'pipe-done':j===i?'pipe-active':'pipe-todo');
+  });
+  if(i===1)renderRisk();
+  if(i===2)renderPL();
+  if(i===3)renderSchedule();
+  if(i===4)renderSettlement();
+  if(i===5)renderERP();
+}
+
+function getInputs(){
+  return{
+    dt:document.getElementById('dt').value,
+    vol:parseFloat(document.getElementById('vol').value)||10000,
+    fp:parseFloat(document.getElementById('fprice').value)||3.25,
+    bs:parseFloat(document.getElementById('buysell').value)||1,
+    strike:parseFloat(document.getElementById('strike').value)||3.50,
+    volPct:(parseFloat(document.getElementById('vol-pct').value)||35)/100,
+    rfr:(parseFloat(document.getElementById('rfr').value)||5.3)/100,
+    ftrMw:parseFloat(document.getElementById('ftr-mw').value)||50,
+  };
+}
+
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function pd(id,fb){const v=document.getElementById(id).value||fb;const[y,m,dd]=v.split('-').map(Number);return new Date(Date.UTC(y,m-1,dd));}
+function md(t){return MON[t.getUTCMonth()]+' '+t.getUTCDate();}
+function addD(t,n){return new Date(t.getTime()+n*86400000);}
+function delivery(){
+  const s=pd('dstart','2026-07-01'),e=pd('dend','2026-07-31');
+  const raw=Math.round((e-s)/86400000)+1,ok=raw>=1,days=ok?raw:1;
+  const y=s.getUTCFullYear(),sameM=ok&&s.getUTCMonth()===e.getUTCMonth()&&y===e.getUTCFullYear();
+  const label=!ok?md(s)+', '+y:sameM?(md(s)+(raw>1?'–'+e.getUTCDate():'')+', '+y):(md(s)+(y!==e.getUTCFullYear()?', '+y:'')+' – '+md(e)+', '+e.getUTCFullYear());
+  return{s,e:ok?e:s,days,ok,label};
+}
+function cptyName(){return document.getElementById('cpty').value.trim()||'Counterparty';}
+function updateDates(){
+  const{s,e}=delivery(),t=pd('tdate','2026-06-15'),nomDay=addD(s,-1);
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set('realized-note','$0 (delivery starts '+md(s)+')');
+  set('nom-label','Nomination cycle ('+md(s)+')');
+  set('nom-t',md(nomDay)+' 13:00 CT');set('nom-e',md(nomDay)+' 18:00 CT');
+  set('nom-i1',md(nomDay)+' 22:00 CT');set('nom-i2',md(s)+' 06:00 CT');
+  const n=Math.min(5,delivery().days);
+  set('alloc-label','Daily allocations ('+md(s)+(n>1?'–'+md(addD(s,n-1)).split(' ')[1]:'')+')');
+  let sm=new Date(Date.UTC(e.getUTCFullYear(),e.getUTCMonth()+1,25));
+  const hol=(t)=>{const m=t.getUTCMonth(),dd=t.getUTCDate();return (m===11&&dd===25)||(m===0&&dd===1)||(m===6&&dd===4);};
+  while(sm.getUTCDay()===0||sm.getUTCDay()===6||hol(sm))sm=addD(sm,1);
+  set('settle-date',md(sm)+', '+sm.getUTCFullYear());
+  set('conf-sent','Sent '+md(t));set('conf-ok','Confirmed '+md(addD(t,1)));
+}
+
+function updateDeal(){
+  const{dt,vol,fp,bs,strike,ftrMw}=getInputs();
+  const isOpt=dt==='call'||dt==='put',isFtr=dt==='ftr',isCrude=dt==='crude';
+  document.getElementById('option-fields').style.display=isOpt?'block':'none';
+  document.getElementById('ftr-fields').style.display=isFtr?'block':'none';
+  document.getElementById('vol-label').textContent=isFtr?'Capacity (MW)':'Volume (MMBtu/d)';
+  document.getElementById('price-label').textContent=isCrude?'Fixed price ($/bbl)':isFtr?'FTR auction price ($/MWh)':'Fixed price ($/MMBtu)';
+  const dl=delivery(),days=dl.days;
+  const notional=isFtr?ftrMw*fp*24*days:vol*(isOpt?strike:fp)*days;
+  const typeLabel={phys:'Physical natural gas (fixed price)',crude:'Crude oil — dated Brent',swap:'Financial swap',call:'Call option',put:'Put option',ftr:'Nodal FTR / CRR'}[dt];
+  document.getElementById('deal-summary').innerHTML=`<table><tbody>
+    <tr><td style="color:var(--text3);width:120px">Type</td><td>${typeLabel}</td><td style="color:var(--text3);width:100px">Direction</td><td>${bs>0?'Buy':'Sell'}</td></tr>
+    <tr><td style="color:var(--text3)">${isFtr?'Capacity':'Volume'}</td><td>${isFtr?ftrMw+' MW':vol.toLocaleString()+' MMBtu/d'}</td><td style="color:var(--text3)">${isOpt?'Strike':isFtr?'Auction px':'Fixed px'}</td><td>$${isOpt?strike.toFixed(2):fp.toFixed(2)}</td></tr>
+    <tr><td style="color:var(--text3)">Delivery</td><td>${dl.label}${dl.ok?'':' <span class="badge b-red">End date is before start date</span>'}</td><td style="color:var(--text3)">Notional</td><td>$${notional.toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>
+    <tr><td style="color:var(--text3)">Counterparty</td><td colspan="3">${cptyName()}</td></tr>
+  </tbody></table>`;
+  updateDates();
+}
+
+function bookDeal(){
+  const id='END-'+Math.floor(Math.random()*90000+10000);
+  document.getElementById('deal-id').textContent=id;
+  document.getElementById('book-msg').style.display='block';
+}
+
+function norm(x){
+  const p=0.3275911,a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429;
+  const sign=x<0?-1:1,t=1/(1+p*Math.abs(x));
+  const y=1-((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t*Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
+  return 0.5*(1+sign*(2*y-1));
+}
+function bsPrice(S,K,T,r,sigma,type){
+  if(T<=0)return Math.max(0,type==='call'?S-K:K-S);
+  const d1=(Math.log(S/K)+(r+sigma*sigma/2)*T)/(sigma*Math.sqrt(T)),d2=d1-sigma*Math.sqrt(T);
+  return type==='call'?S*norm(d1)-K*Math.exp(-r*T)*norm(d2):K*Math.exp(-r*T)*norm(-d2)-S*norm(-d1);
+}
+
+function renderRisk(){
+  const{dt,vol,fp,bs,strike,volPct,rfr,ftrMw}=getInputs();
+  const days=delivery().days,isOpt=dt==='call'||dt==='put',isFtr=dt==='ftr';
+  const fwdAvg=fwdCurve.slice(0,5).reduce((a,b)=>a+b)/5;
+  let mtm=0;const rows=[];
+  if(isOpt){
+    const T=16/365,optPx=bsPrice(HH,strike,T,rfr,volPct,dt);
+    mtm=optPx*vol*days*bs;
+    for(let i=0;i<5;i++){const px=bsPrice(fwdCurve[i],strike,T-(i*2/365),rfr,volPct,dt);rows.push({p:fwdCurve[i].toFixed(3),fp:'—',m:(px*vol).toFixed(0)});}
+    const d1=(Math.log(HH/strike)+(rfr+volPct*volPct/2)*(T))/(volPct*Math.sqrt(T));
+    const delta=(dt==='call'?norm(d1):norm(d1)-1)*bs;
+    const gamma=Math.exp(-d1*d1/2)/(HH*volPct*Math.sqrt(T)*Math.sqrt(2*Math.PI));
+    const theta=-(HH*Math.exp(-d1*d1/2)*volPct/(2*Math.sqrt(T))+rfr*strike*Math.exp(-rfr*T)*(dt==='call'?norm(d1-volPct*Math.sqrt(T)):norm(-(d1-volPct*Math.sqrt(T)))))/365;
+    const vega=HH*Math.sqrt(T)*Math.exp(-d1*d1/2)/Math.sqrt(2*Math.PI)/100;
+    document.getElementById('greeks-section').style.display='block';
+    document.getElementById('no-greeks').style.display='none';
+    document.getElementById('greeks-rows').innerHTML=`<tr><td>Delta (Δ)</td><td>${delta.toFixed(4)}</td><td>$/$ price move</td></tr><tr><td>Gamma (Γ)</td><td>${gamma.toFixed(5)}</td><td>Delta change per $1</td></tr><tr><td>Theta (Θ)</td><td>${theta.toFixed(4)}</td><td>$/day time decay</td></tr><tr><td>Vega (ν)</td><td>${vega.toFixed(4)}</td><td>$ per 1% vol move</td></tr>`;
+    document.getElementById('delta-val').textContent=(delta*vol*days).toFixed(0)+' MMBtu';
+  }else if(isFtr){
+    const ftrFwd=fp*1.12;mtm=(ftrFwd-fp)*ftrMw*24*days*bs;
+    for(let i=0;i<5;i++)rows.push({p:(fp*(1+i*0.03)).toFixed(2),fp:fp.toFixed(2),m:((fp*(1+i*0.03)-fp)*ftrMw*24).toFixed(0)});
+    document.getElementById('greeks-section').style.display='none';
+    document.getElementById('no-greeks').style.display='block';
+    document.getElementById('no-greeks').textContent='FTR/CRR: Greeks not applicable. Nodal price differential drives MTM.';
+    document.getElementById('delta-val').textContent=(ftrMw*24)+' MWh/d';
+  }else{
+    for(let i=0;i<5;i++){const diff=(fwdCurve[i]-fp)*vol*bs;mtm+=diff;rows.push({p:fwdCurve[i].toFixed(3),fp:fp.toFixed(2),m:diff.toFixed(0)});}
+    mtm=mtm/5*days;
+    document.getElementById('greeks-section').style.display='none';
+    document.getElementById('no-greeks').style.display='block';
+    document.getElementById('no-greeks').textContent='Linear instrument — Delta=1, no Gamma/Theta/Vega.';
+    document.getElementById('delta-val').textContent=(vol*days).toLocaleString()+' MMBtu';
+  }
+  const varVal=Math.abs(mtm)*0.082;
+  document.getElementById('mtm-val').textContent='$'+(mtm>=0?'':'-')+Math.abs(mtm).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('mtm-val').className='metric-value '+(mtm*bs>=0?'pos':'neg');
+  document.getElementById('var-val').textContent='-$'+varVal.toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('exp-val').textContent='$'+Math.abs(mtm*1.15).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('hh-spot').textContent='$'+HH.toFixed(2);
+  document.getElementById('fwd-avg').textContent='$'+fwdAvg.toFixed(2);
+  document.getElementById('sim-rows').innerHTML=rows.map((r,i)=>`<tr><td>Week ${i+1}</td><td>$${r.p}</td><td>${r.fp==='—'?'—':'$'+r.fp}</td><td style="color:${parseFloat(r.m)>=0?'var(--green)':'var(--red)'}">$${parseFloat(r.m).toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>`).join('');
+  document.getElementById('stress-rows').innerHTML=[-1,-.5,.5,1].map(s=>{
+    const impact=isOpt?s*Math.abs(mtm)*0.6:s*(document.getElementById('vol').value||10000)*31;
+    return`<tr><td>${s>0?'+':''}${s} $/MMBtu</td><td style="color:${impact>=0?'var(--green)':'var(--red)'}">$${impact>=0?'':'-'}${Math.abs(impact).toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>`;
+  }).join('');
+}
+
+function renderPL(){
+  const{vol,fp,bs,dt,strike,volPct,rfr,ftrMw}=getInputs();
+  const days=delivery().days,prevHH=3.38,isOpt=dt==='call'||dt==='put',isFtr=dt==='ftr';
+  let priorMTM,todayMTM;
+  if(isFtr){priorMTM=0;todayMTM=(fp*1.12-fp)*ftrMw*24*days*bs;}
+  else if(isOpt){priorMTM=bsPrice(prevHH,strike,17/365,rfr,volPct,dt)*vol*days*bs;todayMTM=priorMTM*1.12;}
+  else{priorMTM=(prevHH-fp)*vol*days*bs;todayMTM=(HH-fp)*vol*days*bs;}
+  const daily=todayMTM-priorMTM;
+  const pricePL=(HH-prevHH)*vol*days*bs*(isOpt?.6:1);
+  const thetaPL=isOpt?-Math.abs(daily)*.08:0;
+  const volPLval=isOpt?daily*.15:0;
+  const residual=daily-pricePL-thetaPL-volPLval;
+  document.getElementById('pl-prior').textContent='$'+priorMTM.toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('pl-today').textContent='$'+todayMTM.toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('pl-today').className='metric-value '+(todayMTM>=0?'pos':'neg');
+  document.getElementById('pl-daily').textContent=(daily>=0?'+$':'-$')+Math.abs(daily).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('pl-daily').className='metric-value '+(daily>=0?'pos':'neg');
+  document.getElementById('pl-total-explain').textContent=(daily>=0?'+$':'-$')+Math.abs(daily).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('unreal-val').innerHTML=`<strong style="color:${todayMTM>=0?'var(--green)':'var(--red)'}">${todayMTM>=0?'+$':'-$'}${Math.abs(todayMTM).toLocaleString(undefined,{maximumFractionDigits:0})}</strong> unrealized`;
+  document.getElementById('explain-rows').innerHTML=[
+    {label:'Price delta P&L',tag:'Market move',val:pricePL},
+    {label:'Theta decay',tag:'Time value',val:thetaPL},
+    {label:'Vega (vol change)',tag:'Implied vol',val:volPLval},
+    {label:'New trades / amendments',tag:'Deal change',val:0},
+    {label:'Residual / rounding',tag:'Other',val:residual},
+  ].map(e=>`<div class="explain-row"><span>${e.label}<span class="tag">${e.tag}</span></span><span style="color:${e.val>=0?'var(--green)':'var(--red)'}">${e.val>=0?'+$':'-$'}${Math.abs(e.val).toLocaleString(undefined,{maximumFractionDigits:0})}</span></div>`).join('');
+}
+
+function renderSchedule(){
+  const vol=parseFloat(document.getElementById('vol').value)||10000;
+  document.getElementById('sched-vol').textContent=vol.toLocaleString()+' MMBtu/d';
+  document.getElementById('conf-vol').textContent=vol.toLocaleString()+' MMBtu/d';
+  let cum=0;
+  const _dl=delivery();
+  document.getElementById('alloc-rows').innerHTML=Array.from({length:Math.min(5,_dl.days)},(_,i)=>md(addD(_dl.s,i))).map(d=>{
+    const act=Math.round(vol*(.97+Math.random()*.06)),imbal=act-vol;cum+=imbal;
+    return`<tr><td>${d}</td><td>${vol.toLocaleString()}</td><td>${act.toLocaleString()}</td><td style="color:${Math.abs(imbal)<vol*.02?'var(--green)':'var(--red)'}">${imbal>0?'+':''}${imbal.toLocaleString()}</td></tr>`;
+  }).join('');
+  document.getElementById('cum-imbal').textContent=cum>0?'+'+cum.toLocaleString():cum.toLocaleString();
+}
+
+function renderSettlement(){
+  const{vol,fp,bs}=getInputs();
+  const days=delivery().days,totalVol=vol*days,gross=totalVol*HH,fixed=totalVol*fp,net=(HH-fp)*totalVol*bs,transport=totalVol*.08;
+  document.getElementById('inv-amt').textContent='$'+gross.toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('net-pay').textContent=(net>=0?'+$':'-$')+Math.abs(net).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('net-pay').className='metric-value '+(net>=0?'pos':'neg');
+  document.getElementById('inv-rows').innerHTML=`
+    <tr><td>Gas delivered (${(totalVol/1e6).toFixed(3)} MMMMBtu @ $${HH.toFixed(3)})</td><td style="text-align:right">$${gross.toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>
+    <tr><td>Fixed price obligation (@ $${fp.toFixed(3)})</td><td style="text-align:right;color:var(--red)">-$${fixed.toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>
+    <tr><td>Pipeline transport fees</td><td style="text-align:right;color:var(--red)">-$${transport.toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>`;
+  const invoiceNet=net-transport;
+  document.getElementById('inv-net').textContent=(invoiceNet>=0?'+$':'-$')+Math.abs(invoiceNet).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('subledger-rows').innerHTML=`
+    <tr><td>Gas purchases (1210)</td><td>$${fixed.toLocaleString(undefined,{maximumFractionDigits:0})}</td><td>—</td></tr>
+    <tr><td>Gas sales revenue (4100)</td><td>—</td><td>$${gross.toLocaleString(undefined,{maximumFractionDigits:0})}</td></tr>
+    <tr><td>Transport expense (6210)</td><td>$${transport.toLocaleString(undefined,{maximumFractionDigits:0})}</td><td>—</td></tr>
+    <tr><td>A/R — ${cptyName()} (1310)</td><td>${net>=0?'$'+Math.abs(invoiceNet).toLocaleString(undefined,{maximumFractionDigits:0}):'—'}</td><td>${net<0?'$'+Math.abs(invoiceNet).toLocaleString(undefined,{maximumFractionDigits:0}):'—'}</td></tr>`;
+}
+
+function renderERP(){
+  const{vol,fp}=getInputs();
+  const days=delivery().days,totalVol=vol*days,net=(HH-fp)*totalVol;
+  document.getElementById('sap-rows').innerHTML=[
+    {id:'5100823941',type:'FI Invoice',amt:'$'+Math.abs(net).toLocaleString(undefined,{maximumFractionDigits:0}),s:'Posted'},
+    {id:'5100823942',type:'MTM accrual',amt:'$'+Math.abs(net*.3).toLocaleString(undefined,{maximumFractionDigits:0}),s:'Posted'},
+    {id:'5100823943',type:'Transport AP',amt:'$'+(totalVol*.08).toLocaleString(undefined,{maximumFractionDigits:0}),s:'Posted'},
+  ].map(d=>`<tr><td style="font-family:monospace;font-size:12px">${d.id}</td><td>${d.type}</td><td>${d.amt}</td><td><span class="badge b-green">${d.s}</span></td></tr>`).join('');
+  const _t=pd('tdate','2026-06-15'),_n=addD(delivery().s,-1),_c=cptyName();
+  document.getElementById('audit-rows').innerHTML=[
+    {t:md(_t)+' 09:14',e:'Deal booked in ETRM system',u:'jgeorge'},
+    {t:md(_t)+' 09:15',e:'Middle office validation',u:'system'},
+    {t:md(_t)+' 09:16',e:'Credit limit approved',u:'credit-mgr'},
+    {t:md(_t)+' 10:02',e:'Confirmation sent to '+_c,u:'system'},
+    {t:md(addD(_t,1))+' 08:30',e:'Counterparty confirmed',u:'cpty-confirm'},
+    {t:md(_n)+' 12:45',e:'Timely nomination submitted',u:'scheduler'},
+    {t:md(_n)+' 12:50',e:'Pipeline confirmation received',u:'system'},
+  ].map(e=>`<tr><td style="font-size:11px;white-space:nowrap">${e.t}</td><td>${e.e}</td><td style="font-family:monospace;font-size:11px">${e.u}</td></tr>`).join('');
+}
+
+document.querySelectorAll('#tab0 input, #tab0 select').forEach(el=>{el.addEventListener('input',updateDeal);el.addEventListener('change',updateDeal);});
+updateDeal();
+</script>
+</div><!-- /page-wrap -->
+</body>
+</html>

@@ -1,0 +1,79 @@
+NATURAL GAS PRICE RELAY (Cloudflare Worker)
+
+The front page shows WTI and Brent from TradingView. The natural gas tile
+(NYMEX NG1!) comes from Yahoo Finance through this small relay, because
+TradingView does not allow NG1! in free website widgets.
+
+Your relay is already set up at:
+    https://sanjo-prices.joseph-george-2cb.workers.dev/
+
+TO UPDATE THE RELAY CODE
+1. Open worker-code.txt (this folder) in Notepad and copy everything.
+   Don't double-click worker.js: Windows tries to run it and shows an error.
+   It's the same code.
+2. Go to https://dash.cloudflare.com > Workers & Pages > sanjo-prices.
+3. Click "Edit code", replace everything with what you copied, click Deploy.
+4. Check it: open the address above with ?debug=1 on the end. Under "ng1"
+   you should see NYMEX's front-month symbol (e.g. NGX26.NYM) and a price.
+
+The relay picks the same contract as TradingView's NG1! and moves to the
+next month when each contract expires. index.html already points to the
+address above; this folder does not need to be uploaded with the website.
+
+Yahoo Finance quotes can run a few minutes behind the exchange.
+
+NATURAL GAS DASHBOARD: AUTOMATIC UPDATES
+gas_dashboard.html now pulls live data from this relay every time it opens.
+If anything can't load, that part of the page keeps the built-in Oct 26 numbers.
+
+Updates by itself:
+  - EIA weekly storage report: total, regions, vs year ago and 5-year average
+    (every Thursday after 9:30 AM CT; works even without a key)
+  - Henry Hub futures, front month (delayed quote; works without a key)
+  - Storage history chart and 4-week projection        (needs EIA key)
+  - Henry Hub spot: weekly chart and month-to-date     (needs EIA key)
+  - EIA STEO: production, demand, LNG exports, balance,
+    Henry Hub forecasts, end-of-month storage forecast (needs EIA key)
+  - US LNG exports by destination country, monthly     (needs EIA key)
+  - EU gas storage % full vs 5-year average            (needs GIE key)
+Still updated by hand (no free source): rig counts, AGA year-to-date numbers,
+regional basis, JKM, LNG feedgas, infrastructure events, tanker map.
+TTF has been removed from the dashboard.
+
+SETUP (one time, about 15 minutes)
+1. Update the relay code: follow "TO UPDATE THE RELAY CODE" above.
+2. EIA key (free): https://www.eia.gov/opendata/register.php
+   Cloudflare > Workers & Pages > sanjo-prices > Settings >
+   Variables and Secrets > Add. Type: Secret. Name: EIA_API_KEY. Value: your key.
+3. GIE key for EU storage (free): register at https://agsi.gie.eu (top right),
+   then copy your API key from your account page. Add it the same way, with
+   the name AGSI_API_KEY.
+4. Deploy, then upload gas_dashboard.html to Netlify with the rest of the site.
+5. Check it: open the relay address with ?dashboard=1&debug=1 on the end.
+   Each section (storage_report, steo, henry_hub, ...) should show data.
+   Anything that failed is listed under "errors" with the reason; send me a
+   screenshot of that page and I'll fix it.
+The dashboard's top-left chip says "Live · updated <time>" when live data
+loaded, or "Snapshot" if it didn't.
+
+JKM (ASIA LNG) ON THE HOME PAGE
+Yahoo doesn't carry JKM, so the relay uses OilPriceAPI (free plan, 50 requests
+a day; the relay asks at most once an hour).
+1. Sign up free at https://www.oilpriceapi.com and copy your API key.
+2. Cloudflare > sanjo-prices > Settings > Variables and Secrets > Add.
+   Type: Secret. Name: OILPRICE_API_KEY. Value: your key. Deploy.
+3. Open the relay address with ?debug=1: "jkm" should show a price.
+Without the key, the JKM tile shows the last price you entered in index.html
+(GAS_BACKUP), labeled "Not live" with its date.
+
+WEEKLY EIA INVENTORY REPORTS (crude, gasoline, distillate, natural gas storage)
+1. Get a free EIA API key: https://www.eia.gov/opendata/register.php
+   (enter your name and email; the key arrives by email).
+2. In Cloudflare: Workers & Pages > sanjo-prices > Settings >
+   Variables and Secrets > Add. Type: Secret. Name: EIA_API_KEY.
+   Value: your key. Save and deploy.
+3. Open the worker address with ?debug=1. Under "reports" you should see
+   four headlines such as "USA Crude Oil Inventories 1.892M Barrel Draw".
+The home page shows the strip only when the reports load, so nothing
+appears until the key is added. Analyst estimates are not included
+(they come from paid services).
