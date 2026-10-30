@@ -24,7 +24,7 @@ before(async () => {
 });
 after(async () => { await browser?.close(); server?.close(); });
 
-async function openDashboard(relayUp) {
+async function openDashboard(relayUp, ships = 'live') {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
@@ -32,6 +32,11 @@ async function openDashboard(relayUp) {
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (route) => {
     const u = route.request().url();
     if (u.includes('d3.min.js')) return route.fulfill({ status: 200, contentType: 'application/javascript', body: d3 });
+    if (u.includes('ais-data/ships.json')) {
+      if (ships === 'down') return route.abort();
+      const when = new Date(Date.now() - (ships === 'stale' ? 8 * 3600e3 : 20 * 60e3)).toISOString();
+      return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: fixture('ships.json').replaceAll('__NOW__', when) });
+    }
     if (!u.includes('sanjo-prices') || !relayUp) return route.abort();
     const body = u.includes('?dashboard') ? fixture('dashboard.json') : u.includes('?history') ? fixture('history.json') : fixture('prices.json');
     return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body });
@@ -75,6 +80,37 @@ test('falls back to the built-in snapshot when the relay is down', async () => {
   await page.click('#tab-market');
   const svgs = await page.$$eval('#market .ng-chart svg', (n) => n.length);
   assert.ok(svgs > 0);
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('LNG tab shows live ship positions from the AIS snapshot', async () => {
+  const { page, errors } = await openDashboard(true);
+  await page.click('#tab-lng');
+  await page.waitForTimeout(300);
+  assert.match(await page.textContent('#ais-pill'), /^Live · /);
+  assert.equal(await page.$$eval('#ship-table tbody tr', (n) => n.length), 4);
+  assert.match(await page.textContent('#ship-table'), /TEST LNG ONE.*At berth.*Corpus Christi/s);
+  assert.equal(await page.$$eval('#ship-map svg circle', (n) => n.length), 3, 'stopped ships are dots');
+  assert.equal(await page.$$eval('#ship-map svg path[transform]', (n) => n.length), 1, 'moving ship is an arrow');
+  assert.match(await page.textContent('#ais-kpis'), /At a berth.*2/s);
+  assert.ok(await page.$eval('#ais-empty', (n) => n.hidden));
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('LNG tab labels old ship data and still draws the map when the feed is down', async () => {
+  let { page, errors } = await openDashboard(true, 'stale');
+  await page.click('#tab-lng');
+  assert.match(await page.textContent('#ais-pill'), /^Not live · last updated /);
+  await page.close();
+  ({ page, errors } = await openDashboard(true, 'down'));
+  await page.click('#tab-lng');
+  await page.waitForTimeout(300);
+  assert.equal(await page.textContent('#ais-pill'), 'Not available');
+  assert.ok(await page.$$eval('#ship-map svg path', (n) => n.length) > 0, 'coastline still drawn');
+  assert.equal(await page.$$eval('#ship-table tbody tr', (n) => n.length), 0);
+  assert.ok(!(await page.$eval('#ais-empty', (n) => n.hidden)));
   assert.deepEqual(errors, []);
   await page.close();
 });

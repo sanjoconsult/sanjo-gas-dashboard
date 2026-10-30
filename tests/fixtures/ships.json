@@ -1,0 +1,8 @@
+{"updated":"__NOW__","source":"aisstream.io (terrestrial AIS receivers)","area":"US Gulf Coast LNG export terminals",
+ "counts":{"total":4,"at_berth":2,"waiting":1,"inbound":1,"outbound":0},
+ "ships":[
+  {"mmsi":"538001","name":"TEST LNG ONE","lat":27.9131,"lon":-97.2861,"sog":0,"cog":12,"nav_status":5,"ship_type":84,"length_m":295,"destination":"CORPUS CHRISTI","seen":"__NOW__","status":"At berth","terminal":"Corpus Christi","terminal_km":0.1},
+  {"mmsi":"538002","name":"TEST CARRIER TWO","lat":29.7545,"lon":-93.8745,"sog":0.1,"cog":200,"nav_status":5,"ship_type":84,"length_m":290,"seen":"__NOW__","status":"At berth","terminal":"Sabine Pass","terminal_km":0.1},
+  {"mmsi":"538003","name":"TEST LNG THREE","lat":29.45,"lon":-93.95,"sog":0.2,"cog":null,"nav_status":1,"seen":"__NOW__","status":"Anchored / waiting","terminal":"Sabine Pass","terminal_km":34.0},
+  {"mmsi":"538004","name":"TEST LNG FOUR","lat":29.2,"lon":-89.7,"sog":12.5,"cog":330,"nav_status":0,"seen":"__NOW__","status":"Inbound","terminal":"Plaquemines","terminal_km":45.6}
+ ],"known_lng_mmsi":["538001","538002"],"messages":1200}
