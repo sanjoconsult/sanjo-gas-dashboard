@@ -1,0 +1,56 @@
+name: Storage forecast
+
+# Daily at 16:17 UTC (11:17 AM CDT / 10:17 AM CST): refresh weather, refit the
+# models, forecast the next EIA storage report, and publish forecast.json to the
+# forecast-data branch (replaced each run, so main stays clean and Netlify does
+# not redeploy). The dashboard reads it from raw.githubusercontent.com.
+on:
+  schedule:
+    - cron: '17 16 * * *'
+  workflow_dispatch:
+  push:
+    branches: [feature/ml-storage-forecast]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: forecast
+  cancel-in-progress: false
+
+jobs:
+  forecast:
+    if: github.repository == 'sanjoconsult/sanjo-gas-dashboard'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: ml/requirements.txt
+      - run: pip install -r ml/requirements.txt
+      - name: Fetch the previous forecast and weather cache
+        run: |
+          base="https://raw.githubusercontent.com/${{ github.repository }}/forecast-data"
+          curl -fsSL "$base/forecast.json" -o prev.json || echo '{}' > prev.json
+          curl -fsSL "$base/weather_daily.csv" -o weather_daily.csv || rm -f weather_daily.csv
+      - name: Forecast
+        run: python ml/storage_forecast.py --out forecast.json --prev prev.json --weather-cache weather_daily.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forecast
+          path: |
+            forecast.json
+            weather_daily.csv
+      - name: Publish to the forecast-data branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir out && cp forecast.json weather_daily.csv out/ && cd out
+          git init -q -b forecast-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -q -m "Storage forecast $(date -u +%FT%RZ)"
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" forecast-data
