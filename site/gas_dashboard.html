@@ -724,7 +724,7 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
     patch.indicators = ind;
     const t = new Date(j.fetched || Date.now()).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' });
     meta.chip_live = auto.length ? 'Live · updated ' + t + ' CT' : 'Snapshot · Oct 26, 2026';
-    meta.live_src = auto.length ? 'Updated automatically: ' + auto.join(', ') + '. Updated every Friday afternoon (last updated ' + (dash.meta.manual_date || 'Oct 26, 2026') + '): rig counts, AGA year-to-date indicators, regional basis, LNG feedgas and infrastructure events. LNG carrier positions: aisstream.io, about every 30 minutes.' : '';
+    meta.live_src = auto.length ? 'Updated automatically: ' + auto.join(', ') + '. Updated automatically every Friday afternoon (last updated ' + (dash.meta.manual_date || 'Oct 26, 2026') + '): rig counts, AGA year-to-date indicators, regional basis, LNG feedgas and infrastructure events. LNG carrier positions: aisstream.io, about every 30 minutes.' : '';
     const chip = document.querySelector('.ng-chip-live'); if (chip) chip.dataset.liveState = auto.length ? 'on' : 'off';
     dash.update(patch, meta);
   }
