@@ -31,12 +31,13 @@ jobs:
         env:
           AISSTREAM_API_KEY: ${{ secrets.AISSTREAM_API_KEY }}
         run: node scripts/ais/collect.mjs prev.json ships.json
-      - name: Publish to the ais-data branch
+      - name: Publish to the ais-data branch (ais-dev for test runs)
         run: |
+          branch=ais-data; [ "${{ github.ref }}" = "refs/heads/main" ] || branch=ais-dev
           mkdir out && cp ships.json out/ && cd out
-          git init -q -b ais-data
+          git init -q -b $branch
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ships.json
           git commit -q -m "LNG ship positions $(date -u +%FT%RZ)"
-          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" ais-data
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" $branch

@@ -1,0 +1,6884 @@
+{
+"title": "LNG carrier fleet in operation",
+"count": 764,
+"as_of": "2026-10-30",
+"source": "List provided by Joseph George (Sanjo Consult), Oct 30 2026",
+"ships": [{
+"name": "Aamira",
+"imo": "9443401",
+"status": "Operating",
+"capacity_m3": 266000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Adam LNG",
+"imo": "9501186",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Adamastos",
+"imo": "9879698",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Adriano Knutsen",
+"imo": "9831220",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Aktoras",
+"imo": "9958286",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Al Aamriya",
+"imo": "9338266",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Al Areesh",
+"imo": "9325697",
+"status": "Operating",
+"capacity_m3": 151700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Al Bahiya",
+"imo": "9431147",
+"status": "Operating",
+"capacity_m3": 210100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2010
+},{
+"name": "Al Bidda",
+"imo": "9132741",
+"status": "Operating",
+"capacity_m3": 137300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 1999
+},{
+"name": "Al Daayen",
+"imo": "9325702",
+"status": "Operating",
+"capacity_m3": 151700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Al Dafna",
+"imo": "9443683",
+"status": "Operating",
+"capacity_m3": 266400,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Deebel",
+"imo": "9307176",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2005
+},{
+"name": "Al Fat H",
+"imo": "9981398",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Al Gattara",
+"imo": "9337705",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Al Ghariya",
+"imo": "9337987",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Al Gharrafa",
+"imo": "9337717",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Ghashamiya",
+"imo": "9397286",
+"status": "Operating",
+"capacity_m3": 217600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Ghuwairiya",
+"imo": "9372743",
+"status": "Operating",
+"capacity_m3": 263300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Al Hamla",
+"imo": "9337743",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Hamra",
+"imo": "9074640",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kvaerner Masa",
+"delivered": 1997
+},{
+"name": "Al Huwaila",
+"imo": "9360879",
+"status": "Operating",
+"capacity_m3": 217000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Jasra",
+"imo": "9132791",
+"status": "Operating",
+"capacity_m3": 137200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2000
+},{
+"name": "Al Jassasiya",
+"imo": "9324435",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Al Karaana",
+"imo": "9431123",
+"status": "Operating",
+"capacity_m3": 210100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Kharaitiyat",
+"imo": "9397327",
+"status": "Operating",
+"capacity_m3": 216300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Kharsaah",
+"imo": "9360881",
+"status": "Operating",
+"capacity_m3": 217000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Khattiya",
+"imo": "9431111",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Khaznah",
+"imo": "9038440",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1994
+},{
+"name": "Al Khor",
+"imo": "9085613",
+"status": "Operating",
+"capacity_m3": 137400,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 1996
+},{
+"name": "Al Khuwair",
+"imo": "9360908",
+"status": "Operating",
+"capacity_m3": 217000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Mafyar",
+"imo": "9397315",
+"status": "Operating",
+"capacity_m3": 266400,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Marrouna",
+"imo": "9325685",
+"status": "Operating",
+"capacity_m3": 152600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "Al Mashabiyyah",
+"imo": "9986611",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Al Mayeda",
+"imo": "9397298",
+"status": "Operating",
+"capacity_m3": 266000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Na'amah",
+"imo": "9977309",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Al Nuaman",
+"imo": "9431135",
+"status": "Operating",
+"capacity_m3": 210100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Oraiq",
+"imo": "9360790",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Al Qaiyyah",
+"imo": "9976812",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Al Qassar",
+"imo": "9982689",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Al Rahba",
+"imo": "9965435",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangnan Shipyard",
+"delivered": 2025
+},{
+"name": "Al Rayyan",
+"imo": "9086734",
+"status": "Operating",
+"capacity_m3": 137400,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 1997
+},{
+"name": "Al Reef",
+"imo": "9972945",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangnan Shipyard",
+"delivered": 2025
+},{
+"name": "Al Rekayyat",
+"imo": "9397339",
+"status": "Operating",
+"capacity_m3": 216300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2009
+},{
+"name": "Al Ruwais",
+"imo": "9337951",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Al Sadd",
+"imo": "9397341",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Safliya",
+"imo": "9337963",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Al Sahla",
+"imo": "9360855",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Sailiya",
+"imo": "9977270",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Al Samriya",
+"imo": "9388821",
+"status": "Operating",
+"capacity_m3": 263300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Shamal",
+"imo": "9360893",
+"status": "Operating",
+"capacity_m3": 217000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Sheehaniya",
+"imo": "9360831",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Al Shelila",
+"imo": "9965423",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangnan Shipyard",
+"delivered": 2024
+},{
+"name": "Al Thakhira",
+"imo": "9298399",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2005
+},{
+"name": "Al Thumama",
+"imo": "9360843",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Tuwar",
+"imo": "9986609",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Al Utouriya",
+"imo": "9360867",
+"status": "Operating",
+"capacity_m3": 215000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Al Wajbah",
+"imo": "9085625",
+"status": "Operating",
+"capacity_m3": 137300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 1997
+},{
+"name": "Al Wakrah",
+"imo": "9086746",
+"status": "Operating",
+"capacity_m3": 137600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 1998
+},{
+"name": "Al Zore",
+"imo": "9981386",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Al Zubarah",
+"imo": "9085649",
+"status": "Operating",
+"capacity_m3": 137600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1996
+},{
+"name": "Al-Kheesha",
+"imo": "9982677",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Alexandroupolis",
+"imo": "9390185",
+"status": "Operating",
+"capacity_m3": 153000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanjin H.I.",
+"delivered": 2010
+},{
+"name": "Alicante Knutsen",
+"imo": "9904194",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Alto Acrux",
+"imo": "9343106",
+"status": "Operating",
+"capacity_m3": 147798,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2008
+},{
+"name": "Amadi",
+"imo": "9682552",
+"status": "Operating",
+"capacity_m3": 154800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Amali",
+"imo": "9496317",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "Amani",
+"imo": "9661869",
+"status": "Operating",
+"capacity_m3": 154800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Amaryllis Knutsen",
+"imo": "9972218",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Amberjack LNG",
+"imo": "9845776",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Amore Mio I",
+"imo": "9943841",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Amur River",
+"imo": "9317999",
+"status": "Operating",
+"capacity_m3": 149700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Apostolos",
+"imo": "9957737",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Arctic Aurora",
+"imo": "9645970",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2013
+},{
+"name": "Arctic Discoverer",
+"imo": "9276389",
+"status": "Operating",
+"capacity_m3": 142600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2006
+},{
+"name": "Arctic Lady",
+"imo": "9284192",
+"status": "Operating",
+"capacity_m3": 148000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2006
+},{
+"name": "Arctic Princess",
+"imo": "9271248",
+"status": "Operating",
+"capacity_m3": 148000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2006
+},{
+"name": "Arctic Voyager",
+"imo": "9275335",
+"status": "Operating",
+"capacity_m3": 142800,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2006
+},{
+"name": "Aristarchos",
+"imo": "9862918",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Aristidis I",
+"imo": "9862906",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Aristos I",
+"imo": "9862891",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Arkat",
+"imo": "9496305",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "Arrow Spirit",
+"imo": "9319404",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Imabari Shipbuilding",
+"delivered": 2008
+},{
+"name": "Aseem",
+"imo": "9377547",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Asia Endeavour",
+"imo": "9610779",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "Asia Energy",
+"imo": "9606950",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Asia Excellence",
+"imo": "9610767",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "Asia Integrity",
+"imo": "9680188",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2017
+},{
+"name": "Asia Venture",
+"imo": "9680190",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2017
+},{
+"name": "Asia Vision",
+"imo": "9606948",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Asklipios",
+"imo": "9884021",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Assos",
+"imo": "9957725",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Asterix I",
+"imo": "9892298",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Athos LNG",
+"imo": "9972672",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Attalos",
+"imo": "9862920",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Axios II",
+"imo": "9943853",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "BW Borealis",
+"imo": "9968944",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "BW Boston",
+"imo": "9230062",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2003
+},{
+"name": "BW Brussels",
+"imo": "9368314",
+"status": "Operating",
+"capacity_m3": 162500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "BW Cassia",
+"imo": "9896933",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2022
+},{
+"name": "BW Clear Sky",
+"imo": "9413327",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "BW ENN Crystal",
+"imo": "9383900",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "BW ENN Snow Lotus",
+"imo": "9896921",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2022
+},{
+"name": "BW Helios",
+"imo": "9873852",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "BW Lesmes",
+"imo": "9873840",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "BW Lilac",
+"imo": "9758076",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "BW Magnolia",
+"imo": "9850666",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "BW Nivalis",
+"imo": "9968932",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "BW Pavilion Aranda",
+"imo": "9792606",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "BW Pavilion Aranthera",
+"imo": "9850678",
+"status": "Operating",
+"capacity_m3": 170800,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "BW Pavilion Leeara",
+"imo": "9640645",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "BW Pavilion Vanda",
+"imo": "9640437",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "BW Tulip",
+"imo": "9758064",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Barcelona Knutsen",
+"imo": "9401295",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Beidou Star",
+"imo": "9613159",
+"status": "Operating",
+"capacity_m3": 171800,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2015
+},{
+"name": "Berge Arzew",
+"imo": "9256597",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "Bering Energy",
+"imo": "7390155",
+"status": "Operating",
+"capacity_m3": 126750,
+"containment": "Not reported",
+"propulsion": "Not reported",
+"yard": "General Dynamics",
+"delivered": 1978
+},{
+"name": "Bilbao Knutsen",
+"imo": "9236432",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2004
+},{
+"name": "Bishu Maru",
+"imo": "9691137",
+"status": "Operating",
+"capacity_m3": 164700,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2017
+},{
+"name": "Bonito LNG",
+"imo": "9845788",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Boris Davydov",
+"imo": "9768394",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Boris Vilkitsky",
+"imo": "9768368",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "British Achiever",
+"imo": "9766542",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "British Contributor",
+"imo": "9766554",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "British Listener",
+"imo": "9766566",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "British Mentor",
+"imo": "9766578",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "British Partner",
+"imo": "9766530",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "British Sponsor",
+"imo": "9766580",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Broog",
+"imo": "9085651",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1998
+},{
+"name": "Bu Fintas",
+"imo": "9976824",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Bu Samra",
+"imo": "9388833",
+"status": "Operating",
+"capacity_m3": 266000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Bushu Maru",
+"imo": "9796793",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2019
+},{
+"name": "CCH LNG",
+"imo": "9307205",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Cadiz Knutsen",
+"imo": "9246578",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2004
+},{
+"name": "Castillo De Caldelas",
+"imo": "9742819",
+"status": "Operating",
+"capacity_m3": 178800,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Imabari Shipbuilding",
+"delivered": 2018
+},{
+"name": "Castillo De Merida",
+"imo": "9742807",
+"status": "Operating",
+"capacity_m3": 178800,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Imabari Shipbuilding",
+"delivered": 2018
+},{
+"name": "Castillo De Santisteban",
+"imo": "9433717",
+"status": "Operating",
+"capacity_m3": 173600,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2010
+},{
+"name": "Castillo De Villalba",
+"imo": "9236418",
+"status": "Operating",
+"capacity_m3": 138200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2003
+},{
+"name": "Celsius Canberra",
+"imo": "9864796",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Celsius Carolina",
+"imo": "9878723",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Celsius Charlotte",
+"imo": "9878711",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Celsius Copenhagen",
+"imo": "9864784",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "Celsius Galapagos",
+"imo": "9959008",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Celsius Galway",
+"imo": "9958999",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Celsius Gandhinagar",
+"imo": "9946829",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Celsius Gaudeloupe",
+"imo": "9969223",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Celsius Geneva",
+"imo": "9945435",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "Celsius Georgetown",
+"imo": "1018676",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "China Merchants Heavy Industries",
+"delivered": 2026
+},{
+"name": "Celsius Giza",
+"imo": "9945447",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "Celsius Glarus",
+"imo": "9945459",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Celsius Granada",
+"imo": "9948736",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Celsius Greenland",
+"imo": "9988700",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Celsius Greenwich",
+"imo": "9948724",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Cesi",
+"imo": "9672818",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2018
+},{
+"name": "Cesi Beihai",
+"imo": "9672844",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2017
+},{
+"name": "Cesi Gladstone",
+"imo": "9672820",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2016
+},{
+"name": "Cesi Qingdao",
+"imo": "9672832",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2017
+},{
+"name": "Cesi Tianjin",
+"imo": "9694749",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2017
+},{
+"name": "Cesi Wenzhou",
+"imo": "9694751",
+"status": "Operating",
+"capacity_m3": 174100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2018
+},{
+"name": "Cheikh Bouamama",
+"imo": "9324344",
+"status": "Operating",
+"capacity_m3": 75500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Universal Shipbuilding",
+"delivered": 2008
+},{
+"name": "Cheikh El Mokrani",
+"imo": "9324332",
+"status": "Operating",
+"capacity_m3": 75500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Universal Shipbuilding",
+"delivered": 2007
+},{
+"name": "Christophe De Margerie",
+"imo": "9737187",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2016
+},{
+"name": "Clean Cajun",
+"imo": "9886732",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Clean Copano",
+"imo": "9886744",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Clean Destiny",
+"imo": "9943487",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Clean Energy",
+"imo": "9323687",
+"status": "Operating",
+"capacity_m3": 149700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Clean Future",
+"imo": "9943504",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Clean Horizon",
+"imo": "9655444",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Clean Levant",
+"imo": "9967330",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Clean Mistral",
+"imo": "9967328",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Clean Ocean",
+"imo": "9637492",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Clean Planet",
+"imo": "9637507",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Clean Resolution",
+"imo": "9943475",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Clean Srocco",
+"imo": "9967342",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Clean Vision",
+"imo": "9655456",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Clean Vitality",
+"imo": "9943499",
+"status": "Operating",
+"capacity_m3": 200000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Cobia LNG",
+"imo": "9869306",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Cool Discoverer",
+"imo": "9861031",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Cool Explorer",
+"imo": "9640023",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "Cool Racer",
+"imo": "9869265",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Cool Ranger",
+"imo": "9333606",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Cool Rider",
+"imo": "9333591",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Cool Rover",
+"imo": "9333618",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Cool Runner",
+"imo": "9636797",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Cool Voyager",
+"imo": "9636785",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "Coral Encanto",
+"imo": "9693719",
+"status": "Operating",
+"capacity_m3": 30000,
+"containment": "Type C pressure tanks",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Ningbo Xinle Shipbuilding Co Ltd",
+"delivered": 2020
+},{
+"name": "Coral Evolutionist",
+"imo": "9955521",
+"status": "Operating",
+"capacity_m3": 30000,
+"containment": "Type C pressure tanks",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Coral Nordic",
+"imo": "9919890",
+"status": "Operating",
+"capacity_m3": 30000,
+"containment": "Type C pressure tanks",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangnan Shipyard",
+"delivered": 2022
+},{
+"name": "Corcovado LNG",
+"imo": "9636711",
+"status": "Operating",
+"capacity_m3": 160100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2014
+},{
+"name": "Cubal",
+"imo": "9491812",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2012
+},{
+"name": "Cygnus Passage",
+"imo": "9376294",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2009
+},{
+"name": "Dana",
+"imo": "9977294",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Danuta Siedzikowna-Inka",
+"imo": "9961403",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Dapeng Moon",
+"imo": "9308481",
+"status": "Operating",
+"capacity_m3": 147200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2008
+},{
+"name": "Dapeng Princess",
+"imo": "9937907",
+"status": "Operating",
+"capacity_m3": 80000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2023
+},{
+"name": "Dapeng Star",
+"imo": "9369473",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2009
+},{
+"name": "Dapeng Sun",
+"imo": "9308479",
+"status": "Operating",
+"capacity_m3": 147200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2008
+},{
+"name": "Diamond Gas Crystal",
+"imo": "9874454",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Diamond Gas Metropolis",
+"imo": "9862487",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Diamond Gas Orchid",
+"imo": "9779226",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2018
+},{
+"name": "Diamond Gas Rose",
+"imo": "9779238",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2018
+},{
+"name": "Diamond Gas Sakura",
+"imo": "9810020",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2019
+},{
+"name": "Diamond Gas Victoria",
+"imo": "9874466",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Disha",
+"imo": "9250713",
+"status": "Operating",
+"capacity_m3": 138100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "Doha",
+"imo": "9085637",
+"status": "Operating",
+"capacity_m3": 137300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 1999
+},{
+"name": "Dorado LNG",
+"imo": "9863182",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "Duhail",
+"imo": "9337975",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Dukhan",
+"imo": "9265500",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2004
+},{
+"name": "East Energy",
+"imo": "9216298",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2002
+},{
+"name": "Eduard Toll",
+"imo": "9750696",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Ejnan",
+"imo": "9334076",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Ekaputra 1",
+"imo": "8706155",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 1990
+},{
+"name": "Elisa Aquila",
+"imo": "9884473",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Elisa Ardea",
+"imo": "9980540",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Elisa Larus",
+"imo": "9852975",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Emei",
+"imo": "9958640",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2023
+},{
+"name": "Energos Grand",
+"imo": "9303560",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "Energos Maria",
+"imo": "9320374",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "Energos Penguin",
+"imo": "9624938",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Energos Princess",
+"imo": "9253715",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2003
+},{
+"name": "Energy Advance",
+"imo": "9269180",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2005
+},{
+"name": "Energy Atlantic",
+"imo": "9649328",
+"status": "Operating",
+"capacity_m3": 159700,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2015
+},{
+"name": "Energy Confidence",
+"imo": "9405588",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2009
+},{
+"name": "Energy Endeavor",
+"imo": "9854624",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Energy Endurance",
+"imo": "9948695",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Energy Fidelity",
+"imo": "9540089",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Energy Fortitude",
+"imo": "9948700",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Energy Frontier",
+"imo": "9245720",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2003
+},{
+"name": "Energy Glory",
+"imo": "9752565",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "IHI SPB (Type B prismatic)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Japan Marine United",
+"delivered": 2019
+},{
+"name": "Energy Horizon",
+"imo": "9483877",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2011
+},{
+"name": "Energy Innovator",
+"imo": "9758832",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "IHI SPB (Type B prismatic)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Japan Marine United",
+"delivered": 2019
+},{
+"name": "Energy Integrity",
+"imo": "9859739",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Energy Intelligence",
+"imo": "9881201",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Energy Liberty",
+"imo": "9736092",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "IHI SPB (Type B prismatic)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Japan Marine United",
+"delivered": 2018
+},{
+"name": "Energy Navigator",
+"imo": "9355264",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2008
+},{
+"name": "Energy Pacific",
+"imo": "9854612",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Energy Progress",
+"imo": "9274226",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2006
+},{
+"name": "Energy Spirit",
+"imo": "9269207",
+"status": "Operating",
+"capacity_m3": 74500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 2006
+},{
+"name": "Energy Universe",
+"imo": "9758844",
+"status": "Operating",
+"capacity_m3": 165000,
+"containment": "IHI SPB (Type B prismatic)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Japan Marine United",
+"delivered": 2019
+},{
+"name": "Enshu Maru",
+"imo": "9749609",
+"status": "Operating",
+"capacity_m3": 164700,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2018
+},{
+"name": "Esshu Maru",
+"imo": "9666560",
+"status": "Operating",
+"capacity_m3": 153000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2014
+},{
+"name": "Esteem Fuji",
+"imo": "9991850",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Extremadura Knutsen",
+"imo": "9918157",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Fedor Litke",
+"imo": "9768370",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Ferrol Knutsen",
+"imo": "9918145",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Flex Amber",
+"imo": "9857377",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Flex Artemis",
+"imo": "9851634",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Flex Aurora",
+"imo": "9857365",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Flex Constellation",
+"imo": "9825427",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Flex Courageous",
+"imo": "9825439",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Moss spherical (Type B)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Flex Endeavour",
+"imo": "9762261",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Flex Enterprise",
+"imo": "9762273",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Flex Freedom",
+"imo": "9862308",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Flex Rainbow",
+"imo": "9709037",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "Flex Ranger",
+"imo": "9709025",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "Flex Resolute",
+"imo": "9851646",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Flex Vigilant",
+"imo": "9862475",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Flex Volunteer",
+"imo": "9862463",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Fraiha",
+"imo": "9360817",
+"status": "Operating",
+"capacity_m3": 210100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Fuwairit",
+"imo": "9256200",
+"status": "Operating",
+"capacity_m3": 138300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2004
+},{
+"name": "Gail Bhuwan",
+"imo": "9877145",
+"status": "Operating",
+"capacity_m3": 176500,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Gail Sagar",
+"imo": "9976147",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Samho",
+"delivered": 2025
+},{
+"name": "Gail Urja",
+"imo": "9949027",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "GasLog Galveston",
+"imo": "9864928",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "GasLog Geneva",
+"imo": "9707508",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "GasLog Genoa",
+"imo": "9744013",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "GasLog Georgetown",
+"imo": "9864916",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "GasLog Gibraltar",
+"imo": "9707510",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "GasLog Gladstone",
+"imo": "9744025",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2019
+},{
+"name": "GasLog Glasgow",
+"imo": "9687021",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "GasLog Greece",
+"imo": "9687019",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "GasLog Hongkong",
+"imo": "9748904",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2018
+},{
+"name": "GasLog Houston",
+"imo": "9748899",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2018
+},{
+"name": "GasLog Italy",
+"imo": "9962407",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "GasLog Salem",
+"imo": "9638915",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "GasLog Santiago",
+"imo": "9600530",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "GasLog Saratoga",
+"imo": "9638903",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "GasLog Savannah",
+"imo": "9352860",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "GasLog Seattle",
+"imo": "9634086",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "GasLog Shanghai",
+"imo": "9600528",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "GasLog Skagen",
+"imo": "9626285",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "GasLog Sydney",
+"imo": "9626273",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "GasLog Wales",
+"imo": "9853137",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "GasLog Warsaw",
+"imo": "9816763",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2019
+},{
+"name": "GasLog Wellington",
+"imo": "9876660",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "GasLog Westminster",
+"imo": "9855812",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "GasLog Winchester",
+"imo": "9876737",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "GasLog Windsor",
+"imo": "9819650",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "Georgiy Brusilov",
+"imo": "9768382",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Georgiy Ushakov",
+"imo": "9750749",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Ghasha",
+"imo": "9038452",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1995
+},{
+"name": "Gigira Laitebo",
+"imo": "9360922",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2010
+},{
+"name": "Global Energy",
+"imo": "9845013",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Global Sea Spirit",
+"imo": "9880465",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Global Sealine",
+"imo": "9880477",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2022
+},{
+"name": "Global Star",
+"imo": "9859741",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Golar Arctic",
+"imo": "9253105",
+"status": "Operating",
+"capacity_m3": 140000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2003
+},{
+"name": "Golden Isaia",
+"imo": "9321756",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Gordonwaters Knutsen",
+"imo": "9946374",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Grace Acacia",
+"imo": "9315707",
+"status": "Operating",
+"capacity_m3": 150000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Grace Barleria",
+"imo": "9315719",
+"status": "Operating",
+"capacity_m3": 150000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Grace Cosmos",
+"imo": "9323675",
+"status": "Operating",
+"capacity_m3": 150000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Grace Dahlia",
+"imo": "9540716",
+"status": "Operating",
+"capacity_m3": 177400,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2013
+},{
+"name": "Grace Emelia",
+"imo": "9884174",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Grace Freesia",
+"imo": "9903920",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Grand Aniva",
+"imo": "9338955",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2008
+},{
+"name": "Grand Elena",
+"imo": "9332054",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2007
+},{
+"name": "Grand Mereya",
+"imo": "9338929",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2008
+},{
+"name": "Grazyna Gesicka",
+"imo": "9922988",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Greenenergy Moon",
+"imo": "9961506",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Greenenergy Star",
+"imo": "9961491",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Greenergy Ocean",
+"imo": "9961477",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Greenergy Pearl",
+"imo": "9961489",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Gui Ying",
+"imo": "9878888",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2021
+},{
+"name": "Gulf Energy",
+"imo": "7390143",
+"status": "Operating",
+"capacity_m3": 126750,
+"containment": "Not reported",
+"propulsion": "Not reported",
+"yard": "General Dynamics",
+"delivered": 1978
+},{
+"name": "HL Alyssa Warner",
+"imo": "9972359",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "HL Edward Austin",
+"imo": "9972361",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "HL Fortuna",
+"imo": "9986283",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Samho",
+"delivered": 2025
+},{
+"name": "HL Muscat",
+"imo": "9155078",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanjin H.I.",
+"delivered": 1999
+},{
+"name": "HL Ras Laffan",
+"imo": "9176008",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanjin H.I.",
+"delivered": 2000
+},{
+"name": "HL Sea Eagle",
+"imo": "9972373",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "HL Sur",
+"imo": "9176010",
+"status": "Operating",
+"capacity_m3": 138300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanjin H.I.",
+"delivered": 2000
+},{
+"name": "HLS Bilbao",
+"imo": "9941013",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "HLS Cartagena",
+"imo": "9947691",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "Hellas Athina",
+"imo": "9872999",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Hellas Diana",
+"imo": "9872987",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Hlaitan",
+"imo": "9953262",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Hoegh Gandria",
+"imo": "9624914",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2013
+},{
+"name": "Hongkong",
+"imo": "9250725",
+"status": "Operating",
+"capacity_m3": 140500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "Huashan",
+"imo": "9958652",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Huelva Knutsen",
+"imo": "9904209",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Hyundai Aquapia",
+"imo": "9179581",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2000
+},{
+"name": "Hyundai Cosmopia",
+"imo": "9155157",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2000
+},{
+"name": "Hyundai Ecopia",
+"imo": "9372999",
+"status": "Operating",
+"capacity_m3": 150000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Hyundai Oceanpia",
+"imo": "9183269",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2000
+},{
+"name": "Hyundai Peacepia",
+"imo": "9761853",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Hyundai Princepia",
+"imo": "9761841",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Hyundai Technopia",
+"imo": "9155145",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 1999
+},{
+"name": "Hyundai Utopia",
+"imo": "9018555",
+"status": "Operating",
+"capacity_m3": 125200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 1994
+},{
+"name": "Iberica Knutsen",
+"imo": "9326603",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "Ibra LNG",
+"imo": "9326689",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Ibri LNG",
+"imo": "9317315",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2006
+},{
+"name": "Id’Asah",
+"imo": "9977220",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Ignacy Jan Paderewski",
+"imo": "9969388",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Ignacy Lukasiewicz",
+"imo": "9946398",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Ilya Mechnikov",
+"imo": "9918030",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Imsaikah",
+"imo": "9977256",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Isabella",
+"imo": "9874820",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "John A Angelicoussis",
+"imo": "9901350",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2022
+},{
+"name": "K. Acacia",
+"imo": "9157636",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2000
+},{
+"name": "K. Freesia",
+"imo": "9186584",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2000
+},{
+"name": "K. Jasmine",
+"imo": "9373008",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "K. Mugungwha",
+"imo": "9373010",
+"status": "Operating",
+"capacity_m3": 151700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "KLNGTP Black Sea",
+"imo": "9064073",
+"status": "Operating",
+"capacity_m3": 65000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Fincantieri Sestri Ponente",
+"delivered": 1996
+},{
+"name": "KLNGTP Marmara",
+"imo": "9064085",
+"status": "Operating",
+"capacity_m3": 65000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Fincantieri Sestri Ponente",
+"delivered": 1998
+},{
+"name": "Karadeniz LNGT Powership Anatolia",
+"imo": "9306495",
+"status": "Operating",
+"capacity_m3": 154472,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 2006
+},{
+"name": "Kinisis",
+"imo": "9785158",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Kita LNG",
+"imo": "9636723",
+"status": "Operating",
+"capacity_m3": 160100,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2014
+},{
+"name": "Kmarin Diamond",
+"imo": "9333620",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Kongtong",
+"imo": "9958664",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Kool Baltic",
+"imo": "9654878",
+"status": "Operating",
+"capacity_m3": 170200,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2015
+},{
+"name": "Kool Blizzard",
+"imo": "9635315",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "Kool Boreas",
+"imo": "9654880",
+"status": "Operating",
+"capacity_m3": 170200,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2015
+},{
+"name": "Kool Crystal",
+"imo": "9624926",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Kool Firn",
+"imo": "9864746",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Kool Frost",
+"imo": "9655042",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Kool Glacier",
+"imo": "9654696",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Kool Husky",
+"imo": "9626039",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Kool Ice",
+"imo": "9637325",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "Kool Kelvin",
+"imo": "9654701",
+"status": "Operating",
+"capacity_m3": 162000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Kool Orca",
+"imo": "9870525",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Kool Tiger",
+"imo": "9976135",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Samho",
+"delivered": 2024
+},{
+"name": "Kumul",
+"imo": "9613161",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2016
+},{
+"name": "Kunlun",
+"imo": "9915911",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2023
+},{
+"name": "LNG Abalamabie",
+"imo": "9690171",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Abuja II",
+"imo": "9690169",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Adamawa",
+"imo": "9262211",
+"status": "Operating",
+"capacity_m3": 141000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2005
+},{
+"name": "LNG Adventure",
+"imo": "9870159",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNG Akwa Ibom",
+"imo": "9262209",
+"status": "Operating",
+"capacity_m3": 141000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2004
+},{
+"name": "LNG Alliance",
+"imo": "9320075",
+"status": "Operating",
+"capacity_m3": 154500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 2007
+},{
+"name": "LNG Aquarius",
+"imo": "7390181",
+"status": "Operating",
+"capacity_m3": 126300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "General Dynamics",
+"delivered": 1977
+},{
+"name": "LNG Barka",
+"imo": "9341299",
+"status": "Operating",
+"capacity_m3": 153600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2008
+},{
+"name": "LNG Bayelsa",
+"imo": "9241267",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2003
+},{
+"name": "LNG Benue",
+"imo": "9267015",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "LNG Bonny II",
+"imo": "9692002",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "LNG Borno",
+"imo": "9322803",
+"status": "Operating",
+"capacity_m3": 149600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "LNG Cross River",
+"imo": "9262223",
+"status": "Operating",
+"capacity_m3": 141000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2005
+},{
+"name": "LNG Dream",
+"imo": "9277620",
+"status": "Operating",
+"capacity_m3": 145300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2006
+},{
+"name": "LNG Dubhe",
+"imo": "9834296",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2019
+},{
+"name": "LNG Ebisu",
+"imo": "9329291",
+"status": "Operating",
+"capacity_m3": 147500,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2008
+},{
+"name": "LNG Endeavour",
+"imo": "9893606",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNG Endurance",
+"imo": "9874492",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNG Enterprise",
+"imo": "9874480",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNG Enugu",
+"imo": "9266994",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "LNG Finima II",
+"imo": "9690145",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "LNG Fukurokuju",
+"imo": "9666986",
+"status": "Operating",
+"capacity_m3": 165100,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Geneva",
+"imo": "9892133",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "LNG Harmony",
+"imo": "9917555",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "LNG Imo",
+"imo": "9311581",
+"status": "Operating",
+"capacity_m3": 148500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "LNG Jamal",
+"imo": "9200316",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2000
+},{
+"name": "LNG Jia Xing",
+"imo": "9769855",
+"status": "Operating",
+"capacity_m3": 45000,
+"containment": "IHI SPB (Type B prismatic)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Xiamen Shipbuilding Industry",
+"delivered": 2019
+},{
+"name": "LNG Juno",
+"imo": "9774628",
+"status": "Operating",
+"capacity_m3": 177300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2018
+},{
+"name": "LNG Jupiter",
+"imo": "9341689",
+"status": "Operating",
+"capacity_m3": 156000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2009
+},{
+"name": "LNG Jurojin",
+"imo": "9666998",
+"status": "Operating",
+"capacity_m3": 155300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2015
+},{
+"name": "LNG Kano",
+"imo": "9311567",
+"status": "Operating",
+"capacity_m3": 148300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "LNG Kolt",
+"imo": "9372963",
+"status": "Operating",
+"capacity_m3": 153000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanjin H.I.",
+"delivered": 2008
+},{
+"name": "LNG Lagos II",
+"imo": "9692014",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Lokoja",
+"imo": "9269960",
+"status": "Operating",
+"capacity_m3": 148300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "LNG Maleo",
+"imo": "8701791",
+"status": "Operating",
+"capacity_m3": 127700,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1989
+},{
+"name": "LNG Mars",
+"imo": "9645748",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Megrez",
+"imo": "9834325",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2020
+},{
+"name": "LNG Merak",
+"imo": "9834301",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2020
+},{
+"name": "LNG Ogun",
+"imo": "9322815",
+"status": "Operating",
+"capacity_m3": 149600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "LNG Ondo",
+"imo": "9311579",
+"status": "Operating",
+"capacity_m3": 148300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "LNG Oyo",
+"imo": "9267003",
+"status": "Operating",
+"capacity_m3": 145800,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "LNG Phecda",
+"imo": "9834313",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2020
+},{
+"name": "LNG Ping Hu",
+"imo": "1040447",
+"status": "Operating",
+"capacity_m3": 78900,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangsu YiXiang Shipbuilding",
+"delivered": 2025
+},{
+"name": "LNG Port-Harcourt II",
+"imo": "9690157",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2015
+},{
+"name": "LNG Prosperity",
+"imo": "9902938",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "LNG River Niger",
+"imo": "9262235",
+"status": "Operating",
+"capacity_m3": 141000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2006
+},{
+"name": "LNG River Orashi",
+"imo": "9266982",
+"status": "Operating",
+"capacity_m3": 145900,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "LNG Rosenrot",
+"imo": "9877133",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "LNG Sakura",
+"imo": "9774135",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2018
+},{
+"name": "LNG Saturn",
+"imo": "9696149",
+"status": "Operating",
+"capacity_m3": 155700,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2016
+},{
+"name": "LNG Schneeweisschen",
+"imo": "9771913",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "LNG Sokoto",
+"imo": "9216303",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2002
+},{
+"name": "LNG Venus",
+"imo": "9645736",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2014
+},{
+"name": "LNGT Americas",
+"imo": "9045132",
+"status": "Operating",
+"capacity_m3": 126800,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 1994
+},{
+"name": "LNGships Athena",
+"imo": "9872949",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNGships Empress",
+"imo": "9875800",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "LNGships Manhattan",
+"imo": "9872901",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "La Mancha Knutsen",
+"imo": "9721724",
+"status": "Operating",
+"capacity_m3": 176000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "La Seine",
+"imo": "9845764",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Lady Eva",
+"imo": "9165011",
+"status": "Operating",
+"capacity_m3": 135225,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2000
+},{
+"name": "Lagenda Serenity",
+"imo": "9905980",
+"status": "Operating",
+"capacity_m3": 80000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2022
+},{
+"name": "Lagenda Setia",
+"imo": "9952816",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2023
+},{
+"name": "Lagenda Suria",
+"imo": "9905978",
+"status": "Operating",
+"capacity_m3": 80000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2022
+},{
+"name": "Lalla Fatma N'soumer",
+"imo": "9275347",
+"status": "Operating",
+"capacity_m3": 147300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2004
+},{
+"name": "Lebrethah",
+"imo": "9976927",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Lech Kaczynski",
+"imo": "9922976",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Lena River",
+"imo": "9629598",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2013
+},{
+"name": "Leshatt",
+"imo": "9977268",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Lev Landau",
+"imo": "9918016",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Lijmiliya",
+"imo": "9388819",
+"status": "Operating",
+"capacity_m3": 263300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Limail",
+"imo": "9953274",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Lobito",
+"imo": "9490961",
+"status": "Operating",
+"capacity_m3": 160400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2011
+},{
+"name": "Lusail",
+"imo": "9285952",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2005
+},{
+"name": "MOL Azure",
+"imo": "9956953",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "MOL Hestia",
+"imo": "9885996",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Macoma",
+"imo": "9705653",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Magdala",
+"imo": "9770921",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Malaga Knutsen",
+"imo": "9904182",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Malanje",
+"imo": "9490959",
+"status": "Operating",
+"capacity_m3": 160400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2011
+},{
+"name": "Maran Gas Achilles",
+"imo": "9682588",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Maran Gas Agamemnon",
+"imo": "9682590",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Maran Gas Alexandria",
+"imo": "9650054",
+"status": "Operating",
+"capacity_m3": 161900,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Maran Gas Amorgos",
+"imo": "9887217",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Maran Gas Amphipolis",
+"imo": "9701217",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2016
+},{
+"name": "Maran Gas Andros",
+"imo": "9810379",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Maran Gas Antibes",
+"imo": "9941520",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Maran Gas Antiparos",
+"imo": "9963827",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Maran Gas Apollonia",
+"imo": "9633422",
+"status": "Operating",
+"capacity_m3": 161900,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Maran Gas Asclepius",
+"imo": "9302499",
+"status": "Operating",
+"capacity_m3": 145800,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "Maran Gas Chios",
+"imo": "9753014",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Maran Gas Coronis",
+"imo": "9331048",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2007
+},{
+"name": "Maran Gas Delphi",
+"imo": "9633173",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2014
+},{
+"name": "Maran Gas Hector",
+"imo": "9682605",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Maran Gas Hydra",
+"imo": "9767962",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Maran Gas Ithaca",
+"imo": "9892717",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Maran Gas Kalymnos",
+"imo": "9883742",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Maran Gas Kastelorizo",
+"imo": "9956408",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "Maran Gas Kimolos",
+"imo": "9956393",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "Maran Gas Leto",
+"imo": "9682576",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Maran Gas Lindos",
+"imo": "9627502",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2015
+},{
+"name": "Maran Gas Marseille",
+"imo": "9924869",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "Maran Gas Mystras",
+"imo": "9658238",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2015
+},{
+"name": "Maran Gas Nice",
+"imo": "9941518",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Maran Gas Olympias",
+"imo": "9732371",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Maran Gas Pericles",
+"imo": "9709489",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Maran Gas Posidonia",
+"imo": "9633434",
+"status": "Operating",
+"capacity_m3": 161900,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2014
+},{
+"name": "Maran Gas Psara",
+"imo": "9844863",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Maran Gas Roxana",
+"imo": "9701229",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Maran Gas Sparta",
+"imo": "9650042",
+"status": "Operating",
+"capacity_m3": 161900,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2015
+},{
+"name": "Maran Gas Spetses",
+"imo": "9767950",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Maran Gas Syros",
+"imo": "9961398",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Maran Gas Troy",
+"imo": "9658240",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2015
+},{
+"name": "Maran Gas Ulysses",
+"imo": "9709491",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2017
+},{
+"name": "Maran Gas Vergina",
+"imo": "9732369",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2016
+},{
+"name": "Mareekh",
+"imo": "9975507",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Maria Energy",
+"imo": "9659725",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Marvel Crane",
+"imo": "9770438",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2019
+},{
+"name": "Marvel Dove",
+"imo": "9964182",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Marvel Eagle",
+"imo": "9759240",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2018
+},{
+"name": "Marvel Falcon",
+"imo": "9760768",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "Marvel Hawk",
+"imo": "9760770",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "Marvel Heron",
+"imo": "9770440",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2019
+},{
+"name": "Marvel Kite",
+"imo": "9760782",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2019
+},{
+"name": "Marvel Pelican",
+"imo": "9759252",
+"status": "Operating",
+"capacity_m3": 155985,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2019
+},{
+"name": "Marvel Phoenix",
+"imo": "9962419",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "Marvel Swallow",
+"imo": "9963449",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "Marvel Swan",
+"imo": "9880192",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Megara",
+"imo": "9770945",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Mekaines",
+"imo": "9397303",
+"status": "Operating",
+"capacity_m3": 266500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Merchant",
+"imo": "9250191",
+"status": "Operating",
+"capacity_m3": 138200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2003
+},{
+"name": "Mesaieed",
+"imo": "9975519",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Mesaimeer",
+"imo": "9337729",
+"status": "Operating",
+"capacity_m3": 216300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2009
+},{
+"name": "Metagas Everest",
+"imo": "9243148",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2003
+},{
+"name": "Methane Becki Anne",
+"imo": "9516129",
+"status": "Operating",
+"capacity_m3": 170000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Methane Heather Sally",
+"imo": "9321744",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Methane Jane Elizabeth",
+"imo": "9307190",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Methane Julia Louise",
+"imo": "9412880",
+"status": "Operating",
+"capacity_m3": 170000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Methane Mickie Harper",
+"imo": "9520376",
+"status": "Operating",
+"capacity_m3": 170000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Methane Nile Eagle",
+"imo": "9321770",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Methane Patricia Camila",
+"imo": "9425277",
+"status": "Operating",
+"capacity_m3": 170000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Methane Rita Andrea",
+"imo": "9307188",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Milaha Qatar",
+"imo": "9321732",
+"status": "Operating",
+"capacity_m3": 145600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Milaha Ras Laffan",
+"imo": "9255854",
+"status": "Operating",
+"capacity_m3": 138300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2004
+},{
+"name": "Min Lu",
+"imo": "9305128",
+"status": "Operating",
+"capacity_m3": 147200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2009
+},{
+"name": "Min Rong",
+"imo": "9305116",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2009
+},{
+"name": "Minerva Amorgos",
+"imo": "9885855",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2022
+},{
+"name": "Minerva Chios",
+"imo": "9877341",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Minerva Kalymnos",
+"imo": "9869942",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2021
+},{
+"name": "Minerva Limnos",
+"imo": "9854375",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Minerva Psara",
+"imo": "9854363",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Mozah",
+"imo": "9337755",
+"status": "Operating",
+"capacity_m3": 266300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Mraweh",
+"imo": "9074638",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kvaerner Masa",
+"delivered": 1996
+},{
+"name": "Mu Lan",
+"imo": "9878876",
+"status": "Operating",
+"capacity_m3": 178000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2021
+},{
+"name": "Mubaraz",
+"imo": "9074626",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kvaerner Masa",
+"delivered": 1996
+},{
+"name": "Mulan Spirit",
+"imo": "9864837",
+"status": "Operating",
+"capacity_m3": 79800,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Jiangnan Shipyard",
+"delivered": 2023
+},{
+"name": "Murex",
+"imo": "9705641",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Murwab",
+"imo": "9360805",
+"status": "Operating",
+"capacity_m3": 210100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Myrina",
+"imo": "9770933",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Nantes Knutsen",
+"imo": "9926714",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Neo Energy",
+"imo": "9324277",
+"status": "Operating",
+"capacity_m3": 150000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "New Apex",
+"imo": "9929106",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "New Brave",
+"imo": "9926908",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "New Green ST",
+"imo": "9947500",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "New Nature",
+"imo": "9926910",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "New Oasis",
+"imo": "9947512",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Nikolay Basov",
+"imo": "9918042",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Nikolay Semenov",
+"imo": "9918054",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Nikolay Urvantsev",
+"imo": "9750660",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Nikolay Yevgenov",
+"imo": "9750725",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Nikolay Zubov",
+"imo": "9768526",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Nizwa LNG",
+"imo": "9294264",
+"status": "Operating",
+"capacity_m3": 147700,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2005
+},{
+"name": "Nohshu Maru",
+"imo": "9796781",
+"status": "Operating",
+"capacity_m3": 177300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "STaGE",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2019
+},{
+"name": "North Air",
+"imo": "9953509",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "North Light",
+"imo": "9958298",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "North Moon",
+"imo": "9958303",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "North Mountain",
+"imo": "9953511",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "North Ocean",
+"imo": "9958315",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2024
+},{
+"name": "North Star",
+"imo": "9953523",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "North Valley",
+"imo": "9958327",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "North Way",
+"imo": "9953535",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Nuaijah",
+"imo": "9976903",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Ob River",
+"imo": "9315692",
+"status": "Operating",
+"capacity_m3": 149700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2007
+},{
+"name": "Ocean Inspiration",
+"imo": "9979761",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Ocean Oasis",
+"imo": "9979773",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Oceanic Breeze",
+"imo": "9698111",
+"status": "Operating",
+"capacity_m3": 155300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2018
+},{
+"name": "Onaiza",
+"imo": "9397353",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2009
+},{
+"name": "Orion Bohemia",
+"imo": "9902926",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Orion Gaugin",
+"imo": "9947639",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Samho",
+"delivered": 2025
+},{
+"name": "Orion Hugo",
+"imo": "9947627",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Samho",
+"delivered": 2025
+},{
+"name": "Orion Iris",
+"imo": "9956604",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Orion Jessica",
+"imo": "9917543",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Orion Monet",
+"imo": "9888766",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2022
+},{
+"name": "Orion Saint",
+"imo": "9958858",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Orion Sea",
+"imo": "9889904",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2022
+},{
+"name": "Orion Sinead",
+"imo": "9926922",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Orion Sirius",
+"imo": "9956616",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Orion Spirit",
+"imo": "9956587",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Orion Sun",
+"imo": "9889916",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2022
+},{
+"name": "Ougarta",
+"imo": "9761267",
+"status": "Operating",
+"capacity_m3": 171800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2017
+},{
+"name": "Pacific Arcadia",
+"imo": "9621077",
+"status": "Operating",
+"capacity_m3": 145400,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2014
+},{
+"name": "Pacific Breeze",
+"imo": "9698123",
+"status": "Operating",
+"capacity_m3": 182000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2018
+},{
+"name": "Pacific Enlighten",
+"imo": "9351971",
+"status": "Operating",
+"capacity_m3": 145000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2009
+},{
+"name": "Pacific Mimosa",
+"imo": "9743875",
+"status": "Operating",
+"capacity_m3": 155300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2018
+},{
+"name": "Pacific Notus",
+"imo": "9247962",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2003
+},{
+"name": "Pacific Success",
+"imo": "9903425",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Palu LNG",
+"imo": "9636735",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2014
+},{
+"name": "Pan Africa",
+"imo": "9750256",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2019
+},{
+"name": "Pan Americas",
+"imo": "9750232",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2018
+},{
+"name": "Pan Asia",
+"imo": "9750220",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2017
+},{
+"name": "Pan Europe",
+"imo": "9750244",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2018
+},{
+"name": "Papua",
+"imo": "9613135",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2015
+},{
+"name": "Paris Knutsen",
+"imo": "9946350",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Patris",
+"imo": "9766889",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Pearl LNG",
+"imo": "9862346",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "Perle LNG",
+"imo": "9630028",
+"status": "Operating",
+"capacity_m3": 170200,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2014
+},{
+"name": "Pioneer Spirit",
+"imo": "9256602",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "Point Fortin",
+"imo": "9375721",
+"status": "Operating",
+"capacity_m3": 154200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Imabari Shipbuilding",
+"delivered": 2010
+},{
+"name": "Prachi",
+"imo": "9723801",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Prima Carrier",
+"imo": "9264910",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2006
+},{
+"name": "Prima Concord",
+"imo": "9256793",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2004
+},{
+"name": "Prism Agility",
+"imo": "9810549",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Prism Brilliance",
+"imo": "9810551",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Prism Courage",
+"imo": "9888481",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Prism Diversity",
+"imo": "9904651",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Puteri Delima",
+"imo": "9030814",
+"status": "Operating",
+"capacity_m3": 130000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 1995
+},{
+"name": "Puteri Delima Satu",
+"imo": "9211872",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Not reported",
+"propulsion": "Not reported",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2002
+},{
+"name": "Puteri Firus Satu",
+"imo": "9248502",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2004
+},{
+"name": "Puteri Intan",
+"imo": "9030802",
+"status": "Operating",
+"capacity_m3": 130000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 1994
+},{
+"name": "Puteri Ledang",
+"imo": "9947598",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Puteri Mahsuri",
+"imo": "9947603",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Puteri Mayang",
+"imo": "9947615",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Samho",
+"delivered": 2025
+},{
+"name": "Puteri Mutiara Satu",
+"imo": "9261205",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2005
+},{
+"name": "Puteri Nilam",
+"imo": "9030826",
+"status": "Operating",
+"capacity_m3": 130000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 1995
+},{
+"name": "Puteri Nilam Satu",
+"imo": "9229647",
+"status": "Operating",
+"capacity_m3": 134833,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2003
+},{
+"name": "Puteri Pahang",
+"imo": "9974149",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Puteri Saadong",
+"imo": "9937945",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Puteri Sabah",
+"imo": "9975521",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Puteri Santubong",
+"imo": "9937957",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Puteri Sejinjang - 3",
+"imo": "9937969",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Puteri Zamrud",
+"imo": "9030838",
+"status": "Operating",
+"capacity_m3": 130000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Chantiers de l'Atlantique",
+"delivered": 1996
+},{
+"name": "Puteri Zamrud Satu",
+"imo": "9245031",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 2004
+},{
+"name": "Pyotr Kapitsa",
+"imo": "9918004",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Qingcheng",
+"imo": "1023865",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2025
+},{
+"name": "Qogir",
+"imo": "9851787",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2020
+},{
+"name": "Quest Kirishima",
+"imo": "9963853",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Raahi",
+"imo": "9253703",
+"status": "Operating",
+"capacity_m3": 138100,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "Rasheeda",
+"imo": "9443413",
+"status": "Operating",
+"capacity_m3": 266300,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Ravenna Knutsen",
+"imo": "9874040",
+"status": "Operating",
+"capacity_m3": 30000,
+"containment": "Type C pressure tanks",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Rex Tillerson",
+"imo": "9953248",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Rias Baixas Knutsen",
+"imo": "9825568",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Ribera Duero Knutsen",
+"imo": "9477593",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2010
+},{
+"name": "Rioja Knutsen",
+"imo": "9721736",
+"status": "Operating",
+"capacity_m3": 176000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Rotmistrz Witold Pilecki",
+"imo": "9963815",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Rudolf Samoylovich",
+"imo": "9750713",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "SCF La Perouse",
+"imo": "9849887",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "SK Audace",
+"imo": "9693161",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2017
+},{
+"name": "SK Resolute",
+"imo": "9693173",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "SK Serenity",
+"imo": "9761803",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "Not reported",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "SK Spica",
+"imo": "9761815",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "Not reported",
+"yard": "Samsung Heavy Industries",
+"delivered": 2018
+},{
+"name": "SK Sunrise",
+"imo": "9247194",
+"status": "Operating",
+"capacity_m3": 138200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2003
+},{
+"name": "SM Albatross",
+"imo": "9902902",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "SM Bluebird",
+"imo": "9902914",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "SM Eagle",
+"imo": "9761827",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "SM Golden Eagle",
+"imo": "9917567",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "SM Kestrel",
+"imo": "9917579",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "SM Seahawk",
+"imo": "9761839",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Saint Barbara",
+"imo": "9946386",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Salalah LNG",
+"imo": "9300817",
+"status": "Operating",
+"capacity_m3": 147000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2005
+},{
+"name": "Santander Knutsen",
+"imo": "9904170",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Sea Creation",
+"imo": "9989118",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "DSIC (Dalian Shipbuilding Industry Co)",
+"delivered": 2025
+},{
+"name": "Sea Energy",
+"imo": "1013494",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "DSIC (Dalian Shipbuilding Industry Co)",
+"delivered": 2025
+},{
+"name": "Sea Navigator",
+"imo": "9970662",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "DSIC (Dalian Shipbuilding Industry Co)",
+"delivered": 2025
+},{
+"name": "Sea Spirit",
+"imo": "9970650",
+"status": "Operating",
+"capacity_m3": 175000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "DSIC (Dalian Shipbuilding Industry Co)",
+"delivered": 2025
+},{
+"name": "Seapeak Arwa",
+"imo": "9339260",
+"status": "Operating",
+"capacity_m3": 168900,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Seapeak Catalunya",
+"imo": "9236420",
+"status": "Operating",
+"capacity_m3": 138200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2003
+},{
+"name": "Seapeak Creole",
+"imo": "9681687",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2016
+},{
+"name": "Seapeak Galicia",
+"imo": "9247364",
+"status": "Operating",
+"capacity_m3": 140500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2004
+},{
+"name": "Seapeak Glasgow",
+"imo": "9781918",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2018
+},{
+"name": "Seapeak Hispania",
+"imo": "9230048",
+"status": "Operating",
+"capacity_m3": 140500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2002
+},{
+"name": "Seapeak Madrid",
+"imo": "9259276",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2004
+},{
+"name": "Seapeak Magellan",
+"imo": "9342487",
+"status": "Operating",
+"capacity_m3": 165500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Seapeak Marib",
+"imo": "9336749",
+"status": "Operating",
+"capacity_m3": 165500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Seapeak Meridian",
+"imo": "9369904",
+"status": "Operating",
+"capacity_m3": 165500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Seapeak Methane",
+"imo": "9336737",
+"status": "Operating",
+"capacity_m3": 165500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Seapeak Oak",
+"imo": "9681699",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2016
+},{
+"name": "Seapeak Vancouver",
+"imo": "9721401",
+"status": "Operating",
+"capacity_m3": 173000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2017
+},{
+"name": "Seapeak Yamal",
+"imo": "9781920",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Seishu Maru",
+"imo": "9666558",
+"status": "Operating",
+"capacity_m3": 153000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2014
+},{
+"name": "Seri Alam",
+"imo": "9293832",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2005
+},{
+"name": "Seri Amanah",
+"imo": "9293844",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Seri Anggun",
+"imo": "9321653",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Seri Angkasa",
+"imo": "9321665",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2006
+},{
+"name": "Seri Ayu",
+"imo": "9329679",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Seri Bakti",
+"imo": "9331634",
+"status": "Operating",
+"capacity_m3": 152300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2007
+},{
+"name": "Seri Balhaf",
+"imo": "9331660",
+"status": "Operating",
+"capacity_m3": 157000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2009
+},{
+"name": "Seri Balqis",
+"imo": "9331672",
+"status": "Operating",
+"capacity_m3": 152000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2009
+},{
+"name": "Seri Begawan",
+"imo": "9331646",
+"status": "Operating",
+"capacity_m3": 152300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2007
+},{
+"name": "Seri Bijaksana",
+"imo": "9331658",
+"status": "Operating",
+"capacity_m3": 152300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2008
+},{
+"name": "Seri Camar",
+"imo": "9714305",
+"status": "Operating",
+"capacity_m3": 150200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2018
+},{
+"name": "Seri Camellia",
+"imo": "9714276",
+"status": "Operating",
+"capacity_m3": 150200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Seri Cemara",
+"imo": "9756389",
+"status": "Operating",
+"capacity_m3": 150200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2018
+},{
+"name": "Seri Cempaka",
+"imo": "9714290",
+"status": "Operating",
+"capacity_m3": 150200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2017
+},{
+"name": "Seri Cenderawasih",
+"imo": "9714288",
+"status": "Operating",
+"capacity_m3": 150200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine (reheat)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2017
+},{
+"name": "Seri Damai",
+"imo": "9896440",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "Seri Daya",
+"imo": "9896452",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Samsung Heavy Industries",
+"delivered": 2023
+},{
+"name": "Sestao Knutsen",
+"imo": "9338797",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "IZAR",
+"delivered": 2007
+},{
+"name": "Sevilla Knutsen",
+"imo": "9414632",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2010
+},{
+"name": "Shagra",
+"imo": "9418365",
+"status": "Operating",
+"capacity_m3": 266300,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Shahamah",
+"imo": "9035852",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 1994
+},{
+"name": "Shandong Juniper",
+"imo": "9253222",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2004
+},{
+"name": "Shaolin",
+"imo": "9915894",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2022
+},{
+"name": "Shen Hai",
+"imo": "9583677",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2012
+},{
+"name": "Shinshu Maru",
+"imo": "9791200",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2019
+},{
+"name": "Simaisma",
+"imo": "9320386",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "Simsimah",
+"imo": "9977282",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Singapore Energy",
+"imo": "9238040",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2003
+},{
+"name": "Sohar LNG",
+"imo": "9210816",
+"status": "Operating",
+"capacity_m3": 137200,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2001
+},{
+"name": "Sohshu Maru",
+"imo": "9791212",
+"status": "Operating",
+"capacity_m3": 177300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2019
+},{
+"name": "Solaris",
+"imo": "9634098",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2014
+},{
+"name": "Sonangol Benguela",
+"imo": "9482304",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "Sonangol Etosha",
+"imo": "9482299",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "Sonangol Sambizanga",
+"imo": "9475600",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2011
+},{
+"name": "Southern Cross",
+"imo": "9613147",
+"status": "Operating",
+"capacity_m3": 168400,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2015
+},{
+"name": "Soyo",
+"imo": "9475208",
+"status": "Operating",
+"capacity_m3": 160400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2011
+},{
+"name": "Spirit Of Hela",
+"imo": "9361639",
+"status": "Operating",
+"capacity_m3": 177000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2009
+},{
+"name": "Stena Blue Sky",
+"imo": "9315393",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2006
+},{
+"name": "Symphonic Breeze",
+"imo": "9330745",
+"status": "Operating",
+"capacity_m3": 147600,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2007
+},{
+"name": "Taitar No. 1",
+"imo": "9403669",
+"status": "Operating",
+"capacity_m3": 145300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2009
+},{
+"name": "Taitar No. 2",
+"imo": "9403645",
+"status": "Operating",
+"capacity_m3": 145300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2009
+},{
+"name": "Taitar No. 3",
+"imo": "9403671",
+"status": "Operating",
+"capacity_m3": 145300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2010
+},{
+"name": "Taitar No. 4",
+"imo": "9403657",
+"status": "Operating",
+"capacity_m3": 145300,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kawasaki Heavy Industries",
+"delivered": 2010
+},{
+"name": "Tangguh Batur",
+"imo": "9334284",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Tangguh Foja",
+"imo": "9349007",
+"status": "Operating",
+"capacity_m3": 154800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Tangguh Hiri",
+"imo": "9333632",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2008
+},{
+"name": "Tangguh Jaya",
+"imo": "9349019",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Tangguh Palung",
+"imo": "9355379",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Tangguh Sago",
+"imo": "9361990",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2009
+},{
+"name": "Tangguh Towuti",
+"imo": "9325893",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Tembek",
+"imo": "9337731",
+"status": "Operating",
+"capacity_m3": 216200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2007
+},{
+"name": "Tenergy",
+"imo": "9892456",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Tessala",
+"imo": "9761243",
+"status": "Operating",
+"capacity_m3": 171800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2016
+},{
+"name": "Trader II",
+"imo": "9238038",
+"status": "Operating",
+"capacity_m3": 138000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Samsung Heavy Industries",
+"delivered": 2002
+},{
+"name": "Trader III",
+"imo": "9213416",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2002
+},{
+"name": "Traiano Knutsen",
+"imo": "9854765",
+"status": "Operating",
+"capacity_m3": 180000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Trinity Glory",
+"imo": "9350927",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Imabari Shipbuilding",
+"delivered": 2009
+},{
+"name": "Umm Al Amad",
+"imo": "9360829",
+"status": "Operating",
+"capacity_m3": 210200,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Hanwha Ocean",
+"delivered": 2008
+},{
+"name": "Umm Al Ashtan",
+"imo": "9074652",
+"status": "Operating",
+"capacity_m3": 135000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Kvaerner Masa",
+"delivered": 1997
+},{
+"name": "Umm Al Hanaya",
+"imo": "9980851",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Umm Al Houl",
+"imo": "9977244",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Umm Al Zubar",
+"imo": "9977311",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2025
+},{
+"name": "Umm Bab",
+"imo": "9308431",
+"status": "Operating",
+"capacity_m3": 145700,
+"containment": "Membrane (system not specified)",
+"propulsion": "Steam turbine",
+"yard": "Hanwha Ocean",
+"delivered": 2005
+},{
+"name": "Umm Ghuwailina",
+"imo": "9953250",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2024
+},{
+"name": "Umm Graybah",
+"imo": "9977232",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Umm Slal",
+"imo": "9372731",
+"status": "Operating",
+"capacity_m3": 266000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2008
+},{
+"name": "Umm Swayyah",
+"imo": "9976915",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GA",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Valencia Knutsen",
+"imo": "9434266",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2010
+},{
+"name": "Velikiy Novgorod",
+"imo": "9630004",
+"status": "Operating",
+"capacity_m3": 170200,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "STX Offshore & Shipbuilding",
+"delivered": 2014
+},{
+"name": "Venture Acadia",
+"imo": "9960588",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Venture Bayou",
+"imo": "9958846",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Venture Creole",
+"imo": "9960590",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Venture Gator",
+"imo": "9956599",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2024
+},{
+"name": "Vivirt City LNG",
+"imo": "9895238",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2021
+},{
+"name": "Vivit Africa LNG",
+"imo": "9950105",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2023
+},{
+"name": "Vivit Americas LNG",
+"imo": "9864667",
+"status": "Operating",
+"capacity_m3": 170520,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2020
+},{
+"name": "Vivit Arabia LNG",
+"imo": "9902756",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2022
+},{
+"name": "Vladimir Rusanov",
+"imo": "9750701",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Vladimir Vize",
+"imo": "9750658",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2018
+},{
+"name": "Vladimir Voronin",
+"imo": "9750737",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Wadi Al Syl",
+"imo": "9981374",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+},{
+"name": "Wen Cheng",
+"imo": "9892121",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2023
+},{
+"name": "Wilforce",
+"imo": "9627954",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2013
+},{
+"name": "Wilpride",
+"imo": "9627966",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2013
+},{
+"name": "Woodside Barrumbara",
+"imo": "9962433",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Woodside Chaney",
+"imo": "9753026",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2019
+},{
+"name": "Woodside Charles Allen",
+"imo": "9859753",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2020
+},{
+"name": "Woodside Donaldson",
+"imo": "9369899",
+"status": "Operating",
+"capacity_m3": 165500,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Samsung Heavy Industries",
+"delivered": 2009
+},{
+"name": "Woodside Goode",
+"imo": "9633161",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2013
+},{
+"name": "Woodside Jirrubakura",
+"imo": "9962421",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Woodside Rees Withers",
+"imo": "9810367",
+"status": "Operating",
+"capacity_m3": 173400,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Woodside Rogers",
+"imo": "9627485",
+"status": "Operating",
+"capacity_m3": 159800,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2013
+},{
+"name": "Woodside Scarlet Ibis",
+"imo": "9975040",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GA",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2024
+},{
+"name": "Wudang",
+"imo": "9915909",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "WinGD X-DF",
+"yard": "Hudong-Zhonghua Shipbuilding",
+"delivered": 2022
+},{
+"name": "Xinhang Energy",
+"imo": "9210828",
+"status": "Operating",
+"capacity_m3": 137000,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsubishi Heavy Industries",
+"delivered": 2002
+},{
+"name": "Yakov Gakkel",
+"imo": "9750672",
+"status": "Operating",
+"capacity_m3": 172000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2019
+},{
+"name": "Yari LNG",
+"imo": "9636747",
+"status": "Operating",
+"capacity_m3": 160000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2014
+},{
+"name": "Yenisei River",
+"imo": "9629586",
+"status": "Operating",
+"capacity_m3": 155000,
+"containment": "Membrane (system not specified)",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2013
+},{
+"name": "Yiannis",
+"imo": "9879674",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Membrane (system not specified)",
+"propulsion": "MAN ME-GI",
+"yard": "Hanwha Ocean",
+"delivered": 2021
+},{
+"name": "Zarga",
+"imo": "9431214",
+"status": "Operating",
+"capacity_m3": 266000,
+"containment": "Membrane (system not specified)",
+"propulsion": "Slow-speed diesel",
+"yard": "Samsung Heavy Industries",
+"delivered": 2010
+},{
+"name": "Zekreet",
+"imo": "9132818",
+"status": "Operating",
+"capacity_m3": 137500,
+"containment": "Moss spherical (Type B)",
+"propulsion": "Steam turbine",
+"yard": "Mitsui E&S Shipbuilding",
+"delivered": 1998
+},{
+"name": "Zhores Alferov",
+"imo": "9918028",
+"status": "Operating",
+"capacity_m3": 172600,
+"containment": "Not reported",
+"propulsion": "DFDE (dual-fuel diesel electric)",
+"yard": "Hanwha Ocean",
+"delivered": 2025
+},{
+"name": "Zoe Knutsen",
+"imo": "9946362",
+"status": "Operating",
+"capacity_m3": 174000,
+"containment": "Not reported",
+"propulsion": "WinGD X-DF",
+"yard": "HD Hyundai Heavy Industries",
+"delivered": 2025
+}
+]
+}
