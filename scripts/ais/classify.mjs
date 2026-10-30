@@ -104,7 +104,7 @@ export function usBound(dest) {
   const d = String(dest || '').toUpperCase();
   if (!d) return false;
   const last = d.split(/>|=>|->/).pop().trim(); // "FROM>TO": only the part after the arrow is the destination
-  return /(^|[^A-Z])US[A-Z]{3}([^A-Z]|$)/.test(last) || /(^|[^A-Z])USA?$/.test(last) || US_PLACES.test(last);
+  return /(^|[^A-Z])US ?[A-Z]{3}([^A-Z]|$)/.test(last) || /(^|[^A-Z])USA?$/.test(last) || US_PLACES.test(last);
 }
 export function nearestUsTerminal(p) {
   let best = null;
@@ -169,10 +169,12 @@ export function buildSnapshot(prev, fresh, now = new Date().toISOString(), maxAg
 // Where each reference-fleet ship was last heard, and how it relates to the US:
 // at a US terminal, bound for the US (by its AIS destination), left the US (was at a US terminal in the last
 // 30 days and has since sailed for somewhere else), or elsewhere.
+// `fresh` is the ships heard this run (object or array); include the Gulf snapshot's ships so a carrier heard
+// on an earlier run while at a berth is not missed.
 export function buildFleet(prevFleet, fresh, idx, now = new Date().toISOString(), maxAgeDays = FLEET_MAX_AGE_DAYS) {
   const byImo = {};
   for (const s of prevFleet || []) byImo[s.imo] = { ...s };
-  for (const s of Object.values(fresh)) {
+  for (const s of Array.isArray(fresh) ? fresh : Object.values(fresh)) {
     if (typeof s.lat !== 'number' || !s.seen) continue;
     const f = fleetMatch(s, idx);
     if (!f) continue;

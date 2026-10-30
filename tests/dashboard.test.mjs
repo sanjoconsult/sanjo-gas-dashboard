@@ -147,3 +147,17 @@ test('Storage tab says when the forecast is old or missing', async () => {
   assert.deepEqual(r.errors, []);
   await r.page.close();
 });
+
+test('LNG tab shows the global fleet map with US-linked ships', async () => {
+  const { page, errors } = await openDashboard(true);
+  await page.click('#tab-lng');
+  await page.waitForTimeout(300);
+  assert.match(await page.textContent('#fleet-pill'), /^Live · /);
+  assert.equal(await page.$$eval('#fleet-map svg circle', (n) => n.length), 5);
+  assert.equal(await page.$$eval('#fleet-table tbody tr', (n) => n.length), 3, 'only ships linked to the US');
+  assert.match(await page.textContent('#fleet-table'), /Al Bidda.*Bound for US.*USCAM/s);
+  assert.match(await page.textContent('#fleet-kpis'), /5 of 764/);
+  assert.equal(await page.$$eval('#fleet-all-table tbody tr', (n) => n.length), 5);
+  assert.deepEqual(errors, []);
+  await page.close();
+});

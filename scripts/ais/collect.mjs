@@ -53,7 +53,7 @@ if (!count) {
 }
 const now = new Date().toISOString();
 const snap = buildSnapshot(prev, ships, now, 3, idx);
-Object.assign(snap, buildFleet(prev && prev.fleet, ships, idx, now));
+Object.assign(snap, buildFleet(prev && prev.fleet, [...snap.ships, ...Object.values(ships)], idx, now));
 snap.messages = count;
 fs.writeFileSync(outPath, JSON.stringify(snap, null, 1));
 console.log('Gulf LNG ships:', JSON.stringify(snap.counts));

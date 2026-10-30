@@ -147,6 +147,8 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
 .ng-pagehead p { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 70ch; }
 .ng-page { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
 .ng-ais-kpis { margin: var(--cds-gap-md) 0; }
+.ng-details { margin-top: var(--cds-gap-md); }
+.ng-details summary { cursor: pointer; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
 .ng-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
 .ng-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .ng-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; font-weight: var(--cds-font-weight-medium); }
@@ -464,6 +466,28 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
       </div>
       <p class="ng-note" id="ais-empty" hidden></p>
     </div>
+    <div class="ng-card" id="lng-fleet">
+      <h3>Global LNG carrier fleet: ships at, bound for and leaving the US <span class="ng-pill" id="fleet-pill">Loading</span></h3>
+      <p class="ng-note">Last known positions of ships on the <a href="lng-fleet.json" target="_blank" rel="noopener">reference list of <span id="fleet-ref">764</span> LNG carriers in operation</a>, matched by IMO number or name in public AIS data (aisstream.io). "Bound for US" uses the destination the crew types into AIS, which is not always kept up to date. "Left US" means the ship was at a US export terminal in the last 30 days and has since sailed. Coverage is shore-based receivers only, so ships in mid-ocean drop out until they near a coast; positions up to 7 days old are kept and shown with their age.</p>
+      <div class="ng-kpis ng-ais-kpis" id="fleet-kpis"></div>
+      <div class="ng-legend" id="fleet-legend"></div>
+      <div class="ng-chart" id="fleet-map"></div>
+      <div class="ng-tablewrap">
+        <table class="ng-table" id="fleet-table" data-source="ais_fleet_us" data-row-key="imo">
+          <thead><tr><th data-field="name">Vessel</th><th data-field="us_status">US link</th><th class="ng-hide-sm" data-field="imo">IMO</th><th class="n ng-hide-sm" data-field="capacity_m3">Capacity, m³</th><th data-field="destination">Destination (as broadcast)</th><th class="ng-hide-sm" data-field="last_us_terminal">US terminal</th><th data-field="seen">Last position</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="ng-note" id="fleet-empty" hidden></p>
+      <details class="ng-details"><summary id="fleet-all-sum">All tracked fleet ships</summary>
+        <div class="ng-tablewrap">
+          <table class="ng-table" id="fleet-all-table" data-source="ais_fleet" data-row-key="imo">
+            <thead><tr><th data-field="name">Vessel</th><th data-field="us_status">US link</th><th class="n ng-hide-sm" data-field="capacity_m3">Capacity, m³</th><th data-field="destination">Destination (as broadcast)</th><th class="n ng-hide-sm" data-field="sog">Speed, kn</th><th data-field="seen">Last position</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+    </div>
     <div class="ng-card" id="lng-live">
       <h3>Live ship traffic near US Gulf Coast LNG terminals <span class="ng-pill ok">Live</span></h3>
       <p class="ng-note">Live AIS ship positions from VesselFinder, centered on the Gulf Coast export terminals from Corpus Christi to Plaquemines, with ship names shown. The map shows every vessel type in VesselFinder's own color scheme, so LNG carriers appear with the tankers. Zoom in to read names, or click a ship for its type, speed and destination.</p>
@@ -549,10 +573,11 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
       const j = await r.json();
       if (!Array.isArray(j.ships) || !j.updated) throw new Error('unexpected format');
       const fresh = Date.now() - Date.parse(j.updated) < 2 * 3600e3;
-      dash.update({ ais_ships: j.ships }, { ais_state: fresh ? 'live' : 'stale', ais_updated: j.updated, ais_counts: j.counts });
+      const fleet = Array.isArray(j.fleet) ? j.fleet : [];
+      dash.update({ ais_ships: j.ships, ais_fleet: fleet, ais_fleet_us: fleet.filter((r) => r.us_status !== 'Elsewhere') }, { ais_state: fresh ? 'live' : 'stale', ais_updated: j.updated, ais_counts: j.counts, fleet_counts: j.fleet_counts || null });
     } catch (e) {
       console.warn('LNG ship positions unavailable', e);
-      dash.update({ ais_ships: [] }, { ais_state: 'none' });
+      dash.update({ ais_ships: [], ais_fleet: [], ais_fleet_us: [] }, { ais_state: 'none', fleet_counts: null });
     }
   }
 
@@ -1131,6 +1156,7 @@ dash.calc('signals', {
   function drawLng() {
     fillAis();
     drawShips();
+    safe('fleet', () => { fillFleet(); drawFleet(); });
     const box = $('#lng-chart'), d = dash.data('steo_balance');
     if (ready(box, d.status)) {
       const rows = d.data;
@@ -1158,7 +1184,15 @@ dash.calc('signals', {
       { f: 'lease_plant_fuel', n: 1, fmt: n1, hideSm: 1 }, { f: 'pipeline_distribution', n: 1, fmt: n1, hideSm: 1 }, { f: 'total_consumption', n: 1, fmt: n1 },
     ]);
     fillTable('event-table', 'infra_events', [{ f: 'when' }, { f: 'event' }, { f: 'type', pill: (v) => v === 'Disruption' ? 'bad' : v === 'LNG' ? 'ok' : 'warn' }, { f: 'detail' }]);
-    const ago = (v) => { const m = Math.round((Date.now() - Date.parse(v)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' h ago' : d3.timeFormat('%b %-d')(new Date(v)); };
+    const ago = (v) => v ? ageText(v) : '';
+    const n0c = d3.format(',');
+    fillTable('fleet-table', 'ais_fleet_us', [
+      { f: 'name' }, { f: 'us_status', pill: (v) => v === 'At US terminal' ? 'ok' : v === 'Bound for US' ? '' : 'warn' }, { f: 'imo', hideSm: 1 }, { f: 'capacity_m3', n: 1, fmt: n0c, hideSm: 1 },
+      { f: 'destination' }, { f: 'last_us_terminal', hideSm: 1 }, { f: 'seen', fmt: ago },
+    ]);
+    fillTable('fleet-all-table', 'ais_fleet', [
+      { f: 'name' }, { f: 'us_status' }, { f: 'capacity_m3', n: 1, fmt: n0c, hideSm: 1 }, { f: 'destination' }, { f: 'sog', n: 1, fmt: n1, hideSm: 1 }, { f: 'seen', fmt: ago },
+    ]);
     fillTable('ship-table', 'ais_ships', [
       { f: 'name' }, { f: 'status', pill: (v) => v === 'At berth' ? 'ok' : v === 'Anchored / waiting' ? 'warn' : '' }, { f: 'terminal' },
       { f: 'terminal_km', n: 1, fmt: n1 }, { f: 'sog', n: 1, fmt: n1, hideSm: 1 }, { f: 'destination', hideSm: 1 }, { f: 'seen', fmt: ago },
@@ -1208,6 +1242,107 @@ dash.calc('signals', {
     legend($('#ml-legend'), series.map((s) => ({ name: s.name === 'Model (backtest)' ? 'Model (backtest, then this week\'s forecast)' : s.name, color: s.color })));
     const lo = d3.min(series.flatMap((s) => s.points), (p) => p.y);
     lineChart(box, series, { yFmt: d3.format('+,'), xFmt: d3.utcFormat('%b %-d'), tipDate: d3.utcFormat('Week ending %b %-d, %Y'), unit: ' Bcf', xTicks: 6, yMin: Math.min(0, Math.floor(lo / 20) * 20), endLabels: false });
+  }
+
+  // ---------- global LNG fleet map ----------
+  // Coarse land shapes (lon, lat), a backdrop for the fleet positions.
+  const LAND = [
+    { name: 'North America', color: '#4caf7a', label: [-102, 47], pts: [[-168,66],[-165,62],[-158,58],[-152,60],[-146,60.5],[-140,59.8],[-135,57.5],[-131,54],[-128,50.5],[-124.5,48.4],[-124,46],[-124.2,42],[-123.7,39],[-122.5,37.5],[-120.6,34.6],[-117.2,32.7],[-114.7,30],[-112.5,27],[-110,23],[-112,29],[-109,26],[-105.7,22.5],[-105.3,20],[-102,18],[-100,16.8],[-96,15.7],[-94,16.1],[-92.2,14.5],[-88,13.2],[-86,11.5],[-85.7,10],[-84,9.5],[-82.5,8.2],[-80,7.4],[-78.4,8.3],[-77.9,7.2],[-77.3,8.7],[-79.5,9.5],[-81.5,9],[-83.7,11],[-83.4,14.5],[-84,15.8],[-88.3,16],[-88,18.5],[-87,21],[-90.5,21],[-91,18.5],[-94.5,18.2],[-97.4,21.5],[-97.5,25.8],[-97.2,27.8],[-95,29.2],[-93.8,29.7],[-91,29.2],[-89.4,29],[-89,30.3],[-85.3,29.7],[-84,30],[-82.7,28],[-81.8,26],[-80.9,25.1],[-80.1,25.8],[-80.6,28.4],[-81.4,30.7],[-79.2,33.2],[-75.5,35.2],[-76,37],[-75,38.5],[-74,40.5],[-70,41.5],[-70.5,43],[-66.5,44.5],[-63.5,44.7],[-60,46],[-55,47],[-53,48],[-56,51.5],[-60,55],[-62,58],[-64.5,60],[-70,59],[-77,62],[-78,58],[-76.5,56],[-79.5,54.5],[-82,52.5],[-87,55.5],[-93,59],[-94.5,61],[-90,64],[-87,66.5],[-82,66.5],[-75,72],[-90,74],[-120,74],[-140,70],[-156,71.3],[-163,69],[-166,68.5],[-163,66.5]] },
+    { name: '', color: '#4caf7a', pts: [[-45,60],[-42,61.5],[-38,65.5],[-22,70],[-20,76],[-60,76],[-55,72],[-53,68],[-51,64]] },
+    { name: '', color: '#4caf7a', pts: [[-84.9,21.9],[-82,23.2],[-77,22],[-74.2,20.2],[-77.7,19.9],[-80,21.7]] },
+    { name: '', color: '#4caf7a', pts: [[-74.4,18.4],[-72,19.9],[-68.4,18.6],[-71,17.6]] },
+    { name: '', color: '#4caf7a', pts: [[-78.4,18.5],[-76.2,18],[-77,17.7]] },
+    { name: 'South America', color: '#a3b84a', label: [-60, -14], pts: [[-77.3,8.7],[-75.5,10.5],[-71.5,12.3],[-68,10.5],[-62,10.7],[-60,8.5],[-57,6],[-52,5],[-50,1],[-48,-1],[-44,-2.5],[-40,-3],[-35,-5.5],[-35,-9],[-39,-13.5],[-39,-17.5],[-41,-22],[-44.5,-23.2],[-48.5,-26],[-48.7,-28.5],[-51,-31],[-53,-33.8],[-58,-34.5],[-57,-36.5],[-58,-38.7],[-62,-39],[-65,-41],[-64,-42.5],[-65.5,-45],[-67.5,-46.5],[-66,-48],[-69,-51],[-68.5,-52.5],[-72,-53.5],[-74.5,-52],[-75.5,-47],[-74,-43],[-73.5,-38],[-71.5,-33],[-71.4,-28],[-70.3,-23],[-70.2,-18.3],[-75,-15.5],[-77,-12],[-79,-8],[-81.2,-5],[-80.3,-3],[-80,-0.5],[-78.8,1.5],[-77.3,4],[-77.5,7],[-77.9,7.2]] },
+    { name: 'Europe', color: '#8f7fd8', label: [22, 56], pts: [[-9.5,37],[-8.9,38.7],[-9.3,42.9],[-8,43.7],[-1.8,43.4],[-1.2,46],[-4.7,48.4],[-1.6,48.7],[1.6,50.9],[4,51.9],[4.8,53],[8.6,53.9],[8.5,57.1],[10.5,57.7],[11.8,57.8],[11.2,59.2],[10,59],[8,58.1],[6,58.1],[5,59],[5,60],[5.5,62],[10,64],[14,67.5],[18,69.5],[24,71],[31,70.3],[40,67.5],[40,46],[30,46.5],[28.7,44],[28,41.7],[26.5,40.9],[24,40.9],[23.5,38.2],[22,37],[20,39.5],[19.5,41.8],[13.6,45.6],[12.3,45.4],[18.5,40.2],[16,40],[15.6,38],[12.3,41.7],[10.5,43],[8.7,44.4],[6.5,43.1],[3,43.3],[3.2,41.9],[0.3,40.2],[0,38.7],[-2,36.7],[-5.6,36],[-6.3,36.6]] },
+    { name: '', color: '#8f7fd8', pts: [[-5.7,50],[1.4,51.3],[1.7,52.7],[0,53.5],[-1.6,55.6],[-2,57.6],[-5,58.6],[-5.7,56.5],[-4.8,55],[-3.1,53.3],[-5.3,51.8]] },
+    { name: '', color: '#8f7fd8', pts: [[-6,52],[-6.3,54.2],[-8.2,55.2],[-10,54],[-10.3,51.6]] },
+    { name: '', color: '#8f7fd8', pts: [[12.4,38.1],[15.6,38.3],[15.1,36.7]] },
+    { name: '', color: '#8f7fd8', pts: [[8.2,41],[9.8,41],[9.6,39.1],[8.4,39]] },
+    { name: '', color: '#8f7fd8', pts: [[-24,65.5],[-14,65.3],[-14.8,64.3],[-18.7,63.4],[-22.7,63.9]] },
+    { name: 'Africa', color: '#d9a441', label: [20, 4], pts: [[32.3,31.3],[29.9,31.2],[25,31.7],[23,32.6],[20.1,32],[19,30.3],[15.2,32.3],[11.5,33],[10,34],[11,35.5],[10,37.2],[3,36.8],[-2,35.1],[-5.9,35.8],[-6.8,34],[-9.6,32],[-9.8,29.5],[-14.5,26],[-17,21],[-16.5,19.5],[-17,14.7],[-15,11],[-13,9],[-11,7],[-7.5,4.4],[-2,4.8],[2,6.3],[5,5.5],[8.8,4],[9.8,2],[9,-1],[11.8,-4],[12.3,-6],[13.4,-9],[13.6,-12.5],[12,-17],[11.8,-19],[14.5,-22.8],[15.2,-27],[16.5,-28.6],[18.4,-34],[20,-34.8],[22.5,-34],[25.6,-34],[27.5,-33.2],[30.5,-30.8],[32.5,-28.5],[32.9,-26],[35.5,-24],[35.4,-21.3],[34.7,-19.8],[36.8,-17.9],[40.5,-15.2],[40.5,-10.5],[39.3,-6.5],[39.7,-4.2],[41,-2],[43.5,0.5],[46,2.5],[49,6],[51.2,10.5],[49.5,11.4],[44,10.4],[43.3,11.7],[42.5,12.5],[41,14.5],[39,16],[37.3,19],[37,21.7],[35.5,23.9],[33.5,27],[32.5,29.9]] },
+    { name: '', color: '#d9a441', pts: [[49.3,-12],[50.5,-15.5],[49.5,-17],[47.1,-25],[45,-25.4],[43.6,-23],[44.2,-20],[44,-17],[46.3,-15.8],[48,-13.6]] },
+    { name: 'Asia', color: '#d9785b', label: [95, 50], pts: [[40,46],[40,67.5],[44,68],[55,68.5],[60,69.5],[70,73],[100,76],[130,73],[160,70],[175,69],[180,67],[180,65],[178,62],[170,60],[163,58],[162,55],[156,51],[156,57],[160,61.5],[151,59.3],[143,59.3],[137,54],[141,52],[140,48],[135,43],[130,42.5],[129.5,40],[129.4,35.5],[126.5,34.5],[126.3,37.5],[124.8,39.7],[121.5,39],[122,40.9],[118,39],[119.5,37.3],[122.5,37],[120.5,36],[119.2,34.5],[121.8,31.5],[121.8,30],[120,26.5],[117.5,23.5],[113.5,22.2],[110.5,21],[109.8,21.5],[108,21.5],[106.5,20],[105.8,18.8],[108.8,15],[109.2,11.7],[106.8,10.4],[104.8,8.7],[104.6,10.4],[102.5,12.2],[100.9,13.5],[100,12.5],[99.2,10],[100.3,8.3],[101.3,6.9],[103.4,4],[104.2,1.4],[103.4,1.3],[101.3,2.8],[100.3,5.4],[98.3,8],[98.5,13],[97.6,16.5],[94.5,16],[94.3,18.8],[92.3,20.7],[91.8,22.4],[90,21.9],[88,21.6],[86.9,20.5],[85,19.2],[82.3,16.6],[80.3,15.4],[80.2,13],[79.8,10.3],[78.2,8.9],[77.5,8.1],[76.3,9.8],[74.8,12.8],[73.4,16],[72.8,19],[72.7,21.2],[70.4,20.9],[68.9,22.8],[67.3,24.7],[66.5,25.4],[62,25.1],[57.3,25.8],[56.4,27.1],[54.7,26.5],[51.5,27.9],[50.2,30],[48.9,30.3],[48,29.5],[50,26.5],[51.6,25.2],[51.5,24.2],[54,24.1],[56.4,26.3],[56.4,24.9],[58.6,23.6],[59.8,22.4],[57.8,19],[55,17],[52.2,15.6],[49,14.1],[45,12.9],[43.3,12.7],[42.7,15.7],[41.3,19.3],[39.1,21.8],[37,25],[35,28],[34.9,29.5],[32.5,29.9],[32.3,31.3],[34.5,31.5],[35.5,33],[35.9,35.5],[36,36.2],[30,36.2],[27,38],[26.5,40.9],[29,41.2],[41.6,41.6],[39.5,44],[37.5,45]] },
+    { name: '', color: '#d9785b', pts: [[130,31.2],[131.4,31.4],[132,33.8],[135,33.5],[136.9,34.3],[139.9,35],[140.9,36.9],[141.5,38.3],[142,39.6],[141.4,41.4],[140,40.5],[139.8,38.5],[138.5,37.4],[136.7,37.1],[135.9,35.7],[133,35.5],[131,34.4],[129.6,33.3]] },
+    { name: '', color: '#d9785b', pts: [[140,41.5],[141.5,42.6],[143.3,42],[145.6,43.3],[144,44.1],[141.7,45.4],[141.4,43.4],[140.4,43.3]] },
+    { name: '', color: '#d9785b', pts: [[120.1,23],[121,21.9],[121.9,24.6],[121.5,25.3],[120.7,24.6]] },
+    { name: '', color: '#d9785b', pts: [[120.6,18.5],[122.3,18.4],[122,16.2],[124,13.8],[121.8,13.9],[120,14.7],[119.8,16.3]] },
+    { name: '', color: '#d9785b', pts: [[122,7],[125.4,9.8],[126.6,7.3],[125.4,5.6],[124,6.4]] },
+    { name: '', color: '#d9785b', pts: [[109.6,1.9],[111,1.6],[113,3.2],[115.5,5.4],[117.2,7],[119.3,5.2],[118,1],[117.8,-1],[116.4,-3.8],[114.6,-4],[111,-3],[110.2,-1.7]] },
+    { name: '', color: '#d9785b', pts: [[95.3,5.6],[97.5,5.2],[100.3,2.2],[103.7,-1],[106,-3],[105.8,-5.8],[102.3,-4],[100.3,-1],[98.6,1.7]] },
+    { name: '', color: '#d9785b', pts: [[105.2,-6.8],[108.3,-6.2],[111,-6.4],[114.6,-7.7],[114.4,-8.7],[110.5,-8.2],[106.5,-7.3]] },
+    { name: '', color: '#d9785b', pts: [[79.9,9.8],[81.8,7.5],[81.2,6.2],[80,6.2]] },
+    { name: '', color: '#d9785b', pts: [[119.5,0.8],[124.5,1.3],[121,-1],[123.3,-5.3],[120.4,-5.6],[119.4,-3.5]] },
+    { name: 'Australia', color: '#c96fa8', label: [134, -25], pts: [[113.4,-22],[114.2,-26.3],[115,-29.5],[115.7,-33.3],[115,-34.3],[117.9,-35.1],[121.8,-33.9],[124,-33],[126,-32.3],[129,-31.7],[131.2,-31.5],[134.2,-32.6],[135.6,-34.9],[137.8,-33],[137.5,-35.6],[139.6,-36.5],[140.6,-38],[143.5,-38.8],[146.3,-39.1],[148,-37.8],[150,-37.4],[150.1,-35.7],[151.3,-33.8],[153.1,-30.3],[153.6,-28.2],[153,-25.3],[150.8,-22.6],[149.1,-21],[146.2,-18.9],[145.4,-16.4],[145.3,-14.9],[143.5,-14],[142.5,-10.7],[141.6,-12.6],[141.6,-15.9],[140.5,-17.6],[139.2,-17.3],[136.6,-15.9],[135.4,-15],[136.7,-12.3],[135.8,-11.9],[132.6,-11.5],[131,-12.2],[129.5,-14.9],[128.1,-15],[126.1,-14.1],[124.4,-16.3],[122.2,-17.9],[121,-19.6],[119,-20],[116.7,-20.6],[114.6,-21.8]] },
+    { name: '', color: '#c96fa8', pts: [[144.6,-40.7],[148.3,-40.9],[148,-43.2],[146,-43.6],[145.2,-42.2]] },
+    { name: '', color: '#c96fa8', pts: [[172.7,-34.4],[174.8,-36.9],[178.5,-37.7],[176.9,-39.6],[174.6,-41.3],[172.6,-40.5],[174,-41.6],[171.2,-44.2],[169.3,-46.6],[166.5,-46],[168.4,-44],[172.4,-41]] },
+    { name: '', color: '#c96fa8', pts: [[131,-1.4],[134,-0.9],[138,-1.6],[141,-2.6],[145.7,-4.8],[147.5,-6],[147.5,-8],[146,-8.1],[143.5,-9],[141,-9.1],[139,-8.1],[137.6,-5],[134,-3.8],[132,-2.8]] },
+  ];
+  const OCEANS = [['Pacific Ocean',-140,8],['Pacific Ocean',165,22],['Atlantic Ocean',-38,28],['Atlantic Ocean',-18,-25],['Indian Ocean',78,-22],['Gulf of Mexico',-90,24.3]];
+  const FLEET_STATUS = () => ({ 'At US terminal': dash.colors[2], 'Bound for US': dash.colors[0], 'Left US': dash.colors[1], 'Elsewhere': 'var(--color-fg-muted)' });
+  const ageText = (v) => { const m = Math.round((Date.now() - Date.parse(v)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 2880 ? Math.round(m / 60) + ' h ago' : Math.round(m / 1440) + ' days ago'; };
+  function drawFleet() {
+    const box = $('#fleet-map');
+    if (!box) return;
+    box.classList.remove('dash-skeleton');
+    const tip = tipFor(box); tip.hidden = true;
+    const W0 = box.clientWidth; if (W0 < 50) return;
+    const lon = [-180, 180], lat = [-50, 74];
+    const H = Math.round(Math.max(200, Math.min(W0 * ((lat[1] - lat[0]) / (lon[1] - lon[0])), 560)));
+    const { svg, W } = frame(box, H);
+    const s = Math.min(W / (lon[1] - lon[0]), H / (lat[1] - lat[0]));
+    const mw = (lon[1] - lon[0]) * s, ox = (W - mw) / 2;
+    const px = (L) => ox + (L - lon[0]) * s, py = (A) => H - (A - lat[0]) * s;
+    const clipId = 'ng-fleet-clip';
+    svg.append('clipPath').attr('id', clipId).append('rect').attr('x', ox).attr('y', 0).attr('width', mw).attr('height', H).attr('rx', 6);
+    const g = svg.append('g').attr('clip-path', `url(#${clipId})`);
+    g.append('rect').attr('x', ox).attr('y', 0).attr('width', mw).attr('height', H).style('fill', '#2f86c8').style('fill-opacity', 0.14);
+    for (let L = -150; L <= 150; L += 30) g.append('line').attr('x1', px(L)).attr('x2', px(L)).attr('y1', 0).attr('y2', H).style('stroke', '#2f86c8').style('stroke-opacity', 0.15);
+    for (let A = -45; A <= 60; A += 15) g.append('line').attr('y1', py(A)).attr('y2', py(A)).attr('x1', ox).attr('x2', ox + mw).style('stroke', '#2f86c8').style('stroke-opacity', 0.15);
+    const area = d3.line().x((q) => px(q[0])).y((q) => py(q[1])).curve(d3.curveLinearClosed);
+    LAND.forEach((c) => g.append('path').attr('d', area(c.pts)).style('fill', '#4caf7a').style('fill-opacity', 0.3).style('stroke', '#4caf7a').style('stroke-width', 0.8).style('stroke-linejoin', 'round'));
+    const big = W > 600;
+    OCEANS.filter((o, i) => big || i < 5).forEach(([n, L, A]) => g.append('text').attr('x', px(L)).attr('y', py(A)).attr('text-anchor', 'middle').style('font-size', 'var(--cds-font-size-caption)').style('font-style', 'italic').style('fill', '#2f86c8').text(n));
+    const colors = FLEET_STATUS();
+    legend($('#fleet-legend'), [{ name: 'US export terminal', color: 'var(--color-fg)' }, ...Object.entries(colors).map(([name, color]) => ({ name, color }))]);
+    AIS_TERMINALS.concat([['Cove Point', 38.404, -76.385], ['Elba Island', 32.088, -81.013]]).forEach(([n, A, L]) => g.append('rect').attr('x', px(L) - 2.5).attr('y', py(A) - 2.5).attr('width', 5).attr('height', 5).style('fill', 'var(--color-fg)'));
+    const ships = (dash.data('ais_fleet').data || []).slice().sort((a, b) => (a.us_status === 'Elsewhere') - (b.us_status === 'Elsewhere')).reverse();
+    const show = (ev, r) => {
+      const [mx, my] = d3.pointer(ev, box);
+      tip.replaceChildren();
+      const h = document.createElement('div'); h.className = 'd'; h.textContent = r.name; tip.appendChild(h);
+      tipRow(tip, colors[r.us_status], '', r.us_status + (r.last_us_terminal && r.us_status !== 'Bound for US' && r.us_status !== 'Elsewhere' ? ' · ' + r.last_us_terminal : ''));
+      tipRow(tip, null, 'Destination', r.destination || 'not broadcast');
+      tipRow(tip, null, 'Capacity', r.capacity_m3 ? d3.format(',')(r.capacity_m3) + ' m³' : 'n/a');
+      tipRow(tip, null, 'Speed', r.sog == null ? 'n/a' : d3.format('.1f')(r.sog) + ' kn');
+      tipRow(tip, null, 'Last position', ageText(r.seen));
+      placeTip(box, tip, mx, my);
+    };
+    ships.forEach((r) => {
+      const us = r.us_status !== 'Elsewhere';
+      g.append('circle').attr('cx', px(r.lon)).attr('cy', py(r.lat)).attr('r', us ? (big ? 4.5 : 3.5) : (big ? 2.8 : 2.2))
+        .style('fill', colors[r.us_status]).style('fill-opacity', us ? 1 : 0.55).style('stroke', us ? 'var(--color-panel)' : 'none').style('stroke-width', 1.2)
+        .on('mousemove', (ev) => show(ev, r)).on('mouseleave', () => { tip.hidden = true; });
+    });
+  }
+  function fillFleet() {
+    const st = dash.meta.ais_state, pill = $('#fleet-pill'), kp = $('#fleet-kpis'), empty = $('#fleet-empty'), c = dash.meta.fleet_counts;
+    if (!pill) return;
+    const when = dash.meta.ais_updated ? new Date(dash.meta.ais_updated).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago' }) + ' CT' : '';
+    pill.className = 'ng-pill ' + (st === 'live' && c ? 'ok' : 'warn');
+    pill.textContent = st === 'live' && c ? 'Live · ' + when : st === 'stale' && c ? 'Not live · last updated ' + when : st ? 'Not available' : 'Loading';
+    if (c && c.reference) $('#fleet-ref').textContent = d3.format(',')(c.reference);
+    kp.replaceChildren(...(c ? [['At US terminals', c.at_us], ['Bound for US', c.bound_us], ['Left US, last 30 days', c.left_us], ['Fleet ships located', d3.format(',')(c.tracked) + ' of ' + d3.format(',')(c.reference)]] : []).map(([label, v]) => {
+      const k = document.createElement('div'); k.className = 'ng-kpi';
+      const l = document.createElement('span'); l.className = 'ng-kpi-label'; l.textContent = label;
+      const val = document.createElement('span'); val.className = 'ng-kpi-val'; val.textContent = v;
+      k.append(l, val); return k;
+    }));
+    const sum = $('#fleet-all-sum'); if (sum) sum.textContent = 'All tracked fleet ships (' + ((dash.data('ais_fleet').data || []).length) + ')';
+    if (empty) {
+      const us = (dash.data('ais_fleet_us').data || []).length;
+      empty.hidden = !!(c && us);
+      empty.textContent = !c ? 'Fleet positions could not be loaded just now.' : 'No fleet ships linked to the US were located in the last 7 days.';
+    }
   }
 
   // ---------- live LNG ship map (Gulf Coast) ----------
