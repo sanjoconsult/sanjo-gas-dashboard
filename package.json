@@ -1,0 +1,13 @@
+{
+  "name": "sanjo-gas-dashboard",
+  "private": true,
+  "type": "module",
+  "description": "US natural gas market dashboard and price relay for Sanjo Consult",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "d3": "7.9.0",
+    "playwright": "1.63.0"
+  }
+}

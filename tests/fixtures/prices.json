@@ -1,0 +1,26 @@
+{
+ "quotes": {
+  "ng1": {
+   "price": 2.95,
+   "change": -0.08,
+   "changePct": -2.7,
+   "contract": "Dec 26",
+   "time": 1793289878000
+  },
+  "ttf": {
+   "price": 97.51,
+   "prevClose": 98.4,
+   "time": 1793288000000
+  },
+  "eurusd": {
+   "price": 1.12,
+   "prevClose": 1.12
+  },
+  "jkm": {
+   "price": 32.35,
+   "time": 1793232076042,
+   "source": "OilPriceAPI",
+   "contract": "Front month"
+  }
+ }
+}

@@ -1,0 +1,80 @@
+// Browser test: the dashboard renders every tab from sample relay data without errors.
+import { test, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { chromium } from 'playwright';
+
+const root = path.resolve('site');
+const fixture = (f) => fs.readFileSync(path.resolve('tests/fixtures', f), 'utf8');
+const d3 = fs.readFileSync(path.resolve('node_modules/d3/dist/d3.min.js'), 'utf8');
+let server, base, browser;
+
+before(async () => {
+  server = http.createServer((req, res) => {
+    const p = path.join(root, decodeURIComponent(req.url.split('?')[0]));
+    if (!p.startsWith(root) || !fs.existsSync(p)) { res.writeHead(404); return res.end(); }
+    res.writeHead(200, { 'Content-Type': p.endsWith('.html') ? 'text/html' : p.endsWith('.json') ? 'application/json' : 'application/octet-stream' });
+    fs.createReadStream(p).pipe(res);
+  });
+  await new Promise((r) => server.listen(0, r));
+  base = `http://127.0.0.1:${server.address().port}`;
+  browser = await chromium.launch();
+});
+after(async () => { await browser?.close(); server?.close(); });
+
+async function openDashboard(relayUp) {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (route) => {
+    const u = route.request().url();
+    if (u.includes('d3.min.js')) return route.fulfill({ status: 200, contentType: 'application/javascript', body: d3 });
+    if (!u.includes('sanjo-prices') || !relayUp) return route.abort();
+    const body = u.includes('?dashboard') ? fixture('dashboard.json') : u.includes('?history') ? fixture('history.json') : fixture('prices.json');
+    return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body });
+  });
+  await page.goto(base + '/gas_dashboard.html');
+  await page.waitForTimeout(1500);
+  return { page, errors };
+}
+
+test('every tab renders with live data and no script errors', async () => {
+  const { page, errors } = await openDashboard(true);
+  for (const tab of ['storage', 'supply', 'demand', 'infrastructure', 'market', 'lng']) {
+    await page.click('#tab-' + tab);
+    await page.waitForTimeout(300);
+    if (tab === 'infrastructure') {
+      const events = await page.$$eval('#infrastructure tbody tr', (n) => n.length);
+      assert.ok(events > 0, 'infrastructure tab should list events');
+    } else {
+      const svgs = await page.$$eval(`#${tab} .ng-chart svg`, (n) => n.length);
+      assert.ok(svgs > 0, `${tab} tab should draw at least one chart`);
+    }
+  }
+  assert.match(await page.textContent('.ng-chip-live'), /Live/);
+  assert.match(await page.textContent('#storage'), /Oct 23, 2026/);
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('region table renders a zero net change without breaking', async () => {
+  const { page, errors } = await openDashboard(true);
+  const rows = await page.$$eval('#region-table tbody tr', (n) => n.length);
+  assert.equal(rows, 8);
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('falls back to the built-in snapshot when the relay is down', async () => {
+  const { page, errors } = await openDashboard(false);
+  assert.match(await page.textContent('.ng-chip-live'), /Snapshot/);
+  assert.match(await page.textContent('#ng-live-src'), /could not be loaded/);
+  await page.click('#tab-market');
+  const svgs = await page.$$eval('#market .ng-chart svg', (n) => n.length);
+  assert.ok(svgs > 0);
+  assert.deepEqual(errors, []);
+  await page.close();
+});

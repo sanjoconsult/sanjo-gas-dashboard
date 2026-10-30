@@ -1,0 +1,25 @@
+{
+ "ttf": [
+  {
+   "week_ending": "2026-10-23",
+   "eur_mwh": 95.1,
+   "usd_mmbtu": 31.2
+  },
+  {
+   "week_ending": "2026-10-30",
+   "eur_mwh": 97.5,
+   "usd_mmbtu": 32.0
+  }
+ ],
+ "jkm": [
+  {
+   "week_ending": "2026-10-23",
+   "usd_mmbtu": 29.8
+  },
+  {
+   "week_ending": "2026-10-30",
+   "usd_mmbtu": 32.35
+  }
+ ],
+ "errors": {}
+}
