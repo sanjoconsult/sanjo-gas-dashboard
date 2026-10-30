@@ -147,8 +147,7 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
 .ng-pagehead p { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 70ch; }
 .ng-page { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
 .ng-ais-kpis { margin: var(--cds-gap-md) 0; }
-.ng-details { margin-top: var(--cds-gap-md); }
-.ng-details summary { cursor: pointer; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.ng-pill.muted { color: var(--color-fg-muted); }
 .ng-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
 .ng-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .ng-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; font-weight: var(--cds-font-weight-medium); }
@@ -467,26 +466,18 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
       <p class="ng-note" id="ais-empty" hidden></p>
     </div>
     <div class="ng-card" id="lng-fleet">
-      <h3>Global LNG carrier fleet: ships at, bound for and leaving the US <span class="ng-pill" id="fleet-pill">Loading</span></h3>
-      <p class="ng-note">Last known positions of ships on the <a href="lng-fleet.json" target="_blank" rel="noopener">reference list of <span id="fleet-ref">764</span> LNG carriers in operation</a>, matched by IMO number or name in public AIS data (aisstream.io). "Bound for US" uses the destination the crew types into AIS, which is not always kept up to date. "Left US" means the ship was at a US export terminal in the last 30 days and has since sailed. Coverage is shore-based receivers only, so ships in mid-ocean drop out until they near a coast; positions up to 7 days old are kept and shown with their age.</p>
+      <h3>Global LNG carrier fleet: where ships are and where they are heading <span class="ng-pill" id="fleet-pill">Loading</span></h3>
+      <p class="ng-note">Last known positions of ships on the <a href="lng-fleet.json" target="_blank" rel="noopener">reference list of <span id="fleet-ref">764</span> LNG carriers in operation</a>, matched by IMO number or name in public AIS data (aisstream.io). Every located ship is listed with its destination, ships linked to the US first. Destinations are what the crew types into AIS ("FOR ORDERS" means not yet decided), so "Bound for US" uses that text, which is not always kept up to date. "Left US" means the ship was at a US export terminal in the last 30 days and has since sailed. Coverage is shore-based receivers only, so ships in mid-ocean drop out until they near a coast; positions up to 7 days old are kept and shown with their age.</p>
       <div class="ng-kpis ng-ais-kpis" id="fleet-kpis"></div>
       <div class="ng-legend" id="fleet-legend"></div>
       <div class="ng-chart" id="fleet-map"></div>
       <div class="ng-tablewrap">
-        <table class="ng-table" id="fleet-table" data-source="ais_fleet_us" data-row-key="imo">
-          <thead><tr><th data-field="name">Vessel</th><th data-field="us_status">US link</th><th class="ng-hide-sm" data-field="imo">IMO</th><th class="n ng-hide-sm" data-field="capacity_m3">Capacity, m³</th><th data-field="destination">Destination (as broadcast)</th><th class="ng-hide-sm" data-field="last_us_terminal">US terminal</th><th data-field="seen">Last position</th></tr></thead>
+        <table class="ng-table" id="fleet-table" data-source="ais_fleet" data-row-key="imo">
+          <thead><tr><th data-field="name">Vessel</th><th data-field="destination">Destination (as broadcast)</th><th data-field="us_status">US link</th><th class="ng-hide-sm" data-field="imo">IMO</th><th class="n ng-hide-sm" data-field="capacity_m3">Capacity, m³</th><th class="n ng-hide-sm" data-field="sog">Speed, kn</th><th data-field="seen">Last position</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
       <p class="ng-note" id="fleet-empty" hidden></p>
-      <details class="ng-details"><summary id="fleet-all-sum">All tracked fleet ships</summary>
-        <div class="ng-tablewrap">
-          <table class="ng-table" id="fleet-all-table" data-source="ais_fleet" data-row-key="imo">
-            <thead><tr><th data-field="name">Vessel</th><th data-field="us_status">US link</th><th class="n ng-hide-sm" data-field="capacity_m3">Capacity, m³</th><th data-field="destination">Destination (as broadcast)</th><th class="n ng-hide-sm" data-field="sog">Speed, kn</th><th data-field="seen">Last position</th></tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </details>
     </div>
     <div class="ng-card" id="lng-live">
       <h3>Live ship traffic near US Gulf Coast LNG terminals <span class="ng-pill ok">Live</span></h3>
@@ -574,10 +565,10 @@ window.__SANJO_DATA__ = {"storage_weekly":[{"week_ending":"2024-01-05","year":20
       if (!Array.isArray(j.ships) || !j.updated) throw new Error('unexpected format');
       const fresh = Date.now() - Date.parse(j.updated) < 2 * 3600e3;
       const fleet = Array.isArray(j.fleet) ? j.fleet : [];
-      dash.update({ ais_ships: j.ships, ais_fleet: fleet, ais_fleet_us: fleet.filter((r) => r.us_status !== 'Elsewhere') }, { ais_state: fresh ? 'live' : 'stale', ais_updated: j.updated, ais_counts: j.counts, fleet_counts: j.fleet_counts || null });
+      dash.update({ ais_ships: j.ships, ais_fleet: fleet }, { ais_state: fresh ? 'live' : 'stale', ais_updated: j.updated, ais_counts: j.counts, fleet_counts: j.fleet_counts || null });
     } catch (e) {
       console.warn('LNG ship positions unavailable', e);
-      dash.update({ ais_ships: [], ais_fleet: [], ais_fleet_us: [] }, { ais_state: 'none', fleet_counts: null });
+      dash.update({ ais_ships: [], ais_fleet: [] }, { ais_state: 'none', fleet_counts: null });
     }
   }
 
@@ -1186,12 +1177,9 @@ dash.calc('signals', {
     fillTable('event-table', 'infra_events', [{ f: 'when' }, { f: 'event' }, { f: 'type', pill: (v) => v === 'Disruption' ? 'bad' : v === 'LNG' ? 'ok' : 'warn' }, { f: 'detail' }]);
     const ago = (v) => v ? ageText(v) : '';
     const n0c = d3.format(',');
-    fillTable('fleet-table', 'ais_fleet_us', [
-      { f: 'name' }, { f: 'us_status', pill: (v) => v === 'At US terminal' ? 'ok' : v === 'Bound for US' ? '' : 'warn' }, { f: 'imo', hideSm: 1 }, { f: 'capacity_m3', n: 1, fmt: n0c, hideSm: 1 },
-      { f: 'destination' }, { f: 'last_us_terminal', hideSm: 1 }, { f: 'seen', fmt: ago },
-    ]);
-    fillTable('fleet-all-table', 'ais_fleet', [
-      { f: 'name' }, { f: 'us_status' }, { f: 'capacity_m3', n: 1, fmt: n0c, hideSm: 1 }, { f: 'destination' }, { f: 'sog', n: 1, fmt: n1, hideSm: 1 }, { f: 'seen', fmt: ago },
+    fillTable('fleet-table', 'ais_fleet', [
+      { f: 'name' }, { f: 'destination', fmt: (v) => v || 'not broadcast' }, { f: 'us_status', pill: (v) => v === 'At US terminal' ? 'ok' : v === 'Bound for US' ? '' : v === 'Left US' ? 'warn' : 'muted' },
+      { f: 'imo', hideSm: 1 }, { f: 'capacity_m3', n: 1, fmt: n0c, hideSm: 1 }, { f: 'sog', n: 1, fmt: n1, hideSm: 1 }, { f: 'seen', fmt: ago },
     ]);
     fillTable('ship-table', 'ais_ships', [
       { f: 'name' }, { f: 'status', pill: (v) => v === 'At berth' ? 'ok' : v === 'Anchored / waiting' ? 'warn' : '' }, { f: 'terminal' },
@@ -1337,11 +1325,9 @@ dash.calc('signals', {
       const val = document.createElement('span'); val.className = 'ng-kpi-val'; val.textContent = v;
       k.append(l, val); return k;
     }));
-    const sum = $('#fleet-all-sum'); if (sum) sum.textContent = 'All tracked fleet ships (' + ((dash.data('ais_fleet').data || []).length) + ')';
     if (empty) {
-      const us = (dash.data('ais_fleet_us').data || []).length;
-      empty.hidden = !!(c && us);
-      empty.textContent = !c ? 'Fleet positions could not be loaded just now.' : 'No fleet ships linked to the US were located in the last 7 days.';
+      empty.hidden = !!(c && c.tracked);
+      empty.textContent = !c ? 'Fleet positions could not be loaded just now.' : 'No fleet ships were located in the last 7 days.';
     }
   }
 

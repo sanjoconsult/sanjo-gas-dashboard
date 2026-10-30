@@ -51,8 +51,9 @@ flowchart LR
 | `worker/worker.js` | Cloudflare Worker (free plan). Fetches quotes and data server-side, caches them, and serves JSON to the site. Endpoints: `/` (prices), `?dashboard=1` (dashboard data), `?history=1` (weekly TTF and JKM history), `?debug=1` (readable output). |
 | `site/index.html` | Home page with the live Markets section. |
 | `site/gas_dashboard.html` | Dashboard. Ships with a built-in data snapshot, then replaces it with live data when the relay answers. |
-| `scripts/ais/` | LNG ship tracker. `collect.mjs` listens to aisstream.io for 7 minutes; `classify.mjs` picks out LNG carriers and labels each one at a berth, anchored, inbound or outbound. Run every 30 minutes by `.github/workflows/ais.yml`, which publishes `ships.json` to the `ais-data` branch. |
+| `scripts/ais/` | LNG ship tracker. `collect.mjs` listens to aisstream.io worldwide for 7 minutes; `classify.mjs` picks out LNG carriers near the Gulf Coast terminals (at a berth, anchored, inbound or outbound) and finds ships from the reference fleet anywhere, labelling each at a US terminal, bound for the US, recently left the US, or elsewhere. Run every 30 minutes by `.github/workflows/ais.yml`, which publishes `ships.json` to the `ais-data` branch. |
 | `ml/` | Weekly storage forecast in Python (scikit-learn): weather-driven gradient boosting and ridge regression, checked against the five-year average in a walk-forward backtest. Run daily by `.github/workflows/forecast.yml`. See [`ml/README.md`](ml/README.md). |
+| `site/lng-fleet.json` | Reference list of the 764 LNG carriers in operation (name, IMO, capacity, containment, propulsion, yard, year delivered). Used to recognise carriers in AIS data. |
 | `site/manual-data.json` | Figures with no free feed (rig counts, AGA indicators, regional basis, LNG feedgas, events, terminals, weekly JKM). Updated every Friday by a scheduled AI agent. |
 
 ### Design decisions
@@ -62,7 +63,7 @@ flowchart LR
 - **Free-tier limits are respected.** The relay caches responses (60 seconds for prices, 10 minutes for dashboard data, 12 hours for history) and calls OilPriceAPI at most every two hours.
 - **Every figure shows its date and source**, so a reader can tell live data from weekly or monthly data.
 - **Ship tracking runs outside the browser.** aisstream.io does not accept browser connections and its key must stay secret, so a scheduled GitHub Actions job collects positions and publishes a small JSON file. It goes to a separate `ais-data` branch, replaced on each run, so `main` keeps a clean history and Netlify does not redeploy every 30 minutes.
-- **LNG carriers are identified conservatively.** AIS has no "LNG carrier" ship type, so a ship counts if its name contains LNG, or if it is a tanker of 200 m or more stopped within 3 km of an LNG berth; that ship is then remembered when it sails. Large crude tankers offshore are not assumed to be LNG.
+- **LNG carriers are identified conservatively.** AIS has no "LNG carrier" ship type, so a ship counts if it is on the reference fleet list (matched by IMO number or name), if its name contains LNG, or if it is a tanker of 200 m or more stopped within 3 km of an LNG berth; that ship is then remembered when it sails. Large crude tankers offshore are not assumed to be LNG.
 - **Licensed data is not scraped.** JKM comes from a licensed API; Investing.com and similar sites are not scraped.
 
 ## Data sources
@@ -74,7 +75,7 @@ flowchart LR
 | Henry Hub (NYMEX NG front month), TTF, EUR/USD | Yahoo Finance | Every minute (delayed) |
 | JKM | OilPriceAPI | Daily |
 | EU storage | GIE AGSI+ | Daily |
-| LNG carrier positions near Gulf Coast terminals | aisstream.io (free, terrestrial AIS receivers) | Every 30 minutes |
+| LNG carrier positions near Gulf Coast terminals, and the global fleet | aisstream.io (free, terrestrial AIS receivers) | Every 30 minutes |
 | ML storage forecast | EIA weekly storage and Open-Meteo temperatures | Daily |
 | Rig counts, AGA indicators, basis, feedgas, events | Weekly AI research update | Fridays |
 
