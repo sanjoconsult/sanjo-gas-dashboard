@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-29",
-  "rigs_week_ending": "2026-10-23",
+  "updated": "2026-10-30",
+  "rigs_week_ending": "2026-10-30",
   "indicators": [
     {
       "tab": "supply",
@@ -29,42 +29,42 @@
       "metric": "Total rigs",
       "value": 603,
       "unit": "rigs",
-      "as_of": "Week ending 2026-10-23",
-      "note": "Unchanged on the week; up 53 year over year",
-      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "as_of": "Week ending 2026-10-30",
+      "note": "Unchanged on the week; up 57 year over year",
+      "source": "Baker Hughes via Newsquawk and Reuters, Oct 30 2026",
       "label": "Total US rigs",
-      "kpi_note": "Unchanged on the week; up 53 year over year"
+      "kpi_note": "Unchanged on the week; up 57 year over year"
     },
     {
       "tab": "supply",
       "metric": "Oil-directed rigs",
-      "value": 460,
+      "value": 462,
       "unit": "rigs",
-      "as_of": "Week ending 2026-10-23",
-      "note": "Up 1 on the week; up 40 year over year",
-      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "as_of": "Week ending 2026-10-30",
+      "note": "Up 2 on the week",
+      "source": "Baker Hughes via Newsquawk and Reuters, Oct 30 2026",
       "label": "Oil-directed rigs",
-      "kpi_note": "Up 1 on the week; up 40 year over year"
+      "kpi_note": "Up 2 on the week"
     },
     {
       "tab": "supply",
       "metric": "Gas-directed rigs",
-      "value": 132,
+      "value": 130,
       "unit": "rigs",
-      "as_of": "Week ending 2026-10-23",
-      "note": "Down 1 on the week; up 11 year over year",
-      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "as_of": "Week ending 2026-10-30",
+      "note": "Down 2 on the week; lowest since early September",
+      "source": "Baker Hughes via Newsquawk and Reuters, Oct 30 2026",
       "label": "Gas-directed rigs",
-      "kpi_note": "Down 1 on the week; up 11 year over year"
+      "kpi_note": "Down 2 on the week; lowest since early September"
     },
     {
       "tab": "supply",
       "metric": "Miscellaneous rigs",
       "value": 11,
       "unit": "rigs",
-      "as_of": "Week ending 2026-10-23",
+      "as_of": "Week ending 2026-10-30",
       "note": "Unchanged on the week",
-      "source": "Baker Hughes via EnergyNow, Oct 23 2026",
+      "source": "Baker Hughes via Newsquawk and Reuters, Oct 30 2026",
       "label": "Miscellaneous rigs",
       "kpi_note": "Unchanged on the week"
     },
@@ -77,7 +77,7 @@
       "note": "Unchanged on the week; up 22 year over year",
       "source": "Baker Hughes via EnergyNow, Oct 23 2026",
       "label": "Permian rigs",
-      "kpi_note": "Unchanged on the week; up 22 year over year"
+      "kpi_note": "Unchanged on the week; up 22 year over year (week ending Oct 23; Oct 30 basin count not yet published)"
     },
     {
       "tab": "supply",
@@ -88,7 +88,7 @@
       "note": "Up 15 year over year",
       "source": "Baker Hughes via EnergyNow, Oct 23 2026",
       "label": "Haynesville rigs",
-      "kpi_note": "Up 15 year over year"
+      "kpi_note": "Up 15 year over year (week ending Oct 23; Oct 30 basin count not yet published)"
     },
     {
       "tab": "demand",
@@ -170,13 +170,13 @@
     {
       "tab": "lng",
       "metric": "LNG feedgas, month to date",
-      "value": 18.3,
+      "value": 18.5,
       "unit": "Bcf/d",
-      "as_of": "October 2026 to date (through Oct 28)",
-      "note": "Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17–19.",
-      "source": "LSEG via Reuters, Oct 29 2026; NGI, Oct 20 and Oct 28 2026",
+      "as_of": "October 2026 to date (through Oct 29)",
+      "note": "Oct 1–29 average, LSEG data",
+      "source": "LSEG via Reuters (Business Recorder), Oct 30 2026; NGI, Oct 20 2026",
       "label": "LNG feedgas, October to date",
-      "kpi_note": "Oct 1–28 average. Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17–19."
+      "kpi_note": "Oct 1–29 average. Up from 17.9 Bcf/d in September; monthly record 18.8 Bcf/d (April). Daily flows topped 20 Bcf/d for the first time on Oct 17–19."
     },
     {
       "tab": "lng",
@@ -366,9 +366,14 @@
       "source": "Reuters, Oct 12 2026"
     },
     {
+      "week_ending": "2026-10-23",
+      "usd_mmbtu": 30.5,
+      "source": "Reuters, Oct 30 2026 (prior-week estimate)"
+    },
+    {
       "week_ending": "2026-10-30",
-      "usd_mmbtu": 30.6,
-      "source": "Cbonds, Oct 26 2026"
+      "usd_mmbtu": 32.5,
+      "source": "Reuters, Oct 30 2026 (Dec delivery, NE Asia)"
     }
   ]
 }
