@@ -9,6 +9,8 @@ import { chromium } from 'playwright';
 const root = path.resolve('site');
 const fixture = (f) => fs.readFileSync(path.resolve('tests/fixtures', f), 'utf8');
 const d3 = fs.readFileSync(path.resolve('node_modules/d3/dist/d3.min.js'), 'utf8');
+const leafletJs = fs.readFileSync(path.resolve('node_modules/leaflet/dist/leaflet.js'), 'utf8');
+const leafletCss = fs.readFileSync(path.resolve('node_modules/leaflet/dist/leaflet.css'), 'utf8');
 let server, base, browser;
 
 before(async () => {
@@ -32,6 +34,8 @@ async function openDashboard(relayUp, ships = 'live', forecast = 'live') {
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (route) => {
     const u = route.request().url();
     if (u.includes('d3.min.js')) return route.fulfill({ status: 200, contentType: 'application/javascript', body: d3 });
+    if (u.includes('leaflet.min.js')) return route.fulfill({ status: 200, contentType: 'application/javascript', body: leafletJs });
+    if (u.includes('leaflet.min.css')) return route.fulfill({ status: 200, contentType: 'text/css', body: leafletCss });
     if (u.includes('forecast-data/forecast.json')) {
       if (forecast === 'down') return route.abort();
       const f = JSON.parse(fixture('forecast.json'));
@@ -153,7 +157,12 @@ test('LNG tab shows the global fleet map with US-linked ships', async () => {
   await page.click('#tab-lng');
   await page.waitForTimeout(300);
   assert.match(await page.textContent('#fleet-pill'), /^Live · /);
-  assert.equal(await page.$$eval('#fleet-map svg circle', (n) => n.length), 5);
+  assert.equal(await page.$$eval('#fleet-map .leaflet-marker-icon', (n) => n.length), 5 + 9, '5 fleet ships and 9 US terminals on the street map');
+  await page.click('#fleet-map .leaflet-marker-icon[title="Al Bidda"]');
+  assert.match(await page.textContent('#fleet-map .leaflet-popup-content'), /Al Bidda.*Bound for US.*USCAM.*View on VesselFinder/s);
+  assert.equal(await page.getAttribute('#fleet-map .leaflet-popup-content a', 'href'), 'https://www.vesselfinder.com/vessels/details/9132741');
+  await page.check('#fleet-us-only');
+  assert.equal(await page.$$eval('#fleet-map .leaflet-marker-icon', (n) => n.length), 3 + 9, 'US-only filter');
   assert.equal(await page.$$eval('#fleet-table tbody tr', (n) => n.length), 5, 'every located ship, any destination');
   assert.match(await page.textContent('#fleet-table'), /Al Bidda.*USCAM.*Bound for US/s);
   assert.match(await page.textContent('#fleet-table'), /Adam LNG.*JPTYO.*Elsewhere/s);
