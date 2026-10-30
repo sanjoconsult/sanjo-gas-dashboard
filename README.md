@@ -16,6 +16,11 @@ flowchart LR
     Y[Yahoo Finance futures]
     OPA[OilPriceAPI JKM]
     GIE[GIE AGSI+ EU storage]
+    AIS[aisstream.io ship positions]
+  end
+  subgraph GitHub
+    A[Actions job every 30 min<br/>LNG ship classifier]
+    B[ais-data branch<br/>ships.json]
   end
   subgraph Cloudflare
     R[Price relay Worker<br/>caching, fallbacks, CORS]
@@ -33,6 +38,7 @@ flowchart LR
   R -->|JSON| H
   R -->|JSON| D
   M --> D
+  AIS -->|WebSocket| A --> B -->|JSON| D
 ```
 
 | Part | What it does |
@@ -40,6 +46,7 @@ flowchart LR
 | `worker/worker.js` | Cloudflare Worker (free plan). Fetches quotes and data server-side, caches them, and serves JSON to the site. Endpoints: `/` (prices), `?dashboard=1` (dashboard data), `?history=1` (weekly TTF and JKM history), `?debug=1` (readable output). |
 | `site/index.html` | Home page with the live Markets section. |
 | `site/gas_dashboard.html` | Dashboard. Ships with a built-in data snapshot, then replaces it with live data when the relay answers. |
+| `scripts/ais/` | LNG ship tracker. `collect.mjs` listens to aisstream.io for 7 minutes; `classify.mjs` picks out LNG carriers and labels each one at a berth, anchored, inbound or outbound. Run every 30 minutes by `.github/workflows/ais.yml`, which publishes `ships.json` to the `ais-data` branch. |
 | `site/manual-data.json` | Figures with no free feed (rig counts, AGA indicators, regional basis, LNG feedgas, events, terminals, weekly JKM). Updated every Friday by a scheduled AI agent. |
 
 ### Design decisions
@@ -48,6 +55,8 @@ flowchart LR
 - **Secrets stay server-side.** API keys live in Cloudflare secrets (`EIA_API_KEY`, `AGSI_API_KEY`, `OILPRICE_API_KEY`), never in the site code.
 - **Free-tier limits are respected.** The relay caches responses (60 seconds for prices, 10 minutes for dashboard data, 12 hours for history) and calls OilPriceAPI at most every two hours.
 - **Every figure shows its date and source**, so a reader can tell live data from weekly or monthly data.
+- **Ship tracking runs outside the browser.** aisstream.io does not accept browser connections and its key must stay secret, so a scheduled GitHub Actions job collects positions and publishes a small JSON file. It goes to a separate `ais-data` branch, replaced on each run, so `main` keeps a clean history and Netlify does not redeploy every 30 minutes.
+- **LNG carriers are identified conservatively.** AIS has no "LNG carrier" ship type, so a ship counts if its name contains LNG, or if it is a tanker of 200 m or more stopped within 3 km of an LNG berth; that ship is then remembered when it sails. Large crude tankers offshore are not assumed to be LNG.
 - **Licensed data is not scraped.** JKM comes from a licensed API; Investing.com and similar sites are not scraped.
 
 ## Data sources
@@ -59,6 +68,7 @@ flowchart LR
 | Henry Hub (NYMEX NG front month), TTF, EUR/USD | Yahoo Finance | Every minute (delayed) |
 | JKM | OilPriceAPI | Daily |
 | EU storage | GIE AGSI+ | Daily |
+| LNG carrier positions near Gulf Coast terminals | aisstream.io (free, terrestrial AIS receivers) | Every 30 minutes |
 | Rig counts, AGA indicators, basis, feedgas, events | Weekly AI research update | Fridays |
 
 ## Running the tests
@@ -70,13 +80,15 @@ npm test
 ```
 
 - `tests/worker.test.mjs` tests the relay with mocked sources: contract-month selection, TTF conversion, storage report parsing, history aggregation and failure fallbacks.
-- `tests/dashboard.test.mjs` loads the dashboard in a headless browser with sample relay data and checks that every tab renders without errors, including a week with a zero storage change.
+- `tests/ais.test.mjs` tests the LNG ship classifier: message parsing, LNG identification, berth/anchored/inbound/outbound status, and how stale or distant ships are dropped.
+- `tests/dashboard.test.mjs` loads the dashboard in a headless browser with sample relay data and checks that every tab renders without errors, including a week with a zero storage change, and the LNG ship map with live, old and missing ship data.
 
 Tests run on every pull request through GitHub Actions (`.github/workflows/ci.yml`).
 
 ## Deploying
 
 - **Site:** Netlify publishes the `site/` folder (see `netlify.toml`). Connected to this repository, it redeploys on every merge to `main`.
+- **Ship tracker:** needs a free aisstream.io API key saved as the repository secret `AISSTREAM_API_KEY` (Settings → Secrets and variables → Actions). Run it by hand from Actions → LNG ship positions → Run workflow.
 - **Relay:** paste `worker/worker.js` into the `sanjo-prices` Worker in Cloudflare and deploy. Setup steps and secrets are in `worker/SETUP.txt`.
 
 ## How AI was used
